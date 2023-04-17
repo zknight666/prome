@@ -1,1 +1,1 @@
-# prome
+# miniProject-ProMe
