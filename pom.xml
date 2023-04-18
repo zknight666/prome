@@ -27,7 +27,7 @@
 				 </exclusion>
 			</exclusions>
 		</dependency>
-		<!-- 04.17 추가 -->
+
 		<dependency>
 		    <groupId>org.springframework</groupId>
 		    <artifactId>spring-web</artifactId>
@@ -165,7 +165,7 @@
 			<groupId>org.slf4j</groupId>
 			<artifactId>slf4j-log4j12</artifactId>
 			<version>${org.slf4j-version}</version>
-			<scope>runtime</scope>
+<!-- 			<scope>runtime</scope> -->
 		</dependency>
 		<dependency>
 			<groupId>log4j</groupId>
@@ -223,9 +223,10 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.7</version>
-			<scope>test</scope>
-		</dependency>        
-	</dependencies>
+<!-- 			<scope>test</scope> -->
+		</dependency>      
+		
+		</dependencies>
     <build>
         <plugins>
             <plugin>
