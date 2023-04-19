@@ -10,12 +10,12 @@
     <meta name="author" content="" />
     <title>Project With Me - Write</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="../css/styles.css" rel="stylesheet" />
-    <link href="../css/custom.css" rel="stylesheet" />
+    <link href="css/styles.css" rel="stylesheet" />
+    <link href="css/custom.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -35,7 +35,7 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarColor03">
-                    <img src="../assets/logo.png" style="cursor: pointer" />
+                    <img src="assets/logo.png" style="cursor: pointer" />
 
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item dropdown">
@@ -58,12 +58,12 @@
                     <form class="d-flex dropdown">
                         <!-- <input class="form-control me-sm-2" type="search" placeholder="Search" /> -->
                         <button class="btn my-2 my-sm-0" type="button" style="padding-right: 0">
-                            <img src="../assets\btn-logout.png" />
+                            <img src="assets\btn-logout.png" />
                         </button>
 
                         <button class="btn my-2 my-sm-0 nav-link dropdown-toggle" aria-haspopup="true"
                             aria-expanded="false" data-bs-toggle="dropdown" style="margin-right: 0.5rem">
-                            <img src="../assets\account-circle.png" />
+                            <img src="assets\account-circle.png" />
                         </button>
                         <div class="dropdown-menu" style="right: 0">
                             <div class="dropdown-item">*******님</div>
@@ -217,7 +217,6 @@
                             <div class="p-4">
                                 <span class="h5" style="font-weight: 800;">* 주소</span>
                                 <span>선택사항</span>
-                                <!-- 선택 사항으로 만들기 -->
                                 <div class="content_center">
                                     <input class="box" type="password">
                                     <button type="button" class="btn btn-outline-dark mx-3">우편번호 검색</button><br>
@@ -233,145 +232,145 @@
                                     <div class="card-body">
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/android.png">
+                                                <img src=" ./assets/icon/android.png">
                                             </button><br>
                                             <span>android</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/aws.png">
+                                                <img src=" ./assets/icon/aws.png">
                                             </button><br>
                                             <span>aws</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/cc.png">
+                                                <img src=" ./assets/icon/cc.png">
                                             </button><br>
                                             <span>C/C#</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/docker.png">
+                                                <img src=" ./assets/icon/docker.png">
                                             </button><br>
                                             <span>docker</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/figma.png">
+                                                <img src=" ./assets/icon/figma.png">
                                             </button><br>
                                             <span>figma</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/flutter.png">
+                                                <img src=" ./assets/icon/flutter.png">
                                             </button><br>
                                             <span>flutter</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/git.png">
+                                                <img src=" ./assets/icon/git.png">
                                             </button><br>
                                             <span>git</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/html.png">
+                                                <img src=" ./assets/icon/html.png">
                                             </button><br>
                                             <span>html/css</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/ios.png">
+                                                <img src=" ./assets/icon/ios.png">
                                             </button><br>
                                             <span>ios</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/js.png">
+                                                <img src=" ./assets/icon/js.png">
                                             </button><br>
                                             <span>js</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/java.png">
+                                                <img src=" ./assets/icon/java.png">
                                             </button><br>
                                             <span>java</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/kotlin.png">
+                                                <img src=" ./assets/icon/kotlin.png">
                                             </button><br>
                                             <span>kotlin</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/kubernetes.png">
+                                                <img src=" ./assets/icon/kubernetes.png">
                                             </button><br>
                                             <span>kubernetes</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/mongodb.png">
+                                                <img src=" ./assets/icon/mongodb.png">
                                             </button><br>
                                             <span>mongodb</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/mysql.png">
+                                                <img src=" ./assets/icon/mysql.png">
                                             </button><br>
                                             <span>mysql</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/nodejs.png">
+                                                <img src=" ./assets/icon/nodejs.png">
                                             </button><br>
                                             <span>nodejs</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/photoshop.png">
+                                                <img src=" ./assets/icon/photoshop.png">
                                             </button><br>
                                             <span>photoshop</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/python.png">
+                                                <img src=" ./assets/icon/python.png">
                                             </button><br>
                                             <span>python</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/react.png">
+                                                <img src=" ./assets/icon/react.png">
                                             </button><br>
                                             <span>react</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/spring.png">
+                                                <img src=" ./assets/icon/spring.png">
                                             </button><br>
                                             <span>spring</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/tensorflow.png">
+                                                <img src=" ./assets/icon/tensorflow.png">
                                             </button><br>
                                             <span>tensorflow</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/typescript.png">
+                                                <img src=" ./assets/icon/typescript.png">
                                             </button><br>
                                             <span>typescript</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/unity.png">
+                                                <img src=" ./assets/icon/unity.png">
                                             </button><br>
                                             <span>unity</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/vue.png">
+                                                <img src=" ./assets/icon/vue.png">
                                             </button><br>
                                             <span>vue</span>
                                         </div>

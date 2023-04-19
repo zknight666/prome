@@ -9,12 +9,4 @@
 		<typeAlias type="user.bean.UserDTO" alias="user" />
 	</typeAliases>
 
-<!-- application에서 sqlsessionFactory을 사용하여 해결하겠다.
-	<mappers>
-	경로로 선택해서 들어갈때는 user.dao 가 아닌 user/dao 형태로 써야 한다.
-		<mapper resource="user/dao/userMapper.xml"/>
-	</mappers>
-
- -->
-
 </configuration>
