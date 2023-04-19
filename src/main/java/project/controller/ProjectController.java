@@ -2,7 +2,13 @@ package project.controller;
 
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import project.bean.ProjectDTO;
+import project.service.ProjectService;
 
 @Controller
 @RequestMapping(value="project")
@@ -15,6 +21,12 @@ public class ProjectController {
 		
 		return "project/buildProject";
 	}
+	
+//	@PostMapping(value="buildProject_post")
+//	@ResponseBody
+//	public void buildProject_post(@ModelAttribute ProjectDTO projectDTO) {
+//		ProjectService.buildProject_post(projectDTO);
+//	}
 	
 	@GetMapping(value="project")
 	public String project() {
