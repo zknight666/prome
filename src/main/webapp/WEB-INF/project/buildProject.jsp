@@ -13,11 +13,11 @@
     <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="../css/styles.css" rel="stylesheet" />
     <link href="../css/custom.css" rel="stylesheet" />
     <!-- datepicker(달력) -->
+    <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet"> -->
 </head>
 
 <body>
@@ -181,6 +181,49 @@
                                 <div>
                                     <span class="h5" style="font-weight: 800;">* 모집 인원</span>
                                     
+									<div class="row mb-3">
+							          <div style="display: flex; align-items: center">
+							            <div class="form-group">
+							              <select class="form-select" id="exampleSelect1">
+							                <option value="0000">모집분야</option>
+								                <optgroup label="기획">
+								                  <option value="0201">UI/UX기획</option>
+								                  <option value="0202">게임기획</option>
+								                  <option value="0203">프로젝트 매니저</option>
+								                  <option value="0204">(기획)기타</option>
+								                </optgroup>
+								                <optgroup label="디자인">
+								                  <option value="0301">그래픽디자인</option>
+								                  <option value="0302">UI/UX디자인</option>
+								                  <option value="0303">(디자인)기타</option>
+								                </optgroup>
+								                <optgroup label="프론트엔드">
+								                  <option value="0401">IOS</option>
+								                  <option value="0402">안드로이드</option>
+								                  <option value="0403">웹프론트엔드</option>
+								                  <option value="0404">웹퍼블리셔</option>
+								                  <option value="0405">크로스플랫폼</option>
+								                </optgroup>
+								                <optgroup label="백엔드">
+								                  <option value="0501">웹 서버</option>
+								                  <option value="0502">AI</option>
+								                  <option value="0503">빅데이터/DS</option>
+								                  <option value="0504">블록체인</option>
+								                </optgroup>
+							              </select>
+							            </div>
+							
+								            <div class="form-check col" style="margin-left: 1.5rem">
+								              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked="" />
+								              <label class="form-check-label" for="flexCheckChecked"> 모집중</label>
+								      		</div>
+								      		
+								      		<a href=""></a>
+								      		
+						         	  </div>
+								    </div>
+									                                    
+                                    
                                     
                                 </div>
                             </div>
@@ -250,11 +293,11 @@
                                 </div>
                                 <div class="flex space-x-5">
                                     <div>
-                                        <label for="start-date" class="block text-xl mb-2">&nbsp;Start Date</label>
+                                        <label for="start-date" class="block text-xl mb-2">&nbsp;프로젝트 시간 기간</label>
                                         <input type="date" id="start-date" class="border-2 border-gray-300 p-2 rounded">
                                     </div>
                                     <div>
-                                        <label for="end-date" class="block text-xl mb-2">&nbsp;End Date</label>
+                                        <label for="end-date" class="block text-xl mb-2">&nbsp;프로젝트 종료 기간</label>
                                         <input type="date" id="end-date" class="border-2 border-gray-300 p-2 rounded">
                                     </div>
                                 </div>

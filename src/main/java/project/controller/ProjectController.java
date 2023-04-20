@@ -42,6 +42,12 @@ public class ProjectController {
 	
 	
 	
+	@GetMapping(value="adminpage")
+	public String adminpage() {
+		
+		return "project/adminpage";
+	}
+	
 	
 	
 	

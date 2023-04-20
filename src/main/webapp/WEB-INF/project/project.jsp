@@ -9,15 +9,15 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Project With Me - Home</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/letspl.css" rel="stylesheet" />
-    <link href="css/styles.css" rel="stylesheet" />
-    <link href="css/custom.css" rel="stylesheet" />
-    <link href="css/projectdetail.css" rel="stylesheet" />
-    <link href="css/modal.css" rel="stylesheet" />
+    <link href="../css/letspl.css" rel="stylesheet" />
+    <link href="../css/styles.css" rel="stylesheet" />
+    <link href="../css/custom.css" rel="stylesheet" />
+    <link href="../css/projectdetail.css" rel="stylesheet" />
+    <link href="../css/modal.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -37,7 +37,7 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarColor03">
-                    <img src="assets/logo.png" style="cursor: pointer" />
+                    <img src="../assets/logo.png" style="cursor: pointer" />
 
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item dropdown">
@@ -60,12 +60,12 @@
                     <form class="d-flex dropdown">
                         <!-- <input class="form-control me-sm-2" type="search" placeholder="Search" /> -->
                         <button class="btn my-2 my-sm-0" type="button" style="padding-right: 0">
-                            <img src="assets\btn-logout.png" />
+                            <img src="../assets\btn-logout.png" />
                         </button>
 
                         <button class="btn my-2 my-sm-0 nav-link dropdown-toggle" aria-haspopup="true"
                             aria-expanded="false" data-bs-toggle="dropdown" style="margin-right: 0.5rem">
-                            <img src="assets\account-circle.png" />
+                            <img src="../assets\account-circle.png" />
                         </button>
                         <div class="dropdown-menu" style="right: 0">
                             <div class="dropdown-item">*******님</div>
@@ -84,7 +84,7 @@
 
         <!-- Header-->
         <header class="bg-dark" style="
-                  background-image: url('assets/main-banner.png');
+                  background-image: url('../assets/main-banner.png');
                   background-size: auto;
                   background-repeat: no-repeat;
                   background-position: center;
@@ -172,7 +172,7 @@
                             <div class="leaderInfo1">
                                 <div class="leaderInfo1_imgId">
                                     <div class="leaderInfo1_imgDiv">
-                                        <img class="leaderInfo1_img" src="./assets/account-circle.png">
+                                        <img class="leaderInfo1_img" src="../assets/account-circle.png">
                                     </div>
                                     <div class="leaderInfo1_idDiv">
                                         <span class="leaderInfo1_id">yoongi</span>
@@ -183,13 +183,13 @@
                                         <span class="leaderInfo1_techLan">기술/언어</span>
                                     </div>
                                     <div class="leaderInfo1_iconDiv">
-                                        <img class="image" src=" ./assets/icon/figma.png">
-                                        <img class="image" src=" ./assets/icon/git.png">
-                                        <img class="image" src=" ./assets/icon/android.png">
-                                        <img class="image" src=" ./assets/icon/docker.png">
-                                        <img class="image" src=" ./assets/icon/aws.png">
-                                        <img class="image" src=" ./assets/icon/tensorflow.png">
-                                        <img class="image" src=" ./assets/icon/java.png">
+                                        <img class="image" src=" ../assets/icon/figma.png">
+                                        <img class="image" src=" ../assets/icon/git.png">
+                                        <img class="image" src=" ../assets/icon/android.png">
+                                        <img class="image" src=" ../assets/icon/docker.png">
+                                        <img class="image" src=" ../assets/icon/aws.png">
+                                        <img class="image" src=" ../assets/icon/tensorflow.png">
+                                        <img class="image" src=" ../assets/icon/java.png">
                                     </div>
                                 </div>
                             </div>
@@ -287,28 +287,24 @@ Flutter 개발자 1명 모집중입니다!
                             <h5 style="font-weight: 800;">&emsp;* 기술/언어</h5>
                         </div>
                         <div class="techLan">
-                            <div class="icon">
-                                <button style="border: 0; background-color: white;">
-                                    <img src=" ./assets/icon/android.png">
-                                </button><br>
+                            <div class="techLan_icon">
+                                <img src=" ../assets/icon/android.png">
+                                <br>
                                 <span>android</span>
                             </div>
-                            <div class="icon">
-                                <button style="border: 0; background-color: white;">
-                                    <img src=" ./assets/icon/aws.png">
-                                </button><br>
+                            <div class="techLan_icon">
+                                <img src=" ../assets/icon/aws.png">
+                                <br>
                                 <span>aws</span>
                             </div>
-                            <div class="icon">
-                                <button style="border: 0; background-color: white;">
-                                    <img src=" ./assets/icon/cc.png">
-                                </button><br>
+                            <div class="techLan_icon">
+                                <img src=" ../assets/icon/cc.png">
+                                <br>
                                 <span>C/C#</span>
                             </div>
-                            <div class="icon">
-                                <button style="border: 0; background-color: white;">
-                                    <img src=" ./assets/icon/docker.png">
-                                </button><br>
+                            <div class="techLan_icon">
+                                <img src=" ../assets/icon/docker.png">
+                                <br>
                                 <span>docker</span>
                             </div>
                         </div>
@@ -321,7 +317,7 @@ Flutter 개발자 1명 모집중입니다!
                             <div class="board_member">
                                 <div class="board_member1">
                                     <div class="board_member1_img">
-                                        <img class="img" src="./assets/account-circle.png">
+                                        <img class="img" src="../assets/account-circle.png">
                                     </div>
                                     <div>
                                         <span class="board_member1_id">yoongi</span>
@@ -335,18 +331,18 @@ Flutter 개발자 1명 모집중입니다!
                                         <span class="board_member3_techLan">기술/언어</span>
                                     </div>
                                     <div class="board_member3_icon">
-                                        <img class="image" src=" ./assets/icon/cc.png">
-                                        <img class="image" src=" ./assets/icon/docker.png">
-                                        <img class="image" src=" ./assets/icon/android.png">
-                                        <img class="image" src=" ./assets/icon/docker.png">
-                                        <img class="image" src=" ./assets/icon/aws.png">
+                                        <img class="image" src=" ../assets/icon/cc.png">
+                                        <img class="image" src=" ../assets/icon/docker.png">
+                                        <img class="image" src=" ../assets/icon/android.png">
+                                        <img class="image" src=" ../assets/icon/docker.png">
+                                        <img class="image" src=" ../assets/icon/aws.png">
                                     </div>
                                 </div>
                             </div>
                             <div class="board_member">
                                 <div class="board_member1">
                                     <div class="board_member1_img">
-                                        <img class="img" src="./assets/account-circle.png">
+                                        <img class="img" src="../assets/account-circle.png">
                                     </div>
                                     <div>
                                         <span class="board_member1_id">taejin</span>
@@ -360,18 +356,18 @@ Flutter 개발자 1명 모집중입니다!
                                         <span class="board_member3_techLan">기술/언어</span>
                                     </div>
                                     <div class="board_member3_icon">
-                                        <img class="image" src=" ./assets/icon/cc.png">
-                                        <img class="image" src=" ./assets/icon/docker.png">
-                                        <img class="image" src=" ./assets/icon/android.png">
-                                        <img class="image" src=" ./assets/icon/docker.png">
-                                        <img class="image" src=" ./assets/icon/aws.png">
+                                        <img class="image" src=" ../assets/icon/cc.png">
+                                        <img class="image" src=" ../assets/icon/docker.png">
+                                        <img class="image" src=" ../assets/icon/android.png">
+                                        <img class="image" src=" ../assets/icon/docker.png">
+                                        <img class="image" src=" ../assets/icon/aws.png">
                                     </div>
                                 </div>
                             </div>
                             <div class="board_member">
                                 <div class="board_member1">
                                     <div class="board_member1_img">
-                                        <img class="img" src="./assets/account-circle.png">
+                                        <img class="img" src="../assets/account-circle.png">
                                     </div>
                                     <div>
                                         <span class="board_member1_id">Baek</span>
@@ -385,11 +381,11 @@ Flutter 개발자 1명 모집중입니다!
                                         <span class="board_member3_techLan">기술/언어</span>
                                     </div>
                                     <div class="board_member3_icon">
-                                        <img class="image" src=" ./assets/icon/cc.png">
-                                        <img class="image" src=" ./assets/icon/docker.png">
-                                        <img class="image" src=" ./assets/icon/android.png">
-                                        <img class="image" src=" ./assets/icon/docker.png">
-                                        <img class="image" src=" ./assets/icon/aws.png">
+                                        <img class="image" src=" ../assets/icon/cc.png">
+                                        <img class="image" src=" ../assets/icon/docker.png">
+                                        <img class="image" src=" ../assets/icon/android.png">
+                                        <img class="image" src=" ../assets/icon/docker.png">
+                                        <img class="image" src=" ../assets/icon/aws.png">
                                     </div>
                                 </div>
                             </div>
@@ -421,7 +417,7 @@ Flutter 개발자 1명 모집중입니다!
                             <div class="board_member">
                                 <div class="board_member1">
                                     <div class="board_member1_img">
-                                        <img class="img" src="./assets/account-circle.png">
+                                        <img class="img" src="../assets/account-circle.png">
                                     </div>
                                     <div>
                                         <span class="board_member1_id">taejin</span>
@@ -435,18 +431,18 @@ Flutter 개발자 1명 모집중입니다!
                                         <span class="board_member3_techLan">기술/언어</span>
                                     </div>
                                     <div class="board_member3_icon">
-                                        <img class="image" src=" ./assets/icon/cc.png">
-                                        <img class="image" src=" ./assets/icon/docker.png">
-                                        <img class="image" src=" ./assets/icon/android.png">
-                                        <img class="image" src=" ./assets/icon/docker.png">
-                                        <img class="image" src=" ./assets/icon/aws.png">
+                                        <img class="image" src=" ../assets/icon/cc.png">
+                                        <img class="image" src=" ../assets/icon/docker.png">
+                                        <img class="image" src=" ../assets/icon/android.png">
+                                        <img class="image" src=" ../assets/icon/docker.png">
+                                        <img class="image" src=" ../assets/icon/aws.png">
                                     </div>
                                 </div>
                             </div>
                             <div class="board_member">
                                 <div class="board_member1">
                                     <div class="board_member1_img">
-                                        <img class="img" src="./assets/account-circle.png">
+                                        <img class="img" src="../assets/account-circle.png">
                                     </div>
                                     <div>
                                         <span class="board_member1_id">taejin</span>
@@ -460,11 +456,11 @@ Flutter 개발자 1명 모집중입니다!
                                         <span class="board_member3_techLan">기술/언어</span>
                                     </div>
                                     <div class="board_member3_icon">
-                                        <img class="image" src=" ./assets/icon/cc.png">
-                                        <img class="image" src=" ./assets/icon/docker.png">
-                                        <img class="image" src=" ./assets/icon/android.png">
-                                        <img class="image" src=" ./assets/icon/docker.png">
-                                        <img class="image" src=" ./assets/icon/aws.png">
+                                        <img class="image" src=" ../assets/icon/cc.png">
+                                        <img class="image" src=" ../assets/icon/docker.png">
+                                        <img class="image" src=" ../assets/icon/android.png">
+                                        <img class="image" src=" ../assets/icon/docker.png">
+                                        <img class="image" src=" ../assets/icon/aws.png">
                                     </div>
                                 </div>
                             </div>
@@ -483,9 +479,9 @@ Flutter 개발자 1명 모집중입니다!
     <div class="modalWrapClose">
         <div class="loginModal" style="padding-bottom: 30px;">
             <button class="closeBtn">
-                <img loading="lazy" src="./assets/icon/ic-close.svg" alt="close">
+                <img loading="lazy" src="../assets/icon/ic-close.svg" alt="close">
             </button>
-            <div><img class="pmelogo" src="./assets/icon/pmelogo.png"></div>
+            <div><img class="pmelogo" src="../assets/icon/pmelogo.png"></div>
             <div class="div_center_tit">
 
             </div>
@@ -508,9 +504,9 @@ Flutter 개발자 1명 모집중입니다!
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.4.min.js"></script>
-    <script src="./js/board.js"></script>
-    <script src="js/letspl.js"></script>
-    <script src="js/scripts.js"></script>
+    <script src="../js/board.js"></script>
+    <script src="../js/letspl.js"></script>
+    <script src="../js/scripts.js"></script>
 </body>
 
 </html>
