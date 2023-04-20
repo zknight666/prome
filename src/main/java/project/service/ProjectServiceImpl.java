@@ -32,6 +32,10 @@ public class ProjectServiceImpl implements ProjectService {
 		
 		List<ProjectDTO> list = projectDAO.getAdminpage(map2);
 		
+		// 특정 프로젝트의 선택된 기술 가져오기
+		int projectId = Integer.parseInt((String)map.get("projectId"));
+	    List<String> chosenTech = projectDAO.getChosenTech(projectId);	
+		
 		//페이징 처리
 		int totalA = projectDAO.getTotalA(); //총글수
 		
@@ -44,14 +48,20 @@ public class ProjectServiceImpl implements ProjectService {
 		
 		Map<String, Object> map3 = new HashMap<String, Object>();
 		map3.put("list", list);
+		map3.put("chosenTech", chosenTech);
 		map3.put("projectPaging", projectPaging);
 		
 		return map3;
 	}
 
 	@Override
-	public void deleteProject(String title) {
-		projectDAO.deleteProject(title);
+	public void deleteProject(int projectId) {
+		projectDAO.deleteProject(projectId);
+	}
+
+	@Override
+	public List<UserDTO> getUserList() {
+		return projectDAO.getUserList();
 	}
 
 }

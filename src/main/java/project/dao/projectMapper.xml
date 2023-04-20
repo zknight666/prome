@@ -14,7 +14,7 @@
 			)where rn>=#{startNum} and rn<=#{endNum}
 		]]>
 	</select>
-	
+		
 	<select id="getAdminpage2" parameterType="java.util.Map" resultType="project.bean.projectDTO">
 		<![CDATA[
 			select * from
@@ -24,14 +24,31 @@
 		]]>
 	</select>
 	
+	<select id="getChosenTech" resultType="java.lang.String">
+		SELECT chosen_tech
+		FROM Project_Tech_Stack 
+		UNPIVOT INCLUDE NULLS (
+		  chosen FOR chosen_tech IN (
+		  figma, photoshop, ios, android, react, vue, flutter,
+		  html_css, javascript, spring, java, Kotlin, node_js, 
+		  MongoDB, C_C#, Git, AWS, Docker, kubernetes, tensorflow,
+		  unity, python, MySql, TypeScript
+		  )
+		)WHERE chosen = 'y' and project_id=#{projectId};
+	</select>
+	
 	<!-- 총글수 -->
 	<select id="getTotalA" resultType="int">
 		select count(*) from project
 	</select>
 	
-	<delete id="deleteProject" parameterType="String">
-		delete from project where title=#{title}
+	<delete id="deleteProject" parameterType="int">
+		delete from project where id=#{projectId}
 	</delete>
+	
+	<select id="getUserList" resultType="user.bean.userDTO">
+		select * from user_table;
+	</select>
 
 	
  </mapper>

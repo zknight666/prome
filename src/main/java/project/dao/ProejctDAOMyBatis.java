@@ -9,6 +9,7 @@ import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 
 import project.bean.ProjectDTO;
+import user.bean.UserDTO;
 
 @Repository
 @Transactional
@@ -23,6 +24,10 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 		}else
 			return sqlSession.selectList("projectSQL.getAdminpage2", map2);		
 	}
+	
+	public List<String> getChosenTech(int projectId) {
+	    return sqlSession.selectList("getChosenTech", projectId);
+	}
 
 	@Override
 	public int getTotalA() {
@@ -30,9 +35,14 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 	}
 
 	@Override
-	public void deleteProject(String title) {
-		sqlSession.delete("userSQL.deleteProject", title);
+	public void deleteProject(int projectId) {
+		sqlSession.delete("userSQL.deleteProject", projectId);
 		
+	}
+
+	@Override
+	public List<UserDTO> getUserList() {
+		return sqlSession.selectList("userSQL.getUserList");
 	}
 
 }
