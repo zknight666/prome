@@ -1266,3 +1266,47 @@ input[id="vue"]:checked + label em {
 .icon:hover {
   filter: brightness(60%);
 }
+
+
+
+/* ******************태희***************** 것 */
+/* 모집인원 */
+
+.recruit{
+	margin: 5px;
+}
+.dummybox{
+	width: 59%;
+}
+
+.dummybox2{
+	width: 60%;
+}
+.recruit_countNumber{
+	text-align: center;
+	width: 50px;
+}
+
+.plusMinusBtnWrap{
+	display: inline-flex;
+	flex-direction: row;
+	align-items: center;
+}
+.imageBtnminus {
+    width:20px;
+    height:20px;
+    cursor: pointer;
+}
+
+.imageBtnplus {
+    width:20px;
+    height:20px;
+    cursor: pointer;
+}
+
+.flex.btn-position.recruitbtn{
+	align-items: right;
+	text-align: right;
+	justify-content: flex-end;
+}
+

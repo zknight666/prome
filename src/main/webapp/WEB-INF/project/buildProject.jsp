@@ -181,10 +181,11 @@
                                 <div>
                                     <span class="h5" style="font-weight: 800;">* 모집 인원</span>
                                     
-									<div class="row mb-3">
-							          <div style="display: flex; align-items: center">
+									<div class="row mb-3" id="recruitContainer">
+							          <div class="recruit" style="display: flex; align-items: center">
+							          
 							            <div class="form-group">
-							              <select class="form-select" id="exampleSelect1">
+							              <select class="form-select" id="exampleSelect1" required="required">
 							                <option value="0000">모집분야</option>
 								                <optgroup label="기획">
 								                  <option value="0201">UI/UX기획</option>
@@ -212,21 +213,35 @@
 								                </optgroup>
 							              </select>
 							            </div>
-							
-								            <div class="form-check col" style="margin-left: 1.5rem">
-								              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked="" />
-								              <label class="form-check-label" for="flexCheckChecked"> 모집중</label>
-								      		</div>
+							            <div class="dummybox"></div>
+							            
+											<div class="plusMinusBtnWrap">&emsp;
+												<img class="imageBtnminus" alt="" src="../assets/images/imageBtnminus.png">
+												<div class="recruit_countNumber">1</div>
+												<input type="text" class="recruit_countNumber_input" value="1">
+												<img class="imageBtnplus" alt="" src="../assets/images/imageBtnplus.png">													
+											</div>
+											
+
+	
 								      		
-								      		<a href=""></a>
+
 								      		
 						         	  </div>
 								    </div>
-									                                    
+								    
+		                            <div class="flex btn-position recruitbtn">
+							            <div class="dummybox2"></div>
+		                                <button type="button" class="btn btn-outline-dark mx-3 recruit_minus">삭제</button>
+		                                <button type="button" class="btn btn-outline-dark recruit_plus">추가</button>
+		                            </div>									                                    
                                     
                                     
                                 </div>
-                            </div>
+                                
+                                
+                                
+                            </div><!-- p-4 -->
                             <!-- 모집 인원 end -->
                             <!-- 프로젝트 설명 start -->
                             <div class="p-4">
@@ -235,7 +250,7 @@
                                 </div>
                                 <div class="project_explain" aria-expanded="false"
                                     style="min-height: 500px; max-height: max-content;">
-                                    <div contenteditable="true" translate="no" class="ProseMirror" tabindex="0">
+                                    <div contenteditable="true" translate="no" class="ProseMirror" tabindex="0" style="padding-top:5px; ">
                                         <h1 style="font-size: 18px;font-weight:normal">1. 프로젝트의 시작 동기</h1>
                                         <p style="font-size: 14px;line-height:21px">&nbsp;</p>
                                         <p style="font-size: 14px;line-height:21px">- 왜 이 서비스를 만드시고 싶은지 적어주세요&nbsp;</p>
@@ -281,7 +296,7 @@
                                                 style="text-decoration: underline"
                                                 href="https://letspl.me/notice/80"><span
                                                     style="color: rgb(156, 156, 148)">https://letspl.me/notice/80</span></a>
-                                        </p>
+                                        </p> 
                                     </div>
                                 </div>
                             </div>
@@ -293,11 +308,11 @@
                                 </div>
                                 <div class="flex space-x-5">
                                     <div>
-                                        <label for="start-date" class="block text-xl mb-2">&nbsp;프로젝트 시간 기간</label>
+                                        <label for="start-date" class="block text-xl mb-2">&nbsp;프로젝트 시작 기간&nbsp;</label>
                                         <input type="date" id="start-date" class="border-2 border-gray-300 p-2 rounded">
                                     </div>
                                     <div>
-                                        <label for="end-date" class="block text-xl mb-2">&nbsp;프로젝트 종료 기간</label>
+                                        <label for="end-date" class="block text-xl mb-2">&nbsp;프로젝트 종료 기간&nbsp;</label>
                                         <input type="date" id="end-date" class="border-2 border-gray-300 p-2 rounded">
                                     </div>
                                 </div>
@@ -309,148 +324,100 @@
                                 <div class="card border-light mb-3" style="width: auto;">
                                     <div class="card-body">
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/android.png">
-                                            </button><br>
-                                            <span>android</span>
+                                            <input type="checkbox" id="android" class="icon">
+                                            <label for="android"><em></em><br><span>android</span></label>                                            
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/aws.png">
-                                            </button><br>
-                                            <span>aws</span>
+                                            <input type="checkbox" id="aws" class="icon">
+                                            <label for="aws"><em></em><br><span>aws</span></label>                                            
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/cc.png">
-                                            </button><br>
-                                            <span>C/C#</span>
+                                            <input type="checkbox" id="c" class="icon">
+                                            <label for="c"><em></em><br><span>C/C#</span></label>
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/docker.png">
-                                            </button><br>
-                                            <span>docker</span>
+                                            <input type="checkbox" id="docker" class="icon">
+                                            <label for="docker"><em></em><br><span>docker</span></label>                                            
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/figma.png">
-                                            </button><br>
-                                            <span>figma</span>
+                                            <input type="checkbox" id="figma" class="icon">
+                                            <label for="figma"><em></em><br><span>figma</span></label>                                            
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/flutter.png">
-                                            </button><br>
-                                            <span>flutter</span>
+                                            <input type="checkbox" id="flutter" class="icon">
+                                            <label for="flutter"><em></em><br><span>flutter</span></label>
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/git.png">
-                                            </button><br>
-                                            <span>git</span>
+                                            <input type="checkbox" id="git" class="icon">
+                                            <label for="git"><em></em><br><span>git</span></label>                                            
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/html.png">
-                                            </button><br>
-                                            <span>html/css</span>
+                                            <input type="checkbox" id="html" class="icon">
+                                            <label for="html"><em></em><br><span>html/css</span></label>                                            
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/ios.png">
-                                            </button><br>
-                                            <span>ios</span>
+                                            <input type="checkbox" id="ios" class="icon">
+                                            <label for="ios"><em></em><br><span>ios</span></label>                                            
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/js.png">
-                                            </button><br>
-                                            <span>js</span>
+                                            <input type="checkbox" id="javascript" class="icon">
+                                            <label for="javascript"><em></em><br><span>javascript</span></label>
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/java.png">
-                                            </button><br>
-                                            <span>java</span>
+                                            <input type="checkbox" id="java" class="icon">
+                                            <label for="java"><em></em><br><span>java</span></label>
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/kotlin.png">
-                                            </button><br>
-                                            <span>kotlin</span>
+                                            <input type="checkbox" id="kotlin" class="icon">
+                                            <label for="kotlin"><em></em><br><span>kotlin</span></label>                                            
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/kubernetes.png">
-                                            </button><br>
-                                            <span>kubernetes</span>
+                                            <input type="checkbox" id="kubernetes" class="icon">
+                                            <label for="kubernetes"><em></em><br><span>kubernetes</span></label>                                            
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/mongodb.png">
-                                            </button><br>
-                                            <span>mongodb</span>
+                                            <input type="checkbox" id="mongodb" class="icon">
+                                            <label for="mongodb"><em></em><br><span>mongodb</span></label>                                            
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/mysql.png">
-                                            </button><br>
-                                            <span>mysql</span>
+                                            <input type="checkbox" id="mysql" class="icon">
+                                            <label for="mysql"><em></em><br><span>mysql</span></label>                                            
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/nodejs.png">
-                                            </button><br>
-                                            <span>nodejs</span>
+                                            <input type="checkbox" id="nodejs" class="icon">
+                                            <label for="nodejs"><em></em><br><span>nodejs</span></label>                                            
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/photoshop.png">
-                                            </button><br>
-                                            <span>photoshop</span>
+                                            <input type="checkbox" id="photoshop" class="icon">
+                                            <label for="photoshop"><em></em><br><span>photoshop</span></label>                                            
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/python.png">
-                                            </button><br>
-                                            <span>python</span>
+                                            <input type="checkbox" id="python" class="icon">
+                                            <label for="python"><em></em><br><span>python</span></label>                                            
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/react.png">
-                                            </button><br>
-                                            <span>react</span>
+                                            <input type="checkbox" id="react" class="icon">
+                                            <label for="react"><em></em><br><span>react</span></label>                                            
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/spring.png">
-                                            </button><br>
-                                            <span>spring</span>
+                                            <input type="checkbox" id="spring" class="icon">
+                                            <label for="spring"><em></em><br><span>spring</span></label>                                            
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/tensorflow.png">
-                                            </button><br>
-                                            <span>tensorflow</span>
+                                            <input type="checkbox" id="tensorflow" class="icon">
+                                            <label for="tensorflow"><em></em><br><span>tensorflow</span></label>                                            
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/typescript.png">
-                                            </button><br>
-                                            <span>typescript</span>
+                                            <input type="checkbox" id="typescript" class="icon">
+                                            <label for="typescript"><em></em><br><span>typescript</span></label>                                            
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/unity.png">
-                                            </button><br>
-                                            <span>unity</span>
+                                            <input type="checkbox" id="unity" class="icon">
+                                            <label for="unity"><em></em><br><span>unity</span></label>                                            
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/vue.png">
-                                            </button><br>
-                                            <span>vue</span>
+                                            <input type="checkbox" id="vue" class="icon">
+                                            <label for="vue"><em></em><br><span>vue</span></label>                                            
                                         </div>
                                     </div>
                                 </div>
@@ -489,6 +456,10 @@
             endDate.setAttribute("min", minEndDate);
         });
     </script>
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.4.min.js"></script>    
+    <script type="text/javascript" src="../js/buildprojectjs.js"></script>
+    
 </body>
 
 </html>
