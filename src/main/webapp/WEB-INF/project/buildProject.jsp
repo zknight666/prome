@@ -17,7 +17,7 @@
     <link href="../css/styles.css" rel="stylesheet" />
     <link href="../css/custom.css" rel="stylesheet" />
     <!-- datepicker(달력) -->
-    <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet">
+    <!-- <link href="https://cdn.jsdelivr.net/npm/tailwindcss@2.2.16/dist/tailwind.min.css" rel="stylesheet"> -->
 </head>
 
 <body>
@@ -37,8 +37,9 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarColor03">
-                    <img src="http://localhost:8080/prome/assets/logo.png" style="cursor: pointer" />
-
+                	<a href="/prome/">
+                  	  <img src="../assets/logo.png" style="cursor: pointer" />
+					</a>
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
@@ -60,12 +61,12 @@
                     <form class="d-flex dropdown">
                         <!-- <input class="form-control me-sm-2" type="search" placeholder="Search" /> -->
                         <button class="btn my-2 my-sm-0" type="button" style="padding-right: 0">
-                            <img src="http://localhost:8080/prome/assets/btn-logout.png" />
+                            <img src="../assets\btn-logout.png" />
                         </button>
 
                         <button class="btn my-2 my-sm-0 nav-link dropdown-toggle" aria-haspopup="true"
                             aria-expanded="false" data-bs-toggle="dropdown" style="margin-right: 0.5rem">
-                            <img src="http://localhost:8080/prome/assets/account-circle.png" />
+                            <img src="../assets\account-circle.png" />
                         </button>
                         <div class="dropdown-menu" style="right: 0">
                             <div class="dropdown-item">*******님</div>
@@ -83,7 +84,7 @@
         </nav>
         <!-- Header-->
         <header class="bg-dark" style="
-                  background-image: url('http://localhost:8080/prome/assets/main-banner.png');
+                  background-image: url('../assets/main-banner.png');
                   background-size: auto;
                   background-repeat: no-repeat;
                   background-position: center;
@@ -99,6 +100,9 @@
                         <span class="h2" style="font-weight: bold">모임 생성</span>
                     </div>
                     <div class="section">
+                    <!-- submit용 form -->
+                    <form id="buildProjectForm">
+                    
                         <div class="p-2">
                             <!-- 프로젝트명 start -->
                             <div class="p-4">
@@ -176,6 +180,51 @@
                             <div class="p-4">
                                 <div>
                                     <span class="h5" style="font-weight: 800;">* 모집 인원</span>
+                                    
+									<div class="row mb-3">
+							          <div style="display: flex; align-items: center">
+							            <div class="form-group">
+							              <select class="form-select" id="exampleSelect1">
+							                <option value="0000">모집분야</option>
+								                <optgroup label="기획">
+								                  <option value="0201">UI/UX기획</option>
+								                  <option value="0202">게임기획</option>
+								                  <option value="0203">프로젝트 매니저</option>
+								                  <option value="0204">(기획)기타</option>
+								                </optgroup>
+								                <optgroup label="디자인">
+								                  <option value="0301">그래픽디자인</option>
+								                  <option value="0302">UI/UX디자인</option>
+								                  <option value="0303">(디자인)기타</option>
+								                </optgroup>
+								                <optgroup label="프론트엔드">
+								                  <option value="0401">IOS</option>
+								                  <option value="0402">안드로이드</option>
+								                  <option value="0403">웹프론트엔드</option>
+								                  <option value="0404">웹퍼블리셔</option>
+								                  <option value="0405">크로스플랫폼</option>
+								                </optgroup>
+								                <optgroup label="백엔드">
+								                  <option value="0501">웹 서버</option>
+								                  <option value="0502">AI</option>
+								                  <option value="0503">빅데이터/DS</option>
+								                  <option value="0504">블록체인</option>
+								                </optgroup>
+							              </select>
+							            </div>
+							
+								            <div class="form-check col" style="margin-left: 1.5rem">
+								              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked="" />
+								              <label class="form-check-label" for="flexCheckChecked"> 모집중</label>
+								      		</div>
+								      		
+								      		<a href=""></a>
+								      		
+						         	  </div>
+								    </div>
+									                                    
+                                    
+                                    
                                 </div>
                             </div>
                             <!-- 모집 인원 end -->
@@ -244,13 +293,14 @@
                                 </div>
                                 <div class="flex space-x-5">
                                     <div>
-                                        <label for="start-date" class="block text-xl mb-2">&nbsp;Start Date</label>
+                                        <label for="start-date" class="block text-xl mb-2">&nbsp;프로젝트 시간 기간</label>
                                         <input type="date" id="start-date" class="border-2 border-gray-300 p-2 rounded">
                                     </div>
                                     <div>
-                                        <label for="end-date" class="block text-xl mb-2">&nbsp;End Date</label>
+                                        <label for="end-date" class="block text-xl mb-2">&nbsp;프로젝트 종료 기간</label>
                                         <input type="date" id="end-date" class="border-2 border-gray-300 p-2 rounded">
                                     </div>
+                                </div>
                             </div>
                             <!-- 기간 end -->
                             <!-- 기술/언어 start -->
@@ -260,79 +310,79 @@
                                     <div class="card-body">
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src="http://localhost:8080/prome/assets/icon/android.png">
+                                                <img src=" ../assets/icon/android.png">
                                             </button><br>
                                             <span>android</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src="http://localhost:8080/prome/assets/icon/aws.png">
+                                                <img src=" ../assets/icon/aws.png">
                                             </button><br>
                                             <span>aws</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src="http://localhost:8080/prome/assets/icon/cc.png">
+                                                <img src=" ../assets/icon/cc.png">
                                             </button><br>
                                             <span>C/C#</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src="http://localhost:8080/prome/assets/icon/docker.png">
+                                                <img src=" ../assets/icon/docker.png">
                                             </button><br>
                                             <span>docker</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src="http://localhost:8080/prome/assets/icon/figma.png">
+                                                <img src=" ../assets/icon/figma.png">
                                             </button><br>
                                             <span>figma</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src="http://localhost:8080/prome/assets/icon/flutter.png">
+                                                <img src=" ../assets/icon/flutter.png">
                                             </button><br>
                                             <span>flutter</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src="http://localhost:8080/prome/assets/icon/git.png">
+                                                <img src=" ../assets/icon/git.png">
                                             </button><br>
                                             <span>git</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src="http://localhost:8080/prome/assets/icon/html.png">
+                                                <img src=" ../assets/icon/html.png">
                                             </button><br>
                                             <span>html/css</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src="http://localhost:8080/prome/assets/icon/ios.png">
+                                                <img src=" ../assets/icon/ios.png">
                                             </button><br>
                                             <span>ios</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src="http://localhost:8080/prome/assets/icon/js.png">
+                                                <img src=" ../assets/icon/js.png">
                                             </button><br>
                                             <span>js</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src="http://localhost:8080/prome/assets/icon/java.png">
+                                                <img src=" ../assets/icon/java.png">
                                             </button><br>
                                             <span>java</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src="http://localhost:8080/prome/assets/icon/kotlin.png">
+                                                <img src=" ../assets/icon/kotlin.png">
                                             </button><br>
                                             <span>kotlin</span>
                                         </div>
                                         <div class="icon">
                                             <button style="border: 0; background-color: white;">
-                                                <img src="http://localhost:8080/prome/assets/icon/kubernetes.png">
+                                                <img src=" ../assets/icon/kubernetes.png">
                                             </button><br>
                                             <span>kubernetes</span>
                                         </div>
@@ -407,10 +457,11 @@
                             </div>
                             <!-- 기술/언어 end -->
                             <div class="pb-4 flex btn-position">
-                                <button type="button" class="btn btn-outline-dark mx-3">다시작성</button>
-                                <button type="button" class="btn btn-outline-dark">회원가입</button>
+                                <button type="button" class="btn btn-outline-dark mx-3">임시저장</button>
+                                <button type="button" class="btn btn-outline-dark">작성완료</button>
                             </div>
                         </div>
+                        </form>
                     </div>
                 </div>
             </div>
@@ -428,7 +479,7 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="../js/scripts.js"></script>
-    <!-- datepicker(달력) -->    
+    <!-- datepicker(달력) -->
     <script>
         const startDate = document.getElementById("start-date");
         const endDate = document.getElementById("end-date");

@@ -17,7 +17,22 @@
   <link href="css/letspl.css" rel="stylesheet" />
   <link href="css/styles.css" rel="stylesheet" />
   <link href="css/custom.css" rel="stylesheet" />
+  <link rel="stylesheet" href="css/modal_01_signup.css">
+  <link rel="stylesheet" href="css/modal_02_login.css">
   <!-- <link href="css/custom-styles.css" rel="stylesheet" /> -->
+  <style>
+    /* #paging {
+        float: left;
+        color: gray;
+        text-decoration: none;
+        padding: 5px;
+        margin: 5px;
+    }
+    #currentPaging, #paging{
+      cursor: pointer;
+    } */
+
+  </style>
 </head>
 
 <body>
@@ -43,26 +58,22 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                 aria-expanded="false"></a>
-
-              <div class="dropdown-menu">
-                <div class="dropdown-item">*******님</div>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">마이페이지</a>
-
-                <a class="dropdown-item" href="#">내 모임 지원자 관리</a>
-
-                <a class="dropdown-item" href="#">회원 정보 수정</a>
-                <div class="dropdown-divider"></div>
-              </div>
             </li>
           </ul>
 
           <form class="d-flex dropdown">
             <!-- <input class="form-control me-sm-2" type="search" placeholder="Search" /> -->
-            <button class="btn my-2 my-sm-0" type="button" style="padding-right: 0">
-              <img src="assets\btn-logout.png" />
+            <button class="btn my-2 my-sm-0" id="loginBtn" type="button" style="padding-right: 0">
+              <img src="assets\btn-login.png" />
             </button>
-
+            <!-- <button class="btn my-2 my-sm-0" type="button" style="padding-right: 0">
+                <img src="assets\btn-logout.png" />
+              </button> -->
+            <button class="btn my-2 my-sm-0" type="button" style="padding-right: 0;
+            padding-left: 0;">
+              <img src="assets\btn-create.png" />
+            </button>
+            <!--  
             <button class="btn my-2 my-sm-0 nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false"
               data-bs-toggle="dropdown" style="margin-right: 0.5rem">
               <img src="assets\account-circle.png" />
@@ -77,6 +88,7 @@
               <a class="dropdown-item" href="#">회원 정보 수정</a>
               <div class="dropdown-divider"></div>
             </div>
+            -->
           </form>
         </div>
       </div>
@@ -102,9 +114,7 @@
           </div>
 
           <div class="col" style="display: flex; flex-direction: row-reverse">
-            <button type="button" class="btn btn-primary"
-             style="background: rgb(28, 124, 224); border: none" 
-             onclick="location.href='/prome/project/buildProject'">
+            <button type="button" class="btn btn-primary" style="background: rgb(28, 124, 224); border: none">
               모임 생성
             </button>
           </div>
@@ -151,9 +161,10 @@
         </div>
 
         <!--카드 섹션 시작-->
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-between">
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-between mb-4">
+
           <!--카드-1-->
-          <div class="col mb-5">
+          <div class="col mb-4">
             <div class="projectGridWrap" style="min-width: 260px; padding-left: 0; padding-right: 0">
               <div class="projectTopInfo">
                 <div class="top" style="flex-direction: row-reverse">
@@ -186,16 +197,20 @@
                 </div>
               </div>
               <div class="projectInfo2">
+
+
                 <div class="middleWrap">
                   <div class="left">
+                    
+                  </div>
+                  <div class="right">
                     <div class="heartCount">
                       <img loading="lazy" src="assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
                     </div>
                   </div>
-                  <div class="right">
-                    <p><span> 509</span><span> (↑26)</span></p>
-                  </div>
                 </div>
+
+
                 <div class="bottomWrap">
                   <div class="gatherTxt">
                     <div>
@@ -231,7 +246,7 @@
           <!--카드 End-->
 
           <!--카드-2-->
-          <div class="col mb-5">
+          <div class="col mb-4">
             <div class="projectGridWrap" style="min-width: 260px; padding-left: 0; padding-right: 0">
               <div class="projectTopInfo">
                 <div class="top" style="flex-direction: row-reverse">
@@ -266,12 +281,12 @@
               <div class="projectInfo2">
                 <div class="middleWrap">
                   <div class="left">
+                    
+                  </div>
+                  <div class="right">
                     <div class="heartCount">
                       <img loading="lazy" src="assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
                     </div>
-                  </div>
-                  <div class="right">
-                    <p><span> 509</span><span> (↑26)</span></p>
                   </div>
                 </div>
                 <div class="bottomWrap">
@@ -309,7 +324,7 @@
           <!--카드 End-->
 
           <!--카드-3-->
-          <div class="col mb-5">
+          <div class="col mb-4">
             <div class="projectGridWrap" style="min-width: 260px; padding-left: 0; padding-right: 0">
               <div class="projectTopInfo">
                 <div class="top" style="flex-direction: row-reverse">
@@ -325,11 +340,10 @@
                   <h3 class="category">소셜네트워크</h3>
                   <h2 class="tit">[서울] 내 글이 상장되는 ‘비법거래소'입니다</h2>
                   <div class="iconWrap2">
-                    <img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg" alt="Figma"
-                      title="Figma" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/flutter/flutter-original.svg"
-                      alt="Flutter" title="Flutter" /><img loading="lazy"
+                    <img loading="lazy" src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
+                      alt="Figma" title="Figma" /><img loading="lazy"
+                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/flutter/flutter-original.svg" alt="Flutter"
+                      title="Flutter" /><img loading="lazy"
                       src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/react/react-original.svg" alt="React"
                       title="React" /><img loading="lazy"
                       src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/amazonwebservices/amazonwebservices-original.svg"
@@ -342,16 +356,20 @@
                 </div>
               </div>
               <div class="projectInfo2">
+          
+          
                 <div class="middleWrap">
                   <div class="left">
+          
+                  </div>
+                  <div class="right">
                     <div class="heartCount">
                       <img loading="lazy" src="assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
                     </div>
                   </div>
-                  <div class="right">
-                    <p><span> 509</span><span> (↑26)</span></p>
-                  </div>
                 </div>
+          
+          
                 <div class="bottomWrap">
                   <div class="gatherTxt">
                     <div>
@@ -385,9 +403,9 @@
             </div>
           </div>
           <!--카드 End-->
-
+          
           <!--카드-4-->
-          <div class="col mb-5">
+          <div class="col mb-4">
             <div class="projectGridWrap" style="min-width: 260px; padding-left: 0; padding-right: 0">
               <div class="projectTopInfo">
                 <div class="top" style="flex-direction: row-reverse">
@@ -403,11 +421,10 @@
                   <h3 class="category">소셜네트워크</h3>
                   <h2 class="tit">[서울] 내 글이 상장되는 ‘비법거래소'입니다</h2>
                   <div class="iconWrap2">
-                    <img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg" alt="Figma"
-                      title="Figma" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/flutter/flutter-original.svg"
-                      alt="Flutter" title="Flutter" /><img loading="lazy"
+                    <img loading="lazy" src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
+                      alt="Figma" title="Figma" /><img loading="lazy"
+                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/flutter/flutter-original.svg" alt="Flutter"
+                      title="Flutter" /><img loading="lazy"
                       src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/react/react-original.svg" alt="React"
                       title="React" /><img loading="lazy"
                       src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/amazonwebservices/amazonwebservices-original.svg"
@@ -422,91 +439,12 @@
               <div class="projectInfo2">
                 <div class="middleWrap">
                   <div class="left">
+          
+                  </div>
+                  <div class="right">
                     <div class="heartCount">
                       <img loading="lazy" src="assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
                     </div>
-                  </div>
-                  <div class="right">
-                    <p><span> 509</span><span> (↑26)</span></p>
-                  </div>
-                </div>
-                <div class="bottomWrap">
-                  <div class="gatherTxt">
-                    <div>
-                      <span>모집완료</span><span>2/8</span>
-                      <div class="ic-arrow">
-                        <img loading="lazy" src="assets/images/ic-arrow-up.svg" alt="프로젝트 모집현황" />
-                      </div>
-                    </div>
-                    <div class="gatherModal">
-                      <ul>
-                        <h3>
-                          <li><span>그래픽디자인</span><span>1명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>UI/UX디자인</span><span>1명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>크로스플랫폼</span><span>2명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>작가/블로거</span><span>1명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>투자/고문</span><span>1명</span></li>
-                        </h3>
-                      </ul>
-                    </div>
-                  </div>
-                </div>
-              </div>
-            </div>
-          </div>
-
-          <!--카드 End-->
-
-          <!--카드 하나-->
-          <div class="col mb-5">
-            <div class="projectGridWrap" style="min-width: 260px; padding-left: 0; padding-right: 0">
-              <div class="projectTopInfo">
-                <div class="top" style="flex-direction: row-reverse">
-                  <div class="favorite"></div>
-                </div>
-                <div class="projectThumb">
-                  <img loading="lazy" src="assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                    style="vertical-align: middle" />
-                </div>
-              </div>
-              <div class="projectBottomInfo">
-                <div class="txtWrap projectWrap">
-                  <h3 class="category">소셜네트워크</h3>
-                  <h2 class="tit">[서울] 내 글이 상장되는 ‘비법거래소'입니다</h2>
-                  <div class="iconWrap2">
-                    <img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg" alt="Figma"
-                      title="Figma" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/flutter/flutter-original.svg"
-                      alt="Flutter" title="Flutter" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/react/react-original.svg" alt="React"
-                      title="React" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/amazonwebservices/amazonwebservices-original.svg"
-                      alt="AWS" title="AWS" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/nodejs/nodejs-original.svg" alt="NodeJS"
-                      title="NodeJS" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/spring/spring-original.svg" alt="Spring"
-                      title="Spring" />
-                  </div>
-                </div>
-              </div>
-              <div class="projectInfo2">
-                <div class="middleWrap">
-                  <div class="left">
-                    <div class="heartCount">
-                      <img loading="lazy" src="assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
-                    </div>
-                  </div>
-                  <div class="right">
-                    <p><span> 509</span><span> (↑26)</span></p>
                   </div>
                 </div>
                 <div class="bottomWrap">
@@ -543,566 +481,679 @@
           </div>
           <!--카드 End-->
 
-          <!--카드-2-->
-          <div class="col mb-5">
-            <div class="projectGridWrap" style="min-width: 260px; padding-left: 0; padding-right: 0">
-              <div class="projectTopInfo">
-                <div class="top" style="flex-direction: row-reverse">
-                  <div class="favorite"></div>
-                </div>
-                <div class="projectThumb">
-                  <img loading="lazy" src="assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                    style="vertical-align: middle" />
-                </div>
-              </div>
-              <div class="projectBottomInfo">
-                <div class="txtWrap projectWrap">
-                  <h3 class="category">소셜네트워크</h3>
-                  <h2 class="tit">[서울] 내 글이 상장되는 ‘비법거래소'입니다</h2>
-                  <div class="iconWrap2">
-                    <img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg" alt="Figma"
-                      title="Figma" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/flutter/flutter-original.svg"
-                      alt="Flutter" title="Flutter" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/react/react-original.svg" alt="React"
-                      title="React" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/amazonwebservices/amazonwebservices-original.svg"
-                      alt="AWS" title="AWS" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/nodejs/nodejs-original.svg" alt="NodeJS"
-                      title="NodeJS" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/spring/spring-original.svg" alt="Spring"
-                      title="Spring" />
+
+            <!--카드-5-->
+            <div class="col mb-4">
+              <div class="projectGridWrap" style="min-width: 260px; padding-left: 0; padding-right: 0">
+                <div class="projectTopInfo">
+                  <div class="top" style="flex-direction: row-reverse">
+                    <div class="favorite"></div>
+                  </div>
+                  <div class="projectThumb">
+                    <img loading="lazy" src="assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                      style="vertical-align: middle" />
                   </div>
                 </div>
-              </div>
-              <div class="projectInfo2">
-                <div class="middleWrap">
-                  <div class="left">
-                    <div class="heartCount">
-                      <img loading="lazy" src="assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
+                <div class="projectBottomInfo">
+                  <div class="txtWrap projectWrap">
+                    <h3 class="category">소셜네트워크</h3>
+                    <h2 class="tit">[서울] 내 글이 상장되는 ‘비법거래소'입니다</h2>
+                    <div class="iconWrap2">
+                      <img loading="lazy" src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
+                        alt="Figma" title="Figma" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/flutter/flutter-original.svg" alt="Flutter"
+                        title="Flutter" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/react/react-original.svg" alt="React"
+                        title="React" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/amazonwebservices/amazonwebservices-original.svg"
+                        alt="AWS" title="AWS" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/nodejs/nodejs-original.svg" alt="NodeJS"
+                        title="NodeJS" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/spring/spring-original.svg" alt="Spring"
+                        title="Spring" />
                     </div>
                   </div>
-                  <div class="right">
-                    <p><span> 509</span><span> (↑26)</span></p>
-                  </div>
                 </div>
-                <div class="bottomWrap">
-                  <div class="gatherTxt">
-                    <div>
-                      <span>모집완료</span><span>2/8</span>
-                      <div class="ic-arrow">
-                        <img loading="lazy" src="assets/images/ic-arrow-up.svg" alt="프로젝트 모집현황" />
+                <div class="projectInfo2">
+            
+            
+                  <div class="middleWrap">
+                    <div class="left">
+            
+                    </div>
+                    <div class="right">
+                      <div class="heartCount">
+                        <img loading="lazy" src="assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
                       </div>
                     </div>
-                    <div class="gatherModal">
-                      <ul>
-                        <h3>
-                          <li><span>그래픽디자인</span><span>1명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>UI/UX디자인</span><span>1명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>크로스플랫폼</span><span>2명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>작가/블로거</span><span>1명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>투자/고문</span><span>1명</span></li>
-                        </h3>
-                      </ul>
+                  </div>
+            
+            
+                  <div class="bottomWrap">
+                    <div class="gatherTxt">
+                      <div>
+                        <span>모집완료</span><span>2/8</span>
+                        <div class="ic-arrow">
+                          <img loading="lazy" src="assets/images/ic-arrow-up.svg" alt="프로젝트 모집현황" />
+                        </div>
+                      </div>
+                      <div class="gatherModal">
+                        <ul>
+                          <h3>
+                            <li><span>그래픽디자인</span><span>1명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>UI/UX디자인</span><span>1명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>크로스플랫폼</span><span>2명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>작가/블로거</span><span>1명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>투자/고문</span><span>1명</span></li>
+                          </h3>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <!--카드 End-->
-
-          <!--카드-3-->
-          <div class="col mb-5">
-            <div class="projectGridWrap" style="min-width: 260px; padding-left: 0; padding-right: 0">
-              <div class="projectTopInfo">
-                <div class="top" style="flex-direction: row-reverse">
-                  <div class="favorite"></div>
-                </div>
-                <div class="projectThumb">
-                  <img loading="lazy" src="assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                    style="vertical-align: middle" />
-                </div>
-              </div>
-              <div class="projectBottomInfo">
-                <div class="txtWrap projectWrap">
-                  <h3 class="category">소셜네트워크</h3>
-                  <h2 class="tit">[서울] 내 글이 상장되는 ‘비법거래소'입니다</h2>
-                  <div class="iconWrap2">
-                    <img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg" alt="Figma"
-                      title="Figma" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/flutter/flutter-original.svg"
-                      alt="Flutter" title="Flutter" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/react/react-original.svg" alt="React"
-                      title="React" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/amazonwebservices/amazonwebservices-original.svg"
-                      alt="AWS" title="AWS" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/nodejs/nodejs-original.svg" alt="NodeJS"
-                      title="NodeJS" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/spring/spring-original.svg" alt="Spring"
-                      title="Spring" />
+            <!--카드 End-->
+            
+            <!--카드-6-->
+            <div class="col mb-4">
+              <div class="projectGridWrap" style="min-width: 260px; padding-left: 0; padding-right: 0">
+                <div class="projectTopInfo">
+                  <div class="top" style="flex-direction: row-reverse">
+                    <div class="favorite"></div>
+                  </div>
+                  <div class="projectThumb">
+                    <img loading="lazy" src="assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                      style="vertical-align: middle" />
                   </div>
                 </div>
-              </div>
-              <div class="projectInfo2">
-                <div class="middleWrap">
-                  <div class="left">
-                    <div class="heartCount">
-                      <img loading="lazy" src="assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
+                <div class="projectBottomInfo">
+                  <div class="txtWrap projectWrap">
+                    <h3 class="category">소셜네트워크</h3>
+                    <h2 class="tit">[서울] 내 글이 상장되는 ‘비법거래소'입니다</h2>
+                    <div class="iconWrap2">
+                      <img loading="lazy" src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
+                        alt="Figma" title="Figma" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/flutter/flutter-original.svg" alt="Flutter"
+                        title="Flutter" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/react/react-original.svg" alt="React"
+                        title="React" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/amazonwebservices/amazonwebservices-original.svg"
+                        alt="AWS" title="AWS" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/nodejs/nodejs-original.svg" alt="NodeJS"
+                        title="NodeJS" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/spring/spring-original.svg" alt="Spring"
+                        title="Spring" />
                     </div>
                   </div>
-                  <div class="right">
-                    <p><span> 509</span><span> (↑26)</span></p>
-                  </div>
                 </div>
-                <div class="bottomWrap">
-                  <div class="gatherTxt">
-                    <div>
-                      <span>모집완료</span><span>2/8</span>
-                      <div class="ic-arrow">
-                        <img loading="lazy" src="assets/images/ic-arrow-up.svg" alt="프로젝트 모집현황" />
+                <div class="projectInfo2">
+                  <div class="middleWrap">
+                    <div class="left">
+            
+                    </div>
+                    <div class="right">
+                      <div class="heartCount">
+                        <img loading="lazy" src="assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
                       </div>
                     </div>
-                    <div class="gatherModal">
-                      <ul>
-                        <h3>
-                          <li><span>그래픽디자인</span><span>1명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>UI/UX디자인</span><span>1명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>크로스플랫폼</span><span>2명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>작가/블로거</span><span>1명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>투자/고문</span><span>1명</span></li>
-                        </h3>
-                      </ul>
+                  </div>
+                  <div class="bottomWrap">
+                    <div class="gatherTxt">
+                      <div>
+                        <span>모집완료</span><span>2/8</span>
+                        <div class="ic-arrow">
+                          <img loading="lazy" src="assets/images/ic-arrow-up.svg" alt="프로젝트 모집현황" />
+                        </div>
+                      </div>
+                      <div class="gatherModal">
+                        <ul>
+                          <h3>
+                            <li><span>그래픽디자인</span><span>1명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>UI/UX디자인</span><span>1명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>크로스플랫폼</span><span>2명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>작가/블로거</span><span>1명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>투자/고문</span><span>1명</span></li>
+                          </h3>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <!--카드 End-->
+            <!--카드 End-->
 
-          <!--카드-4-->
-          <div class="col mb-5">
-            <div class="projectGridWrap" style="min-width: 260px; padding-left: 0; padding-right: 0">
-              <div class="projectTopInfo">
-                <div class="top" style="flex-direction: row-reverse">
-                  <div class="favorite"></div>
-                </div>
-                <div class="projectThumb">
-                  <img loading="lazy" src="assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                    style="vertical-align: middle" />
-                </div>
-              </div>
-              <div class="projectBottomInfo">
-                <div class="txtWrap projectWrap">
-                  <h3 class="category">소셜네트워크</h3>
-                  <h2 class="tit">[서울] 내 글이 상장되는 ‘비법거래소'입니다</h2>
-                  <div class="iconWrap2">
-                    <img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg" alt="Figma"
-                      title="Figma" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/flutter/flutter-original.svg"
-                      alt="Flutter" title="Flutter" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/react/react-original.svg" alt="React"
-                      title="React" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/amazonwebservices/amazonwebservices-original.svg"
-                      alt="AWS" title="AWS" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/nodejs/nodejs-original.svg" alt="NodeJS"
-                      title="NodeJS" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/spring/spring-original.svg" alt="Spring"
-                      title="Spring" />
+
+            <!--카드-7-->
+            <div class="col mb-4">
+              <div class="projectGridWrap" style="min-width: 260px; padding-left: 0; padding-right: 0">
+                <div class="projectTopInfo">
+                  <div class="top" style="flex-direction: row-reverse">
+                    <div class="favorite"></div>
+                  </div>
+                  <div class="projectThumb">
+                    <img loading="lazy" src="assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                      style="vertical-align: middle" />
                   </div>
                 </div>
-              </div>
-              <div class="projectInfo2">
-                <div class="middleWrap">
-                  <div class="left">
-                    <div class="heartCount">
-                      <img loading="lazy" src="assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
+                <div class="projectBottomInfo">
+                  <div class="txtWrap projectWrap">
+                    <h3 class="category">소셜네트워크</h3>
+                    <h2 class="tit">[서울] 내 글이 상장되는 ‘비법거래소'입니다</h2>
+                    <div class="iconWrap2">
+                      <img loading="lazy" src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
+                        alt="Figma" title="Figma" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/flutter/flutter-original.svg" alt="Flutter"
+                        title="Flutter" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/react/react-original.svg" alt="React"
+                        title="React" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/amazonwebservices/amazonwebservices-original.svg"
+                        alt="AWS" title="AWS" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/nodejs/nodejs-original.svg" alt="NodeJS"
+                        title="NodeJS" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/spring/spring-original.svg" alt="Spring"
+                        title="Spring" />
                     </div>
                   </div>
-                  <div class="right">
-                    <p><span> 509</span><span> (↑26)</span></p>
-                  </div>
                 </div>
-                <div class="bottomWrap">
-                  <div class="gatherTxt">
-                    <div>
-                      <span>모집완료</span><span>2/8</span>
-                      <div class="ic-arrow">
-                        <img loading="lazy" src="assets/images/ic-arrow-up.svg" alt="프로젝트 모집현황" />
+                <div class="projectInfo2">
+            
+            
+                  <div class="middleWrap">
+                    <div class="left">
+            
+                    </div>
+                    <div class="right">
+                      <div class="heartCount">
+                        <img loading="lazy" src="assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
                       </div>
                     </div>
-                    <div class="gatherModal">
-                      <ul>
-                        <h3>
-                          <li><span>그래픽디자인</span><span>1명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>UI/UX디자인</span><span>1명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>크로스플랫폼</span><span>2명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>작가/블로거</span><span>1명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>투자/고문</span><span>1명</span></li>
-                        </h3>
-                      </ul>
+                  </div>
+            
+            
+                  <div class="bottomWrap">
+                    <div class="gatherTxt">
+                      <div>
+                        <span>모집완료</span><span>2/8</span>
+                        <div class="ic-arrow">
+                          <img loading="lazy" src="assets/images/ic-arrow-up.svg" alt="프로젝트 모집현황" />
+                        </div>
+                      </div>
+                      <div class="gatherModal">
+                        <ul>
+                          <h3>
+                            <li><span>그래픽디자인</span><span>1명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>UI/UX디자인</span><span>1명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>크로스플랫폼</span><span>2명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>작가/블로거</span><span>1명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>투자/고문</span><span>1명</span></li>
+                          </h3>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-
-          <!--카드 End-->
-
-          <!--카드 하나-->
-          <div class="col mb-5">
-            <div class="projectGridWrap" style="min-width: 260px; padding-left: 0; padding-right: 0">
-              <div class="projectTopInfo">
-                <div class="top" style="flex-direction: row-reverse">
-                  <div class="favorite"></div>
-                </div>
-                <div class="projectThumb">
-                  <img loading="lazy" src="assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                    style="vertical-align: middle" />
-                </div>
-              </div>
-              <div class="projectBottomInfo">
-                <div class="txtWrap projectWrap">
-                  <h3 class="category">소셜네트워크</h3>
-                  <h2 class="tit">[서울] 내 글이 상장되는 ‘비법거래소'입니다</h2>
-                  <div class="iconWrap2">
-                    <img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg" alt="Figma"
-                      title="Figma" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/flutter/flutter-original.svg"
-                      alt="Flutter" title="Flutter" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/react/react-original.svg" alt="React"
-                      title="React" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/amazonwebservices/amazonwebservices-original.svg"
-                      alt="AWS" title="AWS" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/nodejs/nodejs-original.svg" alt="NodeJS"
-                      title="NodeJS" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/spring/spring-original.svg" alt="Spring"
-                      title="Spring" />
+            <!--카드 End-->
+            
+            <!--카드-8-->
+            <div class="col mb-4">
+              <div class="projectGridWrap" style="min-width: 260px; padding-left: 0; padding-right: 0">
+                <div class="projectTopInfo">
+                  <div class="top" style="flex-direction: row-reverse">
+                    <div class="favorite"></div>
+                  </div>
+                  <div class="projectThumb">
+                    <img loading="lazy" src="assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                      style="vertical-align: middle" />
                   </div>
                 </div>
-              </div>
-              <div class="projectInfo2">
-                <div class="middleWrap">
-                  <div class="left">
-                    <div class="heartCount">
-                      <img loading="lazy" src="assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
+                <div class="projectBottomInfo">
+                  <div class="txtWrap projectWrap">
+                    <h3 class="category">소셜네트워크</h3>
+                    <h2 class="tit">[서울] 내 글이 상장되는 ‘비법거래소'입니다</h2>
+                    <div class="iconWrap2">
+                      <img loading="lazy" src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
+                        alt="Figma" title="Figma" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/flutter/flutter-original.svg" alt="Flutter"
+                        title="Flutter" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/react/react-original.svg" alt="React"
+                        title="React" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/amazonwebservices/amazonwebservices-original.svg"
+                        alt="AWS" title="AWS" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/nodejs/nodejs-original.svg" alt="NodeJS"
+                        title="NodeJS" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/spring/spring-original.svg" alt="Spring"
+                        title="Spring" />
                     </div>
                   </div>
-                  <div class="right">
-                    <p><span> 509</span><span> (↑26)</span></p>
-                  </div>
                 </div>
-                <div class="bottomWrap">
-                  <div class="gatherTxt">
-                    <div>
-                      <span>모집완료</span><span>2/8</span>
-                      <div class="ic-arrow">
-                        <img loading="lazy" src="assets/images/ic-arrow-up.svg" alt="프로젝트 모집현황" />
+                <div class="projectInfo2">
+                  <div class="middleWrap">
+                    <div class="left">
+            
+                    </div>
+                    <div class="right">
+                      <div class="heartCount">
+                        <img loading="lazy" src="assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
                       </div>
                     </div>
-                    <div class="gatherModal">
-                      <ul>
-                        <h3>
-                          <li><span>그래픽디자인</span><span>1명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>UI/UX디자인</span><span>1명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>크로스플랫폼</span><span>2명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>작가/블로거</span><span>1명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>투자/고문</span><span>1명</span></li>
-                        </h3>
-                      </ul>
+                  </div>
+                  <div class="bottomWrap">
+                    <div class="gatherTxt">
+                      <div>
+                        <span>모집완료</span><span>2/8</span>
+                        <div class="ic-arrow">
+                          <img loading="lazy" src="assets/images/ic-arrow-up.svg" alt="프로젝트 모집현황" />
+                        </div>
+                      </div>
+                      <div class="gatherModal">
+                        <ul>
+                          <h3>
+                            <li><span>그래픽디자인</span><span>1명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>UI/UX디자인</span><span>1명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>크로스플랫폼</span><span>2명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>작가/블로거</span><span>1명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>투자/고문</span><span>1명</span></li>
+                          </h3>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <!--카드 End-->
+            <!--카드 End-->
 
-          <!--카드-2-->
-          <div class="col mb-5">
-            <div class="projectGridWrap" style="min-width: 260px; padding-left: 0; padding-right: 0">
-              <div class="projectTopInfo">
-                <div class="top" style="flex-direction: row-reverse">
-                  <div class="favorite"></div>
-                </div>
-                <div class="projectThumb">
-                  <img loading="lazy" src="assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                    style="vertical-align: middle" />
-                </div>
-              </div>
-              <div class="projectBottomInfo">
-                <div class="txtWrap projectWrap">
-                  <h3 class="category">소셜네트워크</h3>
-                  <h2 class="tit">[서울] 내 글이 상장되는 ‘비법거래소'입니다</h2>
-                  <div class="iconWrap2">
-                    <img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg" alt="Figma"
-                      title="Figma" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/flutter/flutter-original.svg"
-                      alt="Flutter" title="Flutter" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/react/react-original.svg" alt="React"
-                      title="React" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/amazonwebservices/amazonwebservices-original.svg"
-                      alt="AWS" title="AWS" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/nodejs/nodejs-original.svg" alt="NodeJS"
-                      title="NodeJS" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/spring/spring-original.svg" alt="Spring"
-                      title="Spring" />
+
+            <!--카드-9-->
+            <div class="col mb-4">
+              <div class="projectGridWrap" style="min-width: 260px; padding-left: 0; padding-right: 0">
+                <div class="projectTopInfo">
+                  <div class="top" style="flex-direction: row-reverse">
+                    <div class="favorite"></div>
+                  </div>
+                  <div class="projectThumb">
+                    <img loading="lazy" src="assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                      style="vertical-align: middle" />
                   </div>
                 </div>
-              </div>
-              <div class="projectInfo2">
-                <div class="middleWrap">
-                  <div class="left">
-                    <div class="heartCount">
-                      <img loading="lazy" src="assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
+                <div class="projectBottomInfo">
+                  <div class="txtWrap projectWrap">
+                    <h3 class="category">소셜네트워크</h3>
+                    <h2 class="tit">[서울] 내 글이 상장되는 ‘비법거래소'입니다</h2>
+                    <div class="iconWrap2">
+                      <img loading="lazy" src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
+                        alt="Figma" title="Figma" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/flutter/flutter-original.svg" alt="Flutter"
+                        title="Flutter" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/react/react-original.svg" alt="React"
+                        title="React" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/amazonwebservices/amazonwebservices-original.svg"
+                        alt="AWS" title="AWS" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/nodejs/nodejs-original.svg" alt="NodeJS"
+                        title="NodeJS" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/spring/spring-original.svg" alt="Spring"
+                        title="Spring" />
                     </div>
                   </div>
-                  <div class="right">
-                    <p><span> 509</span><span> (↑26)</span></p>
-                  </div>
                 </div>
-                <div class="bottomWrap">
-                  <div class="gatherTxt">
-                    <div>
-                      <span>모집완료</span><span>2/8</span>
-                      <div class="ic-arrow">
-                        <img loading="lazy" src="assets/images/ic-arrow-up.svg" alt="프로젝트 모집현황" />
+                <div class="projectInfo2">
+            
+            
+                  <div class="middleWrap">
+                    <div class="left">
+            
+                    </div>
+                    <div class="right">
+                      <div class="heartCount">
+                        <img loading="lazy" src="assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
                       </div>
                     </div>
-                    <div class="gatherModal">
-                      <ul>
-                        <h3>
-                          <li><span>그래픽디자인</span><span>1명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>UI/UX디자인</span><span>1명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>크로스플랫폼</span><span>2명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>작가/블로거</span><span>1명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>투자/고문</span><span>1명</span></li>
-                        </h3>
-                      </ul>
+                  </div>
+            
+            
+                  <div class="bottomWrap">
+                    <div class="gatherTxt">
+                      <div>
+                        <span>모집완료</span><span>2/8</span>
+                        <div class="ic-arrow">
+                          <img loading="lazy" src="assets/images/ic-arrow-up.svg" alt="프로젝트 모집현황" />
+                        </div>
+                      </div>
+                      <div class="gatherModal">
+                        <ul>
+                          <h3>
+                            <li><span>그래픽디자인</span><span>1명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>UI/UX디자인</span><span>1명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>크로스플랫폼</span><span>2명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>작가/블로거</span><span>1명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>투자/고문</span><span>1명</span></li>
+                          </h3>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <!--카드 End-->
-
-          <!--카드-3-->
-          <div class="col mb-5">
-            <div class="projectGridWrap" style="min-width: 260px; padding-left: 0; padding-right: 0">
-              <div class="projectTopInfo">
-                <div class="top" style="flex-direction: row-reverse">
-                  <div class="favorite"></div>
-                </div>
-                <div class="projectThumb">
-                  <img loading="lazy" src="assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                    style="vertical-align: middle" />
-                </div>
-              </div>
-              <div class="projectBottomInfo">
-                <div class="txtWrap projectWrap">
-                  <h3 class="category">소셜네트워크</h3>
-                  <h2 class="tit">[서울] 내 글이 상장되는 ‘비법거래소'입니다</h2>
-                  <div class="iconWrap2">
-                    <img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg" alt="Figma"
-                      title="Figma" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/flutter/flutter-original.svg"
-                      alt="Flutter" title="Flutter" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/react/react-original.svg" alt="React"
-                      title="React" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/amazonwebservices/amazonwebservices-original.svg"
-                      alt="AWS" title="AWS" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/nodejs/nodejs-original.svg" alt="NodeJS"
-                      title="NodeJS" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/spring/spring-original.svg" alt="Spring"
-                      title="Spring" />
+            <!--카드 End-->
+            
+            <!--카드-10-->
+            <div class="col mb-4">
+              <div class="projectGridWrap" style="min-width: 260px; padding-left: 0; padding-right: 0">
+                <div class="projectTopInfo">
+                  <div class="top" style="flex-direction: row-reverse">
+                    <div class="favorite"></div>
+                  </div>
+                  <div class="projectThumb">
+                    <img loading="lazy" src="assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                      style="vertical-align: middle" />
                   </div>
                 </div>
-              </div>
-              <div class="projectInfo2">
-                <div class="middleWrap">
-                  <div class="left">
-                    <div class="heartCount">
-                      <img loading="lazy" src="assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
+                <div class="projectBottomInfo">
+                  <div class="txtWrap projectWrap">
+                    <h3 class="category">소셜네트워크</h3>
+                    <h2 class="tit">[서울] 내 글이 상장되는 ‘비법거래소'입니다</h2>
+                    <div class="iconWrap2">
+                      <img loading="lazy" src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
+                        alt="Figma" title="Figma" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/flutter/flutter-original.svg" alt="Flutter"
+                        title="Flutter" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/react/react-original.svg" alt="React"
+                        title="React" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/amazonwebservices/amazonwebservices-original.svg"
+                        alt="AWS" title="AWS" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/nodejs/nodejs-original.svg" alt="NodeJS"
+                        title="NodeJS" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/spring/spring-original.svg" alt="Spring"
+                        title="Spring" />
                     </div>
                   </div>
-                  <div class="right">
-                    <p><span> 509</span><span> (↑26)</span></p>
-                  </div>
                 </div>
-                <div class="bottomWrap">
-                  <div class="gatherTxt">
-                    <div>
-                      <span>모집완료</span><span>2/8</span>
-                      <div class="ic-arrow">
-                        <img loading="lazy" src="assets/images/ic-arrow-up.svg" alt="프로젝트 모집현황" />
+                <div class="projectInfo2">
+                  <div class="middleWrap">
+                    <div class="left">
+            
+                    </div>
+                    <div class="right">
+                      <div class="heartCount">
+                        <img loading="lazy" src="assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
                       </div>
                     </div>
-                    <div class="gatherModal">
-                      <ul>
-                        <h3>
-                          <li><span>그래픽디자인</span><span>1명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>UI/UX디자인</span><span>1명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>크로스플랫폼</span><span>2명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>작가/블로거</span><span>1명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>투자/고문</span><span>1명</span></li>
-                        </h3>
-                      </ul>
+                  </div>
+                  <div class="bottomWrap">
+                    <div class="gatherTxt">
+                      <div>
+                        <span>모집완료</span><span>2/8</span>
+                        <div class="ic-arrow">
+                          <img loading="lazy" src="assets/images/ic-arrow-up.svg" alt="프로젝트 모집현황" />
+                        </div>
+                      </div>
+                      <div class="gatherModal">
+                        <ul>
+                          <h3>
+                            <li><span>그래픽디자인</span><span>1명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>UI/UX디자인</span><span>1명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>크로스플랫폼</span><span>2명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>작가/블로거</span><span>1명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>투자/고문</span><span>1명</span></li>
+                          </h3>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
-          <!--카드 End-->
+            <!--카드 End-->
 
-          <!--카드-4-->
-          <div class="col mb-5">
-            <div class="projectGridWrap" style="min-width: 260px; padding-left: 0; padding-right: 0">
-              <div class="projectTopInfo">
-                <div class="top" style="flex-direction: row-reverse">
-                  <div class="favorite"></div>
-                </div>
-                <div class="projectThumb">
-                  <img loading="lazy" src="assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                    style="vertical-align: middle" />
-                </div>
-              </div>
-              <div class="projectBottomInfo">
-                <div class="txtWrap projectWrap">
-                  <h3 class="category">소셜네트워크</h3>
-                  <h2 class="tit">[서울] 내 글이 상장되는 ‘비법거래소'입니다</h2>
-                  <div class="iconWrap2">
-                    <img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg" alt="Figma"
-                      title="Figma" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/flutter/flutter-original.svg"
-                      alt="Flutter" title="Flutter" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/react/react-original.svg" alt="React"
-                      title="React" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/amazonwebservices/amazonwebservices-original.svg"
-                      alt="AWS" title="AWS" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/nodejs/nodejs-original.svg" alt="NodeJS"
-                      title="NodeJS" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/spring/spring-original.svg" alt="Spring"
-                      title="Spring" />
+
+            <!--카드-11-->
+            <div class="col mb-4">
+              <div class="projectGridWrap" style="min-width: 260px; padding-left: 0; padding-right: 0">
+                <div class="projectTopInfo">
+                  <div class="top" style="flex-direction: row-reverse">
+                    <div class="favorite"></div>
+                  </div>
+                  <div class="projectThumb">
+                    <img loading="lazy" src="assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                      style="vertical-align: middle" />
                   </div>
                 </div>
-              </div>
-              <div class="projectInfo2">
-                <div class="middleWrap">
-                  <div class="left">
-                    <div class="heartCount">
-                      <img loading="lazy" src="assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
+                <div class="projectBottomInfo">
+                  <div class="txtWrap projectWrap">
+                    <h3 class="category">소셜네트워크</h3>
+                    <h2 class="tit">[서울] 내 글이 상장되는 ‘비법거래소'입니다</h2>
+                    <div class="iconWrap2">
+                      <img loading="lazy" src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
+                        alt="Figma" title="Figma" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/flutter/flutter-original.svg" alt="Flutter"
+                        title="Flutter" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/react/react-original.svg" alt="React"
+                        title="React" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/amazonwebservices/amazonwebservices-original.svg"
+                        alt="AWS" title="AWS" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/nodejs/nodejs-original.svg" alt="NodeJS"
+                        title="NodeJS" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/spring/spring-original.svg" alt="Spring"
+                        title="Spring" />
                     </div>
                   </div>
-                  <div class="right">
-                    <p><span> 509</span><span> (↑26)</span></p>
-                  </div>
                 </div>
-                <div class="bottomWrap">
-                  <div class="gatherTxt">
-                    <div>
-                      <span>모집완료</span><span>2/8</span>
-                      <div class="ic-arrow">
-                        <img loading="lazy" src="assets/images/ic-arrow-up.svg" alt="프로젝트 모집현황" />
+                <div class="projectInfo2">
+            
+            
+                  <div class="middleWrap">
+                    <div class="left">
+            
+                    </div>
+                    <div class="right">
+                      <div class="heartCount">
+                        <img loading="lazy" src="assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
                       </div>
                     </div>
-                    <div class="gatherModal">
-                      <ul>
-                        <h3>
-                          <li><span>그래픽디자인</span><span>1명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>UI/UX디자인</span><span>1명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>크로스플랫폼</span><span>2명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>작가/블로거</span><span>1명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>투자/고문</span><span>1명</span></li>
-                        </h3>
-                      </ul>
+                  </div>
+            
+            
+                  <div class="bottomWrap">
+                    <div class="gatherTxt">
+                      <div>
+                        <span>모집완료</span><span>2/8</span>
+                        <div class="ic-arrow">
+                          <img loading="lazy" src="assets/images/ic-arrow-up.svg" alt="프로젝트 모집현황" />
+                        </div>
+                      </div>
+                      <div class="gatherModal">
+                        <ul>
+                          <h3>
+                            <li><span>그래픽디자인</span><span>1명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>UI/UX디자인</span><span>1명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>크로스플랫폼</span><span>2명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>작가/블로거</span><span>1명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>투자/고문</span><span>1명</span></li>
+                          </h3>
+                        </ul>
+                      </div>
                     </div>
                   </div>
                 </div>
               </div>
             </div>
-          </div>
+            <!--카드 End-->
+            
+            <!--카드-12-->
+            <div class="col mb-4">
+              <div class="projectGridWrap" style="min-width: 260px; padding-left: 0; padding-right: 0">
+                <div class="projectTopInfo">
+                  <div class="top" style="flex-direction: row-reverse">
+                    <div class="favorite"></div>
+                  </div>
+                  <div class="projectThumb">
+                    <img loading="lazy" src="assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                      style="vertical-align: middle" />
+                  </div>
+                </div>
+                <div class="projectBottomInfo">
+                  <div class="txtWrap projectWrap">
+                    <h3 class="category">소셜네트워크</h3>
+                    <h2 class="tit">[서울] 내 글이 상장되는 ‘비법거래소'입니다</h2>
+                    <div class="iconWrap2">
+                      <img loading="lazy" src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg"
+                        alt="Figma" title="Figma" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/flutter/flutter-original.svg" alt="Flutter"
+                        title="Flutter" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/react/react-original.svg" alt="React"
+                        title="React" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/amazonwebservices/amazonwebservices-original.svg"
+                        alt="AWS" title="AWS" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/nodejs/nodejs-original.svg" alt="NodeJS"
+                        title="NodeJS" /><img loading="lazy"
+                        src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/spring/spring-original.svg" alt="Spring"
+                        title="Spring" />
+                    </div>
+                  </div>
+                </div>
+                <div class="projectInfo2">
+                  <div class="middleWrap">
+                    <div class="left">
+            
+                    </div>
+                    <div class="right">
+                      <div class="heartCount">
+                        <img loading="lazy" src="assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
+                      </div>
+                    </div>
+                  </div>
+                  <div class="bottomWrap">
+                    <div class="gatherTxt">
+                      <div>
+                        <span>모집완료</span><span>2/8</span>
+                        <div class="ic-arrow">
+                          <img loading="lazy" src="assets/images/ic-arrow-up.svg" alt="프로젝트 모집현황" />
+                        </div>
+                      </div>
+                      <div class="gatherModal">
+                        <ul>
+                          <h3>
+                            <li><span>그래픽디자인</span><span>1명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>UI/UX디자인</span><span>1명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>크로스플랫폼</span><span>2명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>작가/블로거</span><span>1명</span></li>
+                          </h3>
+                          <h3>
+                            <li><span>투자/고문</span><span>1명</span></li>
+                          </h3>
+                        </ul>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+            <!--카드 End-->
 
-          <!--카드 End-->
+          
+                  
 
-          <!--카드-5-->
-          <!--카드-6-->
-          <!--카드-7-->
-          <!--카드-8-->
-          <!--카드-9-->
-          <!--카드-10-->
-          <!--카드-11-->
-          <!--카드-12-->
-          <!--카드-13-->
-          <!--카드-14-->
-          <!--카드-15-->
-          <!--카드-16-->
+
+    
+      
+        </div>
+
+        <!--페이징 섹션 시작-->
+        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+          <div style="width: auto">
+            <ul class="pagination pagination-lg">
+              <li class="page-item disabled">
+                <a class="page-link" href="#">&laquo;</a>
+              </li>
+              <li class="page-item active">
+                <a class="page-link" href="#">1</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="#">2</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="#">3</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="#">4</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="#">5</a>
+              </li>
+              <li class="page-item">
+                <a class="page-link" href="#">&raquo;</a>
+              </li>
+            </ul>
+
+
+        </div>
         </div>
       </div>
     </section>
@@ -1115,11 +1166,63 @@
     </footer>
   </div>
 
+  <div class="modalWrapClose_1">
+    <div class="loginModal_1">
+      <p class="modalTit_1">회원 가입하기</p>
+      <button class="closeBtn_1">
+        <img loading="lazy" src="./assets/icon/ic-close.svg" alt="close">
+      </button>
+      <button class="loginBtn_1 naver">네이버 아이디로 가입 </button>
+      <button class="loginBtn_1 kakao">카카오 계정으로 가입</button>
+      <button class="loginBtn_1 facebook">페이스북 계정으로 가입</button>
+      <button class="loginBtn_1 google">구글 계정으로 가입</button>
+      <p class="loginNoticeTxt">소셜 로그인으로 가입 시
+        <a target="_blank" href="/tnc/service_policy">이용약관,&nbsp;</a>
+        <a target="_blank" href="/tnc/privacy_policy">개인정보처리방침,&nbsp;</a>
+        <a target="_blank" href="/tnc/payment_policy"> 전자금융거래약관</a>에 동의함으로 처리됩니다
+      </p>
+      <a class="signupBtn_1">로그인</a>
+    </div>
+  </div>
+
+  <div class="modalWrapClose">
+    <div class="loginModal" style="padding-bottom: 30px;">
+      <p class="modalTit">로그인</p>
+      <button class="closeBtn">
+        <img loading="lazy" src="./assets/icon/ic-close.svg" alt="close">
+      </button>
+      <div><img class="pmelogo" src="./assets/icon/pmelogo.png"></div>
+      *ID
+      <div class="div_center"><input class="div_id" type="text" required="required"></div>
+      *Password
+      <div class="div_center"><input class="div_password" type="password" required="required"></div>
+
+
+      <button type="button" class="btn btn-outline-secondary radious">로그인</button>
+      <button type="button" class="btn btn-outline-secondary radious">회원가입</button>
+
+    </div>
+  </div>
+
   <!-- Bootstrap core JS-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Core theme JS-->
   <script src="js/letspl.js"></script>
   <script src="js/scripts.js"></script>
+  <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script type="text/javascript">
+    // modal
+    $("#loginBtn").click(function () {
+      $(".loginModal_1").parent().attr("class", "modalWrapOpen_1");
+    });
+    $(".closeBtn_1").click(function () {
+      $(".loginModal_1").parent().attr("class", "modalWrapClose_1");
+    });
+    $('.signupBtn_1').click(function () {
+      $(".loginModal").parent().attr("class", "modalWrapOpen");
+      $(".loginModal_1").parent().attr("class", "modalWrapClose_1");
+    });
+  </script>
 </body>
 
 </html>

@@ -6,6 +6,56 @@
  
  <mapper namespace="userSQL">
 
+ <insert id="signup" parameterType="user">
+  insert into User_table
+  values(#{name}, #{id}, #{pwd},#{gender},#{email1},#{email2},#{phone1}
+  ,#{phone2},#{phone3},#{address1},#{address2},#{address3},sysdate,'user')
+ </insert>
+
+ <select id="getUser" parameterType="String" resultType="user">
+  select *
+  from user_table where id = #{id}
+ </select>
+
+ <!--
+   페이징 처리 후 주석 처리 함
+    <select id="getUserList" resultType="user">
+     select * from usertable
+   </select>
+ -->
+
+ <select id="search" parameterType="java.util.Map"
+   resultType="user">
+  select * from usertable where id like '%${id}%' and name
+  like '%${name}%'
+ </select>
+
+ <update id="update" parameterType="user"> <!-- parameterType 잘 봐 -->
+  update usertable set name=#{name}, pwd=#{pwd} where id=#{id}
+ </update>
+
+ <delete id="delete" parameterType="String">
+  delete from usertable where
+  id=#{id}
+ </delete>
+
+ <select id="getUserList" parameterType="java.util.Map" resultType="user">
+  <!-- SELECT * FROM (SELECT ROWNUM RN, TT.* FROM (SELECT * FROM BOARD ORDER
+    BY REF DESC, STEP ASC) TT )WHERE RN BETWEEN #{startNum} AND #{endNum} -->
+  <![CDATA[
+		select * from (select rownum rn, tt.* from(select * from usertable) tt) where rn>=#{startNum} and rn<=#{endNum}
+		]]>
+  <!-- '<' 이거 태그로 인식해버림 => CDATA 구문 써야 됨-->
+
+ </select>
+
+ <select id="getTotalA" resultType="int">
+  select count(*) from usertable
+ </select>
+
+ <select id="getImageTotalA" resultType="int">
+  select count(*) from userimage
+ </select>
 	
  </mapper>
  

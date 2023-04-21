@@ -1,6 +1,20 @@
+.icon {
+  width: 93px;
+  height: auto;
+  padding: 5px 0px 5px 0px;
+  justify-content: center;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.icon button img:hover {
+  filter: brightness(60%);
+}
+
 .content_center {
   display: flex;
   align-content: center;
+  align-items: center;
 } /* div 안에 content들 중심 축으로 정렬해줌 */
 
 /* users_writeForm start */
@@ -109,6 +123,201 @@
   border-radius: 6px !important;
 }
 /* project_writeForm end*/
+/* board start */
+.boardTitle {
+  margin: 10px 10px 20px 10px;
+}
+.boardSection {
+  display: grid;
+  grid-template-columns: 3fr, 1fr;
+  border: 2px solid #e3e3e3;
+  padding: 12px 10px;
+  border-radius: 6px !important;
+}
+.leaderInfo {
+  position: sticky;
+  grid-column-start: 2;
+  grid-column-end: 3;
+  grid-row-start: 1;
+  grid-row-end: 4;
+  top: 0px;
+  height: 1318px;
+}
+.leaderInfoDiv {
+  border: 1px solid #e3e3e3;
+  padding: 12px 10px;
+  border-radius: 6px !important;
+}
+.leaderInfo1 {
+  border: 1px solid #e3e3e3;
+  display: block;
+}
+.leaderInfo1_imgId {
+  display: flex;
+  align-items: center;
+  align-content: center;
+}
+.leaderInfo1_imgDiv {
+  margin: 15px;
+}
+.leaderInfo1_img {
+  width: 50px;
+  height: 50px;
+}
+.leaderInfo1_idDiv {
+  margin-left: 20px;
+}
+.leaderInfo1_id {
+  font-size: 1.3rem;
+  letter-spacing: 0.8px;
+  font-weight: 600;
+}
+.leaderInfo1_techLanDiv {
+  margin: 10px 10px 0px 10px;
+}
+.leaderInfo1_techLan {
+  font-size: 14px;
+  letter-spacing: -0.9px;
+  font-weight: 600;
+}
+.leaderInfo1_iconDiv {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  column-gap: 5px;
+  row-gap: 5px;
+  margin: 10px;
+}
+.leaderInfo2 {
+  margin: 15px 0px;
+}
+.leaderInfo2_periodTitleDiv {
+  margin: 10px;
+}
+.leaderInfo2_periodTitle {
+  font-size: 19px;
+  letter-spacing: -0.9px;
+  font-weight: 600;
+}
+.leaderInfo2_periodDiv {
+  margin: 10px 10px 0px 10px;
+}
+.leaderInfo2_period {
+  font-size: 15px;
+  letter-spacing: -0.2px;
+  font-weight: 400;
+  margin-left: 4px;
+}
+.leaderInfo3 {
+  margin: 15px 0px;
+}
+.leaderInfo3_fieldTitleDiv {
+  margin: 10px;
+}
+.leaderInfo3_fieldTitle {
+  font-size: 19px;
+  letter-spacing: -0.9px;
+  font-weight: 600;
+}
+.leaderInfo3_fieldDiv {
+  margin: 10px 10px 0px 10px;
+}
+.leaderInfo3_field {
+  font-size: 15px;
+  letter-spacing: -0.2px;
+  font-weight: 400;
+  margin-left: 4px;
+}
+
+.project_explainBox {
+  background-color: transparent;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: left;
+  box-sizing: border-box;
+  padding: 15px 15px 15px 15px;
+  margin-right: 10px !important;
+  width: 100%;
+}
+.techLan {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  border-radius: 0.375rem;
+  border: 1px solid #e3e3e3;
+  margin: 15px 0px 15px 15px;
+  padding: 16px;
+}
+.techLan_icon {
+  width: 93px;
+  height: auto;
+  padding: 5px 0px 5px 0px;
+  justify-content: center;
+  text-align: center;
+  font-size: 1rem;
+  font-weight: 600;
+}
+.board_memberDiv {
+  grid-column-start: 1;
+  grid-column-end: 3;
+  grid-row-start: 4;
+  grid-row-end: 5;
+  padding-top: 15px;
+}
+.board_memberArea {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+}
+.board_member {
+  padding: 15px 15px 15px 15px;
+  width: 230px;
+  border: 1px solid #e3e3e3;
+  border-radius: 0.375rem;
+  margin: 15px 15px 15px 15px;
+}
+.board_member1 {
+  display: flex;
+  text-align: center;
+  align-items: center;
+}
+.board_member1_img {
+  width: 50px;
+  height: 50px;
+  border-radius: 15%;
+  margin-right: 20px;
+}
+.board_member1_id {
+  font-size: 1.3rem;
+  letter-spacing: -0.2px;
+  font-weight: 900;
+}
+.board_member2 {
+  display: block;
+  margin-top: 6px;
+}
+.board_member2_field {
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.board_member3_techLan {
+  font-size: 12px;
+  font-weight: 600;
+  letter-spacing: 0.5px;
+}
+.board_member3 {
+  margin-top: 6px;
+}
+.board_member3_icon {
+  display: grid;
+  grid-template-columns: repeat(3, 50px);
+  border: 1px solid #e3e3e3;
+  column-gap: 10px;
+  row-gap: 10px;
+  padding: 10px;
+}
+
+/* board end */
 .prj-btn {
   background-color: white;
   border-radius: 0.2rem;
@@ -165,18 +374,6 @@ section {
   margin: 0 auto;
   letter-spacing: -0.2px;
   background-color: #ffffff;
-}
-.icon {
-  width: 93px;
-  height: auto;
-  padding: 5px 0px 5px 0px;
-  justify-content: center;
-  text-align: center;
-  font-size: 1rem;
-  font-weight: 600;
-}
-.icon button img:hover {
-  filter: brightness(60%);
 }
 .card-body {
   display: flex;
@@ -656,4 +853,416 @@ button:not(:disabled),
 
 .ps-5 {
   padding-left: 3rem !important;
+}
+
+/* icon checkbox */
+input[id="android"] {
+  display: none;
+}
+input[id="android"] + label em {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: url(../assets/icon/android_check.png) 0 0 no-repeat;
+  vertical-align: middle;
+}
+input[id="android"]:checked + label em {
+  background-position: -50px 0;
+}
+
+.icon:hover {
+  filter: brightness(60%);
+}
+
+input[id="aws"] {
+  display: none;
+}
+input[id="aws"] + label em {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: url(../assets/icon/aws_check.png) 0 0 no-repeat;
+  vertical-align: middle;
+}
+input[id="aws"]:checked + label em {
+  background-position: -50px 0;
+}
+
+.icon:hover {
+  filter: brightness(60%);
+}
+
+input[id="c"] {
+  display: none;
+}
+input[id="c"] + label em {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: url(../assets/icon/c_check.png) 0 0 no-repeat;
+  vertical-align: middle;
+}
+input[id="c"]:checked + label em {
+  background-position: -50px 0;
+}
+
+.icon:hover {
+  filter: brightness(60%);
+}
+
+input[id="docker"] {
+  display: none;
+}
+input[id="docker"] + label em {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: url(../assets/icon/docker_check.png) 0 0 no-repeat;
+  vertical-align: middle;
+}
+input[id="docker"]:checked + label em {
+  background-position: -50px 0;
+}
+.icon:hover {
+  filter: brightness(60%);
+}
+
+input[id="figma"] {
+  display: none;
+}
+input[id="figma"] + label em {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: url(../assets/icon/figma_check.png) 0 0 no-repeat;
+  vertical-align: middle;
+}
+input[id="figma"]:checked + label em {
+  background-position: -50px 0;
+}
+.icon:hover {
+  filter: brightness(60%);
+}
+
+input[id="flutter"] {
+  display: none;
+}
+input[id="flutter"] + label em {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: url(../assets/icon/flutter_check.png) 0 0 no-repeat;
+  vertical-align: middle;
+}
+input[id="flutter"]:checked + label em {
+  background-position: -50px 0;
+}
+.icon:hover {
+  filter: brightness(60%);
+}
+
+input[id="git"] {
+  display: none;
+}
+input[id="git"] + label em {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: url(../assets/icon/git_check.png) 0 0 no-repeat;
+  vertical-align: middle;
+}
+input[id="git"]:checked + label em {
+  background-position: -50px 0;
+}
+.icon:hover {
+  filter: brightness(60%);
+}
+
+input[id="html"] {
+  display: none;
+}
+input[id="html"] + label em {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: url(../assets/icon/html_check.png) 0 0 no-repeat;
+  vertical-align: middle;
+}
+input[id="html"]:checked + label em {
+  background-position: -50px 0;
+}
+.icon:hover {
+  filter: brightness(60%);
+}
+
+input[id="ios"] {
+  display: none;
+}
+input[id="ios"] + label em {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: url(../assets/icon/ios_check.png) 0 0 no-repeat;
+  vertical-align: middle;
+}
+input[id="ios"]:checked + label em {
+  background-position: -50px 0;
+}
+.icon:hover {
+  filter: brightness(60%);
+}
+
+input[id="javascript"] {
+  display: none;
+}
+input[id="javascript"] + label em {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: url(../assets/icon/javascript_check.png) 0 0 no-repeat;
+  vertical-align: middle;
+}
+input[id="javascript"]:checked + label em {
+  background-position: -50px 0;
+}
+.icon:hover {
+  filter: brightness(60%);
+}
+
+input[id="java"] {
+  display: none;
+}
+input[id="java"] + label em {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: url(../assets/icon/java_check.png) 0 0 no-repeat;
+  vertical-align: middle;
+}
+input[id="java"]:checked + label em {
+  background-position: -50px 0;
+}
+.icon:hover {
+  filter: brightness(60%);
+}
+
+input[id="kotlin"] {
+  display: none;
+}
+input[id="kotlin"] + label em {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: url(../assets/icon/kotlin_check.png) 0 0 no-repeat;
+  vertical-align: middle;
+}
+input[id="kotlin"]:checked + label em {
+  background-position: -50px 0;
+}
+.icon:hover {
+  filter: brightness(60%);
+}
+
+input[id="kubernetes"] {
+  display: none;
+}
+input[id="kubernetes"] + label em {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: url(../assets/icon/kubernetes_check.png) 0 0 no-repeat;
+  vertical-align: middle;
+}
+input[id="kubernetes"]:checked + label em {
+  background-position: -50px 0;
+}
+.icon:hover {
+  filter: brightness(60%);
+}
+
+input[id="mongodb"] {
+  display: none;
+}
+input[id="mongodb"] + label em {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: url(../assets/icon/mongodb_check.png) 0 0 no-repeat;
+  vertical-align: middle;
+}
+input[id="mongodb"]:checked + label em {
+  background-position: -50px 0;
+}
+.icon:hover {
+  filter: brightness(60%);
+}
+
+input[id="mysql"] {
+  display: none;
+}
+input[id="mysql"] + label em {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: url(../assets/icon/mysql_check.png) 0 0 no-repeat;
+  vertical-align: middle;
+}
+input[id="mysql"]:checked + label em {
+  background-position: -50px 0;
+}
+.icon:hover {
+  filter: brightness(60%);
+}
+
+input[id="nodejs"] {
+  display: none;
+}
+input[id="nodejs"] + label em {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: url(../assets/icon/nodejs_check.png) 0 0 no-repeat;
+  vertical-align: middle;
+}
+input[id="nodejs"]:checked + label em {
+  background-position: -50px 0;
+}
+.icon:hover {
+  filter: brightness(60%);
+}
+
+input[id="photoshop"] {
+  display: none;
+}
+input[id="photoshop"] + label em {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: url(../assets/icon/photoshop_check.png) 0 0 no-repeat;
+  vertical-align: middle;
+}
+input[id="photoshop"]:checked + label em {
+  background-position: -50px 0;
+}
+.icon:hover {
+  filter: brightness(60%);
+}
+
+input[id="python"] {
+  display: none;
+}
+input[id="python"] + label em {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: url(../assets/icon/python_check.png) 0 0 no-repeat;
+  vertical-align: middle;
+}
+input[id="python"]:checked + label em {
+  background-position: -50px 0;
+}
+.icon:hover {
+  filter: brightness(60%);
+}
+
+input[id="react"] {
+  display: none;
+}
+input[id="react"] + label em {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: url(../assets/icon/react_check.png) 0 0 no-repeat;
+  vertical-align: middle;
+}
+input[id="react"]:checked + label em {
+  background-position: -50px 0;
+}
+.icon:hover {
+  filter: brightness(60%);
+}
+
+input[id="spring"] {
+  display: none;
+}
+input[id="spring"] + label em {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: url(../assets/icon/spring_check.png) 0 0 no-repeat;
+  vertical-align: middle;
+}
+input[id="spring"]:checked + label em {
+  background-position: -50px 0;
+}
+.icon:hover {
+  filter: brightness(60%);
+}
+
+input[id="tensorflow"] {
+  display: none;
+}
+input[id="tensorflow"] + label em {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: url(../assets/icon/tensorflow_check.png) 0 0 no-repeat;
+  vertical-align: middle;
+}
+input[id="tensorflow"]:checked + label em {
+  background-position: -50px 0;
+}
+.icon:hover {
+  filter: brightness(60%);
+}
+
+input[id="typescript"] {
+  display: none;
+}
+input[id="typescript"] + label em {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: url(../assets/icon/typescript_check.png) 0 0 no-repeat;
+  vertical-align: middle;
+}
+input[id="typescript"]:checked + label em {
+  background-position: -50px 0;
+}
+.icon:hover {
+  filter: brightness(60%);
+}
+
+input[id="unity"] {
+  display: none;
+}
+input[id="unity"] + label em {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: url(../assets/icon/unity_check.png) 0 0 no-repeat;
+  vertical-align: middle;
+}
+input[id="unity"]:checked + label em {
+  background-position: -50px 0;
+}
+.icon:hover {
+  filter: brightness(60%);
+}
+
+input[id="vue"] {
+  display: none;
+}
+input[id="vue"] + label em {
+  display: inline-block;
+  width: 50px;
+  height: 50px;
+  background: url(../assets/icon/vue_check.png) 0 0 no-repeat;
+  vertical-align: middle;
+}
+input[id="vue"]:checked + label em {
+  background-position: -50px 0;
+}
+.icon:hover {
+  filter: brightness(60%);
 }

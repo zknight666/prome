@@ -12,10 +12,9 @@ import org.springframework.core.io.ClassPathResource;
 import org.springframework.jdbc.datasource.DataSourceTransactionManager;
 import org.springframework.transaction.annotation.EnableTransactionManagement;
 
+
 @Configuration
 @PropertySource("classpath:spring/db.properties")
-
-//db.properties 로 부터 얻어오겠다.
 @EnableTransactionManagement
 public class SpringConfiguration {
 	@Value("${jdbc.driver}")
@@ -46,30 +45,23 @@ public class SpringConfiguration {
 	public SqlSessionFactory sqlSessionFactory() throws Exception {
 		SqlSessionFactoryBean sqlSessionFactoryBean = new SqlSessionFactoryBean();
 		sqlSessionFactoryBean.setDataSource(dataSource());
-							//setConfigLocation => resource를 원함
-							// new ClassPathResource => resource를 제공해줌.
 		sqlSessionFactoryBean.setConfigLocation(new ClassPathResource("spring/mybatis-config.xml"));
-		sqlSessionFactoryBean.setMapperLocations(new ClassPathResource("user/dao/userMapper.xml"));
+		sqlSessionFactoryBean.setMapperLocations(
+				new ClassPathResource("user/dao/userMapper.xml"),
+				new ClassPathResource("project/dao/projectMapper.xml")
+				);
 		
 		return sqlSessionFactoryBean.getObject();
 				
 	}
 
-	// sqlSessionFactoryBean -> exception -> sqlSessionTemplate(sqlSessionFactory()); 부분도 똑같이 exception 걸어야함.
 	@Bean
 	public SqlSessionTemplate sqlSession() throws Exception {
 		SqlSessionTemplate sqlSessionTemplate = new SqlSessionTemplate(sqlSessionFactory());
 		return sqlSessionTemplate;
 	}
 	@Bean
-	public DataSourceTransactionManager transactionManager() {
-//		DataSourceTransactionManager dataSourceTransactionManager
-//		= new DataSourceTransactionManager(dataSource());
-//		return dataSourceTransactionManager;
-		
+	public DataSourceTransactionManager transactionManager() {	
 		return new DataSourceTransactionManager(dataSource());
-		
 	}
-	
-	
 }

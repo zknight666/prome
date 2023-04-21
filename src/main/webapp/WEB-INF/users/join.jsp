@@ -16,6 +16,8 @@
     <!-- Core theme CSS (includes Bootstrap)-->
     <link href="../css/styles.css" rel="stylesheet" />
     <link href="../css/custom.css" rel="stylesheet" />
+    <link rel="stylesheet" href="../css/modal_01_signup.css">
+    <link rel="stylesheet" href="../css/modal_02_login.css">
 </head>
 
 <body>
@@ -41,47 +43,24 @@
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
                                 aria-haspopup="true" aria-expanded="false"></a>
-
-                            <div class="dropdown-menu">
-                                <div class="dropdown-item">*******님</div>
-                                <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">마이페이지</a>
-
-                                <a class="dropdown-item" href="#">내 모임 지원자 관리</a>
-
-                                <a class="dropdown-item" href="#">회원 정보 수정</a>
-                                <div class="dropdown-divider"></div>
-                            </div>
                         </li>
                     </ul>
 
                     <form class="d-flex dropdown">
-                        <!-- <input class="form-control me-sm-2" type="search" placeholder="Search" /> -->
-                        <button class="btn my-2 my-sm-0" type="button" style="padding-right: 0">
-                            <img src="../assets\btn-logout.png" />
+                        <button class="btn my-2 my-sm-0" id="loginBtn" type="button" style="padding-right: 0">
+                            <img src="../assets\btn-login.png" />
                         </button>
-
-                        <button class="btn my-2 my-sm-0 nav-link dropdown-toggle" aria-haspopup="true"
-                            aria-expanded="false" data-bs-toggle="dropdown" style="margin-right: 0.5rem">
-                            <img src="../assets\account-circle.png" />
+                        <button class="btn my-2 my-sm-0 writeForm" type="button" style="padding-right: 0;
+                                    padding-left: 0;">
+                            <img src="../assets\btn-signup.png" />
                         </button>
-                        <div class="dropdown-menu" style="right: 0">
-                            <div class="dropdown-item">*******님</div>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">마이페이지</a>
-
-                            <a class="dropdown-item" href="#">내 모임 지원자 관리</a>
-
-                            <a class="dropdown-item" href="#">회원 정보 수정</a>
-                            <div class="dropdown-divider"></div>
-                        </div>
                     </form>
                 </div>
             </div>
         </nav>
         <!-- Header-->
         <header class="bg-dark" style="
-                  background-image: url('assets/main-banner.png');
+                  background-image: url('../assets/main-banner.png');
                   background-size: auto;
                   background-repeat: no-repeat;
                   background-position: center;
@@ -102,9 +81,10 @@
                                 <div>
                                     <span class="h5" style="font-weight: 800;">* 이름</span>
                                 </div>
-                                <div>
-                                    <input class="box" placeholder="이름을 입력해주세요." minLength="2" maxLength="10" value=""
+                                <div class="content_center">
+                                    <input class="box" id="name" placeholder="이름을 입력해주세요." minLength="2" maxLength="10"
                                         autoComplete="on" type="text">
+                                    <div class="px-3" id="nameDiv" style="color:red;"></div>
                                 </div>
                             </div>
                             <div class="p-4">
@@ -112,25 +92,27 @@
                                     <span class="h5" style="font-weight: 800;">* 아이디</span>
                                 </div>
                                 <div class="content_center">
-                                    <input class="box" placeholder="아이디를 입력해주세요." minLength="2" maxLength="10" value=""
-                                        autoComplete="on" type="text">
-                                    <button type="button" class="btn btn-outline-dark mx-3">중복확인</button>
+                                    <input class="box" placeholder="아이디를 입력해주세요." minLength="2" maxLength="10"
+                                        autoComplete="on" type="text" id="id">
+                                    <div class="px-3" id="idCheckDiv"></div>
                                 </div>
                             </div>
                             <div class="p-4">
                                 <div>
                                     <span class="h5" style="font-weight: 800;">* 비밀번호</span>
                                 </div>
-                                <div>
-                                    <input class="box" type="password">
+                                <div class="content_center">
+                                    <input class="box" id="pwd1" type="password">
+                                    <div class="px-3" style="color:red;" id="pwd1CheckDiv"></div>
                                 </div>
                             </div>
                             <div class="p-4">
                                 <div>
                                     <span class="h5" style="font-weight: 800;">* 비밀번호 확인</span>
                                 </div>
-                                <div>
-                                    <input class="box" type="password">
+                                <div class="content_center">
+                                    <input class="box" id="pwd2" type="password">
+                                    <div class="px-3" style="color:red;" id="pwd2CheckDiv"></div>
                                 </div>
                             </div>
                             <div class="p-4">
@@ -169,8 +151,10 @@
                                             <option value="">직접입력</option>
                                             <option value="naver.com">naver.com</option>
                                             <option value="gmail.com">gmail.com</option>
-                                            <option value="gmail.com">hanmail.com</option>
-                                            <option value="gmail.com">.com</option>
+                                            <option value="nate.com">nate.com</option>
+                                            <option value="kakao.com">kakao.com</option>
+                                            <option value="yahoo.com">yahoo.com</option>
+                                            <option value="narasarang.or.kr">narasarang.or.kr</option>
                                         </select>
                                     </div>
                                     <div class="content_center">
@@ -217,7 +201,6 @@
                             <div class="p-4">
                                 <span class="h5" style="font-weight: 800;">* 주소</span>
                                 <span>선택사항</span>
-                                <!-- 선택 사항으로 만들기 -->
                                 <div class="content_center">
                                     <input class="box" type="password">
                                     <button type="button" class="btn btn-outline-dark mx-3">우편번호 검색</button><br>
@@ -232,155 +215,107 @@
                                 <div class="card border-light mb-3" style="width: auto;">
                                     <div class="card-body">
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/android.png">
-                                            </button><br>
-                                            <span>android</span>
+                                            <input type="checkbox" id="android" class="icon">
+                                            <label for="android"><em></em><br><span>android</span></label>
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/aws.png">
-                                            </button><br>
-                                            <span>aws</span>
+                                            <input type="checkbox" id="aws" class="icon">
+                                            <label for="aws"><em></em><br><span>aws</span></label>
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/cc.png">
-                                            </button><br>
-                                            <span>C/C#</span>
+                                            <input type="checkbox" id="c" class="icon">
+                                            <label for="c"><em></em><br><span>C/C#</span></label>
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/docker.png">
-                                            </button><br>
-                                            <span>docker</span>
+                                            <input type="checkbox" id="docker" class="icon">
+                                            <label for="docker"><em></em><br><span>docker</span></label>
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/figma.png">
-                                            </button><br>
-                                            <span>figma</span>
+                                            <input type="checkbox" id="figma" class="icon">
+                                            <label for="figma"><em></em><br><span>figma</span></label>
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/flutter.png">
-                                            </button><br>
-                                            <span>flutter</span>
+                                            <input type="checkbox" id="flutter" class="icon">
+                                            <label for="flutter"><em></em><br><span>flutter</span></label>
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/git.png">
-                                            </button><br>
-                                            <span>git</span>
+                                            <input type="checkbox" id="git" class="icon">
+                                            <label for="git"><em></em><br><span>git</span></label>
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/html.png">
-                                            </button><br>
-                                            <span>html/css</span>
+                                            <input type="checkbox" id="html" class="icon">
+                                            <label for="html"><em></em><br><span>html/css</span></label>
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/ios.png">
-                                            </button><br>
-                                            <span>ios</span>
+                                            <input type="checkbox" id="ios" class="icon">
+                                            <label for="ios"><em></em><br><span>ios</span></label>
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/js.png">
-                                            </button><br>
-                                            <span>js</span>
+                                            <input type="checkbox" id="javascript" class="icon">
+                                            <label for="javascript"><em></em><br><span>javascript</span></label>
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/java.png">
-                                            </button><br>
-                                            <span>java</span>
+                                            <input type="checkbox" id="java" class="icon">
+                                            <label for="java"><em></em><br><span>java</span></label>
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/kotlin.png">
-                                            </button><br>
-                                            <span>kotlin</span>
+                                            <input type="checkbox" id="kotlin" class="icon">
+                                            <label for="kotlin"><em></em><br><span>kotlin</span></label>
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/kubernetes.png">
-                                            </button><br>
-                                            <span>kubernetes</span>
+                                            <input type="checkbox" id="kubernetes" class="icon">
+                                            <label for="kubernetes"><em></em><br><span>kubernetes</span></label>
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/mongodb.png">
-                                            </button><br>
-                                            <span>mongodb</span>
+                                            <input type="checkbox" id="mongodb" class="icon">
+                                            <label for="mongodb"><em></em><br><span>mongodb</span></label>
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/mysql.png">
-                                            </button><br>
-                                            <span>mysql</span>
+                                            <input type="checkbox" id="mysql" class="icon">
+                                            <label for="mysql"><em></em><br><span>mysql</span></label>
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/nodejs.png">
-                                            </button><br>
-                                            <span>nodejs</span>
+                                            <input type="checkbox" id="nodejs" class="icon">
+                                            <label for="nodejs"><em></em><br><span>nodejs</span></label>
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/photoshop.png">
-                                            </button><br>
-                                            <span>photoshop</span>
+                                            <input type="checkbox" id="photoshop" class="icon">
+                                            <label for="photoshop"><em></em><br><span>photoshop</span></label>
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/python.png">
-                                            </button><br>
-                                            <span>python</span>
+                                            <input type="checkbox" id="python" class="icon">
+                                            <label for="python"><em></em><br><span>python</span></label>
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/react.png">
-                                            </button><br>
-                                            <span>react</span>
+                                            <input type="checkbox" id="react" class="icon">
+                                            <label for="react"><em></em><br><span>react</span></label>
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/spring.png">
-                                            </button><br>
-                                            <span>spring</span>
+                                            <input type="checkbox" id="spring" class="icon">
+                                            <label for="spring"><em></em><br><span>spring</span></label>
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/tensorflow.png">
-                                            </button><br>
-                                            <span>tensorflow</span>
+                                            <input type="checkbox" id="tensorflow" class="icon">
+                                            <label for="tensorflow"><em></em><br><span>tensorflow</span></label>
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/typescript.png">
-                                            </button><br>
-                                            <span>typescript</span>
+                                            <input type="checkbox" id="typescript" class="icon">
+                                            <label for="typescript"><em></em><br><span>typescript</span></label>
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/unity.png">
-                                            </button><br>
-                                            <span>unity</span>
+                                            <input type="checkbox" id="unity" class="icon">
+                                            <label for="unity"><em></em><br><span>unity</span></label>
                                         </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/vue.png">
-                                            </button><br>
-                                            <span>vue</span>
+                                            <input type="checkbox" id="vue" class="icon">
+                                            <label for="vue"><em></em><br><span>vue</span></label>
                                         </div>
                                     </div>
                                 </div>
                             </div>
                             <div class="pb-4 flex btn-position">
-                                <button type="button" class="btn btn-outline-dark mx-3">다시작성</button>
-                                <button type="button" class="btn btn-outline-dark">회원가입</button>
+                                <button type="reset" class="btn btn-outline-dark mx-3">다시작성</button>
+                                <button type="button" id="signup" class="btn btn-outline-dark">회원가입</button>
                             </div>
                         </div>
                     </div>
@@ -388,6 +323,40 @@
             </div>
         </section>
 
+        <div class="modalWrapClose_1">
+            <div class="loginModal_1">
+                <p class="modalTit_1">회원 가입하기</p>
+                <button class="closeBtn_1">
+                    <img loading="lazy" src="../assets/icon/ic-close.svg" alt="close">
+                </button>
+                <button class="loginBtn_1 naver">네이버 아이디로 가입 </button>
+                <button class="loginBtn_1 kakao">카카오 계정으로 가입</button>
+                <button class="loginBtn_1 facebook">페이스북 계정으로 가입</button>
+                <button class="loginBtn_1 google">구글 계정으로 가입</button>
+                <p class="loginNoticeTxt">소셜 로그인으로 가입 시
+                    <a target="_blank" href="/tnc/service_policy">이용약관,&nbsp;</a>
+                    <a target="_blank" href="/tnc/privacy_policy">개인정보처리방침,&nbsp;</a>
+                    <a target="_blank" href="/tnc/payment_policy"> 전자금융거래약관</a>에 동의함으로 처리됩니다
+                </p>
+                <a class="signupBtn_1">로그인</a>
+            </div>
+        </div>
+
+        <div class="modalWrapClose">
+            <div class="loginModal" style="padding-bottom: 30px;">
+                <p class="modalTit">로그인</p>
+                <button class="closeBtn">
+                    <img loading="lazy" src="../assets/icon/ic-close.svg" alt="close">
+                </button>
+                <div><img class="pmelogo" src="../assets/icon/pmelogo.png"></div>
+                *ID
+                <div class="div_center"><input class="div_id" type="text" required="required"></div>
+                *Password
+                <div class="div_center"><input class="div_password" type="password" required="required"></div>
+                <button type="button" class="btn btn-outline-secondary radious">로그인</button>
+                <button type="button" class="btn btn-outline-secondary radious writeForm">회원가입</button>
+            </div>
+        </div>
 
 
         <!-- Footer-->
@@ -402,22 +371,27 @@
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="../js/write.js"></script>
     <script type="text/javascript">
-        $('#email_checkBtn').click(function () {
-            $(this).attr("style", "display:none;");
-            $('#email_checkDiv').attr("class", "email_on");
+        $('.writeForm').click(function () {
+            location.replace('file:///C:/Users/bitcamp/Documents/ProMe-front/users_writeForm.html')
         });
-
-        $(function () {
-            $('#email_select').change(function () {
-                $('#email2').val($('#email_select').val());
-            });
-
-
+        // modal
+        $("#loginBtn").click(function () {
+            $(".loginModal_1").parent().attr("class", "modalWrapOpen_1");
         });
-
+        $(".closeBtn_1").click(function () {
+            $(".loginModal_1").parent().attr("class", "modalWrapClose_1");
+        });
+        $('.signupBtn_1').click(function () {
+            $(".loginModal").parent().attr("class", "modalWrapOpen");
+            $(".loginModal_1").parent().attr("class", "modalWrapClose_1");
+        });
+        $(".closeBtn").click(function () {
+            $(".loginModal").parent().attr("class", "modalWrapClose");
+        });
     </script>
-    <script src="js/scripts.js"></script>
+    <script src="../js/scripts.js"></script>
 </body>
 
 </html>

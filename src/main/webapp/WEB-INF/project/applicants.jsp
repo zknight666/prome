@@ -10,12 +10,12 @@
     <meta name="author" content="" />
     <title>Project With Me - Application</title>
     <!-- Favicon-->
-    <link rel="icon" type="image/x-icon" href="assets/favicon.ico" />
+    <link rel="icon" type="image/x-icon" href="../assets/favicon.ico" />
     <!-- Bootstrap icons-->
     <link href="https://cdn.jsdelivr.net/npm/bootstrap-icons@1.5.0/font/bootstrap-icons.css" rel="stylesheet" />
     <!-- Core theme CSS (includes Bootstrap)-->
-    <link href="css/styles.css" rel="stylesheet" />
-    <link href="css/custom.css" rel="stylesheet" />
+    <link href="../css/styles.css" rel="stylesheet" />
+    <link href="../css/custom.css" rel="stylesheet" />
 </head>
 
 <body>
@@ -35,7 +35,7 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarColor03">
-                    <img src="assets/logo.png" style="cursor: pointer" />
+                    <img src="../assets/logo.png" style="cursor: pointer" />
 
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item dropdown">
@@ -58,12 +58,12 @@
                     <form class="d-flex dropdown">
                         <!-- <input class="form-control me-sm-2" type="search" placeholder="Search" /> -->
                         <button class="btn my-2 my-sm-0" type="button" style="padding-right: 0">
-                            <img src="assets\btn-logout.png" />
+                            <img src="../assets\btn-logout.png" />
                         </button>
 
                         <button class="btn my-2 my-sm-0 nav-link dropdown-toggle" aria-haspopup="true"
                             aria-expanded="false" data-bs-toggle="dropdown" style="margin-right: 0.5rem">
-                            <img src="assets\account-circle.png" />
+                            <img src="../assets\account-circle.png" />
                         </button>
                         <div class="dropdown-menu" style="right: 0">
                             <div class="dropdown-item">*******님</div>
@@ -81,7 +81,7 @@
         </nav>
         <!-- Header-->
         <header class="bg-dark" style="
-                  background-image: url('assets/main-banner.png');
+                  background-image: url('../assets/main-banner.png');
                   background-size: auto;
                   background-repeat: no-repeat;
                   background-position: center;
@@ -155,7 +155,7 @@
                                     </table>
                                 </div>
                                 <hr class="m-1" />
-                                <div class="pb-3">
+                                <div class="pt-4">
                                     <button type="button" class="btn btn-outline-dark px-2 py-1">수락</button>
                                     <button type="button" class="btn btn-outline-dark px-2 py-1 mx-2">거절</button>
 
@@ -163,6 +163,7 @@
                             </div>
                             <!-- 프로젝트 단위 end -->
                             <!-- 프로젝트 단위 start -->
+                            <hr style="border: 2px solid #cacaca;" />
                             <div style="height: auto; padding:0px 0px 16px 0px;">
                                 <span class="h5" style="font-weight: 600">*프로젝트 이름</span>
                                 <table Style="border:1 solid #cacaca" width="100%">
@@ -218,7 +219,7 @@
                                     </table>
                                 </div>
                                 <hr class="m-1" />
-                                <div class="pb-3">
+                                <div class="pt-4">
                                     <button type="button" class="btn btn-outline-dark px-2 py-1">수락</button>
                                     <button type="button" class="btn btn-outline-dark px-2 py-1 mx-2">거절</button>
 
@@ -243,7 +244,7 @@
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
-    <script src="js/scripts.js"></script>
+    <script src="../js/scripts.js"></script>
     <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.4.min.js"></script>
     <script type="text/javascript">
         $(function () {
