@@ -19,7 +19,6 @@
   <link href="../css/custom.css" rel="stylesheet" />
   <link href="../css/slick.css" rel="stylesheet" />
   <link href="../css/slick-theme.css" rel="stylesheet" />
-  <link rel="stylesheet" href="../css/modal_04_unsubscribe.css">
 </head>
 
 <body>
@@ -1547,7 +1546,7 @@
           <div class="row" style="margin-top: 1rem">
             <div class="col" style="display: flex; justify-content: center">
               &nbsp;&nbsp;&nbsp;&nbsp;
-              <button type="button" id="deleteBtn" class="btn btn-outline-secondary">회원 탈퇴</button>
+              <button type="button" class="btn btn-outline-secondary">회원 탈퇴</button>
             </div>
           </div>
         </div>
@@ -1561,23 +1560,6 @@
       </div>
     </footer>
   </div>
-  
-  <!-- 회원탈퇴 modal  -->
-  <div class="modalWrapClose">
-        <div class="loginModal" style="padding-bottom: 30px;">
-            <button class="closeBtn">
-                <img loading="lazy" src="../assets/icon/ic-close.svg" alt="close">
-            </button>
-            <div><img class="pmelogo" src="../assets/icon/pmelogo.png"></div>
-            <div class="div_center_tit">회원탈퇴를 원하시면 비밀번호를 입력하세요.</div>
-            *Password
-            <div class="div_center"><input class="div_password" type="password" required="required"></div>
-
-            <button type="button" class="btn btn-outline-secondary radious">회원 탈퇴</button>
-            <button type="button" class="btn btn-outline-secondary radious" id="cancel">취소</button>
-
-        </div>
-    </div>
 
   <!-- Bootstrap core JS-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
@@ -1672,17 +1654,6 @@
           },
         ],
       }); //.slider-my-team
-    });
-   	
-    // modal
-    $("#deleteBtn").click(function () {
-        $(".loginModal").parent().attr("class", "modalWrapOpen");
-    });
-    $(".closeBtn").click(function () {
-        $(".loginModal").parent().attr("class", "modalWrapClose");
-    });
-    $('#cancel').click(function () {
-        $(".loginModal").parent().attr("class", "modalWrapClose");
     });
   </script>
 </body>
