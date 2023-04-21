@@ -114,8 +114,8 @@
           </div>
 
           <div class="col" style="display: flex; flex-direction: row-reverse">
-            <button type="button" class="btn btn-primary" style="background: rgb(28, 124, 224); border: none">
-              모임 생성
+            <button type="button" class="btn btn-primary" style="background: rgb(28, 124, 224); border: none" onclick="location.href='/prome/project/buildProject'">
+             	모임 생성
             </button>
           </div>
         </div>

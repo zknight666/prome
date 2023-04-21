@@ -31,11 +31,13 @@ public class ProjectController {
 		return "project/buildProject";
 	}
 	
-	@PostMapping(value="buildProject")
-	@ResponseBody
-	public void buildProject(@ModelAttribute ProjectDTO projectDTO) {
-		projectService.buildProject(projectDTO);
-	}
+
+//	@PostMapping(value="buildProject_post")
+//	@ResponseBody
+//	public void buildProject_post(@ModelAttribute ProjectDTO projectDTO) {
+//		ProjectService.buildProject_post(projectDTO);
+//	}
+
 	
 	@GetMapping(value="project")
 	public String project() {
@@ -89,7 +91,7 @@ public class ProjectController {
 	//mypage
 	@GetMapping(value="bookmark")
 	@ResponseBody
-	public List<ProjectDTO> bookmark() {
+	public List<ProjectDTO> getBookmark() {
 
 		return projectService.getBookmark();
 	}

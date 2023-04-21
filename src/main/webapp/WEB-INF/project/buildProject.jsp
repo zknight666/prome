@@ -37,22 +37,21 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarColor03">
+                
                 	<a href="/prome/">
                   	  <img src="../assets/logo.png" style="cursor: pointer" />
 					</a>
+					
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item dropdown">
                             <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button"
                                 aria-haspopup="true" aria-expanded="false"></a>
-
                             <div class="dropdown-menu">
                                 <div class="dropdown-item">*******님</div>
                                 <div class="dropdown-divider"></div>
-                                <a class="dropdown-item" href="#">마이페이지</a>
-
-                                <a class="dropdown-item" href="#">내 모임 지원자 관리</a>
-
-                                <a class="dropdown-item" href="#">회원 정보 수정</a>
+                                <a class="dropdown-item" href="/prome/users/mypage">마이페이지</a>
+                                <a class="dropdown-item" href="/prome/project/applicants">내 모임 지원자 관리</a>
+                                <a class="dropdown-item" href="/prome/users/userinfo">회원 정보 수정</a>
                                 <div class="dropdown-divider"></div>
                             </div>
                         </li>
@@ -71,11 +70,11 @@
                         <div class="dropdown-menu" style="right: 0">
                             <div class="dropdown-item">*******님</div>
                             <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="#">마이페이지</a>
+                            <a class="dropdown-item" href="/prome/users/mypage">마이페이지</a>
 
-                            <a class="dropdown-item" href="#">내 모임 지원자 관리</a>
+                            <a class="dropdown-item" href="/prome/project/applicants">내 모임 지원자 관리</a>
 
-                            <a class="dropdown-item" href="#">회원 정보 수정</a>
+                            <a class="dropdown-item" href="/prome/users/userinfo">회원 정보 수정</a>
                             <div class="dropdown-divider"></div>
                         </div>
                     </form>
@@ -102,6 +101,7 @@
                     <div class="section">
                     <!-- submit용 form -->
                     <form id="buildProjectForm">
+                    <input type="hidden" name="temp_leader_id" value="ddochi">
                     
                         <div class="p-2">
                             <!-- 프로젝트명 start -->
@@ -181,10 +181,11 @@
                                 <div>
                                     <span class="h5" style="font-weight: 800;">* 모집 인원</span>
                                     
-									<div class="row mb-3">
-							          <div style="display: flex; align-items: center">
+									<div class="row mb-3" id="recruitContainer">
+							          <div class="recruit" style="display: flex; align-items: center">
+							          
 							            <div class="form-group">
-							              <select class="form-select" id="exampleSelect1">
+							              <select class="form-select" id="exampleSelect1" name="recruitment_field" required="required">
 							                <option value="0000">모집분야</option>
 								                <optgroup label="기획">
 								                  <option value="0201">UI/UX기획</option>
@@ -212,21 +213,34 @@
 								                </optgroup>
 							              </select>
 							            </div>
-							
-								            <div class="form-check col" style="margin-left: 1.5rem">
-								              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked="" />
-								              <label class="form-check-label" for="flexCheckChecked"> 모집중</label>
-								      		</div>
-								      		
-								      		<a href=""></a>
+							            <div class="dummybox"></div>
+							            
+											<div class="plusMinusBtnWrap">&emsp;
+												<img class="imageBtnminus" alt="" src="../assets/images/imageBtnminus.png">
+												<input type="text" class="recruit_countNumber" name="recruit_count_0" value="1" readonly="readonly">
+												<img class="imageBtnplus" alt="" src="../assets/images/imageBtnplus.png">
+											</div>
+											
+
+	
+								      														
+
 								      		
 						         	  </div>
 								    </div>
-									                                    
+								    
+		                            <div class="flex btn-position recruitbtn">
+							            <div class="dummybox2"></div>
+		                                <button type="button" class="btn btn-outline-dark mx-3 recruit_minus">삭제</button>
+		                                <button type="button" class="btn btn-outline-dark recruit_plus">추가</button>
+		                            </div>									                                    
                                     
                                     
                                 </div>
-                            </div>
+                                
+                                
+                                
+                            </div><!-- p-4 -->
                             <!-- 모집 인원 end -->
                             <!-- 프로젝트 설명 start -->
                             <div class="p-4">
@@ -235,7 +249,9 @@
                                 </div>
                                 <div class="project_explain" aria-expanded="false"
                                     style="min-height: 500px; max-height: max-content;">
-                                    <div contenteditable="true" translate="no" class="ProseMirror" tabindex="0">
+                                    
+                                    <input type="hidden" id="project_description" name="project_description" value=""> <!-- 프로젝트 설명 submit용 input태그 -->
+                                    <div contenteditable="true" translate="no" class="ProseMirror" tabindex="0" style="padding-top:5px; ">
                                         <h1 style="font-size: 18px;font-weight:normal">1. 프로젝트의 시작 동기</h1>
                                         <p style="font-size: 14px;line-height:21px">&nbsp;</p>
                                         <p style="font-size: 14px;line-height:21px">- 왜 이 서비스를 만드시고 싶은지 적어주세요&nbsp;</p>
@@ -281,7 +297,7 @@
                                                 style="text-decoration: underline"
                                                 href="https://letspl.me/notice/80"><span
                                                     style="color: rgb(156, 156, 148)">https://letspl.me/notice/80</span></a>
-                                        </p>
+                                        </p> 
                                     </div>
                                 </div>
                             </div>
@@ -293,172 +309,124 @@
                                 </div>
                                 <div class="flex space-x-5">
                                     <div>
-                                        <label for="start-date" class="block text-xl mb-2">&nbsp;프로젝트 시간 기간</label>
-                                        <input type="date" id="start-date" class="border-2 border-gray-300 p-2 rounded">
+                                        <label for="start-date" class="block text-xl mb-2">&nbsp;프로젝트 시작 기간&nbsp;</label>
+                                        <input type="date" id="start-date" name="start-date" class="border-2 border-gray-300 p-2 rounded">
                                     </div>
                                     <div>
-                                        <label for="end-date" class="block text-xl mb-2">&nbsp;프로젝트 종료 기간</label>
-                                        <input type="date" id="end-date" class="border-2 border-gray-300 p-2 rounded">
+                                        <label for="end-date" class="block text-xl mb-2">&nbsp;프로젝트 종료 기간&nbsp;</label>
+                                        <input type="date" id="end-date" name="end-date" class="border-2 border-gray-300 p-2 rounded">
                                     </div>
                                 </div>
                             </div>
                             <!-- 기간 end -->
                             <!-- 기술/언어 start -->
-                            <div class="p-4">
-                                <span class="h5" style="font-weight: 800;">* 기술/언어</span>
-                                <div class="card border-light mb-3" style="width: auto;">
-                                    <div class="card-body">
+							<div class="p-4">
+							    <span class="h5" style="font-weight: 800;">* 기술/언어</span>
+							    <div class="card border-light mb-3" style="width: auto;">
+							        <div class="card-body">
+							            <div class="icon">
+							                <input type="checkbox" id="android" name="android" value="n" class="icon">
+							                <label for="android"><em></em><br><span>android</span></label>
+							            </div>
+							            <div class="icon">
+							                <input type="checkbox" id="aws" name="aws" value="n" class="icon">
+							                <label for="aws"><em></em><br><span>aws</span></label>
+							            </div>
+							            <div class="icon">
+							                <input type="checkbox" id="c" name="C/C#" value="n" class="icon">
+							                <label for="c"><em></em><br><span>C/C#</span></label>
+							            </div>
+							            <div class="icon">
+							                <input type="checkbox" id="docker" name="docker" value="n" class="icon">
+							                <label for="docker"><em></em><br><span>docker</span></label>
+							            </div>
+							            <div class="icon">
+							                <input type="checkbox" id="figma" name="figma" value="n" class="icon">
+							                <label for="figma"><em></em><br><span>figma</span></label>
+							            </div>
+							            <div class="icon">
+							                <input type="checkbox" id="flutter" name="flutter" value="n" class="icon">
+							                <label for="flutter"><em></em><br><span>flutter</span></label>
+							            </div>
+							            <div class="icon">
+							                <input type="checkbox" id="git" name="git" value="n" class="icon">
+							                <label for="git"><em></em><br><span>git</span></label>
+							            </div>
+							            <div class="icon">
+							                <input type="checkbox" id="html" name="html/css" value="n" class="icon">
+							                <label for="html"><em></em><br><span>html/css</span></label>
+							            </div>
+							            <div class="icon">
+							                <input type="checkbox" id="ios" name="ios" value="n" class="icon">
+							                <label for="ios"><em></em><br><span>ios</span></label>
+							            </div>
+							            <div class="icon">
+							                <input type="checkbox" id="javascript" name="javascript" value="n" class="icon">
+							                <label for="javascript"><em></em><br><span>javascript</span></label>
+							            </div>
+							            <div class="icon">
+							                <input type="checkbox" id="java" name="java" value="n" class="icon">
+							                <label for="java"><em></em><br><span>java</span></label>
+							            </div>
+							            <div class="icon">
+							                <input type="checkbox" id="kotlin" name="kotlin" value="n" class="icon">
+							                <label for="kotlin"><em></em><br><span>kotlin</span></label>
+							            </div>
                                         <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/android.png">
-                                            </button><br>
-                                            <span>android</span>
-                                        </div>
-                                        <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/aws.png">
-                                            </button><br>
-                                            <span>aws</span>
-                                        </div>
-                                        <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/cc.png">
-                                            </button><br>
-                                            <span>C/C#</span>
-                                        </div>
-                                        <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/docker.png">
-                                            </button><br>
-                                            <span>docker</span>
-                                        </div>
-                                        <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/figma.png">
-                                            </button><br>
-                                            <span>figma</span>
-                                        </div>
-                                        <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/flutter.png">
-                                            </button><br>
-                                            <span>flutter</span>
-                                        </div>
-                                        <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/git.png">
-                                            </button><br>
-                                            <span>git</span>
-                                        </div>
-                                        <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/html.png">
-                                            </button><br>
-                                            <span>html/css</span>
-                                        </div>
-                                        <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/ios.png">
-                                            </button><br>
-                                            <span>ios</span>
-                                        </div>
-                                        <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/js.png">
-                                            </button><br>
-                                            <span>js</span>
-                                        </div>
-                                        <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/java.png">
-                                            </button><br>
-                                            <span>java</span>
-                                        </div>
-                                        <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/kotlin.png">
-                                            </button><br>
-                                            <span>kotlin</span>
-                                        </div>
-                                        <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/kubernetes.png">
-                                            </button><br>
-                                            <span>kubernetes</span>
-                                        </div>
-                                        <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/mongodb.png">
-                                            </button><br>
-                                            <span>mongodb</span>
-                                        </div>
-                                        <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/mysql.png">
-                                            </button><br>
-                                            <span>mysql</span>
-                                        </div>
-                                        <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/nodejs.png">
-                                            </button><br>
-                                            <span>nodejs</span>
-                                        </div>
-                                        <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/photoshop.png">
-                                            </button><br>
-                                            <span>photoshop</span>
-                                        </div>
-                                        <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/python.png">
-                                            </button><br>
-                                            <span>python</span>
-                                        </div>
-                                        <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/react.png">
-                                            </button><br>
-                                            <span>react</span>
-                                        </div>
-                                        <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/spring.png">
-                                            </button><br>
-                                            <span>spring</span>
-                                        </div>
-                                        <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/tensorflow.png">
-                                            </button><br>
-                                            <span>tensorflow</span>
-                                        </div>
-                                        <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/typescript.png">
-                                            </button><br>
-                                            <span>typescript</span>
-                                        </div>
-                                        <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/unity.png">
-                                            </button><br>
-                                            <span>unity</span>
-                                        </div>
-                                        <div class="icon">
-                                            <button style="border: 0; background-color: white;">
-                                                <img src=" ../assets/icon/vue.png">
-                                            </button><br>
-                                            <span>vue</span>
+                                            <input type="checkbox" id="kubernetes" name="kubernetes" value="n" class="icon">
+								            <label for="kubernetes"><em></em><br><span>kubernetes</span></label>
+								        </div>
+								        <div class="icon">
+								            <input type="checkbox" id="mongodb" name="mongodb" value="n" class="icon">
+								            <label for="mongodb"><em></em><br><span>mongodb</span></label>
+								        </div>
+								        <div class="icon">
+								            <input type="checkbox" id="mysql" name="mysql" value="n" class="icon">
+								            <label for="mysql"><em></em><br><span>mysql</span></label>
+								        </div>
+								        <div class="icon">
+								            <input type="checkbox" id="nodejs" name="nodejs" value="n" class="icon">
+								            <label for="nodejs"><em></em><br><span>nodejs</span></label>
+								        </div>
+								        <div class="icon">
+								            <input type="checkbox" id="photoshop" name="photoshop" value="n" class="icon">
+								            <label for="photoshop"><em></em><br><span>photoshop</span></label>
+								        </div>
+								        <div class="icon">
+								            <input type="checkbox" id="python" name="python" value="n" class="icon">
+								            <label for="python"><em></em><br><span>python</span></label>
+								        </div>
+								        <div class="icon">
+								            <input type="checkbox" id="react" name="react" value="n" class="icon">
+								            <label for="react"><em></em><br><span>react</span></label>
+								        </div>
+								        <div class="icon">
+								            <input type="checkbox" id="spring" name="spring" value="n" class="icon">
+								            <label for="spring"><em></em><br><span>spring</span></label>
+								        </div>
+								        <div class="icon">
+								            <input type="checkbox" id="tensorflow" name="tensorflow" value="n" class="icon">
+								            <label for="tensorflow"><em></em><br><span>tensorflow</span></label>
+								        </div>
+								        <div class="icon">
+								            <input type="checkbox" id="typescript" name="typescript" value="n" class="icon">
+								            <label for="typescript"><em></em><br><span>typescript</span></label>
+								        </div>
+								        <div class="icon">
+								            <input type="checkbox" id="unity" name="unity" value="n" class="icon">
+								            <label for="unity"><em></em><br><span>unity</span></label>
+								        </div>
+								        <div class="icon">
+								            <input type="checkbox" id="vue" name="vue" value="n" class="icon">
+								            <label for="vue"><em></em><br><span>vue</span></label>                                       
                                         </div>
                                     </div>
                                 </div>
-                            </div>
+                            </div> <!-- class="p-4" -->
                             <!-- 기술/언어 end -->
                             <div class="pb-4 flex btn-position">
                                 <button type="button" class="btn btn-outline-dark mx-3">임시저장</button>
-                                <button type="button" class="btn btn-outline-dark">작성완료</button>
+                                <button type="button" id="submitBtn" class="btn btn-outline-dark">작성완료</button>
                             </div>
                         </div>
                         </form>
@@ -489,6 +457,10 @@
             endDate.setAttribute("min", minEndDate);
         });
     </script>
+
+	<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.4.min.js"></script>    
+    <script type="text/javascript" src="../js/buildProjectjs.js"></script>
+    
 </body>
 
 </html>
