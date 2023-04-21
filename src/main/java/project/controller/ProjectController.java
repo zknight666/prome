@@ -22,11 +22,11 @@ public class ProjectController {
 		return "project/buildProject";
 	}
 	
-//	@PostMapping(value="buildProject_post")
-//	@ResponseBody
-//	public void buildProject_post(@ModelAttribute ProjectDTO projectDTO) {
-//		ProjectService.buildProject_post(projectDTO);
-//	}
+	@PostMapping(value="buildProject_post")
+	@ResponseBody
+	public void buildProject_post(@ModelAttribute ProjectDTO projectDTO) {
+		ProjectService.buildProject_post(projectDTO);
+	}
 	
 	@GetMapping(value="project")
 	public String project() {

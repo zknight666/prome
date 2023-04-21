@@ -1274,6 +1274,8 @@ input[id="vue"]:checked + label em {
 
 .recruit{
 	margin: 5px;
+	justify-content: space-between;
+	padding-right: 40px;
 }
 .dummybox{
 	width: 59%;
@@ -1282,15 +1284,12 @@ input[id="vue"]:checked + label em {
 .dummybox2{
 	width: 60%;
 }
-.recruit_countNumber{
-	text-align: center;
-	width: 50px;
-}
 
 .plusMinusBtnWrap{
 	display: inline-flex;
 	flex-direction: row;
 	align-items: center;
+	justify-content: center;
 }
 .imageBtnminus {
     width:20px;
@@ -1310,3 +1309,13 @@ input[id="vue"]:checked + label em {
 	justify-content: flex-end;
 }
 
+.recruit_countNumber{
+	border: none; 
+	width: 40px; 
+	text-align: center;
+}
+
+.recruit_countNumber:focus{
+	outline: none;
+	
+}
