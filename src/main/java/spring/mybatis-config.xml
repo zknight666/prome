@@ -7,6 +7,8 @@
 	
 	<typeAliases>
 		<typeAlias type="user.bean.UserDTO" alias="user" />
+		<typeAlias type="project.bean.ProjectDTO" alias="project" />
+
 	</typeAliases>
 
 </configuration>

@@ -1,7 +1,8 @@
 package project.bean;
 
-import java.util.List;
 
+import java.util.Date;
+import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
 
@@ -20,5 +21,18 @@ public class ProjectDTO {
 	private String projectStartDate;
 	private String projectEndDate;
 	private List<String> skills; // 기술/언어 (tech_stack(Y or N))
+
+//	private int id;
+//	private String team_leader;
+//	private String title;
+//	private String field;
+//	private String content;
+//	private Date start_date;
+//	private Date due_date;
+//	private int member_joined;
+//	private int member_need;
+//	private Date created_at;
+//	private String recruit_state;
 	
+
 }
