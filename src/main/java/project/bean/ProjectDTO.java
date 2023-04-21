@@ -15,7 +15,7 @@ public class ProjectDTO {
 	private String content;
 	private Date start_date;
 	private Date due_date;
-	private int member;
+	private int member_joined;
 	private int member_need;
 	private Date created_at;
 	private String recruit_state;

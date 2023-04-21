@@ -119,28 +119,28 @@
                   <select class="form-select" id="exampleSelect1">
                     <option value="0000">모집분야</option>
                     <optgroup label="기획">
-                      <option value="0201">UI/UX기획</option>
-                      <option value="0202">게임기획</option>
-                      <option value="0203">프로젝트 매니저</option>
-                      <option value="0204">(기획)기타</option>
+                      <option value="ui_ux_plan">UI/UX기획</option>
+                      <option value="game_plan">게임기획</option>
+                      <option value="pm">프로젝트 매니저</option>
+                      <option value="plan_etc">(기획)기타</option>
                     </optgroup>
                     <optgroup label="디자인">
-                      <option value="0301">그래픽디자인</option>
-                      <option value="0302">UI/UX디자인</option>
-                      <option value="0303">(디자인)기타</option>
+                      <option value="graphic_design">그래픽디자인</option>
+                      <option value="ui_ux_design">UI/UX디자인</option>
+                      <option value="design_etc">(디자인)기타</option>
                     </optgroup>
                     <optgroup label="프론트엔드">
-                      <option value="0401">IOS</option>
-                      <option value="0402">안드로이드</option>
-                      <option value="0403">웹프론트엔드</option>
-                      <option value="0404">웹퍼블리셔</option>
-                      <option value="0405">크로스플랫폼</option>
+                      <option value="ios">IOS</option>
+                      <option value="android">안드로이드</option>
+                      <option value="web_fe">웹프론트엔드</option>
+                      <option value="web_publisher">웹퍼블리셔</option>
+                      <option value="cross_flatform">크로스플랫폼</option>
                     </optgroup>
                     <optgroup label="백엔드">
-                      <option value="0501">웹 서버</option>
-                      <option value="0502">AI</option>
-                      <option value="0503">빅데이터/DS</option>
-                      <option value="0504">블록체인</option>
+                      <option value="web_server">웹 서버</option>
+                      <option value="ai">AI</option>
+                      <option value="big_data">빅데이터/DS</option>
+                      <option value="block_chain">블록체인</option>
                     </optgroup>
                   </select>
                 </div>
@@ -1186,6 +1186,7 @@
                       </table>
                       <hr class="m-0">
                       <div class="div_height_table_manager">
+                        <input type="text" id="userId" value="${userDTO.id}">
                         <table id="userListTable" width="100%" style="font-weight: 400;">
                           <tbody >
                               <tr style="text-align: center;">
@@ -1242,7 +1243,7 @@
                       <div>
                         <hr class="m-1">
                         <div style="padding-left: 10px; padding-top: 10px;">
-                          <button type="button" class="btn btn-outline-dark px-2 py-1">탈퇴</button>
+                          <button type="button" id="deleteUserBtn" class="btn btn-outline-dark px-2 py-1">탈퇴</button>
                         </div>
                       </div>
                     </div>
@@ -1293,6 +1294,7 @@
   <!-- Core theme JS-->
   <script src="../js/letspl.js"></script>
   <script src="../js/scripts.js"></script>
+  <script src="../js/adminpage.js"></script>
   <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script type="text/javascript">
   function projectPaging(pg){ //UserPaging.java에서 온 userPaging

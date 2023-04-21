@@ -91,5 +91,9 @@ public class ProjectController {
 		return projectService.getUserList();
 	}
 	
+	
+	@PostMapping(value="deleteUser")
+	@ResponseBody
+	public 
 }
 
