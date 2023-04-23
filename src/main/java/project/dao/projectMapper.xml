@@ -59,15 +59,32 @@
   delete from project where id=#{projectId}
  </delete>
 
- <select id="getUserList" resultType="user.bean.userDTO">
-  select * from user_table;
- </select>
 
  <!-- 해당 User의 북마크 목록 가져오기-->
  <!-- user_id 받아서 List<projectDTO> 반환함-->
  <select id="getBookmark" parameterType="String" resultType="project">
   SELECT project_id from bookmark WHERE user_id=#{user_id} ORDER BY id desc
  </select>
+ 
+
+ 
+ <select id="adminGetUserList" parameterType="java.util.Map" resultType="user">
+	<![CDATA[
+		select * from
+		(select rownum rn, tt.* from
+		(select * from user_table) tt
+		)where rn>=#{startNum} and rn<=#{endNum}
+	]]>
+ </select>
+ 
+ <!-- user 총인원 수 -->
+ <select id="getUserTotalA" resultType="int">
+	select count(*) from user_table
+ </select>
+ 
+ <delete id="adminDeleteUser" parameterType="java.util.List">
+ 	delete from user_table where id in(#{id})
+ </delete>
 	
  </mapper>
  

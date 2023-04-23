@@ -9,6 +9,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -59,12 +60,12 @@ public class ProjectController {
 	
 	
 	
-	@GetMapping(value="adminpage")
+/*	@GetMapping(value="adminpage")
 	public String adminpage(@RequestParam(required = false, defaultValue = "1") String pg, Model model) {
 		model.addAttribute("pg", pg);
 		return "project/adminpage";
 	}
-
+*/
 	@PostMapping(value="adminpage")
 	@ResponseBody
 	public Map<String, Object> adminpage(
@@ -87,13 +88,28 @@ public class ProjectController {
 		projectService.deleteProject(projectId);
 	}
 
-
-	@GetMapping(value = "userList")
-	@ResponseBody
-	public List<UserDTO> getUserList() {
-		return projectService.getUserList();
+	
+	@GetMapping(value = "adminpage")
+	public String adminUserList(@RequestParam(required = false, defaultValue = "1") String userPg, Model model) {
+		model.addAttribute("userPg", userPg); //"pg"라는 이름으로 pg 값을 담음
+		return "project/adminpage"; //pg값을 담아서 여기로 간다
 	}
 
+	@PostMapping(value = "adminGetUserList")
+	@ResponseBody // dispatcher로 가지않게 하고, json으로 변환도 시켜줌!!!!!
+	public Map<String, Object> adminGetUserList(@RequestParam String userPg) {
+
+		return projectService.adminGetUserList(userPg);
+	}
+
+	
+	@PostMapping(value="adminDeleteUser")
+	@ResponseBody
+	public void adminDeleteUser(@RequestParam("checkedUser") List<String> checkedUser) {
+		projectService.adminDeleteUser(checkedUser);
+	}
+	
+	
 	//mypage
 	@GetMapping(value="bookmark")
 	@ResponseBody
@@ -118,29 +134,9 @@ public class ProjectController {
 		return projectService.getAdminpage(map);
 	}
 
+
 	
-	@PostMapping(value = "deleteProject")
-	@ResponseBody
-	public void deleteProject(@RequestParam int projectId) {
-		projectService.deleteProject(projectId);
-	}
-	
-	
-	@GetMapping(value = "userlist")
-	public String userlist() {
-		return "project/adminpage";
-	}
-	
-	
-	@PostMapping(value = "getUserList")
-	@ResponseBody
-	public List<UserDTO> getUserList() {
-		return projectService.getUserList();
-	}
-	
-	
-	@PostMapping(value="deleteUser")
-	@ResponseBody
-	public 
+
+ 
 }
 

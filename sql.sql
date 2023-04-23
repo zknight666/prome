@@ -158,7 +158,8 @@ CREATE TABLE Recruitment_field (
 	block_chain	NUMBER(1)	NULL,
 	ai		NUMBER(1)	NULL,
 	big_data	NUMBER(1)	NULL,
-	game_server	NUMBER(1)	NULL,
+	game_plan	NUMBER(1)	NULL,
+    pm	NUMBER(1)	NULL,
 constraint fk_Recruitment_field_project_id foreign key (project_id) references project(id) on delete cascade
 );
 

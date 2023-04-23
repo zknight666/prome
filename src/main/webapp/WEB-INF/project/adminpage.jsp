@@ -1124,7 +1124,7 @@
         </div>
         
         <!--페이징 섹션 시작-->
-        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+        <div id="projectPaging" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
           <div style="width: auto">
             <ul class="pagination pagination-lg">
               <li class="page-item disabled">
@@ -1186,8 +1186,8 @@
                       </table>
                       <hr class="m-0">
                       <div class="div_height_table_manager">
-                        <table width="100%" style="font-weight: 400;">
-                          <tbody>
+                        <table  width="100%" style="font-weight: 400;">
+                          <tbody id="userListTable">
                             <tr style="text-align: center;">
                               <td align="center" class="td_column_check_manager">
                                 <input class="mx-4 check_checkbox" type="checkbox">
@@ -1242,14 +1242,49 @@
                       <div>
                         <hr class="m-1">
                         <div style="padding-left: 10px; padding-top: 10px;">
-                          <button type="button" class="btn btn-outline-dark px-2 py-1">탈퇴</button>
+                          <button type="button" class="btn btn-outline-dark px-2 py-1">강퇴</button>
                         </div>
                       </div>
                     </div>
-                    <!-- form end -->
-                  </div>
-            
+                    <!-- form end --> 
+                   
+                  </div>          
                 </div>
+      
+                
+                <!--페이징 섹션 시작-->
+                <input type="hidden" id="userPg" value="${userPg}">
+                
+		        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+		          <div id="userPaging" style="width: auto; margin-top: 40px;">
+		            <ul class="pagination pagination-lg">
+		              <li class="page-item disabled">
+		                <a class="page-link" href="#">&laquo;</a>
+		              </li>
+		              <li class="page-item active">
+		                <a class="page-link" href="#">1</a>
+		              </li>
+		              <li class="page-item">
+		                <a class="page-link" href="#">2</a>
+		              </li>
+		              <li class="page-item">
+		                <a class="page-link" href="#">3</a>
+		              </li>
+		              <li class="page-item">
+		                <a class="page-link" href="#">4</a>
+		              </li>
+		              <li class="page-item">
+		                <a class="page-link" href="#">5</a>
+		              </li>
+		              <li class="page-item">
+		                <a class="page-link" href="#">&raquo;</a>
+		              </li>
+		            </ul>  
+		          </div>
+		        </div>
+		        
+		        <!--페이징 섹션 끝-->
+              
               </div>
             </div>
           </div>
@@ -1288,13 +1323,17 @@
     </div>
   </div>
 
+  <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <!-- Bootstrap core JS-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Core theme JS-->
   <script src="../js/letspl.js"></script>
   <script src="../js/scripts.js"></script>
-  <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.4.min.js"></script>
+   <script src="../js/adminpage.js"></script>
   <script type="text/javascript">
+  	function userPaging(userPg){ 
+		location.href="/prome/project/adminpage?userPg=" +userPg;
+	}
     // modal
 
   </script>

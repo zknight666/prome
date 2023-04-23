@@ -14,7 +14,10 @@ public interface ProjectService {
 
     void deleteProject(int projectId);
 
-    List<UserDTO> getUserList();
-
     List<ProjectDTO> getBookmark();
+
+
+	Map<String, Object> adminGetUserList(String userPg);
+
+	void adminDeleteUser(List<String> checkedUser);
 }

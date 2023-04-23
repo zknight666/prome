@@ -9,6 +9,7 @@ import project.bean.ProjectDTO;
 import project.bean.ProjectPaging;
 import project.dao.ProjectDAO;
 import user.bean.UserDTO;
+import user.bean.UserPaging;
 
 @Service
 public class ProjectServiceImpl implements ProjectService {
@@ -16,6 +17,8 @@ public class ProjectServiceImpl implements ProjectService {
     private ProjectDAO projectDAO;
     @Autowired
     private ProjectPaging projectPaging;
+    @Autowired
+    private UserPaging userPaging;
 
     @Override
     public void buildProject(ProjectDTO projectDTO) {
@@ -40,12 +43,12 @@ public class ProjectServiceImpl implements ProjectService {
         List<String> chosenTech = projectDAO.getChosenTech(projectId);
 
         //페이징 처리
-        int totalA = projectDAO.getTotalA(); //총글수
+//        int totalA = projectDAO.getTotalA(); //총글수
 
         projectPaging.setCurrentPage(Integer.parseInt((String)map.get("pg")));
         projectPaging.setPageBlock(3);
         projectPaging.setPageSize(3);
-        projectPaging.setTotalA(totalA);
+//        projectPaging.setTotalA(totalA);
 
         projectPaging.makePagingHTML();
 
@@ -62,14 +65,44 @@ public class ProjectServiceImpl implements ProjectService {
         projectDAO.deleteProject(projectId);
     }
 
-    @Override
-    public List<UserDTO> getUserList() {
-        return projectDAO.getUserList();
-    }
 
     @Override
     public List<ProjectDTO> getBookmark() {
         return projectDAO.getBookmark();
     }
+
+    
+	@Override
+	public Map<String, Object> adminGetUserList(String userPg) {
+		int endNum = Integer.parseInt(userPg) * 10;
+		int startNum = endNum - 9;
+		
+		Map<String, Integer> map = new HashMap<String, Integer>();
+		map.put("startNum", startNum);
+		map.put("endNum", endNum);
+		
+		List<UserDTO> list = projectDAO.adminGetUserList(map);
+		
+		//페이징 처리
+		int totalA = projectDAO.getUserTotalA(); //총 user 
+		
+		userPaging.setCurrentPage(Integer.parseInt(userPg));
+		userPaging.setPageBlock(3);
+		userPaging.setPageSize(10);
+		userPaging.setTotalA(totalA);
+		
+		userPaging.makePagingHTML();
+		
+		Map<String, Object> map2 = new HashMap<String, Object>();
+		map2.put("list", list);
+		map2.put("userPaging", userPaging);
+		
+		return map2;
+	}
+
+	@Override
+	public void adminDeleteUser(List<String> checkedUser) {
+		projectDAO.adminDeleteUser(checkedUser);
+	}
 
 }

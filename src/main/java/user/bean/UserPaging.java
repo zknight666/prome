@@ -23,17 +23,29 @@ public class UserPaging {
 		int endPage = startPage + pageBlock - 1;
 		if(endPage > totalP) endPage = totalP;
 		
+		pagingHTML.append("<ul class='pagination pagination-lg'>");
 		if(startPage != 1)
-			pagingHTML.append("<span id='paging' onclick='userPaging(" + (startPage-1) + ")'>이전</span>");
+			pagingHTML			
+			.append("<li class='page-item disabled'>")
+			.append("<a class='page-link' id='paging' onclick='userPaging(" + (startPage-1) + ")'>&laquo;</a>")
+			.append("</li>");
 		
 		for(int i=startPage; i<=endPage; i++) {
 			if(i==currentPage)
-				pagingHTML.append("<span id='currentPaging' onclick='userPaging(" + i + ")'>" + i + "</span>");
+				pagingHTML
+				.append("<li class='page-item active'>")
+				.append("<a class='page-link' id='currentPaging' onclick='userPaging(" + i + ")'>" + i + "</a>")
+				.append("</li>");
 			else
-				pagingHTML.append("<span id='paging' onclick='userPaging(" + i + ")'>" + i + "</span>");
+				pagingHTML
+				.append("<li class='page-item'>")
+				.append("<a class='page-link' id='paging' onclick='userPaging(" + i + ")'>" + i + "</span>")
+				.append("</li>");
 		}
 		
 		if(endPage < totalP)
-			pagingHTML.append("<span id='paging' onclick='userPaging(" + (endPage+1) + ")'>다음</span>");	
+			pagingHTML
+			.append("<li class='page-item'>")
+			.append("<a class='page-link' id='paging' onclick='userPaging(" + (endPage+1) + ")'>&raquo;</a>");	
 	}
 }

@@ -58,72 +58,63 @@ $(function(){
 	}); //deleteBtn
 }); */
 	
+$(function(){
 	//회원관리
-$('#userList').on('click',function(){
-	$('#home').hide();
-	$.ajax({
-		type: 'post',
-		url: '/prome/project/getUserList',
-		success: function(data){
-			console.log(JSON.stringify(data));
-			$('#userListTable').empty();
-			$.each(data.list, function(index, items){
-				
-				$('<tr/>').append($('<td/>', {
-					align: 'center',
-					class: 'td_column_check_manager'
-				}).append('<input/>', {
-					class: 'mx-4 check_checkbox',
-					type: 'checkbox'
-				})).append($('<td/>', {
-					align: 'center',
-					text: items.name
-				})).append($('<td/>', {
-					align: 'center',
-					text: items.id
-				})).append($('<td/>', {
-					align: 'center',
-					text: items.gender
-				})).append($('<td/>', {
-					align: 'center',
-					text: items.email1 + items.email2
-				})).append($('<td/>', {
-					align: 'center',
-					text: items.phone1 + items.phone2 + items.phone3
-				})).append($('<td/>', {
-					align: 'center',
-					text: items.address1 + items.address2 + items.address3
-				})).append($('<td/>', {
-					align: 'center',
-					text: items.signup_date
-				})).appendTo($('#userListTable'));
-			}); //each
-			
-		},
-		error: function(err){
-			console.log(err);
-		}
-	}); //ajax
-	$('#profile').show();
-	
-	$('#deleteUserBtn').click(function(){
-		var checkedUser = [];
-		
-		$('input[type=checkbox]:checked').each(function(){
-			checkedUser.push($(this).val());
-		});
-		
+	$('.nav-link').click(function(){
+	//	$('#profile').show();
 		$.ajax({
-			rul: '/prome/project/deleteUser',
 			type: 'post',
-			data: {checkedUser : checkedUser},
+			url: '/prome/project/adminGetUserList',
+			data: 'userPg=' +$('#userPg').val(),
+			dataType: 'json',
 			success: function(data){
-				console.log(data);
+				console.log(JSON.stringify(data));
+				$('#userListTable').empty();
+	
+				var html = '';
+				$.each(data.list, function(index, items){
+				  html += '<tr align="center">';
+				  html += '<td align="center" class="td_column_check_manager">';
+				  html += '<input class="mx-4 check_checkbox" type="checkbox" value="' + items.id + '">';
+				  html += '</td>';
+				  html += '<td>' + items.name + '</td>';
+				  html += '<td>' + items.id + '</td>';
+				  html += '<td>' + items.gender + '</td>';
+				  html += '<td>' + items.email1 +'@'+ items.email2 + '</td>';
+				  html += '<td>' + items.phone1 +'-'+ items.phone2 +'-'+ items.phone3 + '</td>';
+				  html += '<td>' + items.address2 +'&nbsp;' + items.address3 +'&nbsp;' + items.address1 + '</td>';
+				  html += '<td>' + items.signup_date + '</td>';
+				  html += '</tr>';
+				});
+				$('#userListTable').html(html);
+				
+				//페이징 처리				
+				$('#userPaging').html(data.userPaging.pagingHTML);		
 			},
 			error: function(err){
-			console.log(err);
-		}
-		});//ajax
-	
-	});
-});	
+				console.log(err);
+			}
+		}); //ajax
+		
+		
+		$('.btn btn-outline-dark px-2 py-1').click(function(){
+		    var checkedUser = $('input[type=checkbox]:checked').map(function () {
+		        return $(this).val();
+		    }).get();
+		
+		    $.ajax({
+		        type: "post",
+		        url: "/prome/project/adminDeleteUser",
+		        data: JSON.stringify({ checkedUser : checkedUser }),
+		        contentType: "application/json",
+		        success: function(result){
+		            console.log(result);
+		        },
+		        error: function(request, status, error){
+		            console.log("ajax error");
+		        }
+		    });
+		});
+
+	});	
+});

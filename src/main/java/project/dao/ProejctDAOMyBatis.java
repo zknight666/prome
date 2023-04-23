@@ -27,10 +27,6 @@ public class ProejctDAOMyBatis implements ProjectDAO {
         return sqlSession.selectList("getChosenTech", projectId);
     }
 
-    @Override
-    public int getTotalA() {
-        return sqlSession.selectOne("userSQL.getTotalA");
-    }
 
     @Override
     public void deleteProject(int projectId) {
@@ -38,14 +34,29 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 
     }
 
-    @Override
-    public List<UserDTO> getUserList() {
-        return sqlSession.selectList("userSQL.getUserList");
-    }
 
     @Override
     public List<ProjectDTO> getBookmark() {
         return sqlSession.selectList("projectSQL.getBookmark");
     }
+
+
+	@Override
+	public List<UserDTO> adminGetUserList(Map<String, Integer> map) {
+		return sqlSession.selectList("projectSQL.adminGetUserList",map);
+	}
+
+	@Override
+	public int getUserTotalA() {
+		 return sqlSession.selectOne("projectSQL.getUserTotalA");
+	}
+
+	@Override
+	public void adminDeleteUser(List<String> checkedUser) {
+		sqlSession.delete("projectSQL.adminDeleteUser", checkedUser);
+		
+	}
+
+
 }
 

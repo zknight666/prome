@@ -10,11 +10,16 @@ public interface ProjectDAO {
 
     public List<String> getChosenTech(int projectId);
 
-    int getTotalA();
 
     void deleteProject(int projectId);
 
-    List<UserDTO> getUserList();
 
     List<ProjectDTO> getBookmark();
+
+
+	List<UserDTO> adminGetUserList(Map<String, Integer> map);
+
+	int getUserTotalA();
+
+	void adminDeleteUser(List<String> checkedUser);
 }
