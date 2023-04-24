@@ -7,10 +7,68 @@
  <mapper namespace="projectSQL">
 
  <insert id="writeProject" parameterType="project">
-   insert into project values(#{id}, #{team_Leader}, #{title},
-   #{field}, #{content}, #{start_Date}, #{due_Date}, #{member_Joined},
-   #{created_At}, #{member_Need}, #{recruit_State})
+ 
+     <selectKey resultType="int" keyProperty="projectId" order="BEFORE">
+        SELECT PROJECT_SEQ.NEXTVAL as id FROM dual
+    </selectKey>
+    
+	insert into project (ID,TEAM_LEADER,TITLE,FIELD,CONTENT,START_DATE,DUE_DATE,member_joined,CREATED_AT,member_need,recruit_state)
+	                VALUES (#{projectId},'ddochi',#{title},
+	                		#{field},#{content},#{start_date},#{due_date},#{member_joined},
+	                		 sysdate,#{member_need},#{recruit_state})
+	                		
+	   
  </insert>
+
+ <insert id="project_tech_stack" parameterType="project">
+ 
+	insert into project_tech_stack (PROJECT_ID, FIGMA, PHOTOSHOP,IOS,ANDROID,REACT,VUE,FLUTTER,HTML_CSS,JAVASCRIPT,SPRING,JAVA,KOTLIN,NODE_JS,MONGODB,C_C#,GIT,AWS,DOCKER,KUBERNETES,TENSORFLOW,UNITY,PYTHON,MYSQL,TYPESCRIPT)                 		
+					VALUES (#{projectId},#{tech_stacks.figma},
+						        #{tech_stacks.photoshop},
+						        #{tech_stacks.ios},
+						        #{tech_stacks.android},
+						        #{tech_stacks.react},
+						        #{tech_stacks.vue},
+						        #{tech_stacks.flutter},
+						        #{tech_stacks.html_css},
+						        #{tech_stacks.javascript},
+						        #{tech_stacks.spring},
+						        #{tech_stacks.java},
+						        #{tech_stacks.kotlin},
+						        #{tech_stacks.node_js},
+						        #{tech_stacks.mongodb},
+						        #{tech_stacks.C_C#},
+						        #{tech_stacks.git},
+						        #{tech_stacks.aws},
+						        #{tech_stacks.docker},
+						        #{tech_stacks.kubernetes},
+						        #{tech_stacks.tensorflow},
+						        #{tech_stacks.unity},
+						        #{tech_stacks.python},
+						        #{tech_stacks.mysql},
+						        #{tech_stacks.typescript})
+ </insert>
+
+
+<insert id="recruitment_field" parameterType="project">
+    INSERT INTO recruitment_field (PROJECT_ID,
+        <foreach collection="recruitmentFields" item="field" index="idx" separator=",">
+            ${field}
+        </foreach>
+    )
+    VALUES (#{projectId},
+        <foreach collection="recruitCounts" item="count" index="idx" separator=",">
+            #{count}
+        </foreach>
+    )
+</insert>
+		 		
+ 
+ 
+ 
+ 
+ 
+ 
 
  <select id="getProject" parameterType="String" resultType="project">
   select * project values(#{id}, #{team_Leader}, #{title},
@@ -59,16 +117,18 @@
   delete from project where id=#{projectId}
  </delete>
 
- <select id="getUserList" resultType="user.bean.userDTO">
+  <select id="getUserList" resultType="user.bean.UserDTO">
   select * from user_table;
  </select>
-
+ 
  <!-- 해당 User의 북마크 목록 가져오기-->
  <!-- user_id 받아서 List<projectDTO> 반환함-->
  <select id="getBookmark" parameterType="String" resultType="project">
   SELECT project_id from bookmark WHERE user_id=#{user_id} ORDER BY id desc
  </select>
-	
+ 
+ 
+
  </mapper>
  
  

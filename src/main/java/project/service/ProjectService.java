@@ -9,7 +9,7 @@ import user.bean.UserDTO;
 
 @Service
 public interface ProjectService {
-    void buildProject(ProjectDTO projectDTO);
+    public void buildProject(ProjectDTO projectDTO);
 
     Map<String, Object> getAdminpage(Map<String, Object> map);
 

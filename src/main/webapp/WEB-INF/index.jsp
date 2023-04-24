@@ -1215,9 +1215,11 @@
     $("#loginBtn").click(function () {
       $(".loginModal_1").parent().attr("class", "modalWrapOpen_1");
     });
+    
     $(".closeBtn_1").click(function () {
       $(".loginModal_1").parent().attr("class", "modalWrapClose_1");
     });
+    
     $('.signupBtn_1').click(function () {
       $(".loginModal").parent().attr("class", "modalWrapOpen");
       $(".loginModal_1").parent().attr("class", "modalWrapClose_1");

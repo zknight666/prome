@@ -17,4 +17,7 @@ public interface ProjectDAO {
     List<UserDTO> getUserList();
 
     List<ProjectDTO> getBookmark();
+
+	public void buildProject(ProjectDTO projectDTO);
+
 }

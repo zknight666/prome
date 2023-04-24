@@ -100,8 +100,7 @@
                     </div>
                     <div class="section">
                     <!-- submit용 form -->
-                    <form id="buildProjectForm">
-                    
+                    <form id="buildProjectForm">                    
                         <div class="p-2">
                             <!-- 프로젝트명 start -->
                             <div class="p-4">
@@ -122,52 +121,52 @@
                                 <div class="answer">
                                     <div class="project_fieldbox ">
                                         <div class="field_radio">
-                                            <input type="radio" name="step2_radio" value="01">
+                                            <input type="radio" name="step2_radio" value="공유서비스">
                                             <span class="txt"><b>공유서비스</b></span>
                                             <span class="checkmark"></span>
                                         </div>
                                         <div class="field_radio">
-                                            <input type="radio" name="step2_radio" value="02">
+                                            <input type="radio" name="step2_radio" value="여행">
                                             <span class="txt"><b>여행</b></span>
                                             <span class="checkmark"></span>
                                         </div>
                                         <div class="field_radio">
-                                            <input type="radio" name="step2_radio" value="03">
+                                            <input type="radio" name="step2_radio" value="소셜 네트워크">
                                             <span class="txt"><b>소셜 네트워크</b></span>
                                             <span class="checkmark"></span>
                                         </div>
                                         <div class="field_radio">
-                                            <input type="radio" name="step2_radio" value="04">
+                                            <input type="radio" name="step2_radio" value="뷰티/패션">
                                             <span class="txt"><b>뷰티/패션</b></span>
                                             <span class="checkmark"></span>
                                         </div>
                                         <div class="field_radio">
-                                            <input type="radio" name="step2_radio" value="05">
+                                            <input type="radio" name="step2_radio" value="게임">
                                             <span class="txt"><b>게임</b></span>
                                             <span class="checkmark"></span>
                                         </div>
                                         <div class="field_radio">
-                                            <input type="radio" name="step2_radio" value="06">
+                                            <input type="radio" name="step2_radio" value="이커머스">
                                             <span class="txt"><b>이커머스</b></span>
                                             <span class="checkmark"></span>
                                         </div>
                                         <div class="field_radio">
-                                            <input type="radio" name="step2_radio" value="07">
+                                            <input type="radio" name="step2_radio" value="금융">
                                             <span class="txt"><b>금융</b></span>
                                             <span class="checkmark"></span>
                                         </div>
                                         <div class="field_radio">
-                                            <input type="radio" name="step2_radio" value="08">
+                                            <input type="radio" name="step2_radio" value="부동산">
                                             <span class="txt"><b>부동산</b></span>
                                             <span class="checkmark"></span>
                                         </div>
                                         <div class="field_radio">
-                                            <input type="radio" name="step2_radio" value="09">
+                                            <input type="radio" name="step2_radio" value="교육">
                                             <span class="txt"><b>교육</b></span>
                                             <span class="checkmark"></span>
                                         </div>
                                         <div class="field_radio">
-                                            <input type="radio" name="step2_radio" value="10">
+                                            <input type="radio" name="step2_radio" value="의료/병원">
                                             <span class="txt"><b>의료/병원</b></span>
                                             <span class="checkmark"></span>
                                         </div>
@@ -187,28 +186,28 @@
 							              <select class="form-select" id="exampleSelect1" name="recruitment_field" required="required">
 							                <option value="0000">모집분야</option>
 								                <optgroup label="기획">
-								                  <option value="0201">UI/UX기획</option>
-								                  <option value="0202">게임기획</option>
-								                  <option value="0203">프로젝트 매니저</option>
-								                  <option value="0204">(기획)기타</option>
+								                  <option value="UI_UX_PLAN">UI/UX기획</option>
+								                  <option value="GAME_PLAN">게임기획</option>
+								                  <option value="PM">프로젝트 매니저</option>
+								                  <option value="PLAN_ETC">(기획)기타</option>
 								                </optgroup>
 								                <optgroup label="디자인">
-								                  <option value="0301">그래픽디자인</option>
-								                  <option value="0302">UI/UX디자인</option>
-								                  <option value="0303">(디자인)기타</option>
+								                  <option value="GRAPHIC_DESIGN">그래픽디자인</option>
+								                  <option value="UI_UX_DESIGN">UI/UX디자인</option>
+								                  <option value="DESIGN_ETC">(디자인)기타</option>
 								                </optgroup>
 								                <optgroup label="프론트엔드">
-								                  <option value="0401">IOS</option>
-								                  <option value="0402">안드로이드</option>
-								                  <option value="0403">웹프론트엔드</option>
-								                  <option value="0404">웹퍼블리셔</option>
-								                  <option value="0405">크로스플랫폼</option>
+								                  <option value="IOS">IOS</option>
+								                  <option value="ANDROID">안드로이드</option>
+								                  <option value="WEB_FE">웹프론트엔드</option>
+								                  <option value="WEB_PUBLISHER">웹퍼블리셔</option>
+								                  <option value="CROSS_FLATFORM">크로스플랫폼</option>
 								                </optgroup>
 								                <optgroup label="백엔드">
-								                  <option value="0501">웹 서버</option>
-								                  <option value="0502">AI</option>
-								                  <option value="0503">빅데이터/DS</option>
-								                  <option value="0504">블록체인</option>
+								                  <option value="WEB_SERVER">웹 서버</option>
+								                  <option value="AI">AI</option>
+								                  <option value="BIG_DATA">빅데이터/DS</option>
+								                  <option value="BLOCK_CHAIN">블록체인</option>
 								                </optgroup>
 							              </select>
 							            </div>
@@ -248,9 +247,8 @@
                                 </div>
                                 <div class="project_explain" aria-expanded="false"
                                     style="min-height: 500px; max-height: max-content;">
-                                    
                                     <input type="hidden" id="project_description" name="project_description" value=""> <!-- 프로젝트 설명 submit용 input태그 -->
-                                    <div contenteditable="true" translate="no" class="ProseMirror" tabindex="0" style="padding-top:5px; ">
+                                    <div contenteditable="true" translate="no" class="ProseMirror" tabindex="0" style="padding-top:5px; white-space: pre-wrap;" >
                                         <h1 style="font-size: 18px;font-weight:normal">1. 프로젝트의 시작 동기</h1>
                                         <p style="font-size: 14px;line-height:21px">&nbsp;</p>
                                         <p style="font-size: 14px;line-height:21px">- 왜 이 서비스를 만드시고 싶은지 적어주세요&nbsp;</p>
@@ -332,8 +330,8 @@
 							                <label for="aws"><em></em><br><span>aws</span></label>
 							            </div>
 							            <div class="icon">
-							                <input type="checkbox" id="c" name="C/C#" value="n" class="icon">
-							                <label for="c"><em></em><br><span>C/C#</span></label>
+							                <input type="checkbox" id="c" name="C_C#" value="n" class="icon">
+							                <label for="c"><em></em><br><span>C_C#</span></label>
 							            </div>
 							            <div class="icon">
 							                <input type="checkbox" id="docker" name="docker" value="n" class="icon">
@@ -352,8 +350,8 @@
 							                <label for="git"><em></em><br><span>git</span></label>
 							            </div>
 							            <div class="icon">
-							                <input type="checkbox" id="html" name="html/css" value="n" class="icon">
-							                <label for="html"><em></em><br><span>html/css</span></label>
+							                <input type="checkbox" id="html" name="html_css" value="n" class="icon">
+							                <label for="html"><em></em><br><span>html_css</span></label>
 							            </div>
 							            <div class="icon">
 							                <input type="checkbox" id="ios" name="ios" value="n" class="icon">
@@ -384,8 +382,8 @@
 								            <label for="mysql"><em></em><br><span>mysql</span></label>
 								        </div>
 								        <div class="icon">
-								            <input type="checkbox" id="nodejs" name="nodejs" value="n" class="icon">
-								            <label for="nodejs"><em></em><br><span>nodejs</span></label>
+								            <input type="checkbox" id="nodejs" name="node_js" value="n" class="icon">
+								            <label for="nodejs"><em></em><br><span>node_js</span></label>
 								        </div>
 								        <div class="icon">
 								            <input type="checkbox" id="photoshop" name="photoshop" value="n" class="icon">
@@ -424,7 +422,7 @@
                             </div> <!-- class="p-4" -->
                             <!-- 기술/언어 end -->
                             <div class="pb-4 flex btn-position">
-                                <button type="button" class="btn btn-outline-dark mx-3">임시저장</button>
+                                <button type="button" id="tempSaveBtn" class="btn btn-outline-dark mx-3">임시저장</button>
                                 <button type="button" id="submitBtn" class="btn btn-outline-dark">작성완료</button>
                             </div>
                         </div>
@@ -458,7 +456,7 @@
     </script>
 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.4.min.js"></script>    
-    <script type="text/javascript" src="../js/buildProjectjs.js"></script>
+    <script type="text/javascript" src="../js/buildproject_script.js"></script>
     
 </body>
 

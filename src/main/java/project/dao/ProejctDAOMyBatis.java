@@ -47,5 +47,14 @@ public class ProejctDAOMyBatis implements ProjectDAO {
     public List<ProjectDTO> getBookmark() {
         return sqlSession.selectList("projectSQL.getBookmark");
     }
+
+	@Override
+	public void buildProject(ProjectDTO projectDTO) {
+		sqlSession.insert("projectSQL.writeProject",projectDTO);
+		sqlSession.insert("projectSQL.project_tech_stack",projectDTO);
+		sqlSession.insert("projectSQL.recruitment_field",projectDTO);
+	}
+
+
 }
 
