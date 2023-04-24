@@ -101,16 +101,17 @@
         <!--탭 메뉴 nav 시작-->
         <ul class="nav nav-tabs" role="tablist">
           <li class="nav-item" role="presentation">
-            <a class="nav-link active" data-bs-toggle="tab" href="#home" aria-selected="true" role="tab" style="font-size: 1.5rem;">프로젝트 관리</a>
-          </li>
-          <li class="nav-item" role="presentation">
-            <a class="nav-link" id="manageUser" data-bs-toggle="tab" href="#profile" aria-selected="false" role="tab" tabindex="-1" style="font-size: 1.5rem;">회원 관리</a>
+            <a class="nav-link" id="manageProject" data-bs-toggle="tab" href="#profile" aria-selected="false" role="tab" tabindex="-1" style="font-size: 1.5rem;">프로젝트 관리</a>
           </li>      
+          <li class="nav-item" role="presentation">
+            <a class="nav-link active" data-bs-toggle="tab" href="#home" aria-selected="true" role="tab" style="font-size: 1.5rem;">회원 관리</a>
+          </li>
         </ul>
        
         <div id="myTabContent" class="tab-content"> <!--탭 메뉴 nav End-->
-         
-          <div class="tab-pane fade active show" id="home" role="tabpanel"> <!--프로젝트 관리 탭 Content-->
+        
+          <div class="tab-pane fade" id="profile" role="tabpanel">
+          <!-- <div class="tab-pane fade active show" id="home" role="tabpanel"> --> <!--프로젝트 관리 탭 Content-->
 
             <!--모집분야 필터링-->
             <div class="row mb-3 mt-5">
@@ -1157,7 +1158,8 @@
 
 
           <!--회원 관리 탭 Content-->
-          <div class="tab-pane fade" id="profile" role="tabpanel">
+          <div class="tab-pane fade active show" id="home" role="tabpanel"> <!--프로젝트 관리 탭 Content-->
+          <!-- <div class="tab-pane fade" id="profile" role="tabpanel"> -->
             <div class="container px-4 px-lg-5 mt-5">
               <div class="row mb-3">
                 <div class="col pb-2" style="display: flex">
@@ -1329,10 +1331,10 @@
   <!-- Core theme JS-->
   <script src="../js/letspl.js"></script>
   <script src="../js/scripts.js"></script>
-   <script src="../js/adminpage.js"></script>
+   <script src="../js/adminUserPage.js"></script>
   <script type="text/javascript">
   	function userPaging(userPg){ 
-		location.href="/prome/project/adminpage?userPg=" +userPg;
+		location.href="/prome/project/adminUserPage?userPg=" +userPg;
 	}
     // modal
 

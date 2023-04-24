@@ -61,28 +61,13 @@ public class ProjectController {
 	}
 	
 	
-	
-/*	@GetMapping(value="adminpage")
+	@GetMapping(value="adminpage")
 	public String adminpage(@RequestParam(required = false, defaultValue = "1") String pg, Model model) {
 		model.addAttribute("pg", pg);
 		return "project/adminpage";
 	}
-*/
-	@PostMapping(value="adminpage")
-	@ResponseBody
-	public Map<String, Object> adminpage(
-		@RequestParam String field,
-		@RequestParam String recruit_state,
-		@RequestParam int projectId,
-		@RequestParam String pg){
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("field", field);
-		map.put("recruit_state", recruit_state);
-		map.put("projectId", projectId);
-		map.put("pg", pg);
 
-		return projectService.getAdminpage(map);
-	}
+
 
 	@PostMapping(value = "deleteProject")
 	@ResponseBody
@@ -91,10 +76,10 @@ public class ProjectController {
 	}
 
 	
-	@GetMapping(value = "adminpage")
+	@GetMapping(value = "adminUserPage")
 	public String adminUserList(@RequestParam(required = false, defaultValue = "1") String userPg, Model model) {
 		model.addAttribute("userPg", userPg); //"pg"라는 이름으로 pg 값을 담음
-		return "project/adminpage"; //pg값을 담아서 여기로 간다
+		return "project/adminUserPage"; //pg값을 담아서 여기로 간다
 	}
 
 	@PostMapping(value = "adminGetUserList")
