@@ -8,6 +8,8 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+
+import user.bean.IconDTO;
 import user.bean.UserDTO;
 import user.service.UserService;
 
@@ -42,21 +44,49 @@ public class UserController {
 		return "users/usermanage";
 	}
 
-
-	@PostMapping(value="signup")
-	@ResponseBody
-	public void signup(@ModelAttribute UserDTO userDTO) {
-		System.out.println("icon"+userDTO.getTech());
-		//userService.signup(userDTO);
-	}
-
-	@PostMapping(value="isExistId")
-	@ResponseBody
-	public String isExistId(@RequestParam String id) {
-		return userService.isExistId(id);
-	}
-	
-	
+	//회원가입 start
+		@PostMapping(value="signup")
+		@ResponseBody
+		public String signup(@ModelAttribute UserDTO userDTO) {
+			userService.signup(userDTO);
+			return "come";
+		}
+		
+		@PostMapping(value="isExistId")
+		@ResponseBody
+		public String isExistId(@RequestParam String id) {
+			return userService.isExistId(id);
+		}
+		@PostMapping(value="setIcon")
+		@ResponseBody
+		public String setIcon(@ModelAttribute IconDTO iconDTO) {
+			return userService.setIcon(iconDTO);
+		}
+		//회원가입 end
+		
+		//회원정보수정 start
+		@PostMapping(value="getUser")
+		@ResponseBody
+		public UserDTO getUser(@RequestParam String id) {
+			return userService.getUser(id);
+		}
+		@PostMapping(value="getIcon")
+		@ResponseBody
+		public IconDTO getIcon(@RequestParam String id) {
+			return userService.getIcon(id);
+		}
+		@PostMapping(value="updateInfo")
+		@ResponseBody
+		public String updateInfo(@ModelAttribute UserDTO userDTO) {
+			userService.updateInfo(userDTO);
+			return "come";
+		}
+		@PostMapping(value="updateIcon")
+		@ResponseBody
+		public String updateIcon(@ModelAttribute IconDTO iconDTO) {
+			return userService.updateIcon(iconDTO);
+		}
+		//회원정보 수정 end
 	
 	
 }

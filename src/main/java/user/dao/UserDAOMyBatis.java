@@ -1,10 +1,12 @@
-package user.dao;
+	package user.dao;
 
 
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
+
+import user.bean.IconDTO;
 import user.bean.UserDTO;
 
 @Repository
@@ -24,6 +26,26 @@ public class UserDAOMyBatis implements UserDAO {
 
     }
 
+    @Override
+	public void setIcon(IconDTO iconDTO) {
+		sqlSession.insert("userSQL.setIcon",iconDTO);
+		
+	}
+
+	@Override
+	public IconDTO getIcon(String id) {
+		return sqlSession.selectOne("userSQL.getIcon",id);
+	}
+
+	@Override
+	public void updateInfo(UserDTO userDTO) {
+		sqlSession.update("userSQL.updateInfo", userDTO);
+	}
+
+	@Override
+	public void updateIcon(IconDTO iconDTO) {
+		sqlSession.update("userSQL.updateIcon", iconDTO);
+	}
 	
 	
 }

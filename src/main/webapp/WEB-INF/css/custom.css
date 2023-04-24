@@ -869,9 +869,8 @@ input[id="android"] + label em {
 input[id="android"]:checked + label em {
   background-position: -50px 0;
 }
-
-.icon:hover {
-  filter: brightness(60%);
+input[id="android"]:hover + label em {
+  background-position: -50px 0;
 }
 
 input[id="aws"] {
@@ -888,8 +887,8 @@ input[id="aws"]:checked + label em {
   background-position: -50px 0;
 }
 
-.icon:hover {
-  filter: brightness(60%);
+input[id="aws"]:hover + label em {
+  background-position: -50px 0;
 }
 
 input[id="c"] {
@@ -905,9 +904,8 @@ input[id="c"] + label em {
 input[id="c"]:checked + label em {
   background-position: -50px 0;
 }
-
-.icon:hover {
-  filter: brightness(60%);
+input[id="c"]:hover + label em {
+  background-position: -50px 0;
 }
 
 input[id="docker"] {
@@ -923,8 +921,8 @@ input[id="docker"] + label em {
 input[id="docker"]:checked + label em {
   background-position: -50px 0;
 }
-.icon:hover {
-  filter: brightness(60%);
+input[id="docker"]:hover + label em {
+  background-position: -50px 0;
 }
 
 input[id="figma"] {
@@ -940,8 +938,8 @@ input[id="figma"] + label em {
 input[id="figma"]:checked + label em {
   background-position: -50px 0;
 }
-.icon:hover {
-  filter: brightness(60%);
+input[id="figma"]:hover + label em {
+  background-position: -50px 0;
 }
 
 input[id="flutter"] {
@@ -957,8 +955,8 @@ input[id="flutter"] + label em {
 input[id="flutter"]:checked + label em {
   background-position: -50px 0;
 }
-.icon:hover {
-  filter: brightness(60%);
+input[id="flutter"]:hover + label em {
+  background-position: -50px 0;
 }
 
 input[id="git"] {
@@ -974,8 +972,8 @@ input[id="git"] + label em {
 input[id="git"]:checked + label em {
   background-position: -50px 0;
 }
-.icon:hover {
-  filter: brightness(60%);
+input[id="git"]:hover + label em {
+  background-position: -50px 0;
 }
 
 input[id="html"] {
@@ -991,8 +989,8 @@ input[id="html"] + label em {
 input[id="html"]:checked + label em {
   background-position: -50px 0;
 }
-.icon:hover {
-  filter: brightness(60%);
+input[id="html"]:hover + label em {
+  background-position: -50px 0;
 }
 
 input[id="ios"] {
@@ -1008,8 +1006,8 @@ input[id="ios"] + label em {
 input[id="ios"]:checked + label em {
   background-position: -50px 0;
 }
-.icon:hover {
-  filter: brightness(60%);
+input[id="ios"]:hover + label em {
+  background-position: -50px 0;
 }
 
 input[id="javascript"] {
@@ -1025,8 +1023,8 @@ input[id="javascript"] + label em {
 input[id="javascript"]:checked + label em {
   background-position: -50px 0;
 }
-.icon:hover {
-  filter: brightness(60%);
+input[id="javascript"]:hover + label em {
+  background-position: -50px 0;
 }
 
 input[id="java"] {
@@ -1042,8 +1040,8 @@ input[id="java"] + label em {
 input[id="java"]:checked + label em {
   background-position: -50px 0;
 }
-.icon:hover {
-  filter: brightness(60%);
+input[id="java"]:hover + label em {
+  background-position: -50px 0;
 }
 
 input[id="kotlin"] {
@@ -1059,8 +1057,8 @@ input[id="kotlin"] + label em {
 input[id="kotlin"]:checked + label em {
   background-position: -50px 0;
 }
-.icon:hover {
-  filter: brightness(60%);
+input[id="kotlin"]:hover + label em {
+  background-position: -50px 0;
 }
 
 input[id="kubernetes"] {
@@ -1076,8 +1074,8 @@ input[id="kubernetes"] + label em {
 input[id="kubernetes"]:checked + label em {
   background-position: -50px 0;
 }
-.icon:hover {
-  filter: brightness(60%);
+input[id="kubernetes"]:hover + label em {
+  background-position: -50px 0;
 }
 
 input[id="mongodb"] {
@@ -1093,8 +1091,8 @@ input[id="mongodb"] + label em {
 input[id="mongodb"]:checked + label em {
   background-position: -50px 0;
 }
-.icon:hover {
-  filter: brightness(60%);
+input[id="mongodb"]:hover + label em {
+  background-position: -50px 0;
 }
 
 input[id="mysql"] {
@@ -1110,8 +1108,8 @@ input[id="mysql"] + label em {
 input[id="mysql"]:checked + label em {
   background-position: -50px 0;
 }
-.icon:hover {
-  filter: brightness(60%);
+input[id="mysql"]:hover + label em {
+  background-position: -50px 0;
 }
 
 input[id="nodejs"] {
@@ -1127,8 +1125,8 @@ input[id="nodejs"] + label em {
 input[id="nodejs"]:checked + label em {
   background-position: -50px 0;
 }
-.icon:hover {
-  filter: brightness(60%);
+input[id="nodejs"]:hover + label em {
+  background-position: -50px 0;
 }
 
 input[id="photoshop"] {
@@ -1144,8 +1142,8 @@ input[id="photoshop"] + label em {
 input[id="photoshop"]:checked + label em {
   background-position: -50px 0;
 }
-.icon:hover {
-  filter: brightness(60%);
+input[id="photoshop"]:hover + label em {
+  background-position: -50px 0;
 }
 
 input[id="python"] {
@@ -1161,8 +1159,8 @@ input[id="python"] + label em {
 input[id="python"]:checked + label em {
   background-position: -50px 0;
 }
-.icon:hover {
-  filter: brightness(60%);
+input[id="python"]:hover + label em {
+  background-position: -50px 0;
 }
 
 input[id="react"] {
@@ -1178,8 +1176,8 @@ input[id="react"] + label em {
 input[id="react"]:checked + label em {
   background-position: -50px 0;
 }
-.icon:hover {
-  filter: brightness(60%);
+input[id="react"]:hover + label em {
+  background-position: -50px 0;
 }
 
 input[id="spring"] {
@@ -1195,8 +1193,8 @@ input[id="spring"] + label em {
 input[id="spring"]:checked + label em {
   background-position: -50px 0;
 }
-.icon:hover {
-  filter: brightness(60%);
+input[id="spring"]:hover + label em {
+  background-position: -50px 0;
 }
 
 input[id="tensorflow"] {
@@ -1212,8 +1210,8 @@ input[id="tensorflow"] + label em {
 input[id="tensorflow"]:checked + label em {
   background-position: -50px 0;
 }
-.icon:hover {
-  filter: brightness(60%);
+input[id="tensorflow"]:hover + label em {
+  background-position: -50px 0;
 }
 
 input[id="typescript"] {
@@ -1229,8 +1227,8 @@ input[id="typescript"] + label em {
 input[id="typescript"]:checked + label em {
   background-position: -50px 0;
 }
-.icon:hover {
-  filter: brightness(60%);
+input[id="typescript"]:hover + label em {
+  background-position: -50px 0;
 }
 
 input[id="unity"] {
@@ -1246,8 +1244,8 @@ input[id="unity"] + label em {
 input[id="unity"]:checked + label em {
   background-position: -50px 0;
 }
-.icon:hover {
-  filter: brightness(60%);
+input[id="unity"]:hover + label em {
+  background-position: -50px 0;
 }
 
 input[id="vue"] {
@@ -1263,8 +1261,8 @@ input[id="vue"] + label em {
 input[id="vue"]:checked + label em {
   background-position: -50px 0;
 }
-.icon:hover {
-  filter: brightness(60%);
+input[id="vue"]:hover + label em {
+  background-position: -50px 0;
 }
 
 
