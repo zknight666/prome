@@ -75,7 +75,7 @@ $(function(){
 				$.each(data.list, function(index, items){
 				  html += '<tr align="center">';
 				  html += '<td align="center" class="td_column_check_manager">';
-				  html += '<input class="mx-4 check_checkbox" type="checkbox" value="' + items.id + '">';
+				  html += '<input class="mx-4 check_checkbox" type="checkbox" value="'+items.id+'">';
 				  html += '</td>';
 				  html += '<td>' + items.name + '</td>';
 				  html += '<td>' + items.id + '</td>';
@@ -97,18 +97,21 @@ $(function(){
 		}); //ajax
 		
 		
-		$('.btn btn-outline-dark px-2 py-1').click(function(){
+		$('.py-1').click(function(){
 		    var checkedUser = $('input[type=checkbox]:checked').map(function () {
 		        return $(this).val();
 		    }).get();
 		
+		console.log(checkedUser);
+		
 		    $.ajax({
 		        type: "post",
 		        url: "/prome/project/adminDeleteUser",
-		        data: JSON.stringify({ checkedUser : checkedUser }),
+		        data: JSON.stringify({ 'checkedUser' : checkedUser }),
 		        contentType: "application/json",
 		        success: function(result){
-		            console.log(result);
+		            window.alert(checkedUser +"가 삭제 되었습니다.");
+    				location.reload();
 		        },
 		        error: function(request, status, error){
 		            console.log("ajax error");

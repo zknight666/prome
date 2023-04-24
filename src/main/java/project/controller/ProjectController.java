@@ -14,6 +14,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonParser;
+
 import project.bean.ProjectDTO;
 import project.service.ProjectService;
 import user.bean.UserDTO;
@@ -105,7 +107,9 @@ public class ProjectController {
 	
 	@PostMapping(value="adminDeleteUser")
 	@ResponseBody
-	public void adminDeleteUser(@RequestParam("checkedUser") List<String> checkedUser) {
+	public void adminDeleteUser(@RequestBody String checkedUser) {
+		System.out.println("controller = "+checkedUser);
+		
 		projectService.adminDeleteUser(checkedUser);
 	}
 	

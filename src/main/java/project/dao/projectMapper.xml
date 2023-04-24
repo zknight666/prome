@@ -82,9 +82,10 @@
 	select count(*) from user_table
  </select>
  
- <delete id="adminDeleteUser" parameterType="java.util.List">
- 	delete from user_table where id in(#{id})
+ <delete id="adminDeleteUser" parameterType="String">
+ 	delete from user_table where id=#{id}
  </delete>
+
 	
  </mapper>
  

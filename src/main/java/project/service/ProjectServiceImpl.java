@@ -100,9 +100,10 @@ public class ProjectServiceImpl implements ProjectService {
 		return map2;
 	}
 
+
 	@Override
-	public void adminDeleteUser(List<String> checkedUser) {
-		projectDAO.adminDeleteUser(checkedUser);
+	public void adminDeleteUser(String checkedUser) {
+		projectDAO.adminDeleteUser(checkedUser);		
 	}
 
 }

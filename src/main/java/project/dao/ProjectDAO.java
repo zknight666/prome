@@ -21,5 +21,5 @@ public interface ProjectDAO {
 
 	int getUserTotalA();
 
-	void adminDeleteUser(List<String> checkedUser);
+	void adminDeleteUser(String checkedUser);
 }

@@ -19,5 +19,5 @@ public interface ProjectService {
 
 	Map<String, Object> adminGetUserList(String userPg);
 
-	void adminDeleteUser(List<String> checkedUser);
+	void adminDeleteUser(String checkedUser);
 }
