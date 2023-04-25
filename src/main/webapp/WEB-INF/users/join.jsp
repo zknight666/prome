@@ -432,6 +432,16 @@
 		});
 	</script>
 	<script src="../js/scripts.js"></script>
+	
+	<script type="text/javascript"
+		src="//dapi.kakao.com/v2/maps/sdk.js?appKey=13e23dd91c08ebf7c2ee79eee67a16fd"></script>
+	<script type="text/javascript">
+		$('.kakao').click(function(){
+			location.href='/prome/users/snsLogin?sns=kakao';	
+		});
+	</script>
+	
+	
 </body>
 
 </html>

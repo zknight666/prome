@@ -22,22 +22,12 @@
 <link href="css/custom.css" rel="stylesheet" />
 <link rel="stylesheet" href="css/modal_01_signup.css">
 <link rel="stylesheet" href="css/modal_02_login.css">
-<!-- <link href="css/custom-styles.css" rel="stylesheet" /> -->
-<style>
-/* #paging {
-        float: left;
-        color: gray;
-        text-decoration: none;
-        padding: 5px;
-        margin: 5px;
-    }
-    #currentPaging, #paging{
-      cursor: pointer;
-    } */
-</style>
 </head>
 
 <body>
+	<!-- hidden -->
+	<input type="hidden" id="memId" value="${param.id}">
+	<!-- hidden -->
 	<div class="container">
 		<!-- Navigation-->
 		<nav class="navbar navbar-expand-lg navbar-light bg-light"
@@ -60,37 +50,44 @@
 							href="#" role="button" aria-haspopup="true" aria-expanded="false"></a>
 						</li>
 					</ul>
+					<!-- 세션 x -->
+					<div id="non_session"
+						style="display: flex; align-content: center; align-items: center;">
+						<form class="d-flex dropdown">
+							<button class="btn my-2 my-sm-0" id="loginBtn" type="button"
+								style="padding-right: 0">
+								<img src="assets\btn-login.png" />
+							</button>
+							<button class="btn my-2 my-sm-0" type="button"
+								style="padding-right: 0; padding-left: 0;">
+								<img class="signUp" src="./assets\btn-signup.png" />
+							</button>
+						</form>
+					</div>
+					<!-- 세션 o -->
+					<div id="session"
+						style="display: flex; align-content: center; align-items: center;">
+						<form class="d-flex dropdown">
+							<button class="btn my-2 my-sm-0" id="logoutBtn" type="button"
+								style="padding-right: 0">
+								<img src="./assets\btn-logout.png" />
+							</button>
 
-					<form class="d-flex dropdown">
-						<!-- <input class="form-control me-sm-2" type="search" placeholder="Search" /> -->
-						<button class="btn my-2 my-sm-0" id="loginBtn" type="button"
-							style="padding-right: 0">
-							<img src="assets\btn-login.png" />
-						</button>
-						<!-- <button class="btn my-2 my-sm-0" type="button" style="padding-right: 0">
-                <img src="assets\btn-logout.png" />
-              </button> -->
-						<button class="btn my-2 my-sm-0" type="button"
-							style="padding-right: 0; padding-left: 0;">
-							<img id="signUp" src="./assets\btn-signup.png" />
-						</button>
-						<!--  
-            <button class="btn my-2 my-sm-0 nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false"
-              data-bs-toggle="dropdown" style="margin-right: 0.5rem">
-              <img src="assets\account-circle.png" />
-            </button>
-            <div class="dropdown-menu" style="right: 0">
-              <div class="dropdown-item">*******님</div>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">마이페이지</a>
-
-              <a class="dropdown-item" href="#">내 모임 지원자 관리</a>
-
-              <a class="dropdown-item" href="#">회원 정보 수정</a>
-              <div class="dropdown-divider"></div>
-            </div>
-            -->
-					</form>
+							<button class="btn my-2 my-sm-0 nav-link dropdown-toggle"
+								aria-haspopup="true" aria-expanded="false"
+								data-bs-toggle="dropdown" style="margin-right: 0.5rem">
+								<img src="./assets\account-circle.png" />
+							</button>
+							<div class="dropdown-menu" style="right: 0">
+								<div class="dropdown-item">*******님</div>
+								<div class="dropdown-divider"></div>
+								<a class="dropdown-item" id="mypageBtn">마이페이지</a> <a
+									class="dropdown-item" href="#">내 모임 지원자 관리</a> <a
+									class="dropdown-item" id="userinfoBtn">회원 정보 수정</a>
+								<div class="dropdown-divider"></div>
+							</div>
+						</form>
+					</div>
 				</div>
 			</div>
 		</nav>
@@ -99,7 +96,6 @@
 			style="background-image: url('assets/main-banner.png'); background-size: auto; background-repeat: no-repeat; background-position: center; height: auto; min-height: 400px; background-color: #ffffff !important;"></header>
 
 		<!-- Section-->
-		<input type="hidden" id="id" value="${param.id}">
 		<section class="container">
 			<div class="container px-4 px-lg-5 mt-5">
 				<!--첫번째 줄-->
@@ -156,9 +152,10 @@
 						</div>
 					</div>
 				</div>
-				
+
 				<!--카드 섹션 시작-->
-				<div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 mb-4">
+				<div
+					class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 mb-4">
 
 					<!--카드-1-->
 					<div class="col mb-4">
@@ -322,7 +319,7 @@
 					</div>
 					<!--카드 End-->
 
-					
+
 
 
 
@@ -395,16 +392,18 @@
 			</div>
 			*ID
 			<div class="div_center">
-				<input class="div_id" type="text" required="required">
+				<input class="div_id" id="prome_id" type="text">
 			</div>
 			*Password
 			<div class="div_center">
-				<input class="div_password" type="password" required="required">
+				<input class="div_password" id="prome_pwd" type="password">
 			</div>
 
 
-			<button type="button" class="btn btn-outline-secondary radious">로그인</button>
-			<button type="button" class="btn btn-outline-secondary radious">회원가입</button>
+			<button type="button" id="login"
+				class="btn btn-outline-secondary radious">로그인</button>
+			<button type="button"
+				class="btn btn-outline-secondary radious signUp">회원가입</button>
 
 		</div>
 	</div>
@@ -417,14 +416,31 @@
 	<script src="js/scripts.js"></script>
 	<script type="text/javascript"
 		src="http://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script src="./js/login.js"></script>
 	<script type="text/javascript">
-		$('#signUp').click(function() {
-			location.href='/prome/users/join';
-		});	
-		$('#logo').click(function() {
-			location.href='/prome/';
+		/* 세션에 따른 nav 변화 */
+		$(function() {
+			if ($('#memId').val() == '') {
+				$('#session').attr("style", "display:none;");
+				$('#non_session').attr("style", "display:flex;");
+			} else if ($('#memId').val() != '') {
+				$('#session').attr("style", "display:flex;");
+				$('#non_session').attr("style", "display:none;");
+			}
 		});
-		
+
+		/* 버튼 관련 */
+		$('#logoutBtn').click(function(){
+			$('#memId').val('');
+			location.replace('/prome/');
+		});
+		$('.signUp').click(function() {
+			location.href = '/prome/users/join';
+		});
+		$('#logo').click(function() {
+			location.href = '/prome/';
+		});
+
 		// modal
 		$("#loginBtn").click(function() {
 			$(".loginModal_1").parent().attr("class", "modalWrapOpen_1");
@@ -433,10 +449,17 @@
 		$(".closeBtn_1").click(function() {
 			$(".loginModal_1").parent().attr("class", "modalWrapClose_1");
 		});
-
+		$(".closeBtn").click(function() {
+			$(".loginModal").parent().attr("class", "modalWrapClose");
+		});
 		$('.signupBtn_1').click(function() {
 			$(".loginModal").parent().attr("class", "modalWrapOpen");
 			$(".loginModal_1").parent().attr("class", "modalWrapClose_1");
+		});
+	</script>
+	<script type="text/javascript">
+		$('.kakao').click(function(){
+			location.href = 'https://kauth.kakao.com/oauth/authorize?client_id=c1470fd313699120970a042d8d2bcd51&redirect_uri=http://localhost:8080/prome/oauth/kakao&response_type=code';
 		});
 	</script>
 </body>

@@ -94,7 +94,7 @@
 									<span class="h5" style="font-weight: 800;">* 아이디</span>
 								</div>
 								<div>
-									<input class="box" type="text" id="id" value="qwe" readonly>
+									<input class="box" type="text" id="id" value="byun" readonly>
 								</div>
 							</div>
 							<div class="p-4">
@@ -333,13 +333,13 @@
 	<script src="../js/userinfo.js"></script>
 	<script type="text/javascript">
 		$('#mypageBtn').click(function() {
-			location.replace('/prome/users/mypage')
+			location.replace = '/prome/users/mypage';
 		});
 		$('#userinfoBtn').click(function() {
-			location.replace('/prome/users/userinfo')
+			location.replace = '/prome/users/userinfo';
 		});
 		$('#logoutBtn').click(function() {
-			location.replace('/prome/')
+			location.href = '/prome/';
 		});
 	</script>
 </body>
