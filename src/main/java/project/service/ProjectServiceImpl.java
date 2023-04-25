@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+import project.bean.ProjCardDTO;
 import project.bean.ProjectDTO;
 import project.bean.ProjectPaging;
 import project.dao.ProjectDAO;
@@ -68,8 +69,32 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
     @Override
-    public List<ProjectDTO> getBookmark() {
-        return projectDAO.getBookmark();
+    public List<String> getBookmark(String user_id) {
+        return projectDAO.getBookmark(user_id);
     }
 
+    @Override
+    public void addBookmark(String user_id, String project_id) {
+        projectDAO.addBookmark(user_id, project_id);
+    }
+
+    @Override
+    public void deleteBookmark(String user_id, String project_id) {
+        projectDAO.deleteBookmark(user_id, project_id);
+    }
+
+    @Override
+    public List<Map<String, Object>> getSupportedProjects(String user_id) {
+        return projectDAO.getSupportedProjects(user_id);
+    }
+
+    @Override
+    public Map<String, List<String>> getMyTeams(String user_id) {
+        return projectDAO.getMyTeams(user_id);
+    }
+
+    @Override
+    public ProjCardDTO getProjectCard(String user_id, String project_id) {
+        return projectDAO.getProjectCard(user_id, project_id);
+    }
 }

@@ -20,6 +20,15 @@
   <link href="../css/slick.css" rel="stylesheet" />
   <link href="../css/slick-theme.css" rel="stylesheet" />
   <link rel="stylesheet" href="../css/modal_04_unsubscribe.css">
+  <style>
+    .middleWrap .right .heartCount {
+      display: flex;
+    }
+    .projectGridWrap{
+      min-width: 260px;
+      max-width: 270px;
+    }
+  </style>
 </head>
 
 <body>
@@ -71,11 +80,11 @@
             <div class="dropdown-menu" style="right: 0">
               <div class="dropdown-item">*******님</div>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">마이페이지</a>
+              <a class="dropdown-item" href="/prome/users/mypage">마이페이지</a>
 
-              <a class="dropdown-item" href="#">내 모임 지원자 관리</a>
+              <a class="dropdown-item" href="/prome/project/applicants">내 모임 지원자 관리</a>
 
-              <a class="dropdown-item" href="#">회원 정보 수정</a>
+              <a class="dropdown-item" href="/prome/users/userinfo">회원 정보 수정</a>
               <div class="dropdown-divider"></div>
             </div>
           </form>
@@ -113,74 +122,57 @@
         <!-- 1. 관심목록 시작-->
         <div class="slider-favorites">
           <!--카드-1-->
-          <div>
-            <div class="projectGridWrap" style="width: 260px; padding-left: 0; padding-right: 0">
+          <div class="fav-1" data-project-id="35">
+            <div class="projectGridWrap" style="padding-left: 0; padding-right: 0">
               <div class="projectTopInfo">
                 <div class="top" style="flex-direction: row-reverse">
-                  <div class="favorite"></div>
+<%--                  <div class="favorite"></div>--%>
+                  <button class="favorite" type="button"></button>
+
                 </div>
                 <div class="projectThumb">
-                  <img loading="lazy" src="../assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                    style="vertical-align: middle" />
+                  <img loading="lazy" src="../assets/images/project-thumb-default.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                       style="vertical-align: middle" />
                 </div>
               </div>
               <div class="projectBottomInfo">
                 <div class="txtWrap projectWrap">
-                  <h3 class="category">소셜네트워크</h3>
-                  <h2 class="tit">[서울] 내 글이 상장되는 ‘비법거래소'입니다</h2>
+                  <h3 class="category">category</h3>
+                  <h2 class="tit">Title</h2>
                   <div class="iconWrap2">
-                    <img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg" alt="Figma"
-                      title="Figma" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/flutter/flutter-original.svg"
-                      alt="Flutter" title="Flutter" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/react/react-original.svg" alt="React"
-                      title="React" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/amazonwebservices/amazonwebservices-original.svg"
-                      alt="AWS" title="AWS" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/nodejs/nodejs-original.svg" alt="NodeJS"
-                      title="NodeJS" /><img loading="lazy"
-                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/spring/spring-original.svg" alt="Spring"
-                      title="Spring" />
+<%--                    <img loading="lazy"--%>
+<%--                      src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg" alt="Figma"--%>
+<%--                      title="Figma" />--%>
+
                   </div>
                 </div>
               </div>
               <div class="projectInfo2">
                 <div class="middleWrap">
                   <div class="left">
-                    <div class="heartCount">
-                      <img loading="lazy" src="../assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
-                    </div>
+
                   </div>
                   <div class="right">
-                    <p><span> 509</span><span> (↑26)</span></p>
+                    <div class="heartCount">
+                      <img loading="lazy" src="../assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span></span>
+                    </div>
                   </div>
                 </div>
+
                 <div class="bottomWrap">
                   <div class="gatherTxt">
-                    <div>
-                      <span>모집완료</span><span>2/8</span>
+                    <div class="gatherTxt2"> <!--이 class명 임의로 추가한 것임, 기존 코드에 없음 -->
+                      <span>모집완료</span>
+                      <span>0/0</span>
                       <div class="ic-arrow">
                         <img loading="lazy" src="../assets/images/ic-arrow-up.svg" alt="프로젝트 모집현황" />
                       </div>
                     </div>
                     <div class="gatherModal">
                       <ul>
-                        <h3>
-                          <li><span>그래픽디자인</span><span>1명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>UI/UX디자인</span><span>1명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>크로스플랫폼</span><span>2명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>작가/블로거</span><span>1명</span></li>
-                        </h3>
-                        <h3>
-                          <li><span>투자/고문</span><span>1명</span></li>
-                        </h3>
+
+                        <!--동적으로 모집 분야별 현황 들어옴-->
+
                       </ul>
                     </div>
                   </div>
@@ -192,14 +184,14 @@
 
           <!--카드-2-->
           <div>
-            <div class="projectGridWrap" style="width: 260px; padding-left: 0; padding-right: 0">
+            <div class="projectGridWrap" style="padding-left: 0; padding-right: 0">
               <div class="projectTopInfo">
                 <div class="top" style="flex-direction: row-reverse">
                   <div class="favorite"></div>
                 </div>
                 <div class="projectThumb">
-                  <img loading="lazy" src="../assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                    style="vertical-align: middle" />
+                  <img loading="lazy" src="../assets/images/project-thumb-finance.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                       style="vertical-align: middle" />
                 </div>
               </div>
               <div class="projectBottomInfo">
@@ -209,7 +201,8 @@
                   <div class="iconWrap2">
                     <img loading="lazy"
                       src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/figma/figma-original.svg" alt="Figma"
-                      title="Figma" /><img loading="lazy"
+                      title="Figma" />
+                    <img loading="lazy"
                       src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/flutter/flutter-original.svg"
                       alt="Flutter" title="Flutter" /><img loading="lazy"
                       src="https://letspl.s3.ap-northeast-2.amazonaws.com/icons/react/react-original.svg" alt="React"
@@ -226,12 +219,12 @@
               <div class="projectInfo2">
                 <div class="middleWrap">
                   <div class="left">
+
+                  </div>
+                  <div class="right">
                     <div class="heartCount">
                       <img loading="lazy" src="../assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
                     </div>
-                  </div>
-                  <div class="right">
-                    <p><span> 509</span><span> (↑26)</span></p>
                   </div>
                 </div>
                 <div class="bottomWrap">
@@ -270,14 +263,14 @@
 
           <!--카드-3-->
           <div>
-            <div class="projectGridWrap" style="width: 260px; padding-left: 0; padding-right: 0">
+            <div class="projectGridWrap" style="padding-left: 0; padding-right: 0">
               <div class="projectTopInfo">
                 <div class="top" style="flex-direction: row-reverse">
                   <div class="favorite"></div>
                 </div>
                 <div class="projectThumb">
-                  <img loading="lazy" src="../assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                    style="vertical-align: middle" />
+                  <img loading="lazy" src="../assets/images/project-thumb-finance.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                       style="vertical-align: middle" />
                 </div>
               </div>
               <div class="projectBottomInfo">
@@ -304,12 +297,12 @@
               <div class="projectInfo2">
                 <div class="middleWrap">
                   <div class="left">
+
+                  </div>
+                  <div class="right">
                     <div class="heartCount">
                       <img loading="lazy" src="../assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
                     </div>
-                  </div>
-                  <div class="right">
-                    <p><span> 509</span><span> (↑26)</span></p>
                   </div>
                 </div>
                 <div class="bottomWrap">
@@ -348,14 +341,14 @@
 
           <!--카드-4-->
           <div>
-            <div class="projectGridWrap" style="width: 260px; padding-left: 0; padding-right: 0">
+            <div class="projectGridWrap" style="padding-left: 0; padding-right: 0">
               <div class="projectTopInfo">
                 <div class="top" style="flex-direction: row-reverse">
                   <div class="favorite"></div>
                 </div>
                 <div class="projectThumb">
-                  <img loading="lazy" src="../assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                    style="vertical-align: middle" />
+                  <img loading="lazy" src="../assets/images/project-thumb-finance.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                       style="vertical-align: middle" />
                 </div>
               </div>
               <div class="projectBottomInfo">
@@ -382,14 +375,16 @@
               <div class="projectInfo2">
                 <div class="middleWrap">
                   <div class="left">
+
+                  </div>
+                  <div class="right">
                     <div class="heartCount">
                       <img loading="lazy" src="../assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
                     </div>
                   </div>
-                  <div class="right">
-                    <p><span> 509</span><span> (↑26)</span></p>
-                  </div>
                 </div>
+
+
                 <div class="bottomWrap">
                   <div class="gatherTxt">
                     <div>
@@ -426,14 +421,14 @@
           <!--카드 End-->
           <!--카드-5-->
           <div>
-            <div class="projectGridWrap" style="width: 260px; padding-left: 0; padding-right: 0">
+            <div class="projectGridWrap" style="padding-left: 0; padding-right: 0">
               <div class="projectTopInfo">
                 <div class="top" style="flex-direction: row-reverse">
                   <div class="favorite"></div>
                 </div>
                 <div class="projectThumb">
-                  <img loading="lazy" src="../assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                    style="vertical-align: middle" />
+                  <img loading="lazy" src="../assets/images/project-thumb-finance.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                       style="vertical-align: middle" />
                 </div>
               </div>
               <div class="projectBottomInfo">
@@ -460,12 +455,12 @@
               <div class="projectInfo2">
                 <div class="middleWrap">
                   <div class="left">
+
+                  </div>
+                  <div class="right">
                     <div class="heartCount">
                       <img loading="lazy" src="../assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
                     </div>
-                  </div>
-                  <div class="right">
-                    <p><span> 509</span><span> (↑26)</span></p>
                   </div>
                 </div>
                 <div class="bottomWrap">
@@ -504,14 +499,14 @@
 
           <!--카드-6-->
           <div>
-            <div class="projectGridWrap" style="width: 260px; padding-left: 0; padding-right: 0">
+            <div class="projectGridWrap" style="padding-left: 0; padding-right: 0">
               <div class="projectTopInfo">
                 <div class="top" style="flex-direction: row-reverse">
                   <div class="favorite"></div>
                 </div>
                 <div class="projectThumb">
-                  <img loading="lazy" src="../assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                    style="vertical-align: middle" />
+                  <img loading="lazy" src="../assets/images/project-thumb-finance.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                       style="vertical-align: middle" />
                 </div>
               </div>
               <div class="projectBottomInfo">
@@ -538,12 +533,12 @@
               <div class="projectInfo2">
                 <div class="middleWrap">
                   <div class="left">
+
+                  </div>
+                  <div class="right">
                     <div class="heartCount">
                       <img loading="lazy" src="../assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
                     </div>
-                  </div>
-                  <div class="right">
-                    <p><span> 509</span><span> (↑26)</span></p>
                   </div>
                 </div>
                 <div class="bottomWrap">
@@ -592,14 +587,14 @@
         <div class="slider-apply-project">
           <!--카드-1-->
           <div>
-            <div class="projectGridWrap" style="width: 260px; padding-left: 0; padding-right: 0">
+            <div class="projectGridWrap" style="padding-left: 0; padding-right: 0">
               <div class="projectTopInfo">
                 <div class="top" style="flex-direction: row-reverse">
                   <div class="favorite"></div>
                 </div>
                 <div class="projectThumb">
-                  <img loading="lazy" src="../assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                    style="vertical-align: middle" />
+                  <img loading="lazy" src="../assets/images/project-thumb-finance.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                       style="vertical-align: middle" />
                 </div>
               </div>
               <div class="projectBottomInfo">
@@ -626,12 +621,12 @@
               <div class="projectInfo2">
                 <div class="middleWrap">
                   <div class="left">
+
+                  </div>
+                  <div class="right">
                     <div class="heartCount">
                       <img loading="lazy" src="../assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
                     </div>
-                  </div>
-                  <div class="right">
-                    <p><span> 509</span><span> (↑26)</span></p>
                   </div>
                 </div>
                 <div class="bottomWrap">
@@ -670,14 +665,14 @@
 
           <!--카드-2-->
           <div>
-            <div class="projectGridWrap" style="width: 260px; padding-left: 0; padding-right: 0">
+            <div class="projectGridWrap" style="padding-left: 0; padding-right: 0">
               <div class="projectTopInfo">
                 <div class="top" style="flex-direction: row-reverse">
                   <div class="favorite"></div>
                 </div>
                 <div class="projectThumb">
-                  <img loading="lazy" src="../assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                    style="vertical-align: middle" />
+                  <img loading="lazy" src="../assets/images/project-thumb-finance.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                       style="vertical-align: middle" />
                 </div>
               </div>
               <div class="projectBottomInfo">
@@ -704,12 +699,12 @@
               <div class="projectInfo2">
                 <div class="middleWrap">
                   <div class="left">
+
+                  </div>
+                  <div class="right">
                     <div class="heartCount">
                       <img loading="lazy" src="../assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
                     </div>
-                  </div>
-                  <div class="right">
-                    <p><span> 509</span><span> (↑26)</span></p>
                   </div>
                 </div>
                 <div class="bottomWrap">
@@ -748,14 +743,14 @@
 
           <!--카드-3-->
           <div>
-            <div class="projectGridWrap" style="width: 260px; padding-left: 0; padding-right: 0">
+            <div class="projectGridWrap" style="padding-left: 0; padding-right: 0">
               <div class="projectTopInfo">
                 <div class="top" style="flex-direction: row-reverse">
                   <div class="favorite"></div>
                 </div>
                 <div class="projectThumb">
-                  <img loading="lazy" src="../assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                    style="vertical-align: middle" />
+                  <img loading="lazy" src="../assets/images/project-thumb-finance.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                       style="vertical-align: middle" />
                 </div>
               </div>
               <div class="projectBottomInfo">
@@ -782,12 +777,12 @@
               <div class="projectInfo2">
                 <div class="middleWrap">
                   <div class="left">
+
+                  </div>
+                  <div class="right">
                     <div class="heartCount">
                       <img loading="lazy" src="../assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
                     </div>
-                  </div>
-                  <div class="right">
-                    <p><span> 509</span><span> (↑26)</span></p>
                   </div>
                 </div>
                 <div class="bottomWrap">
@@ -826,14 +821,14 @@
 
           <!--카드-4-->
           <div>
-            <div class="projectGridWrap" style="width: 260px; padding-left: 0; padding-right: 0">
+            <div class="projectGridWrap" style="padding-left: 0; padding-right: 0">
               <div class="projectTopInfo">
                 <div class="top" style="flex-direction: row-reverse">
                   <div class="favorite"></div>
                 </div>
                 <div class="projectThumb">
-                  <img loading="lazy" src="../assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                    style="vertical-align: middle" />
+                  <img loading="lazy" src="../assets/images/project-thumb-finance.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                       style="vertical-align: middle" />
                 </div>
               </div>
               <div class="projectBottomInfo">
@@ -860,12 +855,12 @@
               <div class="projectInfo2">
                 <div class="middleWrap">
                   <div class="left">
+
+                  </div>
+                  <div class="right">
                     <div class="heartCount">
                       <img loading="lazy" src="../assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
                     </div>
-                  </div>
-                  <div class="right">
-                    <p><span> 509</span><span> (↑26)</span></p>
                   </div>
                 </div>
                 <div class="bottomWrap">
@@ -904,14 +899,14 @@
           <!--카드 End-->
           <!--카드-5-->
           <div>
-            <div class="projectGridWrap" style="width: 260px; padding-left: 0; padding-right: 0">
+            <div class="projectGridWrap" style="padding-left: 0; padding-right: 0">
               <div class="projectTopInfo">
                 <div class="top" style="flex-direction: row-reverse">
                   <div class="favorite"></div>
                 </div>
                 <div class="projectThumb">
-                  <img loading="lazy" src="../assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                    style="vertical-align: middle" />
+                  <img loading="lazy" src="../assets/images/project-thumb-finance.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                       style="vertical-align: middle" />
                 </div>
               </div>
               <div class="projectBottomInfo">
@@ -938,12 +933,12 @@
               <div class="projectInfo2">
                 <div class="middleWrap">
                   <div class="left">
+
+                  </div>
+                  <div class="right">
                     <div class="heartCount">
                       <img loading="lazy" src="../assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
                     </div>
-                  </div>
-                  <div class="right">
-                    <p><span> 509</span><span> (↑26)</span></p>
                   </div>
                 </div>
                 <div class="bottomWrap">
@@ -982,14 +977,14 @@
 
           <!--카드-6-->
           <div>
-            <div class="projectGridWrap" style="width: 260px; padding-left: 0; padding-right: 0">
+            <div class="projectGridWrap" style="padding-left: 0; padding-right: 0">
               <div class="projectTopInfo">
                 <div class="top" style="flex-direction: row-reverse">
                   <div class="favorite"></div>
                 </div>
                 <div class="projectThumb">
-                  <img loading="lazy" src="../assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                    style="vertical-align: middle" />
+                  <img loading="lazy" src="../assets/images/project-thumb-finance.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                       style="vertical-align: middle" />
                 </div>
               </div>
               <div class="projectBottomInfo">
@@ -1016,12 +1011,12 @@
               <div class="projectInfo2">
                 <div class="middleWrap">
                   <div class="left">
+
+                  </div>
+                  <div class="right">
                     <div class="heartCount">
                       <img loading="lazy" src="../assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
                     </div>
-                  </div>
-                  <div class="right">
-                    <p><span> 509</span><span> (↑26)</span></p>
                   </div>
                 </div>
                 <div class="bottomWrap">
@@ -1071,14 +1066,14 @@
         <div class="slider-my-team">
           <!--카드-1-->
           <div>
-            <div class="projectGridWrap" style="width: 260px; padding-left: 0; padding-right: 0">
+            <div class="projectGridWrap" style="padding-left: 0; padding-right: 0">
               <div class="projectTopInfo">
                 <div class="top" style="flex-direction: row-reverse">
                   <div class="favorite"></div>
                 </div>
                 <div class="projectThumb">
-                  <img loading="lazy" src="../assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                    style="vertical-align: middle" />
+                  <img loading="lazy" src="../assets/images/project-thumb-finance.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                       style="vertical-align: middle" />
                 </div>
               </div>
               <div class="projectBottomInfo">
@@ -1105,12 +1100,12 @@
               <div class="projectInfo2">
                 <div class="middleWrap">
                   <div class="left">
+
+                  </div>
+                  <div class="right">
                     <div class="heartCount">
                       <img loading="lazy" src="../assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
                     </div>
-                  </div>
-                  <div class="right">
-                    <p><span> 509</span><span> (↑26)</span></p>
                   </div>
                 </div>
                 <div class="bottomWrap">
@@ -1149,14 +1144,14 @@
 
           <!--카드-2-->
           <div>
-            <div class="projectGridWrap" style="width: 260px; padding-left: 0; padding-right: 0">
+            <div class="projectGridWrap" style="padding-left: 0; padding-right: 0">
               <div class="projectTopInfo">
                 <div class="top" style="flex-direction: row-reverse">
                   <div class="favorite"></div>
                 </div>
                 <div class="projectThumb">
-                  <img loading="lazy" src="../assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                    style="vertical-align: middle" />
+                  <img loading="lazy" src="../assets/images/project-thumb-finance.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                       style="vertical-align: middle" />
                 </div>
               </div>
               <div class="projectBottomInfo">
@@ -1183,12 +1178,12 @@
               <div class="projectInfo2">
                 <div class="middleWrap">
                   <div class="left">
+
+                  </div>
+                  <div class="right">
                     <div class="heartCount">
                       <img loading="lazy" src="../assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
                     </div>
-                  </div>
-                  <div class="right">
-                    <p><span> 509</span><span> (↑26)</span></p>
                   </div>
                 </div>
                 <div class="bottomWrap">
@@ -1227,14 +1222,14 @@
 
           <!--카드-3-->
           <div>
-            <div class="projectGridWrap" style="width: 260px; padding-left: 0; padding-right: 0">
+            <div class="projectGridWrap" style="padding-left: 0; padding-right: 0">
               <div class="projectTopInfo">
                 <div class="top" style="flex-direction: row-reverse">
                   <div class="favorite"></div>
                 </div>
                 <div class="projectThumb">
-                  <img loading="lazy" src="../assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                    style="vertical-align: middle" />
+                  <img loading="lazy" src="../assets/images/project-thumb-finance.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                       style="vertical-align: middle" />
                 </div>
               </div>
               <div class="projectBottomInfo">
@@ -1261,12 +1256,12 @@
               <div class="projectInfo2">
                 <div class="middleWrap">
                   <div class="left">
+
+                  </div>
+                  <div class="right">
                     <div class="heartCount">
                       <img loading="lazy" src="../assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
                     </div>
-                  </div>
-                  <div class="right">
-                    <p><span> 509</span><span> (↑26)</span></p>
                   </div>
                 </div>
                 <div class="bottomWrap">
@@ -1305,14 +1300,14 @@
 
           <!--카드-4-->
           <div>
-            <div class="projectGridWrap" style="width: 260px; padding-left: 0; padding-right: 0">
+            <div class="projectGridWrap" style="padding-left: 0; padding-right: 0">
               <div class="projectTopInfo">
                 <div class="top" style="flex-direction: row-reverse">
                   <div class="favorite"></div>
                 </div>
                 <div class="projectThumb">
-                  <img loading="lazy" src="../assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                    style="vertical-align: middle" />
+                  <img loading="lazy" src="../assets/images/project-thumb-finance.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                       style="vertical-align: middle" />
                 </div>
               </div>
               <div class="projectBottomInfo">
@@ -1339,12 +1334,12 @@
               <div class="projectInfo2">
                 <div class="middleWrap">
                   <div class="left">
+
+                  </div>
+                  <div class="right">
                     <div class="heartCount">
                       <img loading="lazy" src="../assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
                     </div>
-                  </div>
-                  <div class="right">
-                    <p><span> 509</span><span> (↑26)</span></p>
                   </div>
                 </div>
                 <div class="bottomWrap">
@@ -1383,14 +1378,14 @@
           <!--카드 End-->
           <!--카드-5-->
           <div>
-            <div class="projectGridWrap" style="width: 260px; padding-left: 0; padding-right: 0">
+            <div class="projectGridWrap" style="padding-left: 0; padding-right: 0">
               <div class="projectTopInfo">
                 <div class="top" style="flex-direction: row-reverse">
                   <div class="favorite"></div>
                 </div>
                 <div class="projectThumb">
-                  <img loading="lazy" src="../assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                    style="vertical-align: middle" />
+                  <img loading="lazy" src="../assets/images/project-thumb-finance.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                       style="vertical-align: middle" />
                 </div>
               </div>
               <div class="projectBottomInfo">
@@ -1417,12 +1412,12 @@
               <div class="projectInfo2">
                 <div class="middleWrap">
                   <div class="left">
+
+                  </div>
+                  <div class="right">
                     <div class="heartCount">
                       <img loading="lazy" src="../assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
                     </div>
-                  </div>
-                  <div class="right">
-                    <p><span> 509</span><span> (↑26)</span></p>
                   </div>
                 </div>
                 <div class="bottomWrap">
@@ -1461,14 +1456,14 @@
 
           <!--카드-6-->
           <div>
-            <div class="projectGridWrap" style="width: 260px; padding-left: 0; padding-right: 0">
+            <div class="projectGridWrap" style="padding-left: 0; padding-right: 0">
               <div class="projectTopInfo">
                 <div class="top" style="flex-direction: row-reverse">
                   <div class="favorite"></div>
                 </div>
                 <div class="projectThumb">
-                  <img loading="lazy" src="../assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                    style="vertical-align: middle" />
+                  <img loading="lazy" src="../assets/images/project-thumb-finance.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                       style="vertical-align: middle" />
                 </div>
               </div>
               <div class="projectBottomInfo">
@@ -1495,12 +1490,12 @@
               <div class="projectInfo2">
                 <div class="middleWrap">
                   <div class="left">
+
+                  </div>
+                  <div class="right">
                     <div class="heartCount">
                       <img loading="lazy" src="../assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
                     </div>
-                  </div>
-                  <div class="right">
-                    <p><span> 509</span><span> (↑26)</span></p>
                   </div>
                 </div>
                 <div class="bottomWrap">
@@ -1586,105 +1581,9 @@
   <script src="../js/scripts.js"></script>
   <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script type="text/javascript" src="../js/slick.min.js"></script>
+  <script type="text/javascript" src="../js/mypage.js"></script>
 
-  <script type="text/javascript">
-    $(function () {
-      $('.slider-favorites').slick({
-        arrows: true,
-        prevArrow:
-          "<input type='image' class='slick-prev' src= '../assets/arrow-back.png' style='width: 40px; height: 40px'></input>",
-        nextArrow:
-          "<input type='image' class='slick-next' src= '../assets/arrow-forward.png' style='width: 20px; height: 40px'></input>",
-        dots: true,
-        slidesToShow: 4,
-        slidesToScroll: 4,
-        responsive: [
-          // 반응형 웹 구현 옵션
-          {
-            breakpoint: 1200, //화면 사이즈 1200px
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 3,
-            },
-          },
-          {
-            breakpoint: 960, //화면 사이즈 960px
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2,
-            },
-          },
-        ],
-      }); //.slider-favorites
 
-      $('.slider-apply-project').slick({
-        arrows: true,
-        prevArrow:
-          "<input type='image' class='slick-prev' src= '../assets/arrow-back.png' style='width: 40px; height: 40px'></input>",
-        nextArrow:
-          "<input type='image' class='slick-next' src= '../assets/arrow-forward.png' style='width: 20px; height: 40px'></input>",
-        dots: true,
-        slidesToShow: 4,
-        slidesToScroll: 4,
-        responsive: [
-          // 반응형 웹 구현 옵션
-          {
-            breakpoint: 1200, //화면 사이즈 1200px
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 3,
-            },
-          },
-          {
-            breakpoint: 960, //화면 사이즈 960px
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2,
-            },
-          },
-        ],
-      }); //.slider-apply-project
-
-      $('.slider-my-team').slick({
-        arrows: true,
-        prevArrow:
-          "<input type='image' class='slick-prev' src= '../assets/arrow-back.png' style='width: 40px; height: 40px'></input>",
-        nextArrow:
-          "<input type='image' class='slick-next' src= '../assets/arrow-forward.png' style='width: 20px; height: 40px'></input>",
-        dots: true,
-        slidesToShow: 4,
-        slidesToScroll: 4,
-        responsive: [
-          // 반응형 웹 구현 옵션
-          {
-            breakpoint: 1200, //화면 사이즈 1200px
-            settings: {
-              slidesToShow: 3,
-              slidesToScroll: 3,
-            },
-          },
-          {
-            breakpoint: 960, //화면 사이즈 960px
-            settings: {
-              slidesToShow: 2,
-              slidesToScroll: 2,
-            },
-          },
-        ],
-      }); //.slider-my-team
-    });
-   	
-    // modal
-    $("#deleteBtn").click(function () {
-        $(".loginModal").parent().attr("class", "modalWrapOpen");
-    });
-    $(".closeBtn").click(function () {
-        $(".loginModal").parent().attr("class", "modalWrapClose");
-    });
-    $('#cancel').click(function () {
-        $(".loginModal").parent().attr("class", "modalWrapClose");
-    });
-  </script>
 </body>
 
 </html>

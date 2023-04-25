@@ -171,8 +171,8 @@
                   <div class="favorite"></div>
                 </div>
                 <div class="projectThumb">
-                  <img loading="lazy" src="assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                    style="vertical-align: middle" />
+                  <img loading="lazy" src="assets/images/project-thumb-finance.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                       style="vertical-align: middle" />
                 </div>
               </div>
               <div class="projectBottomInfo">
@@ -253,8 +253,8 @@
                   <div class="favorite"></div>
                 </div>
                 <div class="projectThumb">
-                  <img loading="lazy" src="assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                    style="vertical-align: middle" />
+                  <img loading="lazy" src="assets/images/project-thumb-finance.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                       style="vertical-align: middle" />
                 </div>
               </div>
               <div class="projectBottomInfo">
@@ -331,8 +331,8 @@
                   <div class="favorite"></div>
                 </div>
                 <div class="projectThumb">
-                  <img loading="lazy" src="assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                    style="vertical-align: middle" />
+                  <img loading="lazy" src="assets/images/project-thumb-finance.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                       style="vertical-align: middle" />
                 </div>
               </div>
               <div class="projectBottomInfo">
@@ -412,8 +412,8 @@
                   <div class="favorite"></div>
                 </div>
                 <div class="projectThumb">
-                  <img loading="lazy" src="assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                    style="vertical-align: middle" />
+                  <img loading="lazy" src="assets/images/project-thumb-finance.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                       style="vertical-align: middle" />
                 </div>
               </div>
               <div class="projectBottomInfo">
@@ -490,8 +490,8 @@
                     <div class="favorite"></div>
                   </div>
                   <div class="projectThumb">
-                    <img loading="lazy" src="assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                      style="vertical-align: middle" />
+                    <img loading="lazy" src="assets/images/project-thumb-finance.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                         style="vertical-align: middle" />
                   </div>
                 </div>
                 <div class="projectBottomInfo">
@@ -571,8 +571,8 @@
                     <div class="favorite"></div>
                   </div>
                   <div class="projectThumb">
-                    <img loading="lazy" src="assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                      style="vertical-align: middle" />
+                    <img loading="lazy" src="assets/images/project-thumb-finance.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                         style="vertical-align: middle" />
                   </div>
                 </div>
                 <div class="projectBottomInfo">
@@ -649,8 +649,8 @@
                     <div class="favorite"></div>
                   </div>
                   <div class="projectThumb">
-                    <img loading="lazy" src="assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                      style="vertical-align: middle" />
+                    <img loading="lazy" src="assets/images/project-thumb-finance.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                         style="vertical-align: middle" />
                   </div>
                 </div>
                 <div class="projectBottomInfo">
@@ -730,8 +730,8 @@
                     <div class="favorite"></div>
                   </div>
                   <div class="projectThumb">
-                    <img loading="lazy" src="assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                      style="vertical-align: middle" />
+                    <img loading="lazy" src="assets/images/project-thumb-finance.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                         style="vertical-align: middle" />
                   </div>
                 </div>
                 <div class="projectBottomInfo">
@@ -808,8 +808,8 @@
                     <div class="favorite"></div>
                   </div>
                   <div class="projectThumb">
-                    <img loading="lazy" src="assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                      style="vertical-align: middle" />
+                    <img loading="lazy" src="assets/images/project-thumb-finance.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                         style="vertical-align: middle" />
                   </div>
                 </div>
                 <div class="projectBottomInfo">
@@ -889,8 +889,8 @@
                     <div class="favorite"></div>
                   </div>
                   <div class="projectThumb">
-                    <img loading="lazy" src="assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                      style="vertical-align: middle" />
+                    <img loading="lazy" src="assets/images/project-thumb-finance.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                         style="vertical-align: middle" />
                   </div>
                 </div>
                 <div class="projectBottomInfo">
@@ -967,8 +967,8 @@
                     <div class="favorite"></div>
                   </div>
                   <div class="projectThumb">
-                    <img loading="lazy" src="assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                      style="vertical-align: middle" />
+                    <img loading="lazy" src="assets/images/project-thumb-finance.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                         style="vertical-align: middle" />
                   </div>
                 </div>
                 <div class="projectBottomInfo">
@@ -1048,8 +1048,8 @@
                     <div class="favorite"></div>
                   </div>
                   <div class="projectThumb">
-                    <img loading="lazy" src="assets/images/project_thumb_13.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
-                      style="vertical-align: middle" />
+                    <img loading="lazy" src="assets/images/project-thumb-finance.png" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                         style="vertical-align: middle" />
                   </div>
                 </div>
                 <div class="projectBottomInfo">

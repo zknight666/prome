@@ -13,10 +13,7 @@
  </insert>
 
  <select id="getProject" parameterType="String" resultType="project">
-  select * project values(#{id}, #{team_Leader}, #{title},
-  #{field}, #{content}, #{start_Date}, #{due_Date}, #{member_Joined},
-  #{created_At}, #{member_Need}, #{recruit_State})
-  where id=#{project_id}
+  select * from project where id=#{project_id}
  </select>
 
  <select id="getAdminpage1" parameterType="java.util.Map" resultType="project">
@@ -62,13 +59,102 @@
   <select id="getUserList" resultType="user.bean.UserDTO">
   select * from user_table;
  </select>
+
+<!-- 북마크 추가-->
+ <insert id="addBookmark" parameterType="java.util.HashMap">
+  insert into BOOKMARK values(BOOKMARK_SEQ.NEXTVAL, #{user_id}, #{project_id} )
+ </insert>
+
+ <!-- 북마크 삭제-->
+ <delete id="deleteBookmark" parameterType="java.util.HashMap">
+  delete BOOKMARK where user_id=#{user_id} and project_id=#{project_id}
+ </delete>
+
+
+
+
  
  <!-- 해당 User의 북마크 목록 가져오기-->
- <!-- user_id 받아서 List<projectDTO> 반환함-->
- <select id="getBookmark" parameterType="String" resultType="project">
+ <!-- user_id 받아서 List<String> 반환함-->
+ <select id="getBookmark" parameterType="String" resultType="String">
   SELECT project_id from bookmark WHERE user_id=#{user_id} ORDER BY id desc
  </select>
-	
+
+ <!-- 해당 User가 지원한 프로젝트 목록 가져오기-->
+ <!-- user_id 받아서 List<HashMap> project_id, 지원상태 반환함-->
+ <select id="getSupportedProjects" parameterType="String" resultType="java.util.HashMap">
+  SELECT project_id, status from application WHERE user_id=#{user_id} ORDER BY id desc
+ </select>
+
+ <!-- 해당 User가 팀장으로 있는 프로젝트 목록 가져오기-->
+ <!-- user_id 받아서 List<String>로 project_id반환함-->
+ <select id="getMyTeams_leader" parameterType="String" resultType="String">
+  SELECT project_id from project WHERE team_leader=#{user_id} ORDER BY id desc
+ </select>
+
+ <!-- 해당 User가 팀원으로 있는 프로젝트 목록 가져오기-->
+ <!-- user_id 받아서 List<String>로 project_id반환함-->
+ <select id="getMyTeams_member" parameterType="String" resultType="String">
+  SELECT id from TEAM_MEMBER
+  WHERE member1=#{user_id} OR member2=#{user_id} OR member3=#{user_id}
+  OR member4=#{user_id} OR member5=#{user_id} OR member6=#{user_id} OR
+  member7=#{user_id} OR member8=#{user_id} OR member9=#{user_id}
+  ORDER BY id desc
+ </select>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ <!-- 이 아래 다 getProjCard 위한 것-->
+<!-- 해당 유저의 관심목록에 들어있는 프로젝트인지 여부 확인용-->
+ <select id="isBookmark" parameterType="java.util.Map" resultType="String">
+   SELECT project_id from BOOKMARK where user_id=#{user_id} and project_id=#{project_id}
+ </select>
+
+ <!-- 프로젝트 적용 기술 갖고 옴-->
+ <select id="techStack" parameterType="String" resultType="java.util.HashMap">
+  SELECT * from PROJECT_TECH_STACK where project_id=#{project_id}
+ </select>
+
+ <!-- 해당 프로젝트가 관심목록으로 담긴 수 -->
+ <select id="heartCount" parameterType="String" resultType="int">
+  SELECT count(*) from BOOKMARK where project_id=#{project_id}
+ </select>
+
+<!-- 모집 분야별 모집할 멤버 수-->
+ <select id="recField" parameterType="String" resultType="java.util.HashMap">
+  SELECT UI_UX_PLAN, PLAN_ETC, GRAPHIC_DESIGN, UI_UX_DESIGN, DESIGN_ETC, IOS, ANDROID, WEB_FE, WEB_PUBLISHER
+  CROSS_FLATFORM, WEB_SERVER, BLOCK_CHAIN, AI, BIG_DATA, GAME_PLAN, PM
+  from RECRUITMENT_FIELD where project_id=#{project_id}
+ </select>
+
+ <!-- 특정 프로젝트의 멤버(user_id) -->
+ <select id="projectMember" parameterType="String" resultType="java.util.HashMap">
+  select member1, member2, member3, member4, member5, member6, member7, member8, member9 from TEAM_MEMBER where id=#{project_id}
+ </select>
+
+
+<!-- 분야별 모집한 멤버 수  이거 틀릴수도 있음! 확인해야 함-->
+ <select id="memberField" parameterType="java.util.Map" resultType="String">
+  SELECT app_field from APPLICATION where user_id in
+  <foreach collection="member_arr" item="member_id" open="(" close=")" separator=",">
+   #{member_id}
+  </foreach>
+ </select>
+
+
+
  </mapper>
  
  

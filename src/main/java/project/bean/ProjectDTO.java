@@ -4,9 +4,11 @@ import java.util.Date;
 import java.util.List;
 import lombok.Getter;
 import lombok.Setter;
+import org.springframework.context.annotation.Scope;
 
 @Getter
 @Setter
+@Scope("prototype")
 public class ProjectDTO {
 
 	private int id;
