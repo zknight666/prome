@@ -10,6 +10,7 @@ import javax.servlet.http.HttpSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.bean.ProjectDTO;
+import project.bean.ProjectMainpageDTO;
 import project.bean.ProjectPaging;
 import project.dao.ProjectDAO;
 import user.bean.UserDTO;
@@ -116,11 +117,17 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
 
+	@Override
+	public List<ProjectMainpageDTO> getMainProjects() {
+		// TODO Auto-generated method stub
+		return projectDAO.getMainProjects();
+	}
 
 
 //    @Override
 //    public List<ProjectDTO> getBookmark() {
 //        return projectDAO.getBookmark();
 //    }
+	
 
 }

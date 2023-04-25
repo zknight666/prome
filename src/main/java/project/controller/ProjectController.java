@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import project.bean.ProjectDTO;
+import project.bean.ProjectMainpageDTO;
 import project.service.ProjectService;
 import user.bean.UserDTO;
 
@@ -40,6 +41,16 @@ public class ProjectController {
 		projectService.buildProject(projectDTO);
 	}
 
+	
+	@GetMapping(value="getMainProjects")
+	@ResponseBody
+	public List<ProjectMainpageDTO> getMainProjects() {
+		return projectService.getMainProjects();
+	}
+	
+	
+	
+	
 	
 	@GetMapping(value="project")
 	public String project() {
@@ -98,6 +109,8 @@ public class ProjectController {
 //		return projectService.getBookmark();
 //	}
 	
+	
+
 	
 }
 

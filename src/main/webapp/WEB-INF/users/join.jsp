@@ -37,7 +37,7 @@
                 </button>
 
                 <div class="collapse navbar-collapse" id="navbarColor03">
-                    <img src="../assets/logo.png" style="cursor: pointer" />
+                    <img src="../assets/logo.png" style="cursor: pointer" onclick="location.href='/prome/'" />
 
                     <ul class="navbar-nav me-auto">
                         <li class="nav-item dropdown">

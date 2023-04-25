@@ -7,6 +7,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
 import project.bean.ProjectDTO;
+import project.bean.ProjectMainpageDTO;
 import user.bean.UserDTO;
 
 @Repository
@@ -50,9 +51,23 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 
 	@Override
 	public void buildProject(ProjectDTO projectDTO) {
-		sqlSession.insert("projectSQL.writeProject",projectDTO);
-		sqlSession.insert("projectSQL.project_tech_stack",projectDTO);
-		sqlSession.insert("projectSQL.recruitment_field",projectDTO);
+//		sqlSession.insert("projectSQL.writeProject",projectDTO);
+//		sqlSession.insert("projectSQL.project_tech_stack",projectDTO);
+//		sqlSession.insert("projectSQL.recruitment_field",projectDTO);
+		
+		sqlSession.insert("projectSQL.buildProject",projectDTO);
+		
+	}
+
+	@Override
+	public List<ProjectMainpageDTO> getMainProjects() {
+		
+		List<ProjectMainpageDTO>  list = sqlSession.selectList("projectSQL.getMainProjects");
+		System.out.println(list.get(0).getTitle()  + ", " + list.get(0).getRecruitmentFields() + ", " + list.get(0).getTechstacks());
+		return list;
+		
+		
+		
 	}
 
 

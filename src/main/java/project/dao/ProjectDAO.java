@@ -3,6 +3,7 @@ package project.dao;
 import java.util.List;
 import java.util.Map;
 import project.bean.ProjectDTO;
+import project.bean.ProjectMainpageDTO;
 import user.bean.UserDTO;
 
 public interface ProjectDAO {
@@ -19,5 +20,7 @@ public interface ProjectDAO {
     List<ProjectDTO> getBookmark();
 
 	public void buildProject(ProjectDTO projectDTO);
+
+	List<ProjectMainpageDTO> getMainProjects();
 
 }

@@ -142,7 +142,7 @@ $(document).ready(function() {
 		        success: function () {
 		        	localStorage.removeItem('tempSaveData');
 			        alert("프로젝트 작성이 완료되었습니다.");
-					location.href = '/prome/';
+					location.replace('/prome/');
 		        },
 		        error: function (err) {
 					console.log(err);

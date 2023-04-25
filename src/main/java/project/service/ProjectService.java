@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Service;
 import project.bean.ProjectDTO;
+import project.bean.ProjectMainpageDTO;
 import user.bean.UserDTO;
 
 @Service
@@ -16,6 +17,8 @@ public interface ProjectService {
     void deleteProject(int projectId);
 
     List<UserDTO> getUserList();
+
+	public List<ProjectMainpageDTO> getMainProjects();
 
 
 }
