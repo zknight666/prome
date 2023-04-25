@@ -94,7 +94,7 @@
 									<span class="h5" style="font-weight: 800;">* 아이디</span>
 								</div>
 								<div>
-									<input class="box" type="text" id="id" value="byun" readonly>
+									<input class="box" type="text" id="id" value="${param.id}" readonly>
 								</div>
 							</div>
 							<div class="p-4">

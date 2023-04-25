@@ -19,12 +19,8 @@ public interface ProjectService {
     
     void adminDeleteUser(String checkedUser);
 
-<<<<<<< HEAD
-=======
-    
     List<ProjectDTO> getBookmark();
 
 
->>>>>>> origin/develop-mn
 
 }

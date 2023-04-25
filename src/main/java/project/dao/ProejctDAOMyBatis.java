@@ -48,14 +48,12 @@ public class ProejctDAOMyBatis implements ProjectDAO {
         return sqlSession.selectList("projectSQL.getBookmark");
     }
 
-<<<<<<< HEAD
 	@Override
 	public void buildProject(ProjectDTO projectDTO) {
 		sqlSession.insert("projectSQL.writeProject",projectDTO);
 		sqlSession.insert("projectSQL.project_tech_stack",projectDTO);
 		sqlSession.insert("projectSQL.recruitment_field",projectDTO);
-=======
-
+	}
 	@Override
 	public List<UserDTO> adminGetUserList(Map<String, Integer> map) {
 		return sqlSession.selectList("projectSQL.adminGetUserList",map);
@@ -111,7 +109,7 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 //		}
 //			System.out.println("map = " +map); */
 //		sqlSession.delete("projectSQL.adminDeleteUser", checkedUser);		
->>>>>>> origin/develop-mn
+
 	}
 
 

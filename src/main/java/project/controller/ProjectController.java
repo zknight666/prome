@@ -104,23 +104,12 @@ public class ProjectController {
 	
 	
 	//mypage
-<<<<<<< HEAD
-//	@GetMapping(value="bookmark")
-//	@ResponseBody
-//	public List<ProjectDTO> bookmark() {
-//
-//		return projectService.getBookmark();
-//	}
-	
-	
-=======
+
 	@GetMapping(value="bookmark")
 	@ResponseBody
 	public List<ProjectDTO> bookmark() {
 
 		return projectService.getBookmark();
 	}
-	 
->>>>>>> origin/develop-mn
 }
 

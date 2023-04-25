@@ -2,154 +2,162 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
- 
- <mapper namespace="projectSQL">
-
- <insert id="writeProject" parameterType="project">
- 
-     <selectKey resultType="int" keyProperty="projectId" order="BEFORE">
-        SELECT PROJECT_SEQ.NEXTVAL as id FROM dual
-    </selectKey>
-    
-	insert into project (ID,TEAM_LEADER,TITLE,FIELD,CONTENT,START_DATE,DUE_DATE,member_joined,CREATED_AT,member_need,recruit_state)
-	                VALUES (#{projectId},'ddochi',#{title},
-	                		#{field},#{content},#{start_date},#{due_date},#{member_joined},
-	                		 sysdate,#{member_need},#{recruit_state})
-	                		
-	   
- </insert>
-
- <insert id="project_tech_stack" parameterType="project">
- 
-	insert into project_tech_stack (PROJECT_ID, FIGMA, PHOTOSHOP,IOS,ANDROID,REACT,VUE,FLUTTER,HTML_CSS,JAVASCRIPT,SPRING,JAVA,KOTLIN,NODE_JS,MONGODB,C_C#,GIT,AWS,DOCKER,KUBERNETES,TENSORFLOW,UNITY,PYTHON,MYSQL,TYPESCRIPT)                 		
-					VALUES (#{projectId},#{tech_stacks.figma},
-						        #{tech_stacks.photoshop},
-						        #{tech_stacks.ios},
-						        #{tech_stacks.android},
-						        #{tech_stacks.react},
-						        #{tech_stacks.vue},
-						        #{tech_stacks.flutter},
-						        #{tech_stacks.html_css},
-						        #{tech_stacks.javascript},
-						        #{tech_stacks.spring},
-						        #{tech_stacks.java},
-						        #{tech_stacks.kotlin},
-						        #{tech_stacks.node_js},
-						        #{tech_stacks.mongodb},
-						        #{tech_stacks.C_C#},
-						        #{tech_stacks.git},
-						        #{tech_stacks.aws},
-						        #{tech_stacks.docker},
-						        #{tech_stacks.kubernetes},
-						        #{tech_stacks.tensorflow},
-						        #{tech_stacks.unity},
-						        #{tech_stacks.python},
-						        #{tech_stacks.mysql},
-						        #{tech_stacks.typescript})
- </insert>
 
 
-<insert id="recruitment_field" parameterType="project">
-    INSERT INTO recruitment_field (PROJECT_ID,
-        <foreach collection="recruitmentFields" item="field" index="idx" separator=",">
-            ${field}
-        </foreach>
-    )
-    VALUES (#{projectId},
-        <foreach collection="recruitCounts" item="count" index="idx" separator=",">
-            #{count}
-        </foreach>
-    )
-</insert>
-		 		
- 
- 
- 
- 
- 
- 
+<mapper namespace="projectSQL">
 
- <select id="getProject" parameterType="String" resultType="project">
-  select * project values(#{id}, #{team_Leader}, #{title},
-  #{field}, #{content}, #{start_Date}, #{due_Date}, #{member_Joined},
-  #{created_At}, #{member_Need}, #{recruit_State})
-  where id=#{project_id}
- </select>
+	<insert id="writeProject" parameterType="project">
 
- <select id="getAdminpage1" parameterType="java.util.Map" resultType="project">
+		<selectKey resultType="int" keyProperty="projectId"
+			order="BEFORE">
+			SELECT PROJECT_SEQ.NEXTVAL as id FROM dual
+		</selectKey>
+
+		insert into project
+		(ID,TEAM_LEADER,TITLE,FIELD,CONTENT,START_DATE,DUE_DATE,member_joined,CREATED_AT,member_need,recruit_state)
+		VALUES (#{projectId},'ddochi',#{title},
+		#{field},#{content},#{start_date},#{due_date},#{member_joined},
+		sysdate,#{member_need},#{recruit_state})
+
+
+	</insert>
+
+	<insert id="project_tech_stack" parameterType="project">
+
+		insert into project_tech_stack (PROJECT_ID, FIGMA,
+		PHOTOSHOP,IOS,ANDROID,REACT,VUE,FLUTTER,HTML_CSS,JAVASCRIPT,SPRING,JAVA,KOTLIN,NODE_JS,MONGODB,C_C#,GIT,AWS,DOCKER,KUBERNETES,TENSORFLOW,UNITY,PYTHON,MYSQL,TYPESCRIPT)
+		VALUES (#{projectId},#{tech_stacks.figma},
+		#{tech_stacks.photoshop},
+		#{tech_stacks.ios},
+		#{tech_stacks.android},
+		#{tech_stacks.react},
+		#{tech_stacks.vue},
+		#{tech_stacks.flutter},
+		#{tech_stacks.html_css},
+		#{tech_stacks.javascript},
+		#{tech_stacks.spring},
+		#{tech_stacks.java},
+		#{tech_stacks.kotlin},
+		#{tech_stacks.node_js},
+		#{tech_stacks.mongodb},
+		#{tech_stacks.C_C#},
+		#{tech_stacks.git},
+		#{tech_stacks.aws},
+		#{tech_stacks.docker},
+		#{tech_stacks.kubernetes},
+		#{tech_stacks.tensorflow},
+		#{tech_stacks.unity},
+		#{tech_stacks.python},
+		#{tech_stacks.mysql},
+		#{tech_stacks.typescript})
+	</insert>
+
+
+	<insert id="recruitment_field" parameterType="project">
+		INSERT INTO recruitment_field (PROJECT_ID,
+		<foreach collection="recruitmentFields" item="field"
+			index="idx" separator=",">
+			${field}
+		</foreach>
+		)
+		VALUES (#{projectId},
+		<foreach collection="recruitCounts" item="count" index="idx"
+			separator=",">
+			#{count}
+		</foreach>
+		)
+	</insert>
+
+
+
+
+
+
+
+
+	<select id="getProject" parameterType="String"
+		resultType="project">
+		select * project values(#{id}, #{team_Leader}, #{title},
+		#{field}, #{content}, #{start_Date}, #{due_Date}, #{member_Joined},
+		#{created_At}, #{member_Need}, #{recruit_State})
+		where id=#{project_id}
+	</select>
+
+	<select id="getAdminpage1" parameterType="java.util.Map"
+		resultType="project">
   <![CDATA[
 			select * from
 			(select rownum rn, tt.* from
 			(select * from project where field=#{field} and recruit_state='ing') tt
 			)where rn>=#{startNum} and rn<=#{endNum}
 		]]>
- </select>
+	</select>
 
- <select id="getAdminpage2" parameterType="java.util.Map" resultType="project">
+	<select id="getAdminpage2" parameterType="java.util.Map"
+		resultType="project">
   <![CDATA[
 			select * from
 			(select rownum rn, tt.* from
 			(select * from project where field=#{field}) tt
 			)where rn>=#{startNum} and rn<=#{endNum}
 		]]>
- </select>
+	</select>
 
- <select id="getChosenTech" resultType="String">
-  SELECT chosen_tech
-  FROM Project_Tech_Stack
-  UNPIVOT INCLUDE NULLS (
-  chosen FOR chosen_tech IN (
-  figma, photoshop, ios, android, react, vue, flutter,
-  html_css, javascript, spring, java, Kotlin, node_js,
-  MongoDB, C_C#, Git, AWS, Docker, kubernetes, tensorflow,
-  unity, python, MySql, TypeScript
-  )
-  )WHERE chosen = 'y' and project_id=#{projectId};
- </select>
+	<select id="getChosenTech" resultType="String">
+		SELECT chosen_tech
+		FROM Project_Tech_Stack
+		UNPIVOT INCLUDE NULLS (
+		chosen FOR chosen_tech IN (
+		figma, photoshop, ios, android, react, vue, flutter,
+		html_css, javascript, spring, java, Kotlin, node_js,
+		MongoDB, C_C#, Git, AWS, Docker, kubernetes, tensorflow,
+		unity, python, MySql, TypeScript
+		)
+		)WHERE chosen = 'y' and project_id=#{projectId};
+	</select>
 
- <!-- 총글수 -->
- <select id="getTotalA" resultType="int">
-  select count(*) from project
- </select>
+	<!-- 총글수 -->
+	<select id="getTotalA" resultType="int">
+		select count(*) from project
+	</select>
 
- <delete id="adminDeleteProject" parameterType="int">
-  delete from project where id=#{projectId}
- </delete>
- 
- <select id="adminGetUserList" parameterType="java.util.Map" resultType="user">
+	<delete id="adminDeleteProject" parameterType="int">
+		delete from project where id=#{projectId}
+	</delete>
+
+	<select id="adminGetUserList" parameterType="java.util.Map"
+		resultType="user">
 	<![CDATA[
 		select * from
 		(select rownum rn, tt.* from
 		(select * from user_table) tt
 		)where rn>=#{startNum} and rn<=#{endNum}
 	]]>
+	</select>
+	<select id="getUserList" resultType="user.bean.UserDTO">
+		select * from user_table;
+	</select>
 
-  <select id="getUserList" resultType="user.bean.UserDTO">
-  select * from user_table;
- </select>
- 
- <!-- 해당 User의 북마크 목록 가져오기-->
- </select>
- 
- <!-- user 총인원 수 -->
- <select id="getUserTotalA" resultType="int">
-	select count(*) from user_table
- </select>
- 
- <delete id="adminDeleteUser" parameterType="String">
- 	delete from user_table where id=#{id}
- </delete>
- 
- 
-  <!-- 해당 User의 북마크 목록 가져오기-->
- <!-- user_id 받아서 List<projectDTO> 반환함-->
- <select id="getBookmark" parameterType="String" resultType="project">
-  SELECT project_id from bookmark WHERE user_id=#{user_id} ORDER BY id desc
- </select>
- 
- 
 
- </mapper>
+	<!-- user 총인원 수 -->
+	<select id="getUserTotalA" resultType="int">
+		select count(*) from user_table
+	</select>
+
+	<delete id="adminDeleteUser" parameterType="String">
+		delete from user_table where id=#{id}
+	</delete>
+
+
+	<!-- 해당 User의 북마크 목록 가져오기 -->
+	<!-- user_id 받아서 List<projectDTO> 반환함 -->
+	<select id="getBookmark" parameterType="String"
+		resultType="project">
+		SELECT project_id from bookmark WHERE user_id=#{user_id} ORDER BY id desc
+	</select>
+
+
+
+</mapper>
  
  
