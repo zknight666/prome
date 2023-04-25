@@ -368,7 +368,7 @@
 				<img loading="lazy" src="./assets/icon/ic-close.svg" alt="close">
 			</button>
 			<button class="loginBtn_1 naver">네이버 아이디로 가입</button>
-			<button class="loginBtn_1 kakao">카카오 계정으로 가입</button>
+			<button class="loginBtn_1 kakao" onclick="location.href='javascript:KakaoLogin()'">카카오 계정으로 가입</button>
 			<button class="loginBtn_1 facebook">페이스북 계정으로 가입</button>
 			<button class="loginBtn_1 google">구글 계정으로 가입</button>
 			<p class="loginNoticeTxt">
@@ -430,7 +430,7 @@
 		});
 
 		/* 버튼 관련 */
-		$('#logoutBtn').click(function(){
+		$('#logoutBtn').click(function() {
 			$('#memId').val('');
 			location.replace('/prome/');
 		});
@@ -457,10 +457,57 @@
 			$(".loginModal_1").parent().attr("class", "modalWrapClose_1");
 		});
 	</script>
+	<script type="text/javascript"
+		src="https://developers.kakao.com/sdk/js/kakao.min.js" charset="utf-8"></script>
 	<script type="text/javascript">
-		$('.kakao').click(function(){
-			location.href = 'https://kauth.kakao.com/oauth/authorize?client_id=c1470fd313699120970a042d8d2bcd51&redirect_uri=http://localhost:8080/prome/oauth/kakao&response_type=code';
-		});
+		window.Kakao.init("13e23dd91c08ebf7c2ee79eee67a16fd");
+
+		function KakaoLogin() {
+			window.Kakao.Auth.login({
+				scope:'profile_nickname',
+				success: function(authObj){
+					console.log(authObj);
+					window.Kakao.API.request({
+						url:'/v2/user/me',
+						success: res => {
+							const kakao_account=res.kakao_account;
+							console.log(kakao_account);
+							var id = kakao_account.profile.nickname;
+							console.log(id);
+							$.ajax({
+								type: "post",
+							    url: "/prome/users/getUser",
+							    data: "id=" + id,
+							    success: function (data) {
+							    	console.log(id);
+							    	console.log(JSON.stringify(data));
+							    	if (data=='') {
+							    		$.ajax({
+							    		    type: "post",
+							    		    url: "/prome/users/signup",
+							    		    data: "id=" + id,
+							    			success: function (data) {
+							    				alert("회원가입되셨습니다.");
+							    				location.replace('/prome?id='+id);
+							    			},
+							    			error: function (err) {
+							        	        alert("회원가입 실패했습니다.");
+							        	    }
+							    		});
+							        } else if (data!= '') {
+							        	location.replace('/prome?id='+id);	
+							        }
+							   	},
+							    error: function (err) {
+							        
+							    },
+							});
+							
+						}
+					})
+				}
+			});
+		}
 	</script>
 </body>
 

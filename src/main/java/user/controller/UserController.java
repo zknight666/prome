@@ -87,6 +87,6 @@ public class UserController {
 			return userService.updateIcon(iconDTO);
 		}
 		//회원정보 수정 end
-	
+
 }
 

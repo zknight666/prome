@@ -8,9 +8,10 @@
 	<!-- 회원가입 start -->
 	<insert id="signup" parameterType="user">
 		insert into User_table
+		(id,name,pwd,gender,email1,email2,phone1,phone2,phone3,address1,address2,address3,role,signup_date)
 		values(
 		#{id},#{name}, #{pwd},#{gender},#{email1},#{email2},#{phone1}
-		,#{phone2},#{phone3},#{address1},#{address2},#{address3},sysdate,'user')
+		,#{phone2},#{phone3},#{address1},#{address2},#{address3},'user',sysdate)
 	</insert>
 	<insert id="setIcon" parameterType="user.bean.IconDTO">
 		insert into User_Tech_Stack

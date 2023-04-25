@@ -19,11 +19,21 @@ public class UserDTO {
 	private String address1;
 	private String address2;
 	private String address3;
-	private String[] tech;
-
-	public UserDTO(String address1, String address2, String address3) {
+	
+	public UserDTO(String name, String pwd, String gender, String email1, String email2, String phone1, String phone2,
+			String phone3, String address1, String address2, String address3) {
+		this.name = "null";
+		this.pwd = "null";
+		this.gender = "n";
+		this.email1 = "null";
+		this.email2 = "null";
+		this.phone1 = "null";
+		this.phone2 = "null";
+		this.phone3 = "null";
 		this.address1 = "null";
 		this.address2 = "null";
 		this.address3 = "null";
 	}
+
+	
 }
