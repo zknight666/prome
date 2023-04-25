@@ -163,7 +163,7 @@
 
 
                 <div class="top" style="flex-direction: row-reverse">
-                  <button type="button" class="btn btn-outline-danger">삭제
+                  <button type="button" id="deleteProjectBtn" class="btn btn-outline-danger">삭제
                   </button>
                 </div>
 
@@ -1124,8 +1124,10 @@
         </div>
         
         <!--페이징 섹션 시작-->
+        <input type="text" id="projectPg" value="${projectPg}">
+        
         <div id="projectPaging" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-          <div style="width: auto">
+          <div id="projectPaging" style="width: auto">
             <ul class="pagination pagination-lg">
               <li class="page-item disabled">
                 <a class="page-link" href="#">&laquo;</a>
@@ -1252,8 +1254,7 @@
                 </div>
       
                 
-                <!--페이징 섹션 시작-->
-                <input type="hidden" id="userPg" value="${userPg}">
+                <!--페이징 섹션 시작-->              
                 
 		        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 		          <div id="userPaging" style="width: auto; margin-top: 40px;">
@@ -1331,8 +1332,8 @@
   <script src="../js/scripts.js"></script>
    <script src="../js/adminpage.js"></script>
   <script type="text/javascript">
-  	function userPaging(userPg){ 
-		location.href="/prome/project/adminpage?userPg=" +userPg;
+  	function projectPaging(projectPg){ 
+		location.href="/prome/project/adminpage?projectPg=" +projectPg;
 	}
     // modal
 

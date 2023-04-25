@@ -37,8 +37,8 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 
 
     @Override
-    public void deleteProject(int projectId) {
-        sqlSession.delete("userSQL.deleteProject", projectId);
+    public void adminDeleteProject(int projectId) {
+        sqlSession.delete("userSQL.adminDeleteProject", projectId);
 
     }
 

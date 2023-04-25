@@ -24,7 +24,7 @@ phone3 varchar2(10) not null,
 address1 varchar2(5),
 address2 varchar2(100),
 address3 varchar2(100),
-signup_date date not null,
+signup_date DATE DEFAULT sysdate,
 role varchar2(10) not null
 );
 

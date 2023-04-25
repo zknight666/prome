@@ -69,10 +69,11 @@ public class ProjectController {
 
 
 
-	@PostMapping(value = "deleteProject")
+	@PostMapping(value = "adminDeleteProject")
 	@ResponseBody
-	public void deleteProject(@RequestParam int projectId) {
-		projectService.deleteProject(projectId);
+	public void adminDeleteProject(@RequestParam int projectId) {
+		System.out.println(projectId);
+		projectService.adminDeleteProject(projectId);
 	}
 
 	
@@ -106,26 +107,6 @@ public class ProjectController {
 
 		return projectService.getBookmark();
 	}
-	
-	@PostMapping(value="getAdminpage")
-	@ResponseBody
-	public Map<String, Object> getAdminpage(
-			@RequestParam String field, 
-			@RequestParam String recruit_state,
-			@RequestParam int projectId,
-			@RequestParam String pg){
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("field", field);
-		map.put("recruit_state", recruit_state);
-		map.put("projectId", projectId);
-		map.put("pg", pg);
-		
-		return projectService.getAdminpage(map);
-	}
-
-
-	
-
- 
+	 
 }
 

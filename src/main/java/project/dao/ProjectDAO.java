@@ -11,7 +11,7 @@ public interface ProjectDAO {
     public List<String> getChosenTech(int projectId);
 
 
-    void deleteProject(int projectId);
+    void adminDeleteProject(int projectId);
 
 
     List<ProjectDTO> getBookmark();

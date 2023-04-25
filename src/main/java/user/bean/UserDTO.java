@@ -1,5 +1,7 @@
 package user.bean;
 
+import java.sql.Date;
+
 import lombok.Getter;
 import lombok.Setter;
 
@@ -19,6 +21,7 @@ public class UserDTO {
 	private String address1;
 	private String address2;
 	private String address3;
+	private Date signup_date;
 	private String[] tech;
 
 	public UserDTO(String address1, String address2, String address3) {

@@ -1165,7 +1165,7 @@
                 <div class="col pb-2" style="display: flex">
                   <span class="h2" style="font-weight: bold">회원관리</span>
                 </div>
-                <div class="section height-m800">
+                <div class="section height-m600">
                   <div class="m-4" style="height: auto;">
                     <!-- 동적 처리로 들어와야 할 거에요 ! 프로젝트 생성을 안 했을 경우 없습니다 띄워야 하니... -->
                     <!-- form start -->

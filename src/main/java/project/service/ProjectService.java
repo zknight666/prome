@@ -12,12 +12,15 @@ public interface ProjectService {
 
     Map<String, Object> getAdminpage(Map<String, Object> map);
 
-    void deleteProject(int projectId);
+    void adminDeleteProject(int projectId);
 
+    Map<String, Object> adminGetUserList(String userPg);
+    
+    void adminDeleteUser(String checkedUser);
+
+    
     List<ProjectDTO> getBookmark();
 
 
-	Map<String, Object> adminGetUserList(String userPg);
 
-	void adminDeleteUser(String checkedUser);
 }
