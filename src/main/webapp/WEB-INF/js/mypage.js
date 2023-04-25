@@ -8,7 +8,7 @@ $(function () {
     success: function (data) {
 
       if(data.isBookmark != null) { //관심목록에 있는 프로젝트인 경우 -> 풀하트 아이콘 표시
-        $('.fav-1 .top .favorite').addClass("active");
+        $('.fav-1 .top .favorite').attr("class", "favorite-active");
 
       }
 
@@ -109,137 +109,56 @@ $(function () {
       }
 
 
-
-
     },
     error: function (err) {
       console.log(err);
     }
   });
 
-
-
-  //projectCard heart click Listener
-//동적으로 생기는 태그에는 .click() 대신 .on()으로 이벤트를 걸어줘야 한다.
-
-//관심목록에 없는 프로젝트를 클릭한 경우 풀하트로 바꾸고 DB의 bookmark Table에 레코드를 추가함.
-//   $(document).on('click', '.top .top- .favorite', function (){
-//
-//     if$('.top .top- .favorite').is(':checked'); //체크가 되어 있으면=관심목록에 있는 프로젝트면
-//
-//     $.ajax({ //북마크 추가
-//       type: "POST",
-//       url: "/prome/project/addBookmark",
-//       data:{"user_id": "yhg",
-//         "project_id": $('.fav-1').data("project-id") },
-//       success: function (data) {
-//         console.log("북마크 추가했습니다.")
-//         $(this).remove();
-//         $('.fav-1 .projectTopInfo .top').append('<div class="top-active"><div className="favorite active"></div></div>');
-//       },
-//       error: function (err) {
-//         console.log(err);
-//       }
-//     })
-//
-//   });
-
-//관심목록에 있는 프로젝트인 경우 빈 하트로 바꾸고 DB의 bookmark Table에서 레코드를 제거함.
-//   $(document).on('click', '.top .favorite.active', function (){
-//
-//     $.ajax({ //북마크 삭제
-//       type: "POST",
-//       url: "/prome/project/deleteBookmark",
-//       data:{"user_id": "yhg",
-//         "project_id": $('.fav-1').data("project-id") },
-//       success: function (data) {
-//         console.log("북마크 삭제했습니다.")
-//
-//       },
-//       error: function (err) {
-//         console.log(err);
-//       }
-//     })
-//
-//
-//   });
-
-
-
 }); //$(function(){}); End
 
 
-//button hasclass()로 하기 시도
-// $(document).on('click', '.fav-1 .top .favorite', function (){
-//
-//   if($('.fav-1 .top .top- .favorite').hasClass('active')) { //체크가 되어 있으면=관심목록에 있는 프로젝트면
-//
-//     $.ajax({ //북마크 삭제
-//       type: "POST",
-//       url: "/prome/project/deleteBookmark",
-//       data:{"user_id": "yhg",
-//         "project_id": $('.fav-1').data("project-id") },
-//       success: function (data) {
-//         console.log("북마크 삭제했습니다.")
-//         $(this).toggleClass('active');
-//
-//       },
-//       error: function (err) {
-//         console.log(err);
-//       }
-//     })
-//     return false;
-//
-//
-//
-//   }else{
-//     $.ajax({ //북마크 추가
-//       type: "POST",
-//       url: "/prome/project/addBookmark",
-//       data:{"user_id": "yhg",
-//         "project_id": $('.fav-1').data("project-id") },
-//       success: function (data) {
-//         console.log("북마크 추가했습니다.")
-//         $(this).toggleClass('active');
-//       },
-//       error: function (err) {
-//         console.log(err);
-//       }
-//     })
-//
-//     return false;
-//
-//   }
-//
-//
-//
-// });
 
+//projectCard heart click Listener
+//동적으로 생기는 태그에는 .click() 대신 .on()으로 이벤트를 걸어줘야 한다.
 
+//관심목록에 없는 프로젝트를 클릭한 경우 풀하트로 바꾸고 DB의 bookmark Table에 레코드를 추가함.
+  $(document).on('click', '.top .favorite', function (){
 
+    $.ajax({ //북마크 추가
+      type: "POST",
+      url: "/prome/project/addBookmark",
+      data:{"user_id": "yhg",
+        "project_id": $('.fav-1').data("project-id") },
+      success: function (data) {
+        console.log("북마크 추가했습니다.")
+        $('.fav-1 .top .favorite').attr("class", "favorite-active");
+      },
+      error: function (err) {
+        console.log(err);
+      }
+    })
 
+  });
 
+//관심목록에 있는 프로젝트인 경우 빈 하트로 바꾸고 DB의 bookmark Table에서 레코드를 제거함.
+  $(document).on('click', '.top .favorite-active', function (){
 
+    $.ajax({ //북마크 삭제
+      type: "POST",
+      url: "/prome/project/deleteBookmark",
+      data:{"user_id": "yhg",
+        "project_id": $('.fav-1').data("project-id") },
+      success: function (data) {
+        console.log("북마크 삭제했습니다.")
+        $('.fav-1 .top .favorite-active').attr("class", "favorite");
+      },
+      error: function (err) {
+        console.log(err);
+      }
+    })
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
+  });
 
 
 

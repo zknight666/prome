@@ -28,6 +28,31 @@
       min-width: 260px;
       max-width: 270px;
     }
+
+    .top .favorite {
+      width: 22px;
+      height: 22px;
+      cursor: pointer;
+      background-image: url(../assets/images/ic-favorite-empty-white.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+    .top .favorite:hover {
+      background-image: url(../assets/images/ic-favorite-empty-hover.svg);
+    }
+    /*수정함*/
+    .top .favorite-active {
+      width: 22px;
+      height: 22px;
+      cursor: pointer;
+      background-image: url(../assets/images/ic-favorite-full.svg);
+      background-repeat: no-repeat;
+      background-size: contain;
+    }
+    /*수정함*/
+    .top .favorite-active:hover {
+      background-image: url(../assets/images/ic-favorite-empty-hover.svg);
+    }
   </style>
 </head>
 
@@ -126,8 +151,7 @@
             <div class="projectGridWrap" style="padding-left: 0; padding-right: 0">
               <div class="projectTopInfo">
                 <div class="top" style="flex-direction: row-reverse">
-<%--                  <div class="favorite"></div>--%>
-                  <button class="favorite" type="button"></button>
+                  <div class="favorite"></div>
 
                 </div>
                 <div class="projectThumb">
