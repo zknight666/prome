@@ -79,7 +79,7 @@
 								<img src="./assets\account-circle.png" />
 							</button>
 							<div class="dropdown-menu" style="right: 0">
-								<div class="dropdown-item">*******님</div>
+								<div class="dropdown-item">${param.id} 님</div>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" id="mypageBtn">마이페이지</a> <a
 									class="dropdown-item" href="#">내 모임 지원자 관리</a> <a
@@ -107,7 +107,7 @@
 					<div class="col" style="display: flex; flex-direction: row-reverse">
 						<button type="button" class="btn btn-primary"
 							style="background: rgb(28, 124, 224); border: none"
-							onclick="location.href='/prome/project/buildProject'">
+							onclick="location.href='/prome/project/buildProject?id=${param.id}'">
 							모임 생성</button>
 					</div>
 				</div>
@@ -438,7 +438,7 @@
 			location.href = '/prome/users/join';
 		});
 		$('#logo').click(function() {
-			location.href = '/prome/';
+			location.href = '/prome?id='+$('#memId').val();
 		});
 
 		// modal
@@ -457,11 +457,11 @@
 			$(".loginModal_1").parent().attr("class", "modalWrapClose_1");
 		});
 	</script>
+	<!-- sns 로그인 -->
 	<script type="text/javascript"
 		src="https://developers.kakao.com/sdk/js/kakao.min.js" charset="utf-8"></script>
 	<script type="text/javascript">
 		window.Kakao.init("13e23dd91c08ebf7c2ee79eee67a16fd");
-
 		function KakaoLogin() {
 			window.Kakao.Auth.login({
 				scope:'profile_nickname',
