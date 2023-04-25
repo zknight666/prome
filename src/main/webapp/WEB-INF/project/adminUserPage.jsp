@@ -101,16 +101,17 @@
         <!--탭 메뉴 nav 시작-->
         <ul class="nav nav-tabs" role="tablist">
           <li class="nav-item" role="presentation">
-            <a class="nav-link active" data-bs-toggle="tab" href="#home" aria-selected="true" role="tab" style="font-size: 1.5rem;">프로젝트 관리</a>
-          </li>
-          <li class="nav-item" role="presentation">
-            <a class="nav-link" id="manageUser" data-bs-toggle="tab" href="#profile" aria-selected="false" role="tab" tabindex="-1" style="font-size: 1.5rem;">회원 관리</a>
+            <a class="nav-link" id="manageProject" data-bs-toggle="tab" href="#profile" aria-selected="false" role="tab" tabindex="-1" style="font-size: 1.5rem;">프로젝트 관리</a>
           </li>      
+          <li class="nav-item" role="presentation">
+            <a class="nav-link active" data-bs-toggle="tab" href="#home" aria-selected="true" role="tab" style="font-size: 1.5rem;">회원 관리</a>
+          </li>
         </ul>
        
         <div id="myTabContent" class="tab-content"> <!--탭 메뉴 nav End-->
-         
-          <div class="tab-pane fade active show" id="home" role="tabpanel"> <!--프로젝트 관리 탭 Content-->
+        
+          <div class="tab-pane fade" id="profile" role="tabpanel">
+          <!-- <div class="tab-pane fade active show" id="home" role="tabpanel"> --> <!--프로젝트 관리 탭 Content-->
 
             <!--모집분야 필터링-->
             <div class="row mb-3 mt-5">
@@ -163,7 +164,7 @@
 
 
                 <div class="top" style="flex-direction: row-reverse">
-                  <button type="button" id="deleteProjectBtn" class="btn btn-outline-danger">삭제
+                  <button type="button" class="btn btn-outline-danger">삭제
                   </button>
                 </div>
 
@@ -1124,10 +1125,8 @@
         </div>
         
         <!--페이징 섹션 시작-->
-        <input type="text" id="projectPg" value="${projectPg}">
-        
         <div id="projectPaging" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
-          <div id="projectPaging" style="width: auto">
+          <div style="width: auto">
             <ul class="pagination pagination-lg">
               <li class="page-item disabled">
                 <a class="page-link" href="#">&laquo;</a>
@@ -1159,13 +1158,14 @@
 
 
           <!--회원 관리 탭 Content-->
-          <div class="tab-pane fade" id="profile" role="tabpanel">
+          <div class="tab-pane fade active show" id="home" role="tabpanel"> <!--프로젝트 관리 탭 Content-->
+          <!-- <div class="tab-pane fade" id="profile" role="tabpanel"> -->
             <div class="container px-4 px-lg-5 mt-5">
               <div class="row mb-3">
                 <div class="col pb-2" style="display: flex">
                   <span class="h2" style="font-weight: bold">회원관리</span>
                 </div>
-                <div class="section height-m800">
+                <div class="section height-m600">
                   <div class="m-4" style="height: auto;">
                     <!-- 동적 처리로 들어와야 할 거에요 ! 프로젝트 생성을 안 했을 경우 없습니다 띄워야 하니... -->
                     <!-- form start -->
@@ -1254,7 +1254,8 @@
                 </div>
       
                 
-                <!--페이징 섹션 시작-->              
+                <!--페이징 섹션 시작-->
+                <input type="hidden" id="userPg" value="${userPg}">
                 
 		        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
 		          <div id="userPaging" style="width: auto; margin-top: 40px;">
@@ -1330,10 +1331,10 @@
   <!-- Core theme JS-->
   <script src="../js/letspl.js"></script>
   <script src="../js/scripts.js"></script>
-   <script src="../js/adminpage.js"></script>
+   <script src="../js/adminUserPage.js"></script>
   <script type="text/javascript">
-  	function projectPaging(projectPg){ 
-		location.href="/prome/project/adminpage?projectPg=" +projectPg;
+  	function userPaging(userPg){ 
+		location.href="/prome/project/adminUserPage?userPg=" +userPg;
 	}
     // modal
 

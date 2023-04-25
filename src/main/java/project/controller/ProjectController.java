@@ -14,9 +14,19 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import com.fasterxml.jackson.core.JsonParser;
+
 import project.bean.ProjectDTO;
 import project.service.ProjectService;
 import user.bean.UserDTO;
+
+import org.springframework.web.bind.annotation.RequestParam;
+import org.springframework.web.bind.annotation.ResponseBody;
+
+import project.bean.ProjectDTO;
+import project.service.ProjectService;
+import user.bean.UserDTO;
+
 
 @Controller
 @RequestMapping(value="project")
@@ -54,43 +64,47 @@ public class ProjectController {
 	}
 	
 	
-	
 	@GetMapping(value="adminpage")
 	public String adminpage(@RequestParam(required = false, defaultValue = "1") String pg, Model model) {
 		model.addAttribute("pg", pg);
 		return "project/adminpage";
 	}
 
-	@PostMapping(value="adminpage")
-	@ResponseBody
-	public Map<String, Object> adminpage(
-		@RequestParam String field,
-		@RequestParam String recruit_state,
-		@RequestParam int projectId,
-		@RequestParam String pg){
-		Map<String, Object> map = new HashMap<String, Object>();
-		map.put("field", field);
-		map.put("recruit_state", recruit_state);
-		map.put("projectId", projectId);
-		map.put("pg", pg);
 
-		return projectService.getAdminpage(map);
+
+	@PostMapping(value = "adminDeleteProject")
+	@ResponseBody
+	public void adminDeleteProject(@RequestParam int projectId) {
+		System.out.println(projectId);
+		projectService.adminDeleteProject(projectId);
 	}
 
-	@PostMapping(value = "deleteProject")
-	@ResponseBody
-	public void deleteProject(@RequestParam int projectId) {
-		projectService.deleteProject(projectId);
+	
+	@GetMapping(value = "adminUserPage")
+	public String adminUserList(@RequestParam(required = false, defaultValue = "1") String userPg, Model model) {
+		model.addAttribute("userPg", userPg); //"pg"라는 이름으로 pg 값을 담음
+		return "project/adminUserPage"; //pg값을 담아서 여기로 간다
 	}
 
+	@PostMapping(value = "adminGetUserList")
+	@ResponseBody // dispatcher로 가지않게 하고, json으로 변환도 시켜줌!!!!!
+	public Map<String, Object> adminGetUserList(@RequestParam String userPg) {
 
-	@GetMapping(value = "userList")
-	@ResponseBody
-	public List<UserDTO> getUserList() {
-		return projectService.getUserList();
+		return projectService.adminGetUserList(userPg);
 	}
 
+	
+	@PostMapping(value="adminDeleteUser")
+	@ResponseBody
+	public void adminDeleteUser(@RequestBody String checkedUser) {
+		System.out.println("controller = "+checkedUser);
+		
+		projectService.adminDeleteUser(checkedUser);
+	}
+	
+	
 	//mypage
+<<<<<<< HEAD
 //	@GetMapping(value="bookmark")
 //	@ResponseBody
 //	public List<ProjectDTO> bookmark() {
@@ -99,5 +113,14 @@ public class ProjectController {
 //	}
 	
 	
+=======
+	@GetMapping(value="bookmark")
+	@ResponseBody
+	public List<ProjectDTO> bookmark() {
+
+		return projectService.getBookmark();
+	}
+	 
+>>>>>>> origin/develop-mn
 }
 

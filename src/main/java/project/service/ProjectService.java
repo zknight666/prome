@@ -13,9 +13,18 @@ public interface ProjectService {
 
     Map<String, Object> getAdminpage(Map<String, Object> map);
 
-    void deleteProject(int projectId);
+    void adminDeleteProject(int projectId);
 
-    List<UserDTO> getUserList();
+    Map<String, Object> adminGetUserList(String userPg);
+    
+    void adminDeleteUser(String checkedUser);
 
+<<<<<<< HEAD
+=======
+    
+    List<ProjectDTO> getBookmark();
+
+
+>>>>>>> origin/develop-mn
 
 }
