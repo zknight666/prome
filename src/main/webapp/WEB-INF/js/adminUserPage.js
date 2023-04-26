@@ -41,7 +41,7 @@ $(function(){
 			
 			//페이징 처리				
 			$('#userPaging').html(data.userPaging.pagingHTML);
-					},	
+		},	
 
 		error: function(err){
 			console.log(err);
@@ -56,7 +56,7 @@ $(function(){
 	    
 		console.log(checkedUser);
 		
-		if(confirm('아이디 ' +checkedUser+ ' 삭제하시겠습니까?')){
+		if(confirm('아이디 ' + checkedUser + ' 삭제하시겠습니까?')){
 		    $.ajax({
 		        type: "post",
 		        url: "/prome/project/adminDeleteUser",

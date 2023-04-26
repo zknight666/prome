@@ -1,5 +1,6 @@
 package project.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import net.sf.json.JSONArray;
+import project.bean.ApplicantsDTO;
 import project.bean.ProjectDTO;
 import user.bean.UserDTO;
 
@@ -32,7 +34,7 @@ public class ProejctDAOMyBatis implements ProjectDAO {
     }
 
     public List<String> getChosenTech(int projectId) {
-        return sqlSession.selectList("getChosenTech", projectId);
+        return sqlSession.selectList("projectSQL.getChosenTech", projectId);
     }
 
 
@@ -78,33 +80,28 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
-		
-
-/*
-		try {
-			String[] array = objectMapper.readValue(checkedUser, String[].class);
-			for(String print : array) {
-				System.out.println(print);
 				
-			}
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
-		}
-		
-//		String array = checkedUser;	
-//		System.out.println("dao = " +array);
-//		JSONArray jSONArray = new JSONArray();
-		
-		
-
-		
-//		for(int i=1; i<checkedUser.size(); i++) {
-//			Map<String, Object> map = new HashMap<String, Object>();
-//			map.put("checkedUser", checkedUser[i]);
-//		}
-//			System.out.println("map = " +map); */
-//		sqlSession.delete("projectSQL.adminDeleteUser", checkedUser);		
 	}
+
+	@Override
+	public List<Integer> getProjectId(String team_leader) {
+		return sqlSession.selectList("projectSQL.getProjectId", team_leader);
+	}
+	
+
+/*	@Override
+	public List<ApplicantsDTO> getApplicants(Integer ar) {
+		System.out.println(ar);
+		return sqlSession.selectList("projectSQL.getApplicants", ar);
+	}
+*/	
+	@Override
+	public List<ApplicantsDTO> getApplicants(Integer ar) {
+		System.out.println(ar);
+		return sqlSession.selectList("projectSQL.getApplicants", ar);
+	}
+
+
 
 
 }

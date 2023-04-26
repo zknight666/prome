@@ -91,13 +91,15 @@
                 "></header>
 
         <section class="container">
+        <input type="text" id="memId" value="ddochi">
+       <%--  <input type="text" id="memId" value="${memId}"> --%>
             <div class="container px-4 px-lg-5 mt-5">
                 <div class="row mb-3">
                     <div class="col pb-2" style="display: flex">
                         <span class="h2" style="font-weight: bold">프로젝트 지원자 관리</span>
                     </div>
                     <div class="section height-m800">
-                        <div class="m-4" style="height: 100%;">
+                        <div id="eachProjectDiv" class="m-4" style="height: 100%;">
                             <!-- 동적 처리로 들어와야 할 거에요 ! 프로젝트 생성을 안 했을 경우 없습니다 띄워야 하니... -->
                             <!-- 프로젝트 단위 start -->
                             <div style="height: auto; padding:0px 0px 16px 0px;">
@@ -115,7 +117,7 @@
                                 </table>
                                 <hr class="m-0" />
                                 <div class="div_height_table">
-                                    <table width="100%" style="font-weight: 400;">
+                                    <table id="applicantsUserTable" width="100%" style="font-weight: 400;">
                                         <tr style="text-align: center;">
                                             <td align="center" class="td_column_check">
                                                 <input class="mx-4 check_checkbox" type="checkbox">
@@ -241,11 +243,12 @@
         </footer>
     </div>
 
+    <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.4.min.js"></script>
     <!-- Bootstrap core JS-->
     <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
     <!-- Core theme JS-->
     <script src="../js/scripts.js"></script>
-    <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.4.min.js"></script>
+    <script src="../js/applicants.js"></script>
     <script type="text/javascript">
         $(function () {
             $("#allcheck").change(function () {

@@ -85,6 +85,18 @@
   SELECT project_id from bookmark WHERE user_id=#{user_id} ORDER BY id desc
  </select>
 
+
+	<select id="getProjectId" parameterType="String" resultType="Integer">
+		select id from project where team_leader=#{team_leader}
+	</select>
+	
+	<select id="getApplicants" parameterType="Integer" resultType="applicants">
+		select project_id, title, user_id, email1, email2, tech_stack, reason
+		from application a
+		join user_table u on a.user_id = u.id
+		join project p on a.project_id = p.id
+		where project_id=#{project_id}
+	</select>
 	
  </mapper>
  

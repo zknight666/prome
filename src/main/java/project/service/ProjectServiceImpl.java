@@ -1,10 +1,13 @@
 package project.service;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
+
+import project.bean.ApplicantsDTO;
 import project.bean.ProjectDTO;
 import project.bean.ProjectPaging;
 import project.dao.ProjectDAO;
@@ -19,6 +22,7 @@ public class ProjectServiceImpl implements ProjectService {
     private ProjectPaging projectPaging;
     @Autowired
     private UserPaging userPaging;
+    
 
     @Override
     public void buildProject(ProjectDTO projectDTO) {
@@ -105,5 +109,42 @@ public class ProjectServiceImpl implements ProjectService {
 	public void adminDeleteUser(String checkedUser) {
 		projectDAO.adminDeleteUser(checkedUser);		
 	}
+
+	@Override
+//	public List<List<ApplicantsDTO>> getApplicants(String team_leader) {
+	public List<Object> getApplicants(String team_leader) {
+		
+		List<Integer> list =  projectDAO.getProjectId(team_leader);
+		System.out.println(list);
+		
+	
+			
+	    List<Object> totalList = new ArrayList<>();
+	    for(Integer ar : list) {
+	        List<ApplicantsDTO> list2 = projectDAO.getApplicants(ar);
+	        System.out.println("list2 = " + list2);
+	        if(!list2.isEmpty()) 
+	        	totalList.add(list2);
+	    }
+	    System.out.println("totalList = " + totalList);
+	    return totalList;
+	}
+
+		
+/*		List<ApplicantsDTO> list2 = new ArrayList();
+		List<List<ApplicantsDTO>> total_list = new ArrayList();
+		
+		for(Integer ar : list) {
+		    list2.add(projectDAO.getApplicants(ar));
+		    System.out.println("list2 = " + list2);
+		    
+		    total_list.add(list2);
+		}
+		
+		 System.out.println("total_list = " + total_list);
+		
+		return total_list;
+	}
+ */
 
 }

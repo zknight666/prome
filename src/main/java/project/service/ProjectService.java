@@ -3,6 +3,8 @@ package project.service;
 import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Service;
+
+import project.bean.ApplicantsDTO;
 import project.bean.ProjectDTO;
 import user.bean.UserDTO;
 
@@ -20,6 +22,10 @@ public interface ProjectService {
 
     
     List<ProjectDTO> getBookmark();
+
+//    List<List<ApplicantsDTO>> getApplicants(String team_leader);
+    
+    List<Object> getApplicants(String team_leader);
 
 
 

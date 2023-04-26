@@ -2,6 +2,8 @@ package project.dao;
 
 import java.util.List;
 import java.util.Map;
+
+import project.bean.ApplicantsDTO;
 import project.bean.ProjectDTO;
 import user.bean.UserDTO;
 
@@ -22,4 +24,10 @@ public interface ProjectDAO {
 	int getUserTotalA();
 
 	void adminDeleteUser(String checkedUser);
+
+
+	List<Integer> getProjectId(String team_leader);
+
+//	List<ApplicantsDTO> getApplicants(Integer ar);
+	List<ApplicantsDTO> getApplicants(Integer ar);
 }

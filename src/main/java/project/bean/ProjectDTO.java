@@ -20,4 +20,6 @@ public class ProjectDTO {
 	private int member_need;
 	private Date created_at;
 	private String recruit_state;
+	
+
 }

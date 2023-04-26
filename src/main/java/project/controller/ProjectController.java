@@ -16,6 +16,7 @@ import org.springframework.web.bind.annotation.ResponseBody;
 
 import com.fasterxml.jackson.core.JsonParser;
 
+import project.bean.ApplicantsDTO;
 import project.bean.ProjectDTO;
 import project.service.ProjectService;
 import user.bean.UserDTO;
@@ -56,8 +57,22 @@ public class ProjectController {
 	
 	@GetMapping(value="applicants")
 	public String applicants() {
-		
 		return "project/applicants";
+	}
+	
+/*	@PostMapping(value="getApplicants")
+	@ResponseBody
+	public List<List<ApplicantsDTO>> getApplicants(@RequestParam String team_leader) {
+		System.out.println(team_leader);
+		return projectService.getApplicants(team_leader);
+	}
+	*/
+	
+	@PostMapping(value="getApplicants")
+	@ResponseBody
+	public List<Object> getApplicants(@RequestParam String team_leader) {
+		System.out.println(team_leader);
+		return projectService.getApplicants(team_leader);
 	}
 	
 	
