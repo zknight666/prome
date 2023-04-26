@@ -6,6 +6,9 @@
  
  <mapper namespace="projectSQL">
 
+
+
+<!-- 모임 생성 페이지 -->
  <insert id="buildProject" parameterType="project">
  
  
@@ -65,7 +68,7 @@ end;
 		
 		
 
- 
+ <!-- 메인 페이지 -->
 <select id="getMainProjects" resultType="project.bean.ProjectMainpageDTO">
 SELECT p.title, p.field,p.member_joined,p.member_need,
        JSON_OBJECT(

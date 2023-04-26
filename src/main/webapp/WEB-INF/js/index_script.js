@@ -45,35 +45,34 @@ function getProjects() {
 
 
 const techStackIcons = {
-    'FIGMA': './assets/icon/figma.png',
-    'PHOTOSHOP': './assets/icon/photoshop.png',
-    'IOS': './assets/icon/ios.png',
-    'ANDROID': './assets/icon/android.png',
-    'REACT': './assets/icon/react.png',
-    'VUE': './assets/icon/vue.png',
-    'FLUTTER': './assets/icon/flutter.png',
-    'HTML_CSS': './assets/icon/html.png',
-    'JAVASCRIPT': './assets/icon/js.png',
-    'SPRING': './assets/icon/spring.png',
-    'JAVA': './assets/icon/java.png',
-    'KOTLIN': './assets/icon/kotlin.png',
-    'NODE_JS': './assets/icon/nodejs.png',
-    'MONGODB': './assets/icon/mongodb.png',
-    'C_C#': './assets/icon/cc.png',
-    'GIT': './assets/icon/git.png',
-    'AWS': './assets/icon/aws.png',
-    'DOCKER': './assets/icon/docker.png',
-    'KUBERNETES': './assets/icon/kubernetes.png',
-    'TENSORFLOW': './assets/icon/tensorflow.png',
-    'UNITY': './assets/icon/unity.png',
-    'PYTHON': './assets/icon/python.png',
-    'MYSQL': './assets/icon/mysql.png',
-    'TYPESCRIPT': './assets/icon/typescript.png',
+    'FIGMA': './assets/tech-icon/figma.svg',
+    'PHOTOSHOP': './assets/tech-icon/photoshop.svg',
+    'IOS': './assets/tech-icon/ios.svg',
+    'ANDROID': './assets/tech-icon/android.svg',
+    'REACT': './assets/tech-icon/react.svg',
+    'VUE': './assets/tech-icon/vue.svg',
+    'FLUTTER': './assets/tech-icon/flutter.svg',
+    'HTML_CSS': './assets/tech-icon/html_css.svg',
+    'JAVASCRIPT': './assets/tech-icon/javascript.svg',
+    'SPRING': './assets/tech-icon/spring.svg',
+    'JAVA': './assets/tech-icon/java.svg',
+    'KOTLIN': './assets/tech-icon/kotlin.svg',
+    'NODE_JS': './assets/tech-icon/node_js.svg',
+    'MONGODB': './assets/tech-icon/mongodb.svg',
+    'C_C#': './assets/tech-icon/c_c#.svg',
+    'GIT': './assets/tech-icon/git.svg',
+    'AWS': './assets/tech-icon/aws.svg',
+    'DOCKER': './assets/tech-icon/docker.svg',
+    'KUBERNETES': './assets/tech-icon/kubernetes.svg',
+    'TENSORFLOW': './assets/tech-icon/tensorflow.svg',
+    'UNITY': './assets/tech-icon/unity.svg',
+    'PYTHON': './assets/tech-icon/python.svg',
+    'MYSQL': './assets/tech-icon/mysql.svg',
+    'TYPESCRIPT': './assets/tech-icon/typescript.svg',
 };
 
 
 const fieldsIcons = {
-    'medical': './assets/images/cat-space.gif',
     '이커머스': './assets/images/project-thumb-ecommerce.png',
     '교육': './assets/images/project-thumb-edu.png',
     '뷰티/패션': './assets/images/project-thumb-fashion.png',
@@ -128,7 +127,7 @@ function displayProjects(projects) {
 				})
             .join('');
             
-        const fieldIconPath = fieldsIcons[project.field] || './assets/icon/default.png';  
+        const fieldIconPath = fieldsIcons[project.field] || './assets/images/cat-space.gif';  
             
             
 

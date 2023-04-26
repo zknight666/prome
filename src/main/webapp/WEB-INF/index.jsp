@@ -127,7 +127,7 @@
           <div style="display: flex; align-items: center">
             <div class="form-group">
               <select class="form-select" id="exampleSelect1" name="recruitment_field">
-                <option value="0000">모집분야</option>
+                <option value="전체보기">모집분야</option>
                 <optgroup label="기획">
                   <option value="UI_UX_PLAN">UI/UX기획</option>
                   <option value="GAME_PLAN">게임기획</option>
@@ -241,8 +241,7 @@
 
 
       <button type="button" class="btn btn-outline-secondary radious">로그인</button>
-      <button type="button" class="btn btn-outline-secondary radious" onclick="location.href='/prome/ㄴ'" >회원가입</button>
-
+      <button type="button" class="btn btn-outline-secondary radious" onclick="location.href='/prome/users/join'" >회원가입</button>
     </div>
   </div>
 
@@ -250,7 +249,7 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Core theme JS-->
   <script src="js/letspl.js"></script>
-  <script src="js/scripts.js"></script>
+
   <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script type="text/javascript">
     // modal
