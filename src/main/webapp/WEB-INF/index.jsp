@@ -488,14 +488,14 @@
 							    		    data: "id=" + id,
 							    			success: function (data) {
 							    				alert("회원가입되셨습니다.");
-							    				location.replace('/prome?id='+id);
+							    				//location.replace('/prome?id='+id);
 							    			},
 							    			error: function (err) {
 							        	        alert("회원가입 실패했습니다.");
 							        	    }
 							    		});
 							        } else if (data!= '') {
-							        	location.replace('/prome?id='+id);	
+							        	//location.replace('/prome?id='+id);	
 							        }
 							   	},
 							    error: function (err) {

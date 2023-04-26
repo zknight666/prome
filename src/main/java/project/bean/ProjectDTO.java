@@ -15,8 +15,6 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ProjectDTO {
 	
-	private String id;
-	
 	private int projectId;
 	private String title;
 	private String team_leader;
@@ -30,9 +28,5 @@ public class ProjectDTO {
 	private List<String> recruitCounts; // 모집 분야 별 인원 수 (모집할 팀 멤버 수(member_need))
 	private String recruit_state;
 	private Map<String,String> tech_stacks; // 기술/언어 (tech_stack(Y or N))
-	//private Date created_at;
 	
-	
-
-
 }

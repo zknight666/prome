@@ -60,8 +60,6 @@ public class ProjectServiceImpl implements ProjectService {
 		System.out.println("RecruitCounts: " + projectDTO.getRecruitCounts());
 
 		// 세션
-		String id = (String) session.getAttribute("????????");
-		projectDTO.setId(id);
 
 		projectDAO.buildProject(projectDTO);
 	}

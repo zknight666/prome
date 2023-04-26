@@ -122,6 +122,7 @@ $(document).ready(function() {
 		        contentType: "application/json",
 		        data: JSON.stringify({
 		        		title : $('input[name="project_name"]').val(),
+		        		team_leader : $('#memId').val(),
 		        		field : $('input[name="step2_radio"]:checked').val(),
 		        	  	content : $('.ProseMirror')[0].innerHTML,						
 		        	  	start_date : $('input[name="start-date"]').val(),

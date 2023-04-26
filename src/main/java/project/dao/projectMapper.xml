@@ -15,7 +15,7 @@
 
 		insert into project
 		(ID,TEAM_LEADER,TITLE,FIELD,CONTENT,START_DATE,DUE_DATE,member_joined,CREATED_AT,member_need,recruit_state)
-		VALUES (#{projectId},'ddochi',#{title},
+		VALUES (#{projectId},#{team_leader},#{title},
 		#{field},#{content},#{start_date},#{due_date},#{member_joined},
 		sysdate,#{member_need},#{recruit_state})
 
