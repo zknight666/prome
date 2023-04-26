@@ -37,8 +37,13 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
+<<<<<<< HEAD
 				<div class="collapse navbar-collapse" id="navbarColor03">
 					<img id="logo" src="../assets/logo.png" style="cursor: pointer" />
+=======
+                <div class="collapse navbar-collapse" id="navbarColor03">
+                    <img src="../assets/logo.png" style="cursor: pointer" onclick="location.href='/prome/'" />
+>>>>>>> origin/develop-buildproject
 
 					<ul class="navbar-nav me-auto">
 						<li class="nav-item dropdown"><a

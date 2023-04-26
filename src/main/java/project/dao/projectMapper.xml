@@ -2,11 +2,133 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<<<<<<< HEAD
 
 
 <mapper namespace="projectSQL">
 
 	<insert id="writeProject" parameterType="project">
+=======
+ 
+ 
+ <mapper namespace="projectSQL">
+
+
+
+<!-- 모임 생성 페이지 -->
+ <insert id="buildProject" parameterType="project">
+ 
+ 
+     <selectKey resultType="int" keyProperty="projectId" order="BEFORE">
+        SELECT PROJECT_SEQ.NEXTVAL as id FROM dual
+    </selectKey>
+    
+ begin
+	insert into project (ID,TEAM_LEADER,TITLE,FIELD,CONTENT,START_DATE,DUE_DATE,member_joined,CREATED_AT,member_need,recruit_state)
+	                VALUES (#{projectId},'ddochi',#{title},
+	                		#{field},#{content},#{start_date},#{due_date},#{member_joined},
+	                		 sysdate,#{member_need},#{recruit_state});
+	                		
+	   
+ 
+	insert into project_tech_stack (PROJECT_ID, FIGMA, PHOTOSHOP,IOS,ANDROID,REACT,VUE,FLUTTER,HTML_CSS,JAVASCRIPT,SPRING,JAVA,KOTLIN,NODE_JS,MONGODB,C_C#,GIT,AWS,DOCKER,KUBERNETES,TENSORFLOW,UNITY,PYTHON,MYSQL,TYPESCRIPT)                 		
+					VALUES (#{projectId},#{tech_stacks.figma},
+						        #{tech_stacks.photoshop},
+						        #{tech_stacks.ios},
+						        #{tech_stacks.android},
+						        #{tech_stacks.react},
+						        #{tech_stacks.vue},
+						        #{tech_stacks.flutter},
+						        #{tech_stacks.html_css},
+						        #{tech_stacks.javascript},
+						        #{tech_stacks.spring},
+						        #{tech_stacks.java},
+						        #{tech_stacks.kotlin},
+						        #{tech_stacks.node_js},
+						        #{tech_stacks.mongodb},
+						        #{tech_stacks.C_C#},
+						        #{tech_stacks.git},
+						        #{tech_stacks.aws},
+						        #{tech_stacks.docker},
+						        #{tech_stacks.kubernetes},
+						        #{tech_stacks.tensorflow},
+						        #{tech_stacks.unity},
+						        #{tech_stacks.python},
+						        #{tech_stacks.mysql},
+						        #{tech_stacks.typescript});
+
+
+    INSERT INTO recruitment_field (PROJECT_ID,
+        <foreach collection="recruitmentFields" item="field" index="idx" separator=",">
+            ${field}
+        </foreach>
+    )
+    VALUES (#{projectId},
+        <foreach collection="recruitCounts" item="count" index="idx" separator=",">
+            #{count}
+        </foreach>
+    );
+
+end;
+</insert>
+		
+		
+		
+
+ <!-- 메인 페이지 -->
+<select id="getMainProjects" resultType="project.bean.ProjectMainpageDTO">
+SELECT p.title, p.field,p.member_joined,p.member_need,
+       JSON_OBJECT(
+           'UI_UX_PLAN' VALUE rf.UI_UX_PLAN,
+           'PLAN_ETC' VALUE rf.PLAN_ETC,
+           'GRAPHIC_DESIGN' VALUE rf.GRAPHIC_DESIGN,
+           'UI_UX_DESIGN' VALUE rf.UI_UX_DESIGN,
+           'DESIGN_ETC' VALUE rf.DESIGN_ETC,
+           'IOS' VALUE rf.IOS,
+           'ANDROID' VALUE rf.ANDROID,
+           'WEB_FE' VALUE rf.WEB_FE,
+           'WEB_PUBLISHER' VALUE rf.WEB_PUBLISHER,
+           'CROSS_FLATFORM' VALUE rf.CROSS_FLATFORM,
+           'WEB_SERVER' VALUE rf.WEB_SERVER,
+           'BLOCK_CHAIN' VALUE rf.BLOCK_CHAIN,
+           'AI' VALUE rf.AI,
+           'BIG_DATA' VALUE rf.BIG_DATA,
+           'GAME_PLAN' VALUE rf.GAME_PLAN,
+           'PM' VALUE rf.PM
+       ) AS recruitmentFields,
+       JSON_OBJECT(
+           'FIGMA' VALUE pts.FIGMA,
+           'PHOTOSHOP' VALUE pts.PHOTOSHOP,
+           'IOS' VALUE pts.IOS,
+           'ANDROID' VALUE pts.ANDROID,
+           'REACT' VALUE pts.REACT,
+           'VUE' VALUE pts.VUE,
+           'FLUTTER' VALUE pts.FLUTTER,
+           'HTML_CSS' VALUE pts.HTML_CSS,
+           'JAVASCRIPT' VALUE pts.JAVASCRIPT,
+           'SPRING' VALUE pts.SPRING,
+           'JAVA' VALUE pts.JAVA,
+           'KOTLIN' VALUE pts.KOTLIN,
+           'NODE_JS' VALUE pts.NODE_JS,
+           'MONGODB' VALUE pts.MONGODB,
+           'C_C#' VALUE pts.C_C#,
+           'GIT' VALUE pts.GIT,
+           'AWS' VALUE pts.AWS,
+           'DOCKER' VALUE pts.DOCKER,
+           'KUBERNETES' VALUE pts.KUBERNETES,
+           'TENSORFLOW' VALUE pts.TENSORFLOW,
+           'UNITY' VALUE pts.UNITY,
+           'PYTHON' VALUE pts.PYTHON,
+           'MYSQL' VALUE pts.MYSQL,
+           'TYPESCRIPT' VALUE pts.TYPESCRIPT
+       ) AS techstacks
+FROM project p
+JOIN recruitment_field rf ON p.ID = rf.PROJECT_ID
+JOIN project_tech_stack pts ON p.ID = pts.PROJECT_ID
+</select>
+ 
+
+>>>>>>> origin/develop-buildproject
 
 		<selectKey resultType="int" keyProperty="projectId"
 			order="BEFORE">

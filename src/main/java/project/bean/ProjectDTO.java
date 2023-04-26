@@ -15,6 +15,10 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ProjectDTO {
 	
+<<<<<<< HEAD
+=======
+	private String id;
+>>>>>>> origin/develop-buildproject
 	private int projectId;
 	private String title;
 	private String team_leader;

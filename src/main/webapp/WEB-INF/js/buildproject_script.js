@@ -2,17 +2,26 @@ $(document).ready(function() {
  
 	 
 	 /*************** 모집 인원 동적 처리***************/ 		
-		// 모집인원이 1일 때 - 버튼 투명도 0.5 -> 처음 한번만 적용됨, 수정 필요.
 		function updateMinusButtonOpacity() {
-		        $(".recruit").each(function() {
+			let totalCount=0;
+	        $(".recruit").each(function() {
 		            var countNumber = $(this).find(".recruit_countNumber");
 		            var count = parseInt(countNumber.val());
+		            totalCount +=count;
 		            var minusButton = $(this).find(".imageBtnminus");
-		            if (count <= 1) {
-		                minusButton.css("opacity", "0.5");
-		            } else {
-		                minusButton.css("opacity", "1");
-		            }
+		            var plusButton = $(this).find(".imageBtnplus");
+		            if (count <= 1) {minusButton.css("opacity", "0.5");} 
+		           		else {minusButton.css("opacity", "1");}
+			        if (totalCount >= 9) {
+			       	 plusButton.css("opacity", "0.5");
+			       	 $('.recruit_plus').css("opacity", "0.5");
+			        } 
+			        else {
+			        	plusButton.css("opacity", "1");
+			        	$('.recruit_plus').css("opacity", "1");
+			        }
+
+			        		            			        		            
 		        });
 	    } 		
 	
@@ -20,8 +29,16 @@ $(document).ready(function() {
 	    $(document).on("click", ".imageBtnplus", function() {
 	        var countNumber = $(this).siblings(".recruit_countNumber");
 	        var count = parseInt(countNumber.val());
-	        count += 1;
-	        countNumber.val(count);
+	        let totalCount = 0;
+	        
+		    $(".recruit_countNumber").each(function() {
+		        totalCount += parseInt($(this).val());
+		    });	        
+		    
+		    if (totalCount < 9) {
+		        count += 1;
+		        countNumber.val(count);
+		    }		  
 	        updateMinusButtonOpacity();
 	    });
 	
@@ -29,7 +46,14 @@ $(document).ready(function() {
 	    $(document).on("click", ".imageBtnminus", function() {
 	        var countNumber = $(this).siblings(".recruit_countNumber");
 	        var count = parseInt(countNumber.val());
-	        if (count > 1) {
+	       
+	        let totalCount = 0;
+		    $(".recruit_countNumber").each(function() {
+		        totalCount += parseInt($(this).val());
+		    });	        
+	        
+	        
+	        if (count > 1 && totalCount <= 9) {
 	            count -= 1;
 	            countNumber.val(count);
 	        }
@@ -39,11 +63,18 @@ $(document).ready(function() {
 	
 		// 추가 버튼 클릭시
 	    $(document).on("click", ".recruit_plus", function() {
-	        var newRecruit = $(".recruit").first().clone();
-	        newRecruit.find(".recruit_countNumber").val("1");
-			newRecruit.find(".recruit_countNumber").attr("name", "recruit_count_" + $(".recruit").length);
-	        newRecruit.appendTo("#recruitContainer");
-	        updateMinusButtonOpacity();
+
+	        let totalCount = 0;
+		    $(".recruit_countNumber").each(function() {
+		        totalCount += parseInt($(this).val());
+		    });	
+		    if (totalCount <= 8){
+		        var newRecruit = $(".recruit").first().clone();
+		        newRecruit.find(".recruit_countNumber").val("1");
+				newRecruit.find(".recruit_countNumber").attr("name", "recruit_count_" + $(".recruit").length);
+		        newRecruit.appendTo("#recruitContainer");
+	        }
+		        updateMinusButtonOpacity();
 	    });
 	
 		// 삭제 버튼 클릭시
@@ -58,17 +89,6 @@ $(document).ready(function() {
 		$(".recruit_countNumber").attr("name", "recruit_count_0");
 	 /*************** 모집 인원 동적 처리***************/   
 	 
-	 
-	 
-
-	 	/**프로젝트 설명 val() 안씀 처리**/  
-	 	// 본문에서 focusout 시 본문의 내용을 hidden-input의 val()로 저장
-//	 	$('.ProseMirror').focusout(function(){        
-//	        var content = $('.ProseMirror').text().trim(); // contenteditable div의 텍스트를 가져옵니다.
-//	        $('input[name="project_description"]').val(content); // 가져온 텍스트를 숨겨진 input에 저장합니다.
-//	    });  
-	    /**프로젝트 설명 val()처리**/ 
-
 
 
 	    /**기술/언어 y/n 처리**/
@@ -87,10 +107,61 @@ $(document).ready(function() {
 
 		$('#submitBtn').click(function(event) {
 
-	        event.preventDefault(); // 폼 기본 제출 동작을 제한
-	      	
+	       
+	       if (
+	       		$('input[name="project_name"]').val() =="" ||
+	       		$('input[name="step2_radio"]:checked').val() == undefined ||
+	       		$('select[name="recruitment_field"]').val() == "" ||
+	       		$('input[name="start-date"]').val() =="" ||
+	       		$('input[name="end-date"]').val() =="" 
+	       	  )	{
+	       	  
+	       	}
+	       	else if ($('#main_content').text().length < 20){
+ 		   		event.preventDefault(); 
+				alert("내용을 입력해주세요");
+	       	}
+	       		
+	       	else {
+	       			event.preventDefault();
+			       	$.ajax({
+				        type: "POST",
+				        url: "/prome/project/buildProject",
+				        contentType: "application/json",
+				        data: JSON.stringify({
+				        		title : $('input[name="project_name"]').val(),
+				        		field : $('input[name="step2_radio"]:checked').val(),
+				        	  	content : $('.ProseMirror')[0].innerHTML,						
+				        	  	start_date : $('input[name="start-date"]').val(),
+			        		  	due_date : $('input[name="end-date"]').val(),
+				        		recruitmentFields : $('select[name="recruitment_field"]').map(function () {
+				        									return $(this).val();
+				        								}).get(),
+								recruitCounts : $('.recruit_countNumber').map(function () {
+												        	return $(this).val();
+												        }).get(),
+			        		  	tech_stacks: $('input[type="checkbox"]').map(function () {
+											  return { [this.name]: $(this).is(':checked') ? 'y' : 'n' };
+											}).get().reduce(function (acc, cur) {
+											  return Object.assign(acc, cur);
+											}, {}),		    
+		
+				      	}),
+				        success: function () {
+				        	localStorage.removeItem('tempSaveData');
+					        alert("프로젝트 작성이 완료되었습니다.");
+							location.replace('/prome/');
+				        },
+				        error: function (err) {
+							console.log(err);
+				        }
+				        
+				    }); //$.ajax
+	       	} // else
+        }); // $('#submitBtn').click(function(event)
 
 
+<<<<<<< HEAD
 			  // 데이터 추출
 			  var requestData = {
 			    title: $('input[name="project_name"]').val(),
@@ -154,14 +225,16 @@ $(document).ready(function() {
         
    
 
+=======
+>>>>>>> origin/develop-buildproject
 	/*************** submitbtn.click ***************/    	        
 });
-	          
 	          
 	          
 $(document).ready(function() {
 
 
+	/*************** 임시저장 ***************/	
  	$('#tempSaveBtn').click(function() {
  	  alert("임시저장되었습니다.");
  	 const data = {

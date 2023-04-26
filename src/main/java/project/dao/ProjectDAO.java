@@ -3,6 +3,7 @@ package project.dao;
 import java.util.List;
 import java.util.Map;
 import project.bean.ProjectDTO;
+import project.bean.ProjectMainpageDTO;
 import user.bean.UserDTO;
 
 public interface ProjectDAO {
@@ -16,10 +17,14 @@ public interface ProjectDAO {
 
 	public void buildProject(ProjectDTO projectDTO);
 
+<<<<<<< HEAD
 	List<UserDTO> adminGetUserList(Map<String, Integer> map);
 
 	int getUserTotalA();
 
 	void adminDeleteUser(String checkedUser);
+=======
+	List<ProjectMainpageDTO> getMainProjects();
+>>>>>>> origin/develop-buildproject
 
 }

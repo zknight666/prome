@@ -15,6 +15,7 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import net.sf.json.JSONArray;
 import project.bean.ProjectDTO;
+import project.bean.ProjectMainpageDTO;
 import user.bean.UserDTO;
 
 @Repository
@@ -50,9 +51,25 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 
 	@Override
 	public void buildProject(ProjectDTO projectDTO) {
-		sqlSession.insert("projectSQL.writeProject",projectDTO);
-		sqlSession.insert("projectSQL.project_tech_stack",projectDTO);
-		sqlSession.insert("projectSQL.recruitment_field",projectDTO);
+//		sqlSession.insert("projectSQL.writeProject",projectDTO);
+//		sqlSession.insert("projectSQL.project_tech_stack",projectDTO);
+//		sqlSession.insert("projectSQL.recruitment_field",projectDTO);
+		sqlSession.insert("projectSQL.buildProject",projectDTO);
+	}
+
+	@Override
+	public List<ProjectMainpageDTO> getMainProjects() {
+		
+		List<ProjectMainpageDTO>  list = sqlSession.selectList("projectSQL.getMainProjects");
+	    
+		System.out.println(list.get(0).getTitle()  + ", " + 
+						   list.get(0).getField()  + ", " + 
+						   list.get(0).getRecruitmentFields() + ", " + 
+						   list.get(0).getTechstacks() + ", " + 
+						   list.get(0).getMember_joined() + ", " + 
+						   list.get(0).getMember_need()
+						  );
+		return list;
 	}
 	@Override
 	public List<UserDTO> adminGetUserList(Map<String, Integer> map) {

@@ -1,5 +1,11 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
+<<<<<<< HEAD
 	pageEncoding="UTF-8"%>
+=======
+    pageEncoding="UTF-8"%>
+    
+    <% %>
+>>>>>>> origin/develop-buildproject
 <!DOCTYPE html>
 <html lang="en">
 
@@ -41,8 +47,13 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
+<<<<<<< HEAD
 				<div class="collapse navbar-collapse" id="navbarColor03">
 					<img id="logo" src="assets/logo.png" style="cursor: pointer" />
+=======
+        <div class="collapse navbar-collapse" id="navbarColor03">
+          <img src="assets/logo.png" style="cursor: pointer" onclick="location.href='/prome/'" />
+>>>>>>> origin/develop-buildproject
 
 					<ul class="navbar-nav me-auto">
 						<li class="nav-item dropdown"><a
@@ -73,6 +84,7 @@
 								<img src="./assets\btn-logout.png" />
 							</button>
 
+<<<<<<< HEAD
 							<button class="btn my-2 my-sm-0 nav-link dropdown-toggle"
 								aria-haspopup="true" aria-expanded="false"
 								data-bs-toggle="dropdown" style="margin-right: 0.5rem">
@@ -94,6 +106,29 @@
 		<!-- Header-->
 		<header class="bg-dark"
 			style="background-image: url('assets/main-banner.png'); background-size: auto; background-repeat: no-repeat; background-position: center; height: auto; min-height: 400px; background-color: #ffffff !important;"></header>
+=======
+          <form class="d-flex dropdown">
+            <!-- <input class="form-control me-sm-2" type="search" placeholder="Search" /> -->
+            <button class="btn my-2 my-sm-0" id="loginBtn" type="button" style="padding-right: 0">
+              <img src="assets\btn-login.png" />
+            </button>
+            <!-- <button class="btn my-2 my-sm-0" type="button" style="padding-right: 0">
+                <img src="assets\btn-logout.png" />
+              </button> -->
+            <button class="btn my-2 my-sm-0" type="button" style="padding-right: 0;
+            padding-left: 0;" onclick="location.href='/prome/users/join'">
+              <img src="assets\btn-create.png" />
+            </button>
+            <!--  
+            <button class="btn my-2 my-sm-0 nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false"
+              data-bs-toggle="dropdown" style="margin-right: 0.5rem">
+              <img src="assets\account-circle.png" />
+            </button>
+            <div class="dropdown-menu" style="right: 0">
+              <div class="dropdown-item">*******님</div>
+              <div class="dropdown-divider"></div>
+              <a class="dropdown-item" href="#">마이페이지</a>
+>>>>>>> origin/develop-buildproject
 
 		<!-- Section-->
 		<section class="container">
@@ -153,6 +188,7 @@
 					</div>
 				</div>
 
+<<<<<<< HEAD
 				<!--카드 섹션 시작-->
 				<div
 					class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 mb-4">
@@ -351,6 +387,52 @@
 				</div>
 			</div>
 		</section>
+=======
+        <!--2번째 줄-->
+        <div class="row mb-3">
+          <div style="display: flex; align-items: center">
+            <div class="form-group">
+              <select class="form-select" id="exampleSelect1" name="recruitment_field">
+                <option value="전체보기">모집분야</option>
+                <optgroup label="기획">
+                  <option value="UI_UX_PLAN">UI/UX기획</option>
+                  <option value="GAME_PLAN">게임기획</option>
+                  <option value="PM">프로젝트 매니저</option>
+                  <option value="PLAN_ETC">(기획)기타</option>
+                </optgroup>
+                <optgroup label="디자인">
+                  <option value="GRAPHIC_DESIGN">그래픽디자인</option>
+                  <option value="UI_UX_DESIGN">UI/UX디자인</option>
+                  <option value="DESIGN_ETC">(디자인)기타</option>
+                </optgroup>
+                <optgroup label="프론트엔드">
+                  <option value="IOS">IOS</option>
+                  <option value="ANDROID">안드로이드</option>
+                  <option value="WEB_FE">웹프론트엔드</option>
+                  <option value="WEB_PUBLISHER">웹퍼블리셔</option>
+                  <option value="CROSS_FLATFORM">크로스플랫폼</option>
+                </optgroup>
+                <optgroup label="백엔드">
+                  <option value="WEB_SERVER">웹 서버</option>
+                  <option value="AI">AI</option>
+                  <option value="BIG_DATA">빅데이터/DS</option>
+                  <option value="BLOCK_CHAIN">블록체인</option>
+                </optgroup>
+              </select>
+            </div>
+
+            <div class="form-check col" style="margin-left: 1.5rem">
+              <input class="form-check-input" type="checkbox" value="" id="flexCheckChecked" checked="" />
+              <label class="form-check-label" for="flexCheckChecked"> 모집중</label>
+            </div>
+          </div>
+        </div>
+
+        <!--카드 섹션 시작-->
+        <div id="card_section" class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-start mb-4">
+
+        </div>
+>>>>>>> origin/develop-buildproject
 
 		<!-- Footer-->
 		<footer class="py-5 bg-dark">
@@ -446,6 +528,7 @@
 			$(".loginModal_1").parent().attr("class", "modalWrapOpen_1");
 		});
 
+<<<<<<< HEAD
 		$(".closeBtn_1").click(function() {
 			$(".loginModal_1").parent().attr("class", "modalWrapClose_1");
 		});
@@ -509,6 +592,39 @@
 			});
 		}
 	</script>
+=======
+      <button type="button" class="btn btn-outline-secondary radious">로그인</button>
+      <button type="button" class="btn btn-outline-secondary radious" onclick="location.href='/prome/users/join'" >회원가입</button>
+    </div>
+  </div>
+
+  <!-- Bootstrap core JS-->
+  <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
+  <!-- Core theme JS-->
+  <script src="js/letspl.js"></script>
+
+  <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script type="text/javascript">
+    // modal
+    $("#loginBtn").click(function () {
+      $(".loginModal_1").parent().attr("class", "modalWrapOpen_1");
+    });
+    
+    $(".closeBtn_1").click(function () {
+      $(".loginModal_1").parent().attr("class", "modalWrapClose_1");
+    });
+    
+    $(".closeBtn").click(function () {
+        $(".loginModal").parent().attr("class", "modalWrapClose");
+      });
+    
+    $('.signupBtn_1').click(function () {
+      $(".loginModal").parent().attr("class", "modalWrapOpen");
+      $(".loginModal_1").parent().attr("class", "modalWrapClose_1");
+    });
+  </script>
+  <script src="js/index_script.js"></script>
+>>>>>>> origin/develop-buildproject
 </body>
 
 </html>

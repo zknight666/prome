@@ -5,6 +5,7 @@ import java.util.List;
 import java.util.Map;
 import org.springframework.stereotype.Service;
 import project.bean.ProjectDTO;
+import project.bean.ProjectMainpageDTO;
 import user.bean.UserDTO;
 
 @Service
@@ -21,6 +22,8 @@ public interface ProjectService {
 
     List<ProjectDTO> getBookmark();
 
+
+	public List<ProjectMainpageDTO> getMainProjects();
 
 
 }
