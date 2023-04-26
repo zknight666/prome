@@ -17,14 +17,12 @@ public interface ProjectDAO {
 
 	public void buildProject(ProjectDTO projectDTO);
 
-<<<<<<< HEAD
 	List<UserDTO> adminGetUserList(Map<String, Integer> map);
 
 	int getUserTotalA();
 
 	void adminDeleteUser(String checkedUser);
-=======
+
 	List<ProjectMainpageDTO> getMainProjects();
->>>>>>> origin/develop-buildproject
 
 }

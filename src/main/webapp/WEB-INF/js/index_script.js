@@ -1,27 +1,3 @@
-<<<<<<< HEAD
-$(function () {
-	 $.ajax({
-      type: "get",
-      url: "/prome/project/",
-      data: "pg=" + $("#pg").val(),
-      success: function (data) {
-        //중복된 아이디 있으면 exist, 중복된 아이디 없으면 non_exist
-        if (data == "exist") {
-          $("#idCheckDiv").text("사용 불가능");
-          $("#idCheckDiv").val("dup");
-          $("#idCheckDiv").css("color", "red");
-        } else if (data == "non_exist") {
-          $("#idCheckDiv").text("사용 가능");
-          $("#idCheckDiv").val("non_dup");
-          $("#idCheckDiv").css("color", "blue");
-        }
-      },
-      error: function (err) {
-        console.log(err);
-      },
-    });
-});
-=======
 document.addEventListener("DOMContentLoaded", () => {
     getProjects();
 });
@@ -47,20 +23,20 @@ function getProjects() {
   fetch("/prome/project/getMainProjects")
     .then(response => response.json())
     .then(projects => {
-    					const selectedRecruitmentField = $('select[name="recruitment_field"]').val();
-    					const onlyRecruiting = $('#flexCheckChecked').is(':checked');
-    					
-         			   	projects = projects.filter(project => 
-         			   						{
-         			   							const recruitmentFields = JSON.parse(project.recruitmentFields);
-         			   							if (onlyRecruiting && project.member_joined === project.member_need) {
-										          return false;
-										        }
-              									return recruitmentFields[selectedRecruitmentField] !== null;
-         			   						});
-    					console.log("Projects:", projects); 
-    					displayProjects(projects);
-    					})
+                   const selectedRecruitmentField = $('select[name="recruitment_field"]').val();
+                   const onlyRecruiting = $('#flexCheckChecked').is(':checked');
+                   
+                        projects = projects.filter(project => 
+                                       {
+                                          const recruitmentFields = JSON.parse(project.recruitmentFields);
+                                          if (onlyRecruiting && project.member_joined === project.member_need) {
+                                        return false;
+                                      }
+                                         return recruitmentFields[selectedRecruitmentField] !== null;
+                                       });
+                   console.log("Projects:", projects); 
+                   displayProjects(projects);
+                   })
     .catch(error => console.error("Error fetching projects:", error));
 }
 
@@ -138,17 +114,17 @@ function displayProjects(projects) {
         const recruitmentFieldsList = Object.entries(JSON.parse(project.recruitmentFields))
             .filter(([, value]) => value !== null)
             .map(([key, value]) => {
-            						const recruitmentFieldsName = recruitmentfieldsname[key];
-            						return `<h3><li><span>${recruitmentFieldsName}</span><span>${value}</span></li></h3>`;
-            						})
+                              const recruitmentFieldsname = recruitmentfieldsname[key];
+                              return `<h3><li><span>${recruitmentFieldsname}</span><span>${value}</span></li></h3>`;
+                              })
             .join('');
 
         const techStacksList = Object.entries(JSON.parse(project.techstacks))
             .filter(([, value]) => value === 'y')
             .map(([key]) => {
                 const iconPath = techStackIcons[key];
-				return `<li><img loading="lazy" src="${iconPath}" alt="${key}" width="20" height="20"></li>`;
-				})
+            return `<li><img loading="lazy" src="${iconPath}" alt="${key}" width="20" height="20"></li>`;
+            })
             .join('');
             
         const fieldIconPath = fieldsIcons[project.field] || './assets/images/cat-space.gif';  
@@ -157,67 +133,67 @@ function displayProjects(projects) {
 
         const projectCard = `
 
-										            <!--카드-1-->
-					          <div class="col mb-4">
-					            <div class="projectGridWrap" style="min-width: 260px; padding-left: 0; padding-right: 0">
-					              <div class="projectTopInfo">
-					                <div class="top" style="flex-direction: row-reverse">
-					                  <div class="favorite"></div>
-					                </div>
-					                <div class="projectThumb">
-					                  <img loading="lazy" src="${fieldIconPath}" alt="내 글이 상장되는 ‘비법거래소'입니다"
-					                    style="vertical-align: middle" />
-					                </div>
-					              </div>
-					              <div class="projectBottomInfo">
-					                <div class="txtWrap projectWrap">
-					                  <h3 class="category"> ${project.field}</h3> 
-					                  <h2 class="tit">${project.title}</h2>
-					                  <div class="iconWrap2">
-										${techStacksList}
-					                  </div>
-					                </div>
-					              </div>
-					              <div class="projectInfo2">
-					
-					
-					                <div class="middleWrap">
-					                  <div class="left">
-					                    
-					                  </div>
-					                  <div class="right">
-					                    <div class="heartCount">
-					                      <img loading="lazy" src="assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
-					                    </div>
-					                  </div>
-					                </div>
-					
-					
-					                <div class="bottomWrap">
-					                  <div class="gatherTxt">
-					                    <div>
-					                      <span>${project.member_joined === project.member_need ? '모집 완료' : '모집 중'}</span><span>${project.member_joined}/${project.member_need}</span>
-					                      <div class="ic-arrow">
-					                        <img loading="lazy" src="assets/images/ic-arrow-up.svg" alt="프로젝트 모집현황" />
-					                      </div>
-					                    </div>
-					                    
-					                    <div class="gatherModal">
-					                    
-					                      <ul>
-					                      ${recruitmentFieldsList}
-					                      </ul>
-					                    </div>
-					                    
-					                  </div>
-					                </div>
-					              </div>
-					            </div>
-					          </div>
-					          <!--카드 End-->
+                                          <!--카드-1-->
+                         <div class="col mb-4">
+                           <div class="projectGridWrap" style="min-width: 260px; padding-left: 0; padding-right: 0">
+                             <div class="projectTopInfo">
+                               <div class="top" style="flex-direction: row-reverse">
+                                 <div class="favorite"></div>
+                               </div>
+                               <div class="projectThumb">
+                                 <img loading="lazy" src="${fieldIconPath}" alt="내 글이 상장되는 ‘비법거래소'입니다"
+                                   style="vertical-align: middle" />
+                               </div>
+                             </div>
+                             <div class="projectBottomInfo">
+                               <div class="txtWrap projectWrap">
+                                 <h3 class="category"> ${project.field}</h3> 
+                                 <h2 class="tit">${project.title}</h2>
+                                 <div class="iconWrap2">
+                              ${techStacksList}
+                                 </div>
+                               </div>
+                             </div>
+                             <div class="projectInfo2">
+               
+               
+                               <div class="middleWrap">
+                                 <div class="left">
+                                   
+                                 </div>
+                                 <div class="right">
+                                   <div class="heartCount">
+                                     <img loading="lazy" src="assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
+                                   </div>
+                                 </div>
+                               </div>
+               
+               
+                               <div class="bottomWrap">
+                                 <div class="gatherTxt">
+                                   <div>
+                                     <span>${project.member_joined === project.member_need ? '모집 완료' : '모집 중'}</span><span>${project.member_joined}/${project.member_need}</span>
+                                     <div class="ic-arrow">
+                                       <img loading="lazy" src="assets/images/ic-arrow-up.svg" alt="프로젝트 모집현황" />
+                                     </div>
+                                   </div>
+                                   
+                                   <div class="gatherModal">
+                                   
+                                     <ul>
+                                     ${recruitmentFieldsList}
+                                     </ul>
+                                   </div>
+                                   
+                                 </div>
+                               </div>
+                             </div>
+                           </div>
+                         </div>
+                         <!--카드 End-->
             
-					            
-       						`;
+                           
+                         `;
         $('#card_section').append(projectCard);
     });
 }   
@@ -225,4 +201,3 @@ function displayProjects(projects) {
     
     
     
->>>>>>> origin/develop-buildproject

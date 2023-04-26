@@ -22,7 +22,6 @@ public interface ProjectService {
 
     List<ProjectDTO> getBookmark();
 
-
 	public List<ProjectMainpageDTO> getMainProjects();
 
 

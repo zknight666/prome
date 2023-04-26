@@ -23,22 +23,16 @@ public class ProjectServiceImpl implements ProjectService {
 	@Autowired
 	private ProjectPaging projectPaging;
 
-<<<<<<< HEAD
 	@Autowired
 	HttpSession session;
 
 	@Autowired
 	private UserPaging userPaging;
-=======
-    
-    
+
     
     @Override
     public void buildProject(ProjectDTO projectDTO) {
-    	
-    	
     	 projectDTO.setMember_joined(0);
- 	
     	 int member_need = 0;
     	 
     	    for (String recruitCount : projectDTO.getRecruitCounts()) {
@@ -66,48 +60,10 @@ public class ProjectServiceImpl implements ProjectService {
 
     	projectDAO.buildProject(projectDTO);
     }  
-    
-    
-    @Override
-    public Map<String, Object> getAdminpage(Map<String, Object> map) {
-        int endNum = Integer.parseInt((String)map.get("pg")) * 12;
-        int startNum = endNum - 11;
->>>>>>> origin/develop-buildproject
 
 	@Override
-	public void buildProject(ProjectDTO projectDTO) {
-
-		projectDTO.setMember_joined(0);
-
-		int member_need = 0;
-
-		for (String recruitCount : projectDTO.getRecruitCounts()) {
-			member_need += Integer.parseInt(recruitCount);
-		}
-		projectDTO.setMember_need(member_need);
-
-		if (projectDTO.getMember_joined() == projectDTO.getMember_need()) {
-			projectDTO.setRecruit_state("finish");
-		} else {
-			projectDTO.setRecruit_state("ing");
-		}
-
-		System.out.println("Title: " + projectDTO.getTitle());
-		System.out.println("Field: " + projectDTO.getField());
-		System.out.println("Content: " + projectDTO.getContent());
-		System.out.println("Start Date: " + projectDTO.getStart_date());
-		System.out.println("Due Date: " + projectDTO.getDue_date());
-		System.out.println("Member Joined: " + projectDTO.getMember_joined());
-		System.out.println("Member Need: " + projectDTO.getMember_need());
-		System.out.println("Recruit state: " + projectDTO.getRecruit_state());
-
-		System.out.println("Tech Stacks: " + projectDTO.getTech_stacks());
-		System.out.println("RecruitmentFields: " + projectDTO.getRecruitmentFields());
-		System.out.println("RecruitCounts: " + projectDTO.getRecruitCounts());
-
-		// 세션
-
-		projectDAO.buildProject(projectDTO);
+	public List<ProjectMainpageDTO> getMainProjects() {
+		return projectDAO.getMainProjects();
 	}
 
 	@Override
@@ -121,21 +77,15 @@ public class ProjectServiceImpl implements ProjectService {
 		map2.put("field", map.get("field"));
 		map2.put("recruit_state", map.get("recruit_state"));
 
-<<<<<<< HEAD
+
 		List<ProjectDTO> list = projectDAO.getAdminpage(map2);
-=======
-	@Override
-	public List<ProjectMainpageDTO> getMainProjects() {
-		// TODO Auto-generated method stub
-		return projectDAO.getMainProjects();
-	}
->>>>>>> origin/develop-buildproject
+	
 
 		// 특정 프로젝트의 선택된 기술 가져오기
 		int projectId = Integer.parseInt((String) map.get("projectId"));
 		List<String> chosenTech = projectDAO.getChosenTech(projectId);
 
-<<<<<<< HEAD
+
 		// 페이징 처리
 //        int totalA = projectDAO.getTotalA(); //총글수
 
@@ -196,12 +146,10 @@ public class ProjectServiceImpl implements ProjectService {
 	public void adminDeleteUser(String checkedUser) {
 		projectDAO.adminDeleteUser(checkedUser);
 	}
-=======
+
 //    @Override
 //    public List<ProjectDTO> getBookmark() {
 //        return projectDAO.getBookmark();
 //    }
-	
->>>>>>> origin/develop-buildproject
 
 }

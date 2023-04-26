@@ -1,36 +1,22 @@
 package project.controller;
 
-import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-import com.fasterxml.jackson.core.JsonParser;
-
 import project.bean.ProjectDTO;
 import project.bean.ProjectMainpageDTO;
 import project.service.ProjectService;
-import user.bean.UserDTO;
 
-<<<<<<< HEAD
-import org.springframework.web.bind.annotation.RequestParam;
-import org.springframework.web.bind.annotation.ResponseBody;
-
-import project.bean.ProjectDTO;
-import project.service.ProjectService;
-import user.bean.UserDTO;
-
-=======
->>>>>>> origin/develop-buildproject
 
 @Controller
 @RequestMapping(value="project")
@@ -117,15 +103,13 @@ public class ProjectController {
 	
 	
 	//mypage
-<<<<<<< HEAD
-
 	@GetMapping(value="bookmark")
 	@ResponseBody
 	public List<ProjectDTO> bookmark() {
 
 		return projectService.getBookmark();
 	}
-=======
+
 //	@GetMapping(value="bookmark")
 //	@ResponseBody
 //	public List<ProjectDTO> bookmark() {
@@ -133,9 +117,6 @@ public class ProjectController {
 //		return projectService.getBookmark();
 //	}
 	
-	
 
-	
->>>>>>> origin/develop-buildproject
 }
 
