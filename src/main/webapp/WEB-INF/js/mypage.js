@@ -1,25 +1,29 @@
-$(function () {
+
+//프로젝트 카드 갖고오는 함수 ->계속 쓰임.
+//list_name = fav OR apply OR myteam
+function getProjCard(item, index, list_name){
+
   $.ajax({
     type: "GET",
     url: "/prome/project/projectCard",
-    data:{"user_id": "yhg",
-      "project_id": $('.fav-1').data("project-id") },
+    data: {
+      "user_id": "yhg",
+      "project_id": item
+    },
     dataType: 'json',
     success: function (data) {
 
-      if(data.isBookmark != null) { //관심목록에 있는 프로젝트인 경우 -> 풀하트 아이콘 표시
-        $('.fav-1 .top .favorite').attr("class", "favorite-active");
+      //1. 관심목록에 있는 프로젝트인 경우 -> class명을 "favorite-active"로 설정해서 풀하트 아이콘 표시
+      let isBookmark = data.isBookmark != null? "favorite-active" : "favorite"
 
-      }
-
-      data.project_tech_arr.forEach((item) => { //프로젝트에 적용된 기술들을 icon으로 표시
-        let tech_icon = "../assets/tech-icon/" + item.toLowerCase() + ".svg";
-        $('.fav-1 .iconWrap2').append('<img loading="lazy" src='+tech_icon+' alt='+item+' title='+item+' />');
+      //2. 프로젝트에 적용된 기술들을 icon으로 표시
+      let proj_tech_arr = []
+      data.project_tech_arr.forEach((item) => {
+        let tech_icon = "../assets/tech-icon/" + item.toLowerCase()+ ".svg";
+        proj_tech_arr.push(
+            '<img loading="lazy" src=' + tech_icon + ' alt=' + item
+            + ' title=' + item + ' />');
       });
-
-      //이 프로젝트를 관심목록으로 추가한 유저수
-      $('.fav-1 .right .heartCount span').text(data.heartCount);
-
 
       let src = '';
       let field_text = '';
@@ -68,12 +72,12 @@ $(function () {
           src = '../assets/images/project-thumb-default.png'
       }
 
-
-      const mapper = {"UI_UX_PLAN": "UI/UX 기획",
-      "PLAN_ETC": '기획 기타',
+      const mapper = {
+        "UI_UX_PLAN": "UI/UX 기획",
+        "PLAN_ETC": '기획 기타',
         "GRAPHIC_DESIGN": '그래픽 디자인',
         "UI_UX_DESIGN": 'UI/UX 디자인',
-        "DESIGN_ETC": '디자인 기타' ,
+        "DESIGN_ETC": '디자인 기타',
         "IOS": 'ios',
         "ANDROID": '안드로이드',
         "WEB_FE": '웹 프론트엔드',
@@ -84,55 +88,180 @@ $(function () {
         "AI": '인공지능',
         "BIG_DATA": '빅데이터',
         "GAME_PLAN": '게임 기획',
-        "PM": '프로젝트 매니저'}
+        "PM": '프로젝트 매니저'
+      }
 
+      //3. 이 프로젝트를 관심목록으로 추가한 유저수 -> html에 data.heartCount 따로 적음.
+      //4. 프로젝트 카테고리(분야)에 맞는 썸네일 출력. -> html에 직접 입력함
+      //5. 이 프로젝트의 분야, 제목  -> html에 직접 입력함
+      //6. 프로젝트 모집 현황     -> html에 직접 입력함
 
-      //프로젝트 카테고리(분야)에 맞는 썸네일 출력.
-      $('.fav-1 .projectThumb img').attr("src", src);
-      $('.fav-1 .projectThumb img').attr("alt", data.projectDTO.title);
-
-      //이 프로젝트의 분야
-      $('.fav-1 .projectBottomInfo h3.category').text(field_text);
-      //이 프로젝트의 제목
-      $('.fav-1 .projectBottomInfo h2.tit').text(data.projectDTO.title);
-
-
-      //프로젝트 모집 현황
-      $('.fav-1 .bottomWrap .gatherTxt .gatherTxt2 :nth-child(2)').text(data.projectDTO.member_joined +'/'+ data.projectDTO.member_need);
-
-      //프로젝트 모집 분야별 현황(hover시 나옴)
+      //7. 프로젝트 모집 분야별 현황(hover시 나옴)
+      let rec_field_html = []
       let rec_field = data.rec_field_map;
-      for(let key in rec_field) {
-        $('.fav-1 .bottomWrap .gatherTxt .gatherModal ul').append(
-            '<h3> <li><span>' + mapper[key] + '</span><span>' + rec_field[key]
+      for (let key in  rec_field) {
+        rec_field_html.push(
+            '<h3> <li><span>' + mapper[key] + '</span><span>'
+            + rec_field[key]
             + '명</span></li></h3>');
       }
+
+
+      $('.slider-' +list_name+'' ).slick('slickAdd',
+          '<div id="card-'+list_name+'-' +index+ '" data-project-id="' + item +'">\n'
+          + '            <div class="projectGridWrap" style="padding-left: 0; padding-right: 0">\n'
+          + '              <div class="projectTopInfo">\n'
+          + '                <div class="top" style="flex-direction: row-reverse">\n'
+
+          + '                  <div class="' +isBookmark+ '"></div>\n'
+          + '\n'
+          + '                </div>\n'
+          + '                <div class="projectThumb">\n'
+          + '                  <img loading="lazy" src="' + src +'" alt="' + data.projectDTO.title + '"\n'
+          + '                       style="vertical-align: middle" />\n'
+          + '                </div>\n'
+          + '              </div>\n'
+          + '              <div class="projectBottomInfo">\n'
+          + '                <div class="txtWrap projectWrap">\n'
+          + '                  <h3 class="category">' + field_text+ '</h3>\n'
+          + '                  <h2 class="tit">' +data.projectDTO.title+'</h2>\n'
+          + '                  <div class="iconWrap2">\n'    + proj_tech_arr.join('') + '</div>\n'
+          + '                </div>\n'
+          + '              </div>\n'
+          + '              <div class="projectInfo2">\n'
+          + '                <div class="middleWrap">\n'
+          + '                  <div class="left">\n'
+          + '\n'
+          + '                  </div>\n'
+          + '                  <div class="right">\n'
+          + '                    <div class="heartCount">\n'
+          + '                      <img loading="lazy" src="../assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>' +data.heartCount + '</span>\n'
+          + '                    </div>\n'
+          + '                  </div>\n'
+          + '                </div>\n'
+          + '\n'
+          + '                <div class="bottomWrap">\n'
+          + '                  <div class="gatherTxt">\n'
+          + '                 <div>\n'
+          + '                      <span>모집완료</span>\n'
+          + '                      <span>' + data.projectDTO.member_joined + '/' + data.projectDTO.member_need+  '</span>\n'
+          + '                      <div class="ic-arrow">\n'
+          + '                        <img loading="lazy" src="../assets/images/ic-arrow-up.svg" alt="프로젝트 모집현황" />\n'
+          + '                      </div></div>\n'
+          + '                    <div class="gatherModal">\n'
+          + '                      <ul style="margin-bottom: 0.3rem">\n'
+          + '                        <!--동적으로 모집 분야별 현황 들어옴-->\n' +rec_field_html.join('')
+          + '                      </ul>\n'
+          + '                    </div>\n'
+          + '                  </div>\n'
+          + '                </div>\n'
+          + '              </div>\n'
+          + '            </div>\n'
+          + '          </div>');
 
 
     },
     error: function (err) {
       console.log(err);
     }
-  });
+  }); //ajax GET projectCard End
+} //getProjCard() End
+
+
+
+
+
+
+//화면 로드 시 실행됨.
+$(function () {
+
+  //1. 관심목록 불러오기 -> project_id 리스트 가져옴.
+  $.ajax({
+    type: "GET",
+    url: "/prome/project/bookmark",
+    data:{"user_id": "yhg"},
+    dataType: 'json',
+    success: function (data) {
+      // console.log(data) -> Array<2>, data[0], data.length, data = ["1", "35"]
+      // data의 item은 플젝아이디, index는 0 부터 시작
+
+      data.forEach((item, index)=>{
+        getProjCard(item, index, "fav")
+      });
+
+    },
+    error: function (err) {
+      console.log(err);
+    }
+    }); //1. get bookmark Ajax End
+
+
+
+  //2. 지원한 프로젝트 목록 불러오기 -> PROJECT_ID와 STATUS가 key로 있는 Map 형식이 item으로 있는 List 가져옴.
+  $.ajax({
+    type: "GET",
+    url: "/prome/project/supportedProjects",
+    data:{"user_id": "yhg"},
+    dataType: 'json',
+    success: function (data) {
+      // data -> [{"PROJECT_ID":35},{"STATUS":"Y","PROJECT_ID":37}]
+
+      data.forEach((item, index)=>{
+        getProjCard(item.PROJECT_ID, index, "apply")
+      });
+
+    },
+    error: function (err) {
+      console.log(err);
+    }
+  }); //2. get supportedProjects Ajax End
+
+
+  //3. My Team 목록 불러오기 -> leader와 member가 key로 있는 Map 가져옴.
+  $.ajax({
+    type: "GET",
+    url: "/prome/project/myTeams",
+    data:{"user_id": "yhg"},
+    dataType: 'json',
+    success: function (data) {
+      // data -> {"leader":["2"],"member":["36","35","1"]}
+
+      //해당 User가 리더로 있는 팀 출력함
+      data.leader.forEach((item, index)=>{ //2
+        getProjCard(item, "leader"+index, "myteam")
+      });
+      //해당 User가 멤버로 있는 팀 출력함
+      data.member.forEach((item, index)=>{ //36, 35, 1
+        getProjCard(item, "member"+index, "myteam")
+      });
+
+    },
+    error: function (err) {
+      console.log(err);
+    }
+  }); //3. GET myteams Ajax End
+
 
 }); //$(function(){}); End
 
 
 
-//projectCard heart click Listener
+//projectCard 관심목록 Click Listener
 //동적으로 생기는 태그에는 .click() 대신 .on()으로 이벤트를 걸어줘야 한다.
 
 //관심목록에 없는 프로젝트를 클릭한 경우 풀하트로 바꾸고 DB의 bookmark Table에 레코드를 추가함.
   $(document).on('click', '.top .favorite', function (){
 
+    let fav_id = $(this).closest('div[id^="card-"]').attr('id')
+
     $.ajax({ //북마크 추가
       type: "POST",
       url: "/prome/project/addBookmark",
       data:{"user_id": "yhg",
-        "project_id": $('.fav-1').data("project-id") },
-      success: function (data) {
+        "project_id": $(this).closest('div[id^="card-"]').data("project-id") },
+      success: function ( ) {
         console.log("북마크 추가했습니다.")
-        $('.fav-1 .top .favorite').attr("class", "favorite-active");
+        $('#'+fav_id+ ' .top .favorite').attr("class", "favorite-active");
       },
       error: function (err) {
         console.log(err);
@@ -144,14 +273,17 @@ $(function () {
 //관심목록에 있는 프로젝트인 경우 빈 하트로 바꾸고 DB의 bookmark Table에서 레코드를 제거함.
   $(document).on('click', '.top .favorite-active', function (){
 
+    let fav_id = $(this).closest('div[id^="card-"]').attr('id')
+
     $.ajax({ //북마크 삭제
       type: "POST",
       url: "/prome/project/deleteBookmark",
       data:{"user_id": "yhg",
-        "project_id": $('.fav-1').data("project-id") },
-      success: function (data) {
+        "project_id": $(this).closest('div[id^="card-"]').data("project-id")},
+      success: function ( ) {
         console.log("북마크 삭제했습니다.")
-        $('.fav-1 .top .favorite-active').attr("class", "favorite");
+        console.log($(this).attr('id'))
+        $('#'+fav_id+ ' .top .favorite-active').attr("class", "favorite");
       },
       error: function (err) {
         console.log(err);
@@ -164,7 +296,7 @@ $(function () {
 
 
 //slick slider 3개
-$('.slider-favorites').slick({
+$('.slider-fav').slick({
   arrows: true,
   prevArrow:
       "<input type='image' class='slick-prev' src= '../assets/arrow-back.png' style='width: 40px; height: 40px'></input>",
@@ -192,7 +324,7 @@ $('.slider-favorites').slick({
   ],
 }); //.slider-favorites
 
-$('.slider-apply-project').slick({
+$('.slider-apply').slick({
   arrows: true,
   prevArrow:
       "<input type='image' class='slick-prev' src= '../assets/arrow-back.png' style='width: 40px; height: 40px'></input>",
@@ -220,7 +352,7 @@ $('.slider-apply-project').slick({
   ],
 }); //.slider-apply-project
 
-$('.slider-my-team').slick({
+$('.slider-myteam').slick({
     arrows: true,
     prevArrow:
         "<input type='image' class='slick-prev' src= '../assets/arrow-back.png' style='width: 40px; height: 40px'></input>",

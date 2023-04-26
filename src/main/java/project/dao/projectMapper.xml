@@ -81,7 +81,7 @@
  </select>
 
  <!-- 해당 User가 지원한 프로젝트 목록 가져오기-->
- <!-- user_id 받아서 List<HashMap> project_id, 지원상태 반환함-->
+ <!-- user_id 받아서 List<HashMap> project_id, status(지원상태) 반환함-->
  <select id="getSupportedProjects" parameterType="String" resultType="java.util.HashMap">
   SELECT project_id, status from application WHERE user_id=#{user_id} ORDER BY id desc
  </select>
@@ -89,7 +89,7 @@
  <!-- 해당 User가 팀장으로 있는 프로젝트 목록 가져오기-->
  <!-- user_id 받아서 List<String>로 project_id반환함-->
  <select id="getMyTeams_leader" parameterType="String" resultType="String">
-  SELECT project_id from project WHERE team_leader=#{user_id} ORDER BY id desc
+  SELECT id from project WHERE team_leader=#{user_id} ORDER BY id desc
  </select>
 
  <!-- 해당 User가 팀원으로 있는 프로젝트 목록 가져오기-->

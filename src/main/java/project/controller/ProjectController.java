@@ -110,7 +110,7 @@ public class ProjectController {
 	@ResponseBody
 	public ProjCardDTO getProjectCard(
 //		@SessionAttribute(name = "user_id", required = false) String user_id, //로그인 안했을 때에는 user_id에 null이 할당됨.
-		@RequestParam(name = "user_id", required = false) String user_id, //로그인 안했을 때에는 user_id에 null이 할당됨.
+		@RequestParam(name = "user_id", required = false) String user_id,
 		@RequestParam String project_id) {
 		return projectService.getProjectCard(user_id, project_id);
 	}
@@ -122,16 +122,18 @@ public class ProjectController {
 	@GetMapping(value="bookmark")
 	@ResponseBody
 	public List<String> getBookmark(
-		@SessionAttribute(name = "user_id", required = false) String user_id){ //로그인 안했을 때에는 user_id에 null이 할당됨.
+		//@SessionAttribute(name = "user_id", required = false) String user_id,//로그인 안했을 때에는 user_id에 null이 할당됨.
+		@RequestParam(name = "user_id", required = false) String user_id){
 
 		return projectService.getBookmark(user_id);
 	}
 
-	//mypage 2-지원한 프로젝트 	->project_id와 status 들어있는 List<Map<String, Object>> 리턴.
+	//mypage 2-지원한 프로젝트 	->project_id와 status(null이면 key로 안들어 있음) 들어있는 List<Map<String, Object>> 리턴.
 	@GetMapping(value="supportedProjects")
 	@ResponseBody
 	public List<Map<String, Object>> getSupportedProjects(
-		@SessionAttribute(name = "user_id", required = false) String user_id){ //로그인 안했을 때에는 user_id에 null이 할당됨.
+		//@SessionAttribute(name = "user_id", required = false) String user_id //로그인 안했을 때에는 user_id에 null이 할당됨.
+		@RequestParam(name = "user_id", required = false) String user_id){
 
 		return projectService.getSupportedProjects(user_id);
 	}
@@ -141,7 +143,8 @@ public class ProjectController {
 	@GetMapping(value="myTeams")
 	@ResponseBody
 	public Map<String, List<String>> getMyTeams(
-		@SessionAttribute(name = "user_id", required = false) String user_id){ //로그인 안했을 때에는 user_id에 null이 할당됨.
+		//@SessionAttribute(name = "user_id", required = false) String user_id //로그인 안했을 때에는 user_id에 null이 할당됨.
+		@RequestParam(name = "user_id", required = false) String user_id){
 
 		return projectService.getMyTeams(user_id);
 	}
