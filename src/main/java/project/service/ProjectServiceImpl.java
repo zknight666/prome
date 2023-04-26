@@ -41,15 +41,13 @@ public class ProjectServiceImpl implements ProjectService {
     	    	member_need += Integer.parseInt(recruitCount);
     	    }
     	    projectDTO.setMember_need(member_need);
-    	     
+    	    
     	    
     	    if (projectDTO.getMember_joined() == projectDTO.getMember_need()) {
     	        projectDTO.setRecruit_state("finish");
     	    } else {
     	        projectDTO.setRecruit_state("ing");
     	    } 
-    	     
-    	    
     	    System.out.println("Title: " + projectDTO.getTitle());
             System.out.println("Field: " + projectDTO.getField());
             System.out.println("Content: " + projectDTO.getContent());
@@ -58,15 +56,10 @@ public class ProjectServiceImpl implements ProjectService {
             System.out.println("Member Joined: " + projectDTO.getMember_joined());
             System.out.println("Member Need: " + projectDTO.getMember_need());
             System.out.println("Recruit state: " + projectDTO.getRecruit_state());
-
             System.out.println("Tech Stacks: " + projectDTO.getTech_stacks());
             System.out.println("RecruitmentFields: " + projectDTO.getRecruitmentFields());
             System.out.println("RecruitCounts: " + projectDTO.getRecruitCounts());
-            
-            //세션
-            String id=(String) session.getAttribute("????????");
-            projectDTO.setId(id);
-            
+
     	projectDAO.buildProject(projectDTO);
     }  
     

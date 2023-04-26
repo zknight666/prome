@@ -19,12 +19,12 @@ import project.bean.ProjectMainpageDTO;
 import project.service.ProjectService;
 import user.bean.UserDTO;
 
+
 @Controller
 @RequestMapping(value="project")
 public class ProjectController {
 	@Autowired
 	private ProjectService projectService;
-	
 	
 
 	@GetMapping(value="buildProject")

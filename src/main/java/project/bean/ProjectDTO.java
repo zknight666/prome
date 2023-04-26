@@ -16,7 +16,6 @@ import lombok.Setter;
 public class ProjectDTO {
 	
 	private String id;
-	
 	private int projectId;
 	private String title;
 	private String team_leader;
