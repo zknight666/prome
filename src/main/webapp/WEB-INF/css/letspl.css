@@ -22507,7 +22507,7 @@ section {
   display: block;
   z-index: 99999;
 }
-.modal {
+.modal:not(#modalApplyCancel){
   position: relative;
   left: 50%;
   top: 50%;
@@ -23811,7 +23811,7 @@ section {
     margin-bottom: 12px;
   }
 }
-div::-webkit-scrollbar {
+div::-webkit-scrollbar:not(#modalApplyCancel) {
   width: 0;
   background: transparent;
 }

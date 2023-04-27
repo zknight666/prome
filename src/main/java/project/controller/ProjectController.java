@@ -87,7 +87,7 @@ public class ProjectController {
 	@PostMapping(value="addBookmark")
 	@ResponseBody
 	public void addBookmark(
-		//@SessionAttribute(name = "user_id", required = false) String user_id //로그인 안했을 때에는 user_id에 null이 할당됨.
+		//@SessionAttribute(name = "user_id", required = true) String user_id //로그인 안했을 때에는 user_id에 null이 할당됨.
 		@RequestParam(name = "user_id", required = false) String user_id,
 		@RequestParam String project_id) {
 
@@ -110,7 +110,7 @@ public class ProjectController {
 	@ResponseBody
 	public ProjCardDTO getProjectCard(
 //		@SessionAttribute(name = "user_id", required = false) String user_id, //로그인 안했을 때에는 user_id에 null이 할당됨.
-		@RequestParam(name = "user_id", required = false) String user_id,
+		@RequestParam(name = "user_id", required = false, defaultValue = "0") String user_id,
 		@RequestParam String project_id) {
 		return projectService.getProjectCard(user_id, project_id);
 	}
@@ -148,6 +148,17 @@ public class ProjectController {
 
 		return projectService.getMyTeams(user_id);
 	}
+
+	@PostMapping(value="deleteApplication")
+	@ResponseBody
+	public int deleteApplication( //삭제된 행의 개수
+		//@SessionAttribute(name = "user_id", required = true) String user_id //로그인 안했을 때에는 user_id에 null이 할당됨.
+		@RequestParam(name = "user_id") String user_id,
+		@RequestParam(name = "project_id") String project_id
+	){
+		return projectService.deleteApplication(user_id, project_id);
+	}
+
 
 }
 

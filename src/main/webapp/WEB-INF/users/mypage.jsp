@@ -304,7 +304,7 @@
         <!--* Title - 내가 생성한 Team*-->
         <div class="row" style="margin-top: 5rem; margin-bottom: 1.2rem">
           <div class="col" style="display: flex">
-            <span class="h4" style="font-weight: bolder"> &nbsp;&nbsp; * 내가 생성한 Team *</span>
+            <span class="h4" style="font-weight: bolder"> &nbsp;&nbsp; * My Team *</span>
           </div>
         </div>
 
@@ -416,7 +416,54 @@
       </div>
     </footer>
   </div>
-  
+
+
+<!--  ================================================= 모달창 시작 ================================================== -->
+
+  <!-- 지원취소 modal  -->
+  <div class="modal fade" id="modalApplyCancel">
+    <div class="modal-dialog modal-dialog-centered" role="document">
+      <div class="modal-content">
+        <div class="modal-header">
+          <h5 class="modal-title">프로젝트 제목 적기</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close">
+            <span aria-hidden="true"></span>
+          </button>
+        </div>
+        <div class="modal-body">
+          <p>이 프로젝트에 대한 지원을 취소하시겠습니까?</p>
+        </div>
+        <div class="modal-footer">
+          <button type="button" class="btn btn-primary" data-project-id="0">지원 취소</button>
+          <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">닫기</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
   <!-- 회원탈퇴 modal  -->
   <div class="modalWrapClose">
         <div class="loginModal" style="padding-bottom: 30px;">
@@ -432,7 +479,7 @@
             <button type="button" class="btn btn-outline-secondary radious" id="cancel">취소</button>
 
         </div>
-    </div>
+  </div>
 
   <!-- Bootstrap core JS-->
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>

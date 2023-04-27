@@ -26,4 +26,6 @@ public interface ProjectService {
     List<Map<String, Object>> getSupportedProjects(String user_id);
 
     Map<String, List<String>> getMyTeams(String user_id);
+
+    int deleteApplication(String user_id, String project_id);
 }

@@ -155,6 +155,21 @@
 
 
 
+
+
+
+
+
+ <!-- 해당 User의 그 project에 대한 지원서 삭제-->
+ <delete id="deleteApplication" parameterType="java.util.HashMap">
+  delete APPLICATION where user_id=#{user_id} and project_id=#{project_id}
+ </delete>
+
+
+
+
+
+
  </mapper>
  
  

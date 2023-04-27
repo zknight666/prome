@@ -93,8 +93,16 @@ public class ProjectServiceImpl implements ProjectService {
         return projectDAO.getMyTeams(user_id);
     }
 
+
     @Override
     public ProjCardDTO getProjectCard(String user_id, String project_id) {
         return projectDAO.getProjectCard(user_id, project_id);
     }
+
+    @Override
+    public int deleteApplication(String user_id, String project_id) {
+        return projectDAO.deleteApplication(user_id, project_id);
+    }
+
+
 }

@@ -126,6 +126,7 @@ public class ProejctDAOMyBatis implements ProjectDAO {
         return sqlSession.selectOne("projectSQL.getProject", project_id);
     }
 
+
     @Override
     public List<String> getBookmark(String user_id) {
         return sqlSession.selectList("projectSQL.getBookmark", user_id );
@@ -158,6 +159,14 @@ public class ProejctDAOMyBatis implements ProjectDAO {
         result_map.put("leader", sqlSession.selectList("projectSQL.getMyTeams_leader", user_id ));
         result_map.put("member", sqlSession.selectList("projectSQL.getMyTeams_member", user_id ));
         return result_map;
+    }
+
+    @Override
+    public int deleteApplication(String user_id, String project_id) {
+        Map<String, String> param_map = new HashMap<String, String>();
+        param_map.put("user_id", user_id);
+        param_map.put("project_id", project_id);
+        return sqlSession.delete("projectSQL.deleteApplication", param_map );
     }
 
 
