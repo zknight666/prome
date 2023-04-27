@@ -13,14 +13,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-<<<<<<< HEAD
-import com.fasterxml.jackson.core.JsonParser;
-
-import project.bean.ApplicantsDTO;
-=======
-import org.springframework.web.bind.annotation.SessionAttribute;
 import project.bean.ProjCardDTO;
->>>>>>> origin/develop-mypage
 import project.bean.ProjectDTO;
 import project.bean.ProjectMainpageDTO;
 import project.service.ProjectService;
@@ -31,18 +24,12 @@ import project.service.ProjectService;
 public class ProjectController {
 	@Autowired
 	private ProjectService projectService;
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> origin/develop-mypage
-
-	@GetMapping(value="buildProject")
-	public String buildProject() {
-		
-		return "project/buildProject";
-	}
-<<<<<<< HEAD
+	/*
+	 * @GetMapping(value="buildProject") public String buildProject() {
+	 * 
+	 * return "project/buildProject"; }
+	 */
 	
 
 	@PostMapping(value="buildProject")
@@ -59,13 +46,6 @@ public class ProjectController {
 		return projectService.getMainProjects();
 	}
 	
-	
-	
-	
-=======
-
-
->>>>>>> origin/develop-mypage
 	
 	@GetMapping(value="project")
 	public String project() {
@@ -136,7 +116,6 @@ public class ProjectController {
 		return projectService.adminGetUserList(userPg);
 	}
 
-<<<<<<< HEAD
 	
 	@PostMapping(value="adminDeleteUser")
 	@ResponseBody
@@ -150,7 +129,6 @@ public class ProjectController {
 	
 	
 	//mypage
-=======
 	//북마크 추가
 	@PostMapping(value="addBookmark")
 	@ResponseBody
@@ -187,7 +165,7 @@ public class ProjectController {
 	/* [관심목록, 지원한 프로젝트, My Team] 불러오기 */
 
 	//mypage 1-관심목록    -> project_id가 들어있는 List<String> 리턴함
->>>>>>> origin/develop-mypage
+
 	@GetMapping(value="bookmark")
 	@ResponseBody
 	public List<String> getBookmark(
@@ -197,7 +175,7 @@ public class ProjectController {
 		return projectService.getBookmark(user_id);
 	}
 
-<<<<<<< HEAD
+
 //	@GetMapping(value="bookmark")
 //	@ResponseBody
 //	public List<ProjectDTO> bookmark() {
@@ -205,7 +183,7 @@ public class ProjectController {
 //		return projectService.getBookmark();
 //	}
 	
-=======
+
 	//mypage 2-지원한 프로젝트 	->project_id와 status(null이면 key로 안들어 있음) 들어있는 List<Map<String, Object>> 리턴.
 	@GetMapping(value="supportedProjects")
 	@ResponseBody
@@ -236,8 +214,6 @@ public class ProjectController {
 	){
 		return projectService.deleteApplication(user_id, project_id);
 	}
-
->>>>>>> origin/develop-mypage
 
 }
 

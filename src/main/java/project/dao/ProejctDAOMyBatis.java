@@ -4,22 +4,19 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
+
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-<<<<<<< HEAD
 
 import com.fasterxml.jackson.core.JsonProcessingException;
 import com.fasterxml.jackson.databind.JsonMappingException;
 import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import net.sf.json.JSONArray;
 import project.bean.ApplicantsDTO;
-=======
 import project.bean.ProjCardDTO;
->>>>>>> origin/develop-mypage
 import project.bean.ProjectDTO;
 import project.bean.ProjectMainpageDTO;
 import user.bean.UserDTO;
@@ -50,11 +47,10 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 
     }
 
-    @Override
-<<<<<<< HEAD
-    public List<ProjectDTO> getBookmark() {
-        return sqlSession.selectList("projectSQL.getBookmark");
-    }
+//    @Override
+//    public List<ProjectDTO> getBookmark() {
+//        return sqlSession.selectList("projectSQL.getBookmark");
+//    }
 	@Override
 	public void buildProject(ProjectDTO projectDTO) {
 //		sqlSession.insert("projectSQL.writeProject",projectDTO);
@@ -174,7 +170,6 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 	//--------------------------------------------------
 
 
-=======
     public List<UserDTO> getUserList() {
         return sqlSession.selectList("userSQL.getUserList");
     }
@@ -301,8 +296,5 @@ public class ProejctDAOMyBatis implements ProjectDAO {
         param_map.put("project_id", project_id);
         return sqlSession.delete("projectSQL.deleteApplication", param_map );
     }
->>>>>>> origin/develop-mypage
-
-
 }
 

@@ -224,7 +224,6 @@
 			<groupId>junit</groupId>
 			<artifactId>junit</artifactId>
 			<version>4.7</version>
-<<<<<<< HEAD
 			<scope>test</scope>
 		</dependency>
 		<!-- email 인증 -->
@@ -276,7 +275,6 @@
 			<artifactId>spring-boot-starter-security</artifactId>
 			<version>2.6.3</version>
 		</dependency>
-
 	</dependencies>
 	<build>
 		<plugins>
@@ -294,40 +292,15 @@
 					<downloadJavadocs>true</downloadJavadocs>
 				</configuration>
 			</plugin>
-=======
- 			<scope>test</scope>
-		</dependency>      
-		
-		</dependencies>
-    <build>
-        <plugins>
-            <plugin>
-                <artifactId>maven-eclipse-plugin</artifactId>
-                <version>2.9</version>
-                <configuration>
-                    <additionalProjectnatures>
-                        <projectnature>org.springframework.ide.eclipse.core.springnature</projectnature>
-                    </additionalProjectnatures>
-                    <additionalBuildcommands>
-                        <buildcommand>org.springframework.ide.eclipse.core.springbuilder</buildcommand>
-                    </additionalBuildcommands>
-                    <downloadSources>true</downloadSources>
-                    <downloadJavadocs>true</downloadJavadocs>
-                </configuration>
-            </plugin>
->>>>>>> origin/develop-mypage
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
 				<artifactId>maven-compiler-plugin</artifactId>
 				<version>2.5.1</version>
 				<configuration>
-<<<<<<< HEAD
 					<source>1.6</source>
-					<target>1.6</target>
-=======
+					<target>1.6</target> <!-- 이부분 차이 있음 -->
 					<source>11</source>
 					<target>11</target>
->>>>>>> origin/develop-mypage
 					<compilerArgument>-Xlint:all</compilerArgument>
 					<showWarnings>true</showWarnings>
 					<showDeprecation>true</showDeprecation>
@@ -338,17 +311,9 @@
 				<artifactId>exec-maven-plugin</artifactId>
 				<version>1.2.1</version>
 				<configuration>
-<<<<<<< HEAD
 					<mainClass>org.test.int1.Main</mainClass>
 				</configuration>
 			</plugin>
 		</plugins>
 	</build>
-=======
-						<mainClass>org.test.int1.Main</mainClass>
-				</configuration>
-			</plugin>
-        </plugins>
-    </build>
->>>>>>> origin/develop-mypage
 </project>

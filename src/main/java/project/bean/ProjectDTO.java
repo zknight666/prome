@@ -11,11 +11,8 @@ import org.springframework.context.annotation.Scope;
 
 @Getter
 @Setter
-<<<<<<< HEAD
 @NoArgsConstructor
-=======
 @Scope("prototype")
->>>>>>> origin/develop-mypage
 public class ProjectDTO {
 	
 

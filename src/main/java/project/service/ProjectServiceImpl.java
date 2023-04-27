@@ -4,17 +4,11 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
-
 import javax.servlet.http.HttpSession;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
-<<<<<<< HEAD
-
 import project.bean.ApplicantsDTO;
-=======
 import project.bean.ProjCardDTO;
->>>>>>> origin/develop-mypage
 import project.bean.ProjectDTO;
 import project.bean.ProjectMainpageDTO;
 import project.bean.ProjectPaging;
@@ -77,6 +71,12 @@ public class ProjectServiceImpl implements ProjectService {
     public List<String> getBookmark(String user_id) {
         return projectDAO.getBookmark(user_id);
     }
+//    @Override
+//	public List<ProjectDTO> getBookmark() {
+//		// TODO Auto-generated method stub
+//		return null;
+//	}
+
 	
     @Override
     public void buildProject(ProjectDTO projectDTO) {
@@ -189,9 +189,6 @@ public class ProjectServiceImpl implements ProjectService {
 		
 	}
 	//---------------------------------------------------
-	
-   
-
 
 //    @Override
 //    public List<ProjectDTO> getBookmark() {
@@ -228,6 +225,7 @@ public class ProjectServiceImpl implements ProjectService {
     public int deleteApplication(String user_id, String project_id) {
         return projectDAO.deleteApplication(user_id, project_id);
     }
+//
 
-
+	
 }
