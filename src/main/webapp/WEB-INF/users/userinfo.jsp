@@ -22,6 +22,7 @@
 </head>
 
 <body>
+	<input type="hidden" id="memId" value="${param.id}">
 	<div class="container">
 		<!-- Navigation-->
 		<nav class="navbar navbar-expand-lg navbar-light bg-light"
@@ -36,7 +37,7 @@
 				</button>
 
 				<div class="collapse navbar-collapse" id="navbarColor03">
-					<img src="../assets/logo.png" style="cursor: pointer" />
+					<img id="logo" src="../assets/logo.png" style="cursor: pointer" />
 
 					<ul class="navbar-nav me-auto">
 						<li class="nav-item dropdown"><a
@@ -58,11 +59,11 @@
 							<img src="../assets\account-circle.png" />
 						</button>
 						<div class="dropdown-menu" style="right: 0">
-							<div class="dropdown-item">*******님</div>
+							<div class="dropdown-item">${param.id}님</div>
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" id="mypageBtn">마이페이지</a> <a
-								class="dropdown-item" href="#">내 모임 지원자 관리</a> <a
-								class="dropdown-item" id="userinfoBtn">회원 정보 수정</a>
+							<a class="dropdown-item" id="mypageBtn" href="/prome/users/mypage?id=${param.id}">마이페이지</a> 
+							<a class="dropdown-item" href="/prome/users/applicants?id=${param.id}">내 모임 지원자 관리</a> 
+							<a class="dropdown-item" id="userinfoBtn" href="/prome/users/userinfo?id=${param.id}">회원 정보 수정</a>
 							<div class="dropdown-divider"></div>
 						</div>
 					</form>
@@ -332,15 +333,15 @@
 		src="http://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<script src="../js/userinfo.js"></script>
 	<script type="text/javascript">
-		$('#mypageBtn').click(function() {
-			location.replace = '/prome/users/mypage';
-		});
-		$('#userinfoBtn').click(function() {
-			location.replace = '/prome/users/userinfo';
-		});
-		$('#logoutBtn').click(function() {
-			location.href = '/prome/';
-		});
+		
+        /* 버튼 관련 */
+        $('#logoutBtn').click(function () {
+            $('#memId').val('');
+            location.replace('/prome/');
+        });
+        $('#logo').click(function () {
+            location.href = '/prome?id=' + $('#memId').val();
+        });
 	</script>
 </body>
 

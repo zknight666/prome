@@ -114,8 +114,8 @@ function displayProjects(projects) {
         const recruitmentFieldsList = Object.entries(JSON.parse(project.recruitmentFields))
             .filter(([, value]) => value !== null)
             .map(([key, value]) => {
-                              const recruitmentFieldsname = recruitmentfieldsname[key];
-                              return `<h3><li><span>${recruitmentFieldsname}</span><span>${value}</span></li></h3>`;
+                              const recruitmentFieldsName = recruitmentfieldsname[key];
+                              return `<h3><li><span>${recruitmentFieldsName}</span><span>${value}</span></li></h3>`;
                               })
             .join('');
 

@@ -36,22 +36,14 @@
 					aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-
-<<<<<<< HEAD
-				<div class="collapse navbar-collapse" id="navbarColor03">
-					<img id="logo" src="../assets/logo.png" style="cursor: pointer" />
-=======
                 <div class="collapse navbar-collapse" id="navbarColor03">
                     <img src="../assets/logo.png" style="cursor: pointer" onclick="location.href='/prome/'" />
->>>>>>> origin/develop-buildproject
-
 					<ul class="navbar-nav me-auto">
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
 							href="#" role="button" aria-haspopup="true" aria-expanded="false"></a>
 						</li>
 					</ul>
-
 					<form class="d-flex dropdown">
 						<button class="btn my-2 my-sm-0" id="loginBtn" type="button"
 							style="padding-right: 0">

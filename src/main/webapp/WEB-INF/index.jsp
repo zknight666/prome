@@ -81,9 +81,9 @@
 							<div class="dropdown-menu" style="right: 0">
 								<div class="dropdown-item">${param.id}님</div>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" id="mypageBtn">마이페이지</a> <a
-									class="dropdown-item" href="#">내 모임 지원자 관리</a> <a
-									class="dropdown-item" id="userinfoBtn">회원 정보 수정</a>
+								<a class="dropdown-item" id="mypageBtn" href="/prome/users/mypage?id=${param.id}">마이페이지</a> 
+								<a class="dropdown-item" href="/prome/users/applicants?id=${param.id}">내 모임 지원자 관리</a> 
+								<a class="dropdown-item" id="userinfoBtn" href="/prome/users/userinfo?id=${param.id}">회원 정보 수정</a>
 								<div class="dropdown-divider"></div>
 							</div>
 						</form>
@@ -108,7 +108,7 @@
 					<div class="col" style="display: flex; flex-direction: row-reverse">
 						<button type="button" class="btn btn-primary"
 							style="background: rgb(28, 124, 224); border: none"
-							onclick="location.href='/prome/project/buildProject?id=${param.id}'">
+							onclick="location.href='/prome/project/buildProject'">
 							모임 생성</button>
 					</div>
 				</div>

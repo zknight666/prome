@@ -24,54 +24,51 @@
 	<!-- hidden -->
     <div class="container">
         <!-- Navigation-->
-        <nav class="navbar navbar-expand-lg navbar-light bg-light" style="
-                  background: rgb(39, 146, 212);
-                  background: linear-gradient(90deg, rgba(39, 146, 212, 1) 0%, rgba(78, 99, 221, 1) 100%);
-                  border: none;
-                  margin: 0;
-                ">
-            <!--style="background-color: #1A6DFF !important;"-->
-            <div class="container-fluid">
-                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarColor03"
-                    aria-controls="navbarColor03" aria-expanded="false" aria-label="Toggle navigation">
-                    <span class="navbar-toggler-icon"></span>
-                </button>
+        		<nav class="navbar navbar-expand-lg navbar-light bg-light"
+			style="background: rgb(39, 146, 212); background: linear-gradient(90deg, rgba(39, 146, 212, 1) 0%, rgba(78, 99, 221, 1) 100%); border: none; margin: 0;">
+			<!--style="background-color: #1A6DFF !important;"-->
+			<div class="container-fluid">
+				<button class="navbar-toggler" type="button"
+					data-bs-toggle="collapse" data-bs-target="#navbarColor03"
+					aria-controls="navbarColor03" aria-expanded="false"
+					aria-label="Toggle navigation">
+					<span class="navbar-toggler-icon"></span>
+				</button>
 
-                <div class="collapse navbar-collapse" id="navbarColor03">
-                
-                	<a href="/prome/">
-                  	  <img src="../assets/logo.png" style="cursor: pointer" />
-					</a>
-					
-                    <ul class="navbar-nav me-auto">
-                        <li class="nav-item dropdown">
-                        </li>
-                    </ul>
+				<div class="collapse navbar-collapse" id="navbarColor03">
+					<img id="logo" src="../assets/logo.png" style="cursor: pointer" />
 
-                    <form class="d-flex dropdown">
-                        <!-- <input class="form-control me-sm-2" type="search" placeholder="Search" /> -->
-                        <button class="btn my-2 my-sm-0" type="button" style="padding-right: 0">
-                            <img src="../assets\btn-logout.png" />
-                        </button>
+					<ul class="navbar-nav me-auto">
+						<li class="nav-item dropdown"><a
+							class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
+							href="#" role="button" aria-haspopup="true" aria-expanded="false"></a>
+						</li>
+					</ul>
 
-                        <button class="btn my-2 my-sm-0 nav-link dropdown-toggle" aria-haspopup="true"
-                            aria-expanded="false" data-bs-toggle="dropdown" style="margin-right: 0.5rem">
-                            <img src="../assets\account-circle.png" />
-                        </button>
-                        <div class="dropdown-menu" style="right: 0">
-                            <div class="dropdown-item">${param.id}님</div>
-                            <div class="dropdown-divider"></div>
-                            <a class="dropdown-item" href="/prome/users/mypage">마이페이지</a>
+					<form class="d-flex dropdown">
+						<!-- <input class="form-control me-sm-2" type="search" placeholder="Search" /> -->
+						<button class="btn my-2 my-sm-0" id="logoutBtn" type="button"
+							style="padding-right: 0">
+							<img src="../assets\btn-logout.png" />
+						</button>
 
-                            <a class="dropdown-item" href="/prome/project/applicants">내 모임 지원자 관리</a>
-
-                            <a class="dropdown-item" href="/prome/users/userinfo">회원 정보 수정</a>
-                            <div class="dropdown-divider"></div>
-                        </div>
-                    </form>
-                </div>
-            </div>
-        </nav>
+						<button class="btn my-2 my-sm-0 nav-link dropdown-toggle"
+							aria-haspopup="true" aria-expanded="false"
+							data-bs-toggle="dropdown" style="margin-right: 0.5rem">
+							<img src="../assets\account-circle.png" />
+						</button>
+						<div class="dropdown-menu" style="right: 0">
+							<div class="dropdown-item">${param.id}님</div>
+							<div class="dropdown-divider"></div>
+							<a class="dropdown-item" id="mypageBtn" href="/prome/users/mypage?id=${param.id}">마이페이지</a> 
+							<a class="dropdown-item" href="/prome/users/applicants?id=${param.id}">내 모임 지원자 관리</a> 
+							<a class="dropdown-item" id="userinfoBtn" href="/prome/users/userinfo?id=${param.id}">회원 정보 수정</a>
+							<div class="dropdown-divider"></div>
+						</div>
+					</form>
+				</div>
+			</div>
+		</nav>
         <!-- Header-->
         <header class="bg-dark" style="
                   background-image: url('../assets/main-banner.png');
@@ -434,6 +431,16 @@
 
 	<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.4.min.js"></script>    
     <script type="text/javascript" src="../js/buildproject_script.js"></script>
+    <script type="text/javascript">
+    /* 버튼 관련 */
+    $('#logoutBtn').click(function () {
+        $('#memId').val('');
+        location.replace('/prome/');
+    });
+    $('#logo').click(function () {
+        location.href = '/prome?id=' + $('#memId').val();
+    });
+    </script>
     
 </body>
 
