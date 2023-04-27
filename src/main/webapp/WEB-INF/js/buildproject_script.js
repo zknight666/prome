@@ -1,4 +1,14 @@
 $(document).ready(function () {
+
+
+// 단축키
+$(document).keydown(function(event) {
+	// P버튼
+	if (event.which === 80 && !$(".loginModal_1").parent().hasClass("modalWrapOpen_1") && !$(".loginModal").parent().hasClass("modalWrapOpen")) {
+	    location.href = '/prome/';
+	}
+});
+
   /*************** 모집 인원 동적 처리***************/
   function updateOpacity() {
     let totalCount = 0;

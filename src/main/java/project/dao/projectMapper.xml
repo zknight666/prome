@@ -122,6 +122,7 @@
 		FROM project p
 		JOIN recruitment_field rf ON p.ID = rf.PROJECT_ID
 		JOIN project_tech_stack pts ON p.ID = pts.PROJECT_ID
+		ORDER BY p.ID desc
 	</select>
 
 	<insert id="project_tech_stack" parameterType="project">
