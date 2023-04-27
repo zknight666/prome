@@ -39,7 +39,7 @@
 
                 <div class="collapse navbar-collapse" id="navbarColor03">
                 
-                	<a href="/prome/">
+                	<a href="/prome/?id=${param.id}">
                   	  <img src="../assets/logo.png" style="cursor: pointer" />
 					</a>
 					
@@ -50,7 +50,7 @@
 
                     <form class="d-flex dropdown">
                         <!-- <input class="form-control me-sm-2" type="search" placeholder="Search" /> -->
-                        <button class="btn my-2 my-sm-0" type="button" style="padding-right: 0">
+                        <button name="logoutbtn" class="btn my-2 my-sm-0" type="button" style="padding-right: 0">
                             <img src="../assets\btn-logout.png" />
                         </button>
 
@@ -285,7 +285,7 @@
                                     <span class="h5" style="font-weight: 800;">* 기간</span>
                                 </div>
                                 <div class="flex space-x-5">
-                                    <div>
+                                    <div style="padding-right: 20px">
                                         <label for="start-date" class="block text-xl mb-2">&nbsp;프로젝트 시작 기간&nbsp;</label>
                                         <input type="date" id="start-date" name="start-date" class="border-2 border-gray-300 p-2 rounded" required="required">
                                     </div>
@@ -302,99 +302,99 @@
 							    <div class="card border-light mb-3" style="width: auto;">
 							        <div class="card-body">
 							            <div class="icon">
-							                <input type="checkbox" id="android" name="android" value="n" class="icon">
+							                <input type="checkbox" id="android" name="android" value="N" class="icon">
 							                <label for="android"><em></em><br><span>android</span></label>
 							            </div>
 							            <div class="icon">
-							                <input type="checkbox" id="aws" name="aws" value="n" class="icon">
+							                <input type="checkbox" id="aws" name="aws" value="N" class="icon">
 							                <label for="aws"><em></em><br><span>aws</span></label>
 							            </div>
 							            <div class="icon">
-							                <input type="checkbox" id="c" name="C_C#" value="n" class="icon">
+							                <input type="checkbox" id="c" name="C_C#" value="N" class="icon">
 							                <label for="c"><em></em><br><span>C_C#</span></label>
 							            </div>
 							            <div class="icon">
-							                <input type="checkbox" id="docker" name="docker" value="n" class="icon">
+							                <input type="checkbox" id="docker" name="docker" value="N" class="icon">
 							                <label for="docker"><em></em><br><span>docker</span></label>
 							            </div>
 							            <div class="icon">
-							                <input type="checkbox" id="figma" name="figma" value="n" class="icon">
+							                <input type="checkbox" id="figma" name="figma" value="N" class="icon">
 							                <label for="figma"><em></em><br><span>figma</span></label>
 							            </div>
 							            <div class="icon">
-							                <input type="checkbox" id="flutter" name="flutter" value="n" class="icon">
+							                <input type="checkbox" id="flutter" name="flutter" value="N" class="icon">
 							                <label for="flutter"><em></em><br><span>flutter</span></label>
 							            </div>
 							            <div class="icon">
-							                <input type="checkbox" id="git" name="git" value="n" class="icon">
+							                <input type="checkbox" id="git" name="git" value="N" class="icon">
 							                <label for="git"><em></em><br><span>git</span></label>
 							            </div>
 							            <div class="icon">
-							                <input type="checkbox" id="html" name="html_css" value="n" class="icon">
+							                <input type="checkbox" id="html" name="html_css" value="N" class="icon">
 							                <label for="html"><em></em><br><span>html_css</span></label>
 							            </div>
 							            <div class="icon">
-							                <input type="checkbox" id="ios" name="ios" value="n" class="icon">
+							                <input type="checkbox" id="ios" name="ios" value="N" class="icon">
 							                <label for="ios"><em></em><br><span>ios</span></label>
 							            </div>
 							            <div class="icon">
-							                <input type="checkbox" id="javascript" name="javascript" value="n" class="icon">
+							                <input type="checkbox" id="javascript" name="javascript" value="N" class="icon">
 							                <label for="javascript"><em></em><br><span>javascript</span></label>
 							            </div>
 							            <div class="icon">
-							                <input type="checkbox" id="java" name="java" value="n" class="icon">
+							                <input type="checkbox" id="java" name="java" value="N" class="icon">
 							                <label for="java"><em></em><br><span>java</span></label>
 							            </div>
 							            <div class="icon">
-							                <input type="checkbox" id="kotlin" name="kotlin" value="n" class="icon">
+							                <input type="checkbox" id="kotlin" name="kotlin" value="N" class="icon">
 							                <label for="kotlin"><em></em><br><span>kotlin</span></label>
 							            </div>
                                         <div class="icon">
-                                            <input type="checkbox" id="kubernetes" name="kubernetes" value="n" class="icon">
+                                            <input type="checkbox" id="kubernetes" name="kubernetes" value="N" class="icon">
 								            <label for="kubernetes"><em></em><br><span>kubernetes</span></label>
 								        </div>
 								        <div class="icon">
-								            <input type="checkbox" id="mongodb" name="mongodb" value="n" class="icon">
+								            <input type="checkbox" id="mongodb" name="mongodb" value="N" class="icon">
 								            <label for="mongodb"><em></em><br><span>mongodb</span></label>
 								        </div>
 								        <div class="icon">
-								            <input type="checkbox" id="mysql" name="mysql" value="n" class="icon">
+								            <input type="checkbox" id="mysql" name="mysql" value="N" class="icon">
 								            <label for="mysql"><em></em><br><span>mysql</span></label>
 								        </div>
 								        <div class="icon">
-								            <input type="checkbox" id="nodejs" name="node_js" value="n" class="icon">
+								            <input type="checkbox" id="nodejs" name="node_js" value="N" class="icon">
 								            <label for="nodejs"><em></em><br><span>node_js</span></label>
 								        </div>
 								        <div class="icon">
-								            <input type="checkbox" id="photoshop" name="photoshop" value="n" class="icon">
+								            <input type="checkbox" id="photoshop" name="photoshop" value="N" class="icon">
 								            <label for="photoshop"><em></em><br><span>photoshop</span></label>
 								        </div>
 								        <div class="icon">
-								            <input type="checkbox" id="python" name="python" value="n" class="icon">
+								            <input type="checkbox" id="python" name="python" value="N" class="icon">
 								            <label for="python"><em></em><br><span>python</span></label>
 								        </div>
 								        <div class="icon">
-								            <input type="checkbox" id="react" name="react" value="n" class="icon">
+								            <input type="checkbox" id="react" name="react" value="N" class="icon">
 								            <label for="react"><em></em><br><span>react</span></label>
 								        </div>
 								        <div class="icon">
-								            <input type="checkbox" id="spring" name="spring" value="n" class="icon">
+								            <input type="checkbox" id="spring" name="spring" value="N" class="icon">
 								            <label for="spring"><em></em><br><span>spring</span></label>
 								        </div>
 								        <div class="icon">
-								            <input type="checkbox" id="tensorflow" name="tensorflow" value="n" class="icon">
+								            <input type="checkbox" id="tensorflow" name="tensorflow" value="N" class="icon">
 								            <label for="tensorflow"><em></em><br><span>tensorflow</span></label>
 								        </div>
 								        <div class="icon">
-								            <input type="checkbox" id="typescript" name="typescript" value="n" class="icon">
+								            <input type="checkbox" id="typescript" name="typescript" value="N" class="icon">
 								            <label for="typescript"><em></em><br><span>typescript</span></label>
 								        </div>
 								        <div class="icon">
-								            <input type="checkbox" id="unity" name="unity" value="n" class="icon">
+								            <input type="checkbox" id="unity" name="unity" value="N" class="icon">
 								            <label for="unity"><em></em><br><span>unity</span></label>
 								        </div>
 								        <div class="icon">
-								            <input type="checkbox" id="vue" name="vue" value="n" class="icon">
+								            <input type="checkbox" id="vue" name="vue" value="N" class="icon">
 								            <label for="vue"><em></em><br><span>vue</span></label>                                       
                                         </div>
                                     </div>

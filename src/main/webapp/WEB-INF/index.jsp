@@ -106,8 +106,8 @@
 					</div>
 
 					<div class="col" style="display: flex; flex-direction: row-reverse">
-						<button type="button" class="btn btn-primary"
-							style="background: rgb(28, 124, 224); border: none"
+						<button type="button" class="btn btn-primary" name="buildProjectBtn"
+							style="background: rgb(28, 124, 224); display:none; border: none;"
 							onclick="location.href='/prome/project/buildProject?id=${param.id}'">
 							모임 생성</button>
 					</div>
@@ -164,6 +164,7 @@
 			</div>
 		</section>
 		<!-- Footer-->
+		<img alt="" src="./assets/images/cat-footer.svg">
 		<footer class="py-5 bg-dark">
 			<div class="container">
 				<p class="m-0 text-center text-white">Copyright &copy; ProMe
@@ -199,8 +200,8 @@
 			<button class="closeBtn">
 				<img loading="lazy" src="./assets/icon/ic-close.svg" alt="close">
 			</button>
-			<div>
-				<img class="pmelogo" src="./assets/icon/pmelogo.png">
+			<div style="text-align: center; width:220px; height:60px;  ">
+				<img class="pwmlogo" src="./assets/images/pwmlogo.png">
 			</div>
 			*ID
 			<div class="div_center">

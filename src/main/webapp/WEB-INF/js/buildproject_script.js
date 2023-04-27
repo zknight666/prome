@@ -78,18 +78,19 @@ $(document).ready(function () {
   $(".recruit_countNumber").attr("name", "recruit_count_0");
   /*************** 모집 인원 동적 처리***************/
 
-  /**기술/언어 y/n 처리**/
+  /**기술/언어 Y/N 처리**/
   $('input[type="checkbox"]').on("change", function () {
     if ($(this).is(":checked")) {
-      $(this).val("y");
+      $(this).val("Y");
     } else {
-      $(this).val("n");
+      $(this).val("N");
     }
   });
-  /**기술/언어 y/n 처리**/
+  /**기술/언어 Y/N 처리**/
 
   /*************** submitbtn.click ***************/
 
+	// 유효성 검사
   $("#submitBtn").click(function (event) {
     if (
       $('input[name="project_name"]').val() == "" ||
@@ -101,7 +102,9 @@ $(document).ready(function () {
     } else if ($("#main_content").text().length < 20) {
       event.preventDefault();
       alert("내용을 입력해주세요");
-    } else {
+    } 
+    // db 전달
+    else {
       event.preventDefault();
       $.ajax({
         type: "POST",
@@ -125,7 +128,7 @@ $(document).ready(function () {
             .get(),
           tech_stacks: $('input[type="checkbox"]')
             .map(function () {
-              return { [this.name]: $(this).is(":checked") ? "y" : "n" };
+              return { [this.name]: $(this).is(":checked") ? "Y" : "N" };
             })
             .get()
             .reduce(function (acc, cur) {
@@ -144,8 +147,10 @@ $(document).ready(function () {
       }); //$.ajax
     } // else
   }); // $('#submitBtn').click(function(event)
-}); // $(document).ready(function () {
+}); // $(document).ready(function ()
 /*************** submitbtn.click ***************/
+
+
 
   /*************** 임시저장 ***************/
 $(document).ready(function () {
@@ -169,7 +174,7 @@ $(document).ready(function () {
         .get(),
       tech_stacks: $('input[type="checkbox"]')
         .map(function () {
-          return { [this.name]: $(this).is(":checked") ? "y" : "n" };
+          return { [this.name]: $(this).is(":checked") ? "Y" : "N" };
         })
         .get()
         .reduce(function (acc, cur) {
@@ -201,4 +206,8 @@ $(document).ready(function () {
 
   /*************** 임시저장 불러오기 ***************/
 
+// 로그아웃
+  $('button[name="logoutbtn"]').click(function () {
+  	location.href = "/prome/"
+  });
 });

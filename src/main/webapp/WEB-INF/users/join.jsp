@@ -375,8 +375,8 @@
 				<button class="closeBtn">
 					<img loading="lazy" src="../assets/icon/ic-close.svg" alt="close">
 				</button>
-				<div>
-					<img class="pmelogo" src="../assets/icon/pmelogo.png">
+				<div style="text-align: center; width:220px; height:60px;">
+					<img class="pwmlogo" src="../assets/images/pwmlogo.png">
 				</div>
 				*ID
 				<div class="div_center">
