@@ -519,3 +519,28 @@ $(".closeBtn").click(function () {
 $('#cancel').click(function () {
   $(".loginModal").parent().attr("class", "modalWrapClose");
 });
+$('#deleteUser').click(function(){
+	if($('#prome_pwd').val() == ''){
+		alert('비밀번호를 입력해주세요.');
+		return;
+	}
+	$.ajax({
+    type: "post",
+    url: "/prome/users/deleteUser",
+    data: {
+      	id : $('#prome_id').val(),
+      	pwd: $('#prome_pwd').val()
+      },
+    success: function (data) {
+		if(data=='비밀번호가 틀렸습니다.'){
+			alert(data);
+		}else{
+			alert(data);
+			location.replace('/prome');
+		}
+    },
+    error: function (err) {
+      console.log(err);
+    }
+    });
+});

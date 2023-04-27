@@ -21,4 +21,6 @@ public interface UserService {
 	public String updateIcon(IconDTO iconDTO);
 
 	public String login(UserDTO userDTO);
+
+	public void deleteUser(UserDTO userDTO);
 }

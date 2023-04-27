@@ -473,11 +473,11 @@
             <div><img class="pmelogo" src="../assets/icon/pmelogo.png"></div>
             <div class="div_center_tit">회원탈퇴를 원하시면 비밀번호를 입력하세요.</div>
             *Password
-            <div class="div_center"><input class="div_password" type="password" required="required"></div>
+            <div class="div_center"><input class="div_password" id="prome_pwd" type="password" required="required"></div>
 
-            <button type="button" class="btn btn-outline-secondary radious">회원 탈퇴</button>
+            <button type="button" class="btn btn-outline-secondary radious" id="deleteUser">회원 탈퇴</button>
             <button type="button" class="btn btn-outline-secondary radious" id="cancel">취소</button>
-
+			<input type="hidden" id="prome_id" value="${param.id}">
         </div>
   </div>
 

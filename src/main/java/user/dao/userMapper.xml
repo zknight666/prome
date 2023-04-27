@@ -5,11 +5,18 @@
 
 
 <mapper namespace="userSQL">
-	<!-- 로그인 -->
+	<!-- 로그인 start -->
 	<select id="getPwd" parameterType="String" resultType="String">
 		select pwd
 		from user_table where id = #{id}
 	</select>
+	<!-- 로그인 end -->
+	<!-- 회원탈퇴 start -->
+	<delete id="deleteUser" parameterType="String">
+		delete from
+		user_table where id=#{id}
+	</delete>
+	<!-- 회원탈퇴 end -->
 	<!-- 회원가입 start -->
 	<insert id="signup" parameterType="user">
 		insert into User_table
@@ -44,7 +51,8 @@
 		email1=#{email1},email2=#{email2},
 		phone1=#{phone1},phone2=#{phone2},phone3=#{phone3},
 		address1=#{address1},address2=#{address2},address3=#{address3}
-		where id=#{id}
+		where
+		id=#{id}
 	</update>
 	<update id="updateIcon" parameterType="user.bean.IconDTO"> <!-- parameterType 잘 봐 -->
 		update user_tech_stack set
@@ -91,7 +99,8 @@
 	</select>
 
 	<select id="getImageTotalA" resultType="int">
-		select count(*) from userimage
+		select count(*) from
+		userimage
 	</select>
 
 </mapper>
