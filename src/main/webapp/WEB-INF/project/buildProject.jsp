@@ -236,7 +236,7 @@
                                 </div>
                                 <div class="project_explain" aria-expanded="false"
                                     style="min-height: 500px; max-height: max-content;">
-                                    <div id="main_content" contenteditable="true" translate="no" class="ProseMirror" tabindex="0" style="padding-top:5px; white-space: pre-wrap; min-height: 500px;" >
+                                    <div id="main_content" contenteditable="true" translate="no" class="ProseMirror" tabindex="0" style="padding-top:5px; padding-left:3px; white-space: pre-wrap; min-height: 500px;" >
 <h1 style="font-size: 18px;font-weight:normal">1. 프로젝트의 시작 동기</h1>
 <p style="font-size: 14px;line-height:21px"></p>
 <p style="font-size: 14px;line-height:21px">- 왜 이 서비스를 만드시고 싶은지 적어주세요</p>

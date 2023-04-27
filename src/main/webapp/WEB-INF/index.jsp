@@ -229,7 +229,6 @@
 	src="http://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<script src="js/index_script.js"></script>
 	<script src="js/letspl.js"></script>
-	<script src="js/scripts.js"></script>
 
 	<script src="./js/login.js"></script>
 	<script type="text/javascript">
