@@ -98,6 +98,31 @@
 		where project_id=#{project_id}
 	</select>
 	
+	
+	<update id="application_table" parameterType="java.util.Map">
+		update application set status = 'y' where project_id=#{project_id} and user_id=#{ar}
+	</update>
+	
+	<update id="project_table" parameterType="java.util.Map">
+		update project set member_joined = member_joined + 1 where id=#{project_id}
+	</update>
+	
+	<update id="team_member_table" parameterType="java.util.Map">
+		update team_member
+		set
+		    member1 = coalesce(member1, #{ar}),
+		    member2 = coalesce(member2, #{ar}),
+		    member3 = coalesce(member3, #{ar}),
+		    member4 = coalesce(member4, #{ar}),
+		    member5 = coalesce(member5, #{ar}),
+		    member6 = coalesce(member6, #{ar}),
+		    member7 = coalesce(member7, #{ar}),
+		    member8 = coalesce(member8, #{ar}),
+		    member9 = coalesce(member9, #{ar})
+		where id=#{project_id}	
+	</update>
+
+	
  </mapper>
  
  

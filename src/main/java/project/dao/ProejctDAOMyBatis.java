@@ -25,6 +25,7 @@ public class ProejctDAOMyBatis implements ProjectDAO {
     @Autowired
     private SqlSession sqlSession;
 
+    //--------------- adminpage 관리자 페이지 ---------------------------
     @Override
     public List<ProjectDTO> getAdminpage(Map<String, Object> map2) {
         if(map2.get("recruit_state")=="") {
@@ -43,13 +44,6 @@ public class ProejctDAOMyBatis implements ProjectDAO {
         sqlSession.delete("userSQL.adminDeleteProject", projectId);
 
     }
-
-
-    @Override
-    public List<ProjectDTO> getBookmark() {
-        return sqlSession.selectList("projectSQL.getBookmark");
-    }
-
 
 	@Override
 	public List<UserDTO> adminGetUserList(Map<String, Integer> map) {
@@ -83,25 +77,48 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 				
 	}
 
+	//--------------------------------------------------
+	
+	
+	//---------- applicants 신청서 - 프로젝트 생성자 페이지 -----------------
 	@Override
 	public List<Integer> getProjectId(String team_leader) {
 		return sqlSession.selectList("projectSQL.getProjectId", team_leader);
 	}
 	
-
-/*	@Override
-	public List<ApplicantsDTO> getApplicants(Integer ar) {
-		System.out.println(ar);
-		return sqlSession.selectList("projectSQL.getApplicants", ar);
-	}
-*/	
+		
 	@Override
 	public List<ApplicantsDTO> getApplicants(Integer ar) {
 		System.out.println(ar);
 		return sqlSession.selectList("projectSQL.getApplicants", ar);
+		
+		//나중에 status가 null인 사람만 불러오도록 sql 수정해야 함!!
 	}
 
 
+	@Override
+	public void acceptApplicants(List<String> checkedUser, String project_id) {
+		System.out.println("dao = " +checkedUser + project_id);
+	
+			for(String ar : checkedUser) {
+				System.out.println("ar =" + ar);
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("project_id", Integer.parseInt(project_id));
+				map.put("ar", ar);
+				sqlSession.update("projectSQL.application_table", map);
+				sqlSession.update("projectSQL.project_table", map);
+				sqlSession.update("projectSQL.team_member_table", map);
+
+			}
+		
+	}
+
+	//--------------------------------------------------
+
+    @Override
+    public List<ProjectDTO> getBookmark() {
+        return sqlSession.selectList("projectSQL.getBookmark");
+    }
 
 
 }

@@ -28,6 +28,7 @@ public interface ProjectDAO {
 
 	List<Integer> getProjectId(String team_leader);
 
-//	List<ApplicantsDTO> getApplicants(Integer ar);
 	List<ApplicantsDTO> getApplicants(Integer ar);
+
+	void acceptApplicants(List<String> checkedUser, String project_id);
 }

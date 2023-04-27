@@ -23,9 +23,10 @@ public interface ProjectService {
     
     List<ProjectDTO> getBookmark();
 
-//    List<List<ApplicantsDTO>> getApplicants(String team_leader);
     
     List<Object> getApplicants(String team_leader);
+
+	void acceptApplicants(List<String> checkedUser, String project_id);
 
 
 

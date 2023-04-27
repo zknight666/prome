@@ -29,6 +29,7 @@ public class ProjectServiceImpl implements ProjectService {
 
     }
 
+  //--------------- adminpage 관리자 페이지 --------------------------
     @Override
     public Map<String, Object> getAdminpage(Map<String, Object> map) {
         int endNum = Integer.parseInt((String)map.get("pg")) * 12;
@@ -69,12 +70,6 @@ public class ProjectServiceImpl implements ProjectService {
         projectDAO.adminDeleteProject(projectId);
     }
 
-
-    @Override
-    public List<ProjectDTO> getBookmark() {
-        return projectDAO.getBookmark();
-    }
-
     
 	@Override
 	public Map<String, Object> adminGetUserList(String userPg) {
@@ -104,14 +99,16 @@ public class ProjectServiceImpl implements ProjectService {
 		return map2;
 	}
 
+	//---------------------------------------------------
+	
 
 	@Override
 	public void adminDeleteUser(String checkedUser) {
 		projectDAO.adminDeleteUser(checkedUser);		
 	}
-
+	
+	//-----------applicants 신청서 - 프로젝트 생성자 페이지------------------
 	@Override
-//	public List<List<ApplicantsDTO>> getApplicants(String team_leader) {
 	public List<Object> getApplicants(String team_leader) {
 		
 		List<Integer> list =  projectDAO.getProjectId(team_leader);
@@ -130,21 +127,18 @@ public class ProjectServiceImpl implements ProjectService {
 	    return totalList;
 	}
 
+
+	@Override
+	public void acceptApplicants(List<String> checkedUser, String project_id) {
+		projectDAO.acceptApplicants(checkedUser, project_id);	
 		
-/*		List<ApplicantsDTO> list2 = new ArrayList();
-		List<List<ApplicantsDTO>> total_list = new ArrayList();
-		
-		for(Integer ar : list) {
-		    list2.add(projectDAO.getApplicants(ar));
-		    System.out.println("list2 = " + list2);
-		    
-		    total_list.add(list2);
-		}
-		
-		 System.out.println("total_list = " + total_list);
-		
-		return total_list;
 	}
- */
+
+	//---------------------------------------------------
+	
+    @Override
+    public List<ProjectDTO> getBookmark() {
+        return projectDAO.getBookmark();
+    }
 
 }
