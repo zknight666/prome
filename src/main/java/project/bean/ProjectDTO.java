@@ -7,10 +7,15 @@ import java.util.Map;
 import lombok.Getter;
 import lombok.NoArgsConstructor;
 import lombok.Setter;
+import org.springframework.context.annotation.Scope;
 
 @Getter
 @Setter
+<<<<<<< HEAD
 @NoArgsConstructor
+=======
+@Scope("prototype")
+>>>>>>> origin/develop-mypage
 public class ProjectDTO {
 	
 

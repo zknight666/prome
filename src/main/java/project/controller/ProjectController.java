@@ -13,9 +13,14 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+<<<<<<< HEAD
 import com.fasterxml.jackson.core.JsonParser;
 
 import project.bean.ApplicantsDTO;
+=======
+import org.springframework.web.bind.annotation.SessionAttribute;
+import project.bean.ProjCardDTO;
+>>>>>>> origin/develop-mypage
 import project.bean.ProjectDTO;
 import project.bean.ProjectMainpageDTO;
 import project.service.ProjectService;
@@ -26,13 +31,18 @@ import project.service.ProjectService;
 public class ProjectController {
 	@Autowired
 	private ProjectService projectService;
+<<<<<<< HEAD
 	
+=======
+
+>>>>>>> origin/develop-mypage
 
 	@GetMapping(value="buildProject")
 	public String buildProject() {
 		
 		return "project/buildProject";
 	}
+<<<<<<< HEAD
 	
 
 	@PostMapping(value="buildProject")
@@ -52,6 +62,10 @@ public class ProjectController {
 	
 	
 	
+=======
+
+
+>>>>>>> origin/develop-mypage
 	
 	@GetMapping(value="project")
 	public String project() {
@@ -122,6 +136,7 @@ public class ProjectController {
 		return projectService.adminGetUserList(userPg);
 	}
 
+<<<<<<< HEAD
 	
 	@PostMapping(value="adminDeleteUser")
 	@ResponseBody
@@ -135,13 +150,54 @@ public class ProjectController {
 	
 	
 	//mypage
-	@GetMapping(value="bookmark")
+=======
+	//북마크 추가
+	@PostMapping(value="addBookmark")
 	@ResponseBody
-	public List<ProjectDTO> bookmark() {
+	public void addBookmark(
+		//@SessionAttribute(name = "user_id", required = true) String user_id //로그인 안했을 때에는 user_id에 null이 할당됨.
+		@RequestParam(name = "user_id", required = false) String user_id,
+		@RequestParam String project_id) {
 
-		return projectService.getBookmark();
+		projectService.addBookmark(user_id, project_id);
 	}
 
+	//북마크 제거
+	@PostMapping(value="deleteBookmark")
+	@ResponseBody
+	public void deleteBookmark(
+		//@SessionAttribute(name = "user_id", required = false) String user_id //로그인 안했을 때에는 user_id에 null이 할당됨.
+		@RequestParam(name = "user_id", required = false) String user_id,
+		@RequestParam String project_id) {
+
+		projectService.deleteBookmark(user_id, project_id);
+	}
+
+	//Project Card 정보 가져오기
+	@GetMapping(value = "projectCard")
+	@ResponseBody
+	public ProjCardDTO getProjectCard(
+//		@SessionAttribute(name = "user_id", required = false) String user_id, //로그인 안했을 때에는 user_id에 null이 할당됨.
+		@RequestParam(name = "user_id", required = false, defaultValue = "0") String user_id,
+		@RequestParam String project_id) {
+		return projectService.getProjectCard(user_id, project_id);
+	}
+
+
+	/* [관심목록, 지원한 프로젝트, My Team] 불러오기 */
+
+	//mypage 1-관심목록    -> project_id가 들어있는 List<String> 리턴함
+>>>>>>> origin/develop-mypage
+	@GetMapping(value="bookmark")
+	@ResponseBody
+	public List<String> getBookmark(
+		//@SessionAttribute(name = "user_id", required = false) String user_id,//로그인 안했을 때에는 user_id에 null이 할당됨.
+		@RequestParam(name = "user_id", required = false) String user_id){
+
+		return projectService.getBookmark(user_id);
+	}
+
+<<<<<<< HEAD
 //	@GetMapping(value="bookmark")
 //	@ResponseBody
 //	public List<ProjectDTO> bookmark() {
@@ -149,6 +205,39 @@ public class ProjectController {
 //		return projectService.getBookmark();
 //	}
 	
+=======
+	//mypage 2-지원한 프로젝트 	->project_id와 status(null이면 key로 안들어 있음) 들어있는 List<Map<String, Object>> 리턴.
+	@GetMapping(value="supportedProjects")
+	@ResponseBody
+	public List<Map<String, Object>> getSupportedProjects(
+		//@SessionAttribute(name = "user_id", required = false) String user_id //로그인 안했을 때에는 user_id에 null이 할당됨.
+		@RequestParam(name = "user_id", required = false) String user_id){
+
+		return projectService.getSupportedProjects(user_id);
+	}
+
+
+	//mypage 3-My Team
+	@GetMapping(value="myTeams")
+	@ResponseBody
+	public Map<String, List<String>> getMyTeams(
+		//@SessionAttribute(name = "user_id", required = false) String user_id //로그인 안했을 때에는 user_id에 null이 할당됨.
+		@RequestParam(name = "user_id", required = false) String user_id){
+
+		return projectService.getMyTeams(user_id);
+	}
+
+	@PostMapping(value="deleteApplication")
+	@ResponseBody
+	public int deleteApplication( //삭제된 행의 개수
+		//@SessionAttribute(name = "user_id", required = true) String user_id //로그인 안했을 때에는 user_id에 null이 할당됨.
+		@RequestParam(name = "user_id") String user_id,
+		@RequestParam(name = "project_id") String project_id
+	){
+		return projectService.deleteApplication(user_id, project_id);
+	}
+
+>>>>>>> origin/develop-mypage
 
 }
 
