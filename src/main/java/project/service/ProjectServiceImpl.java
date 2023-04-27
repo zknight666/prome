@@ -134,11 +134,17 @@ public class ProjectServiceImpl implements ProjectService {
 		
 	}
 
+	@Override
+	public void declineApplicants(List<String> checkedUser, String project_id) {
+		projectDAO.declineApplicants(checkedUser, project_id);	
+		
+	}
 	//---------------------------------------------------
 	
     @Override
     public List<ProjectDTO> getBookmark() {
         return projectDAO.getBookmark();
     }
+
 
 }

@@ -113,12 +113,25 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 		
 	}
 
+	@Override
+	public void declineApplicants(List<String> checkedUser, String project_id) {
+		for(String ar : checkedUser) {
+			System.out.println("ar =" + ar);
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("project_id", Integer.parseInt(project_id));
+			map.put("ar", ar);
+			sqlSession.update("projectSQL.declineApplicants", map);
+
+		}
+		
+	}
 	//--------------------------------------------------
 
     @Override
     public List<ProjectDTO> getBookmark() {
         return sqlSession.selectList("projectSQL.getBookmark");
     }
+
 
 
 }

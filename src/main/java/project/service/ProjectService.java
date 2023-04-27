@@ -28,6 +28,8 @@ public interface ProjectService {
 
 	void acceptApplicants(List<String> checkedUser, String project_id);
 
+	void declineApplicants(List<String> checkedUser, String project_id);
+
 
 
 }

@@ -77,17 +77,10 @@ $(function(){
 	    var checkedUser = $('input[type=checkbox]:checked').map(function () {
 	        return $(this).val();
 	    }).get();
-	    
-//	    var projectId = $('.project_id').map(function () {
-//		    return $(this).val();
-//		}).get();
-	    
+	    	    
 	    var project_id =  $('input[type=checkbox]:checked').parent().parent().parent().parent().parent().prev().prev().prev().val();
 	    alert(project_id);
-	    
-
-
-	    
+	      
 		if (checkedUser.length === 0) {
 		    alert('선택된 사용자가 없습니다.');
 		} else {
@@ -100,7 +93,6 @@ $(function(){
 				    data: {
 					    'checkedUser': checkedUser,
 					    'project_id': project_id
-					  //  'project_id': projectId
 					},
 	
 				    traditional: true,
@@ -111,36 +103,47 @@ $(function(){
 				    error: function(request, status, error){
 				        console.log("ajax error");
 				    }
-				});
-		    
-		    /*
-		        for(var i=0; i<projectId.length; i++){
-		            $.ajax({
-		                type: "post",
-		                url: "/prome/project/acceptApplicants",
-		                data: {
-		                    'checkedUser': checkedUser,
-		                    'project_id': projectId[i]
-		                },
-		                success: function(data) {
-		                    console.log("Success:", data);
-		                    window.alert('지원을 수락하였습니다.');
-		                    location.reload();
-		                },
-		                error: function(request, status, error) {
-		                    console.log("ajax error");
-		                }
-		            });
-		         }//for
-				*/	
-					
-							
-		       
+				});	       
 		     
 		    }//if
-		}//else
-	    
+		}//else	
+	});
 	
+	
+		$(document).on('click', '#decline', function(){
+	    var checkedUser = $('input[type=checkbox]:checked').map(function () {
+	        return $(this).val();
+	    }).get();
+	    	    
+	    var project_id =  $('input[type=checkbox]:checked').parent().parent().parent().parent().parent().prev().prev().prev().val();
+	    alert(project_id);
+	      
+		if (checkedUser.length === 0) {
+		    alert('선택된 사용자가 없습니다.');
+		} else {
+			alert(checkedUser)
+		    if (confirm('아이디 ' + checkedUser + ' 거절하시겠습니까?')) {
+		    
+		    	$.ajax({
+				    type: "post",
+				    url: "/prome/project/declineApplicants",
+				    data: {
+					    'checkedUser': checkedUser,
+					    'project_id': project_id
+					},
+	
+				    traditional: true,
+				    success: function(result){
+				        window.alert('지원을 거절하였습니다.');
+				        location.reload();
+				    },
+				    error: function(request, status, error){
+				        console.log("ajax error");
+				    }
+				});	       
+		     
+		    }//if
+		}//else	
 	});
 
 

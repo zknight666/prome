@@ -86,6 +86,7 @@
  </select>
 
 
+	<!-- applicants 신청서 - 프로젝트 생성자 페이지 -->
 	<select id="getProjectId" parameterType="String" resultType="Integer">
 		select id from project where team_leader=#{team_leader}
 	</select>
@@ -120,6 +121,11 @@
 		    member8 = coalesce(member8, #{ar}),
 		    member9 = coalesce(member9, #{ar})
 		where id=#{project_id}	
+	</update>
+	
+	
+	<update id="declineApplicants" parameterType="java.util.Map">
+		update application set status = 'n' where project_id=#{project_id} and user_id=#{ar}
 	</update>
 
 	

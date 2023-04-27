@@ -31,4 +31,6 @@ public interface ProjectDAO {
 	List<ApplicantsDTO> getApplicants(Integer ar);
 
 	void acceptApplicants(List<String> checkedUser, String project_id);
+
+	void declineApplicants(List<String> checkedUser, String project_id);
 }

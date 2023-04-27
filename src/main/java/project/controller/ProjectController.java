@@ -78,6 +78,14 @@ public class ProjectController {
 	    projectService.acceptApplicants(checkedUser, project_id);
 	}
 	
+	@PostMapping(value="declineApplicants")
+	@ResponseBody
+	public void declineApplicants(@RequestParam("checkedUser") List<String> checkedUser, @RequestParam(value = "project_id") String project_id) {
+	    System.out.println(checkedUser);
+	    System.out.println(project_id);
+	    projectService.declineApplicants(checkedUser, project_id);
+	}
+	
 	//-----------------------------------------------------
 
 	
