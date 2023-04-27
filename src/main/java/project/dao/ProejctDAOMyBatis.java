@@ -1,5 +1,6 @@
 package project.dao;
 
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
@@ -14,6 +15,7 @@ import com.fasterxml.jackson.databind.JsonNode;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 import net.sf.json.JSONArray;
+import project.bean.ApplicantsDTO;
 import project.bean.ProjectDTO;
 import project.bean.ProjectMainpageDTO;
 import user.bean.UserDTO;
@@ -24,6 +26,7 @@ public class ProejctDAOMyBatis implements ProjectDAO {
     @Autowired
     private SqlSession sqlSession;
 
+    //--------------- adminpage 관리자 페이지 ---------------------------
     @Override
     public List<ProjectDTO> getAdminpage(Map<String, Object> map2) {
         if(map2.get("recruit_state")=="") {
@@ -33,7 +36,7 @@ public class ProejctDAOMyBatis implements ProjectDAO {
     }
 
     public List<String> getChosenTech(int projectId) {
-        return sqlSession.selectList("getChosenTech", projectId);
+        return sqlSession.selectList("projectSQL.getChosenTech", projectId);
     }
 
 
@@ -43,6 +46,7 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 
     }
 
+<<<<<<< HEAD
 
     @Override
     public List<ProjectDTO> getBookmark() {
@@ -57,6 +61,8 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 		sqlSession.insert("projectSQL.buildProject",projectDTO);
 	}
 
+=======
+>>>>>>> origin/develop-mn
 	@Override
 	public List<ProjectMainpageDTO> getMainProjects() {
 		
@@ -100,19 +106,57 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
-		
-
-/*
-		try {
-			String[] array = objectMapper.readValue(checkedUser, String[].class);
-			for(String print : array) {
-				System.out.println(print);
 				
+	}
+
+	//--------------------------------------------------
+	
+	
+	//---------- applicants 신청서 - 프로젝트 생성자 페이지 -----------------
+	@Override
+	public List<Integer> getProjectId(String team_leader) {
+		return sqlSession.selectList("projectSQL.getProjectId", team_leader);
+	}
+	
+		
+	@Override
+	public List<ApplicantsDTO> getApplicants(Integer ar) {
+		System.out.println(ar);
+		return sqlSession.selectList("projectSQL.getApplicants", ar);
+		
+		//나중에 status가 null인 사람만 불러오도록 sql 수정해야 함!!
+	}
+
+
+	@Override
+	public void acceptApplicants(List<String> checkedUser, String project_id) {
+		System.out.println("dao = " +checkedUser + project_id);
+	
+			for(String ar : checkedUser) {
+				System.out.println("ar =" + ar);
+				Map<String, Object> map = new HashMap<String, Object>();
+				map.put("project_id", Integer.parseInt(project_id));
+				map.put("ar", ar);
+				sqlSession.update("projectSQL.application_table", map);
+				sqlSession.update("projectSQL.project_table", map);
+				sqlSession.update("projectSQL.team_member_table", map);
+
 			}
-		} catch (JsonProcessingException e) {
-			e.printStackTrace();
+		
+	}
+
+	@Override
+	public void declineApplicants(List<String> checkedUser, String project_id) {
+		for(String ar : checkedUser) {
+			System.out.println("ar =" + ar);
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("project_id", Integer.parseInt(project_id));
+			map.put("ar", ar);
+			sqlSession.update("projectSQL.declineApplicants", map);
+
 		}
 		
+<<<<<<< HEAD
 //		String array = checkedUser;	
 //		System.out.println("dao = " +array);
 //		JSONArray jSONArray = new JSONArray();
@@ -127,7 +171,16 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 //			System.out.println("map = " +map); */
 //		sqlSession.delete("projectSQL.adminDeleteUser", checkedUser);		
 
+=======
+>>>>>>> origin/develop-mn
 	}
+	//--------------------------------------------------
+
+    @Override
+    public List<ProjectDTO> getBookmark() {
+        return sqlSession.selectList("projectSQL.getBookmark");
+    }
+
 
 
 }

@@ -13,6 +13,12 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+<<<<<<< HEAD
+=======
+import com.fasterxml.jackson.core.JsonParser;
+
+import project.bean.ApplicantsDTO;
+>>>>>>> origin/develop-mn
 import project.bean.ProjectDTO;
 import project.bean.ProjectMainpageDTO;
 import project.service.ProjectService;
@@ -56,19 +62,46 @@ public class ProjectController {
 		return "project/project";
 	}
 	
+	//---------- applicants 신청서 - 프로젝트 생성자 페이지 ---------------
 	@GetMapping(value="applicants")
 	public String applicants() {
-		
 		return "project/applicants";
 	}
 	
 	
+	@PostMapping(value="getApplicants")
+	@ResponseBody
+	public List<Object> getApplicants(@RequestParam String team_leader) {
+		System.out.println(team_leader);
+		return projectService.getApplicants(team_leader);
+	}
+	
+	
+	@PostMapping(value="acceptApplicants")
+	@ResponseBody
+	public void acceptApplicants(@RequestParam("checkedUser") List<String> checkedUser, @RequestParam(value = "project_id") String project_id) {
+	    System.out.println(checkedUser);
+	    System.out.println(project_id);
+	    projectService.acceptApplicants(checkedUser, project_id);
+	}
+	
+	@PostMapping(value="declineApplicants")
+	@ResponseBody
+	public void declineApplicants(@RequestParam("checkedUser") List<String> checkedUser, @RequestParam(value = "project_id") String project_id) {
+	    System.out.println(checkedUser);
+	    System.out.println(project_id);
+	    projectService.declineApplicants(checkedUser, project_id);
+	}
+	
+	//-----------------------------------------------------
+
+	
+	//-------------- adminpage 관리자 페이지 ---------------------
 	@GetMapping(value="adminpage")
 	public String adminpage(@RequestParam(required = false, defaultValue = "1") String pg, Model model) {
 		model.addAttribute("pg", pg);
 		return "project/adminpage";
 	}
-
 
 
 	@PostMapping(value = "adminDeleteProject")
@@ -100,6 +133,8 @@ public class ProjectController {
 		
 		projectService.adminDeleteUser(checkedUser);
 	}
+	
+	//-----------------------------------------------------
 	
 	
 	//mypage

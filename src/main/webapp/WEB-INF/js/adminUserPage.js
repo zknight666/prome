@@ -24,7 +24,7 @@ $(function(){
 		
 			var html = '';
 				$.each(data.list, function(index, items) {
-				html += '<tr align="center">';
+				html += '<tr align="center" height="80px">';
 				html += '<td align="center" class="td_column_check_manager">';
 				html += '<input class="mx-4 check_checkbox" type="checkbox" value="' + items.id + '">';
 				html += '</td>';
@@ -41,22 +41,34 @@ $(function(){
 			
 			//페이징 처리				
 			$('#userPaging').html(data.userPaging.pagingHTML);
-					},	
+		},	
 
 		error: function(err){
 			console.log(err);
 		}
 	}); //ajax
 	
+	 $(function () {
+        $("#allcheck").change(function () {
+            var is_check = $(this).is(":checked");
+            console.log(is_check);
+
+            $(".check_checkbox").prop("checked", is_check);
+        });
+    });
+	
 	
 	$('.py-1').click(function(){
+	
+		$('#allcheck').prop('checked', false);
+			
 	    var checkedUser = $('input[type=checkbox]:checked').map(function () {
 	        return $(this).val();
 	    }).get();
 	    
 		console.log(checkedUser);
 		
-		if(confirm('아이디 ' +checkedUser+ ' 삭제하시겠습니까?')){
+		if(confirm('아이디 ' + checkedUser + ' 삭제하시겠습니까?')){
 		    $.ajax({
 		        type: "post",
 		        url: "/prome/project/adminDeleteUser",

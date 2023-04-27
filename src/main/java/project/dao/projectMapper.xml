@@ -207,6 +207,7 @@
 		]]>
 	</select>
 
+<<<<<<< HEAD
 	<select id="getChosenTech" resultType="String">
 		SELECT chosen_tech
 		FROM
@@ -222,6 +223,9 @@
 		)
 		)WHERE chosen = 'y' and project_id=#{projectId};
 	</select>
+=======
+
+>>>>>>> origin/develop-mn
 
 	<!-- 총글수 -->
 	<select id="getTotalA" resultType="int">
@@ -247,6 +251,7 @@
 	</select>
 
 
+<<<<<<< HEAD
 	<!-- user 총인원 수 -->
 	<select id="getUserTotalA" resultType="int">
 		select count(*) from
@@ -270,5 +275,52 @@
 
 
 </mapper>
+=======
+
+	<!-- applicants 신청서 - 프로젝트 생성자 페이지 -->
+	<select id="getProjectId" parameterType="String" resultType="Integer">
+		select id from project where team_leader=#{team_leader}
+	</select>
+	
+	<select id="getApplicants" parameterType="Integer" resultType="applicants">
+		select project_id, title, user_id, app_field, tech_stack, email1, email2, reason
+		from application a
+		join user_table u on a.user_id = u.id
+		join project p on a.project_id = p.id
+		where project_id=${project_id} and status='WAITING'
+	</select>
+	
+	
+	<update id="application_table" parameterType="java.util.Map">
+		update application set status = 'P_ACCEPT' where project_id=#{project_id} and user_id=#{ar}
+	</update>
+	
+	<update id="project_table" parameterType="java.util.Map">
+		update project set member_joined = member_joined + 1 where id=#{project_id}
+	</update>
+	
+	<update id="team_member_table" parameterType="java.util.Map">
+		update team_member
+		set
+		    member1 = coalesce(member1, #{ar}),
+		    member2 = coalesce(member2, #{ar}),
+		    member3 = coalesce(member3, #{ar}),
+		    member4 = coalesce(member4, #{ar}),
+		    member5 = coalesce(member5, #{ar}),
+		    member6 = coalesce(member6, #{ar}),
+		    member7 = coalesce(member7, #{ar}),
+		    member8 = coalesce(member8, #{ar}),
+		    member9 = coalesce(member9, #{ar})
+		where id=#{project_id}	
+	</update>
+	
+	
+	<update id="declineApplicants" parameterType="java.util.Map">
+		update application set status = 'P_DECLINE' where project_id=#{project_id} and user_id=#{ar}
+	</update>
+
+	
+ </mapper>
+>>>>>>> origin/develop-mn
  
  
