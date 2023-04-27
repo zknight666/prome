@@ -25,10 +25,7 @@ public interface ProjectDAO {
 
 	void adminDeleteUser(String checkedUser);
 
-<<<<<<< HEAD
 	List<ProjectMainpageDTO> getMainProjects();
-
-=======
 
 	List<Integer> getProjectId(String team_leader);
 
@@ -37,5 +34,5 @@ public interface ProjectDAO {
 	void acceptApplicants(List<String> checkedUser, String project_id);
 
 	void declineApplicants(List<String> checkedUser, String project_id);
->>>>>>> origin/develop-mn
+
 }

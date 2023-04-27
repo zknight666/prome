@@ -24,17 +24,12 @@ public interface ProjectService {
 
     List<ProjectDTO> getBookmark();
 
-<<<<<<< HEAD
 	public List<ProjectMainpageDTO> getMainProjects();
-=======
-    
+
     List<Object> getApplicants(String team_leader);
 
 	void acceptApplicants(List<String> checkedUser, String project_id);
 
 	void declineApplicants(List<String> checkedUser, String project_id);
-
->>>>>>> origin/develop-mn
-
 
 }

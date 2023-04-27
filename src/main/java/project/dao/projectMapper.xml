@@ -24,7 +24,8 @@
 
 
 
-		insert into project_tech_stack (PROJECT_ID, FIGMA,
+		insert into
+		project_tech_stack (PROJECT_ID, FIGMA,
 		PHOTOSHOP,IOS,ANDROID,REACT,VUE,FLUTTER,HTML_CSS,JAVASCRIPT,SPRING,JAVA,KOTLIN,NODE_JS,MONGODB,C_C#,GIT,AWS,DOCKER,KUBERNETES,TENSORFLOW,UNITY,PYTHON,MYSQL,TYPESCRIPT)
 		VALUES (#{projectId},#{tech_stacks.figma},
 		#{tech_stacks.photoshop},
@@ -52,7 +53,8 @@
 		#{tech_stacks.typescript});
 
 
-		INSERT INTO recruitment_field (PROJECT_ID,
+		INSERT INTO
+		recruitment_field (PROJECT_ID,
 		<foreach collection="recruitmentFields" item="field"
 			index="idx" separator=",">
 			${field}
@@ -77,17 +79,22 @@
 		SELECT p.title, p.field,p.member_joined,p.member_need,
 		JSON_OBJECT(
 		'UI_UX_PLAN' VALUE rf.UI_UX_PLAN,
-		'PLAN_ETC' VALUE rf.PLAN_ETC,
+		'PLAN_ETC' VALUE
+		rf.PLAN_ETC,
 		'GRAPHIC_DESIGN' VALUE rf.GRAPHIC_DESIGN,
-		'UI_UX_DESIGN' VALUE rf.UI_UX_DESIGN,
+		'UI_UX_DESIGN'
+		VALUE rf.UI_UX_DESIGN,
 		'DESIGN_ETC' VALUE rf.DESIGN_ETC,
-		'IOS' VALUE rf.IOS,
+		'IOS' VALUE
+		rf.IOS,
 		'ANDROID' VALUE rf.ANDROID,
 		'WEB_FE' VALUE rf.WEB_FE,
 		'WEB_PUBLISHER' VALUE rf.WEB_PUBLISHER,
-		'CROSS_FLATFORM' VALUE rf.CROSS_FLATFORM,
+		'CROSS_FLATFORM' VALUE
+		rf.CROSS_FLATFORM,
 		'WEB_SERVER' VALUE rf.WEB_SERVER,
-		'BLOCK_CHAIN' VALUE rf.BLOCK_CHAIN,
+		'BLOCK_CHAIN' VALUE
+		rf.BLOCK_CHAIN,
 		'AI' VALUE rf.AI,
 		'BIG_DATA' VALUE rf.BIG_DATA,
 		'GAME_PLAN' VALUE rf.GAME_PLAN,
@@ -98,15 +105,19 @@
 		'PHOTOSHOP' VALUE pts.PHOTOSHOP,
 		'IOS' VALUE pts.IOS,
 		'ANDROID' VALUE pts.ANDROID,
-		'REACT' VALUE pts.REACT,
+		'REACT' VALUE
+		pts.REACT,
 		'VUE' VALUE pts.VUE,
 		'FLUTTER' VALUE pts.FLUTTER,
-		'HTML_CSS' VALUE pts.HTML_CSS,
+		'HTML_CSS'
+		VALUE pts.HTML_CSS,
 		'JAVASCRIPT' VALUE pts.JAVASCRIPT,
-		'SPRING' VALUE pts.SPRING,
+		'SPRING' VALUE
+		pts.SPRING,
 		'JAVA' VALUE pts.JAVA,
 		'KOTLIN' VALUE pts.KOTLIN,
-		'NODE_JS' VALUE pts.NODE_JS,
+		'NODE_JS'
+		VALUE pts.NODE_JS,
 		'MONGODB' VALUE pts.MONGODB,
 		'C_C#' VALUE pts.C_C#,
 		'GIT' VALUE pts.GIT,
@@ -116,12 +127,15 @@
 		'TENSORFLOW' VALUE pts.TENSORFLOW,
 		'UNITY' VALUE pts.UNITY,
 		'PYTHON' VALUE pts.PYTHON,
-		'MYSQL' VALUE pts.MYSQL,
+		'MYSQL' VALUE
+		pts.MYSQL,
 		'TYPESCRIPT' VALUE pts.TYPESCRIPT
 		) AS techstacks
-		FROM project p
+		FROM project
+		p
 		JOIN recruitment_field rf ON p.ID = rf.PROJECT_ID
-		JOIN project_tech_stack pts ON p.ID = pts.PROJECT_ID
+		JOIN
+		project_tech_stack pts ON p.ID = pts.PROJECT_ID
 		ORDER BY p.ID desc
 	</select>
 
@@ -207,7 +221,7 @@
 		]]>
 	</select>
 
-<<<<<<< HEAD
+
 	<select id="getChosenTech" resultType="String">
 		SELECT chosen_tech
 		FROM
@@ -223,9 +237,7 @@
 		)
 		)WHERE chosen = 'y' and project_id=#{projectId};
 	</select>
-=======
 
->>>>>>> origin/develop-mn
 
 	<!-- 총글수 -->
 	<select id="getTotalA" resultType="int">
@@ -250,8 +262,6 @@
 		select * from user_table;
 	</select>
 
-
-<<<<<<< HEAD
 	<!-- user 총인원 수 -->
 	<select id="getUserTotalA" resultType="int">
 		select count(*) from
@@ -272,55 +282,59 @@
 		ORDER BY id desc
 	</select>
 
-
-
-</mapper>
-=======
-
 	<!-- applicants 신청서 - 프로젝트 생성자 페이지 -->
-	<select id="getProjectId" parameterType="String" resultType="Integer">
+	<select id="getProjectId" parameterType="String"
+		resultType="Integer">
 		select id from project where team_leader=#{team_leader}
 	</select>
-	
-	<select id="getApplicants" parameterType="Integer" resultType="applicants">
-		select project_id, title, user_id, app_field, tech_stack, email1, email2, reason
+
+	<select id="getApplicants" parameterType="Integer"
+		resultType="applicants">
+		select project_id, title, user_id, app_field, tech_stack,
+		email1, email2, reason
 		from application a
-		join user_table u on a.user_id = u.id
+		join user_table u on a.user_id
+		= u.id
 		join project p on a.project_id = p.id
-		where project_id=${project_id} and status='WAITING'
+		where
+		project_id=${project_id} and status='WAITING'
 	</select>
-	
-	
+
+
 	<update id="application_table" parameterType="java.util.Map">
-		update application set status = 'P_ACCEPT' where project_id=#{project_id} and user_id=#{ar}
+		update application
+		set status = 'P_ACCEPT' where project_id=#{project_id} and
+		user_id=#{ar}
 	</update>
-	
+
 	<update id="project_table" parameterType="java.util.Map">
-		update project set member_joined = member_joined + 1 where id=#{project_id}
+		update project set
+		member_joined = member_joined + 1 where id=#{project_id}
 	</update>
-	
+
 	<update id="team_member_table" parameterType="java.util.Map">
 		update team_member
 		set
-		    member1 = coalesce(member1, #{ar}),
-		    member2 = coalesce(member2, #{ar}),
-		    member3 = coalesce(member3, #{ar}),
-		    member4 = coalesce(member4, #{ar}),
-		    member5 = coalesce(member5, #{ar}),
-		    member6 = coalesce(member6, #{ar}),
-		    member7 = coalesce(member7, #{ar}),
-		    member8 = coalesce(member8, #{ar}),
-		    member9 = coalesce(member9, #{ar})
-		where id=#{project_id}	
-	</update>
-	
-	
-	<update id="declineApplicants" parameterType="java.util.Map">
-		update application set status = 'P_DECLINE' where project_id=#{project_id} and user_id=#{ar}
+		member1 = coalesce(member1, #{ar}),
+		member2 = coalesce(member2, #{ar}),
+		member3 = coalesce(member3, #{ar}),
+		member4 = coalesce(member4, #{ar}),
+		member5 = coalesce(member5, #{ar}),
+		member6 = coalesce(member6, #{ar}),
+		member7 = coalesce(member7, #{ar}),
+		member8 = coalesce(member8, #{ar}),
+		member9 = coalesce(member9, #{ar})
+		where id=#{project_id}
 	</update>
 
-	
- </mapper>
->>>>>>> origin/develop-mn
+
+	<update id="declineApplicants" parameterType="java.util.Map">
+		update application
+		set status = 'P_DECLINE' where project_id=#{project_id} and
+		user_id=#{ar}
+	</update>
+
+
+</mapper>
  
  

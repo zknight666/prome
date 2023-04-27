@@ -46,13 +46,10 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 
     }
 
-<<<<<<< HEAD
-
     @Override
     public List<ProjectDTO> getBookmark() {
         return sqlSession.selectList("projectSQL.getBookmark");
     }
-
 	@Override
 	public void buildProject(ProjectDTO projectDTO) {
 //		sqlSession.insert("projectSQL.writeProject",projectDTO);
@@ -61,8 +58,6 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 		sqlSession.insert("projectSQL.buildProject",projectDTO);
 	}
 
-=======
->>>>>>> origin/develop-mn
 	@Override
 	public List<ProjectMainpageDTO> getMainProjects() {
 		
@@ -155,8 +150,7 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 			sqlSession.update("projectSQL.declineApplicants", map);
 
 		}
-		
-<<<<<<< HEAD
+
 //		String array = checkedUser;	
 //		System.out.println("dao = " +array);
 //		JSONArray jSONArray = new JSONArray();
@@ -171,15 +165,9 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 //			System.out.println("map = " +map); */
 //		sqlSession.delete("projectSQL.adminDeleteUser", checkedUser);		
 
-=======
->>>>>>> origin/develop-mn
 	}
 	//--------------------------------------------------
 
-    @Override
-    public List<ProjectDTO> getBookmark() {
-        return sqlSession.selectList("projectSQL.getBookmark");
-    }
 
 
 

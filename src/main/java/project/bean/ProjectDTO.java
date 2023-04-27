@@ -27,11 +27,8 @@ public class ProjectDTO {
 	private List<String> recruitmentFields; //모집 분야 테이블 (application)
 	private List<String> recruitCounts; // 모집 분야 별 인원 수 (모집할 팀 멤버 수(member_need))
 	private String recruit_state;
-<<<<<<< HEAD
+
 	private Map<String,String> tech_stacks; // 기술/언어 (tech_stack(Y or N))
 	
-=======
-	
 
->>>>>>> origin/develop-mn
 }

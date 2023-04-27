@@ -13,12 +13,9 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
-<<<<<<< HEAD
-=======
 import com.fasterxml.jackson.core.JsonParser;
 
 import project.bean.ApplicantsDTO;
->>>>>>> origin/develop-mn
 import project.bean.ProjectDTO;
 import project.bean.ProjectMainpageDTO;
 import project.service.ProjectService;
