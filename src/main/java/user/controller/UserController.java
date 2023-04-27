@@ -1,5 +1,8 @@
 package user.controller;
 
+import java.util.HashMap;
+import java.util.Map;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.web.bind.annotation.GetMapping;
@@ -87,6 +90,13 @@ public class UserController {
 			return userService.updateIcon(iconDTO);
 		}
 		//회원정보 수정 end
+		//로그인 start
+		@PostMapping(value="login")
+		@ResponseBody
+		public String login(@ModelAttribute UserDTO userDTO) {
+			return userService.login(userDTO);
+		}
+		//로그인 end
 
 }
 

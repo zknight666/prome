@@ -4,6 +4,7 @@ package user.service;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import spring.conf.WebSecurityConfiguration;
 import user.bean.IconDTO;
 import user.bean.UserDTO;
 import user.dao.UserDAO;
@@ -15,7 +16,10 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void signup(UserDTO userDTO) {
-		System.out.println("getaddress"+userDTO.getAddress1());
+		WebSecurityConfiguration webSecurityConfig = new WebSecurityConfiguration();
+		String rawPW = userDTO.getPwd();
+		String encodePW = webSecurityConfig.getPasswordEncoder().encode(rawPW);
+		userDTO.setPwd(encodePW);
 		userDAO.signup(userDTO);
 	}
 
@@ -55,6 +59,19 @@ public class UserServiceImpl implements UserService {
 	public String updateIcon(IconDTO iconDTO) {
 		userDAO.updateIcon(iconDTO);
 		return null;
+	}
+
+	@Override
+	public String login(UserDTO userDTO) {
+		WebSecurityConfiguration webSecurityConfig = new WebSecurityConfiguration();
+		String rawPW = userDTO.getPwd();
+		String DBPwd = userDAO.getPwd(userDTO.getId());
+		Boolean check = webSecurityConfig.getPasswordEncoder().matches(rawPW, DBPwd);
+		if(check) {
+			return "ok";
+		}else {
+			return "fail";
+		}
 	}
 
 

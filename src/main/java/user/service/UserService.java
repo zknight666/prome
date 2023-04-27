@@ -19,4 +19,6 @@ public interface UserService {
 	public void updateInfo(UserDTO userDTO);
 
 	public String updateIcon(IconDTO iconDTO);
+
+	public String login(UserDTO userDTO);
 }

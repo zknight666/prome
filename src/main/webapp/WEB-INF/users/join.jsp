@@ -372,11 +372,11 @@
 				</div>
 				*ID
 				<div class="div_center">
-					<input class="div_id" type="text" required="required">
+					<input class="div_id" id="prome_id" type="text">
 				</div>
 				*Password
 				<div class="div_center">
-					<input class="div_password" type="password" required="required">
+					<input class="div_password" id="prome_pwd" type="password">
 				</div>
 				<button type="button" class="btn btn-outline-secondary radious">로그인</button>
 				<button type="button"
@@ -404,6 +404,7 @@
 	<!-- jquery -->
 	<script type="text/javascript"
 		src="http://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script src="./js/login.js"></script>
 	<script src="../js/join.js"></script>
 	<script type="text/javascript">
 		$('.writeForm').click(function() {

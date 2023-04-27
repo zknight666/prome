@@ -283,6 +283,7 @@ $("#signup").click(function () {
             },
             success: function (data2) {
               alert("회원가입되셨습니다.");
+              location.replace('/prome/');
             },
             error: function (err) {
               alert("회원가입 실패했습니다.");

@@ -35,17 +35,6 @@
 					<span class="navbar-toggler-icon"></span>
 				</button>
 
-<<<<<<< HEAD
-				<div class="collapse navbar-collapse" id="navbarColor03">
-					<img id="logo" src="../assets/logo.png" style="cursor: pointer" />
-
-					<ul class="navbar-nav me-auto">
-						<li class="nav-item dropdown"><a
-							class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
-							href="#" role="button" aria-haspopup="true" aria-expanded="false"></a>
-						</li>
-					</ul>
-=======
                 <div class="collapse navbar-collapse" id="navbarColor03">
                 
                 	<a href="/prome/?id=${param.id}">
@@ -56,13 +45,6 @@
                         <li class="nav-item dropdown">
                         </li>
                     </ul>
-
-                    <form class="d-flex dropdown">
-                        <!-- <input class="form-control me-sm-2" type="search" placeholder="Search" /> -->
-                        <button name="logoutbtn" class="btn my-2 my-sm-0" type="button" style="padding-right: 0">
-                            <img src="../assets\btn-logout.png" />
-                        </button>
->>>>>>> origin/develop-hth2
 
 					<form class="d-flex dropdown">
 						<!-- <input class="form-control me-sm-2" type="search" placeholder="Search" /> -->
@@ -224,12 +206,6 @@
 												<input type="text" class="recruit_countNumber" name="recruit_count_0" value="1" readonly="readonly">
 												<img class="imageBtnplus" alt="" src="../assets/images/imageBtnplus.png">
 											</div>
-											
-
-	
-								      														
-
-								      		
 						         	  </div>
 								    </div>
 								    

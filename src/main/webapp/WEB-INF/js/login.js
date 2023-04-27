@@ -9,18 +9,21 @@ $('#login').click(function(){
 	}
 	$.ajax({
       type: "post",
-      url: "/prome/users/getUser",
-      data: "id=" + $("#prome_id").val(),
+      url: "/prome/users/login",
+      data: {
+      	id : $('#prome_id').val(),
+      	pwd: $('#prome_pwd').val()
+      },
       success: function (data) {
-        if ($('#prome_pwd').val() == data.pwd) {
+        if (data == 'ok') {
           alert('로그인 성공');
           location.replace('/prome?id='+$('#prome_id').val());
-        } else if ($('#prome_pwd').val() != data.pwd) {
+        } else if (data == 'fail'){
           alert('아이디 또는 비밀번호가 틀립니다.');
         }
       },
       error: function (err) {
-        console.log(err);
+      	alert('아이디 또는 비밀번호가 틀립니다. err');
       },
     });
 });

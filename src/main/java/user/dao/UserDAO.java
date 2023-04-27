@@ -16,5 +16,7 @@ public interface UserDAO {
 	public void updateInfo(UserDTO userDTO);
 
 	public void updateIcon(IconDTO iconDTO);
+
+	public String getPwd(String id);
     
 }

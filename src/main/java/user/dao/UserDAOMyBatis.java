@@ -46,6 +46,12 @@ public class UserDAOMyBatis implements UserDAO {
 	public void updateIcon(IconDTO iconDTO) {
 		sqlSession.update("userSQL.updateIcon", iconDTO);
 	}
+
+	@Override
+	public String getPwd(String id) {
+		return sqlSession.selectOne("userSQL.getPwd",id);
+		
+	}
 	
 	
 }
