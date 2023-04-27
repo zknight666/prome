@@ -250,23 +250,7 @@
     <script src="../js/scripts.js"></script>
     <script src="../js/applicants.js"></script>
     <script type="text/javascript">
-        $(function () {
-            $("#allcheck").change(function () {
-                var is_check = $(this).is(":checked");
-                console.log(is_check);
-
-                $(".check_checkbox").prop("checked", is_check);
-            });
-        });
-        $(function () {
-            $("#allcheck1").change(function () {
-                var is_check = $(this).is(":checked");
-                console.log(is_check);
-
-                $(".check_checkbox1").prop("checked", is_check);
-            });
-        });
-
+ 
     </script>
 </body>
 

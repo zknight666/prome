@@ -37,18 +37,7 @@
 		]]>
  </select>
 
- <select id="getChosenTech" resultType="String">
-  SELECT chosen_tech
-  FROM Project_Tech_Stack
-  UNPIVOT INCLUDE NULLS (
-  chosen FOR chosen_tech IN (
-  figma, photoshop, ios, android, react, vue, flutter,
-  html_css, javascript, spring, java, Kotlin, node_js,
-  MongoDB, C_C#, Git, AWS, Docker, kubernetes, tensorflow,
-  unity, python, MySql, TypeScript
-  )
-  )WHERE chosen = 'y' and project_id=#{projectId};
- </select>
+
 
  <!-- 총글수 -->
  <select id="getTotalA" resultType="int">
@@ -92,16 +81,16 @@
 	</select>
 	
 	<select id="getApplicants" parameterType="Integer" resultType="applicants">
-		select project_id, title, user_id, email1, email2, tech_stack, reason
+		select project_id, title, user_id, app_field, tech_stack, email1, email2, reason
 		from application a
 		join user_table u on a.user_id = u.id
 		join project p on a.project_id = p.id
-		where project_id=#{project_id}
+		where project_id=${project_id} and status='WAITING'
 	</select>
 	
 	
 	<update id="application_table" parameterType="java.util.Map">
-		update application set status = 'y' where project_id=#{project_id} and user_id=#{ar}
+		update application set status = 'P_ACCEPT' where project_id=#{project_id} and user_id=#{ar}
 	</update>
 	
 	<update id="project_table" parameterType="java.util.Map">
@@ -125,7 +114,7 @@
 	
 	
 	<update id="declineApplicants" parameterType="java.util.Map">
-		update application set status = 'n' where project_id=#{project_id} and user_id=#{ar}
+		update application set status = 'P_DECLINE' where project_id=#{project_id} and user_id=#{ar}
 	</update>
 
 	

@@ -1172,7 +1172,7 @@
                     <div style="height: auto; padding:0px 0px 16px 0px;">
                       <table style="border:1 solid #cacaca" width="100%">
                         <tbody>
-                          <tr style="text-align: center;">
+                          <tr style="text-align: center;" height="80px">
                             <td align="center" class="td_column_check_manager">
                               <input class="mx-4" type="checkbox" id="allcheck">
                             </td>

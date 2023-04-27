@@ -121,7 +121,7 @@ public class ProjectServiceImpl implements ProjectService {
 	        List<ApplicantsDTO> list2 = projectDAO.getApplicants(ar);
 	        System.out.println("list2 = " + list2);
 	        if(!list2.isEmpty()) 
-	        	totalList.add(list2);
+	        	totalList.add(list2);	       
 	    }
 	    System.out.println("totalList = " + totalList);
 	    return totalList;

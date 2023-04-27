@@ -12,6 +12,7 @@ public class ApplicantsDTO {
 	private String title;
 	private int project_id;
 	private String user_id;
+	private String app_field;
 	private String email1;
 	private String email2;
 	private String tech_stack;
