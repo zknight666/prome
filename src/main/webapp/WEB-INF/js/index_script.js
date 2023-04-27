@@ -5,20 +5,46 @@ document.addEventListener("DOMContentLoaded", () => {
 
 
 
-
+// 모집분야 필터링
 $('select[name="recruitment_field"]').on('change', function() {
     getProjects();
-    alert($('select[name="recruitment_field"]').val() +  "으로 필터링 되었습니다.");
 });
 
 
+// 모집중(checkbox)
 $('#flexCheckChecked').on('change', function() {
   getProjects();
 });
 
 
+// 모임생성 버튼 
+if($('#memId').val()) {
+	$('button[name="buildProjectBtn"]').css("display","inline-block");
+} 
+else {
+	$('button[name="buildProjectBtn"]').css("display","none");
+}
 
 
+// 단축키
+$(document).keydown(function(event) {
+	// B 버튼
+	if (event.which === 66 && !$(".loginModal_1").parent().hasClass("modalWrapOpen_1") && !$(".loginModal").parent().hasClass("modalWrapOpen")) {
+	    location.href = '/prome/project/buildProject';
+	}
+	// L 버튼
+	else if (event.which === 76 && !$(".loginModal_1").parent().hasClass("modalWrapOpen_1") && !$(".loginModal").parent().hasClass("modalWrapOpen")) {
+	    $(".loginModal_1").parent().attr("class", "modalWrapOpen_1");
+	}	
+	// esc 버튼
+	else if (event.which === 27) {
+	        $(".loginModal_1").parent().attr("class", "modalWrapClose_1");
+	        $(".loginModal").parent().attr("class", "modalWrapClose");
+	}		
+});
+
+
+// 프로젝트 db 가져오기
 function getProjects() {
   fetch("/prome/project/getMainProjects")
     .then(response => response.json())
@@ -120,7 +146,7 @@ function displayProjects(projects) {
             .join('');
 
         const techStacksList = Object.entries(JSON.parse(project.techstacks))
-            .filter(([, value]) => value === 'y')
+            .filter(([, value]) => value === 'Y')
             .map(([key]) => {
                 const iconPath = techStackIcons[key];
             return `<li><img loading="lazy" src="${iconPath}" alt="${key}" width="20" height="20"></li>`;

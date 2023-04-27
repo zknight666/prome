@@ -1,6 +1,16 @@
 $(document).ready(function () {
+
+
+// 단축키
+$(document).keydown(function(event) {
+	// P버튼
+	if (event.which === 80 && !$(".loginModal_1").parent().hasClass("modalWrapOpen_1") && !$(".loginModal").parent().hasClass("modalWrapOpen")) {
+	    location.href = '/prome/';
+	}
+});
+
   /*************** 모집 인원 동적 처리***************/
-  function updateMinusButtonOpacity() {
+  function updateOpacity() {
     let totalCount = 0;
     $(".recruit").each(function () {
       var countNumber = $(this).find(".recruit_countNumber");
@@ -8,18 +18,10 @@ $(document).ready(function () {
       totalCount += count;
       var minusButton = $(this).find(".imageBtnminus");
       var plusButton = $(this).find(".imageBtnplus");
-      if (count <= 1) {
-        minusButton.css("opacity", "0.5");
-      } else {
-        minusButton.css("opacity", "1");
-      }
-      if (totalCount >= 9) {
-        plusButton.css("opacity", "0.5");
-        $(".recruit_plus").css("opacity", "0.5");
-      } else {
-        plusButton.css("opacity", "1");
-        $(".recruit_plus").css("opacity", "1");
-      }
+      
+    minusButton.css("opacity", count <= 1 ? "0.5" : "1");
+	plusButton.css("opacity", totalCount >= 9 ? "0.5" : "1");
+	$('.recruit_plus').css("opacity", totalCount >= 9 ? "0.5" : "1");
     });
   }
 
@@ -37,7 +39,7 @@ $(document).ready(function () {
       count += 1;
       countNumber.val(count);
     }
-    updateMinusButtonOpacity();
+    updateOpacity();
   });
 
   // -버튼 클릭시
@@ -54,7 +56,7 @@ $(document).ready(function () {
       count -= 1;
       countNumber.val(count);
     }
-    updateMinusButtonOpacity();
+    updateOpacity();
   });
 
   // 추가 버튼 클릭시
@@ -71,14 +73,14 @@ $(document).ready(function () {
         .attr("name", "recruit_count_" + $(".recruit").length);
       newRecruit.appendTo("#recruitContainer");
     }
-    updateMinusButtonOpacity();
+    updateOpacity();
   });
 
   // 삭제 버튼 클릭시
   $(document).on("click", ".recruit_minus", function () {
     if ($(".recruit").length > 1) {
       $(".recruit").last().remove();
-      updateMinusButtonOpacity();
+      updateOpacity();
     }
   });
 
@@ -86,18 +88,19 @@ $(document).ready(function () {
   $(".recruit_countNumber").attr("name", "recruit_count_0");
   /*************** 모집 인원 동적 처리***************/
 
-  /**기술/언어 y/n 처리**/
+  /**기술/언어 Y/N 처리**/
   $('input[type="checkbox"]').on("change", function () {
     if ($(this).is(":checked")) {
-      $(this).val("y");
+      $(this).val("Y");
     } else {
-      $(this).val("n");
+      $(this).val("N");
     }
   });
-  /**기술/언어 y/n 처리**/
+  /**기술/언어 Y/N 처리**/
 
   /*************** submitbtn.click ***************/
 
+	// 유효성 검사
   $("#submitBtn").click(function (event) {
     if (
       $('input[name="project_name"]').val() == "" ||
@@ -109,7 +112,9 @@ $(document).ready(function () {
     } else if ($("#main_content").text().length < 20) {
       event.preventDefault();
       alert("내용을 입력해주세요");
-    } else {
+    } 
+    // db 전달
+    else {
       event.preventDefault();
       $.ajax({
         type: "POST",
@@ -133,7 +138,7 @@ $(document).ready(function () {
             .get(),
           tech_stacks: $('input[type="checkbox"]')
             .map(function () {
-              return { [this.name]: $(this).is(":checked") ? "y" : "n" };
+              return { [this.name]: $(this).is(":checked") ? "Y" : "N" };
             })
             .get()
             .reduce(function (acc, cur) {
@@ -148,83 +153,17 @@ $(document).ready(function () {
         error: function (err) {
           console.log(err);
         },
+        
       }); //$.ajax
     } // else
   }); // $('#submitBtn').click(function(event)
-
-  // 데이터 추출
-  var requestData = {
-    title: $('input[name="project_name"]').val(),
-    field: $('input[name="step2_radio"]:checked').val(),
-    content: $(".ProseMirror")[0].innerHTML,
-    start_date: $('input[name="start-date"]').val(),
-    due_date: $('input[name="end-date"]').val(),
-    recruitmentFields: $('select[name="recruitment_field"]')
-      .map(function () {
-        return $(this).val();
-      })
-      .get(),
-    recruitCounts: $(".recruit_countNumber")
-      .map(function () {
-        return $(this).val();
-      })
-      .get(),
-    tech_stacks: $('input[type="checkbox"]')
-      .map(function () {
-        return { [this.name]: $(this).is(":checked") ? "y" : "n" };
-      })
-      .get(),
-    //id : $('input[name="temp_leader_id"]').val(),
-  };
-
-  // 콘솔에 데이터 출력
-  console.log("Request data:", requestData);
-
-  $.ajax({
-    type: "POST",
-    url: "/prome/project/buildProject",
-    contentType: "application/json",
-    data: JSON.stringify({
-      title: $('input[name="project_name"]').val(),
-      team_leader: $("#memId").val(),
-      field: $('input[name="step2_radio"]:checked').val(),
-      content: $(".ProseMirror")[0].innerHTML,
-      start_date: $('input[name="start-date"]').val(),
-      due_date: $('input[name="end-date"]').val(),
-      recruitmentFields: $('select[name="recruitment_field"]')
-        .map(function () {
-          return $(this).val();
-        })
-        .get(),
-      recruitCounts: $(".recruit_countNumber")
-        .map(function () {
-          return $(this).val();
-        })
-        .get(),
-      tech_stacks: $('input[type="checkbox"]')
-        .map(function () {
-          return { [this.name]: $(this).is(":checked") ? "y" : "n" };
-        })
-        .get()
-        .reduce(function (acc, cur) {
-          return Object.assign(acc, cur);
-        }, {}),
-      //id : $('input[name="temp_leader_id"]').val(),
-    }),
-    success: function () {
-      localStorage.removeItem("tempSaveData");
-      alert("프로젝트 작성이 완료되었습니다.");
-      location.href = "/prome/";
-    },
-    error: function (err) {
-      console.log(err);
-    },
-  });
-});
+}); // $(document).ready(function ()
 /*************** submitbtn.click ***************/
 
-$(document).ready(function () {
+
+
   /*************** 임시저장 ***************/
+$(document).ready(function () {
   $("#tempSaveBtn").click(function () {
     alert("임시저장되었습니다.");
     const data = {
@@ -245,7 +184,7 @@ $(document).ready(function () {
         .get(),
       tech_stacks: $('input[type="checkbox"]')
         .map(function () {
-          return { [this.name]: $(this).is(":checked") ? "y" : "n" };
+          return { [this.name]: $(this).is(":checked") ? "Y" : "N" };
         })
         .get()
         .reduce(function (acc, cur) {
@@ -276,4 +215,9 @@ $(document).ready(function () {
   }
 
   /*************** 임시저장 불러오기 ***************/
+
+// 로그아웃
+  $('button[name="logoutbtn"]').click(function () {
+  	location.href = "/prome/"
+  });
 });

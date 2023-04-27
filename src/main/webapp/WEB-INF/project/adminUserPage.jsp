@@ -1309,7 +1309,7 @@
       <button class="closeBtn">
         <img loading="lazy" src="../assets/icon/ic-close.svg" alt="close">
       </button>
-      <div><img class="pmelogo" src="../assets/icon/pmelogo.png"></div>
+      <div><img class="pwmlogo" src="../assets/images/pwmlogo.png"></div>
       <div class="div_center_tit">
 
       </div>
