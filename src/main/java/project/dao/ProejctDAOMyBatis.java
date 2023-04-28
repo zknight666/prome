@@ -61,14 +61,14 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 
 	@Override
 	public List<ProjectMainpageDTO> getMainProjects() {
-		
+
 		List<ProjectMainpageDTO>  list = sqlSession.selectList("projectSQL.getMainProjects");
-	    
-		System.out.println(list.get(0).getTitle()  + ", " + 
-						   list.get(0).getField()  + ", " + 
-						   list.get(0).getRecruitmentFields() + ", " + 
-						   list.get(0).getTechstacks() + ", " + 
-						   list.get(0).getMember_joined() + ", " + 
+
+		System.out.println(list.get(0).getTitle()  + ", " +
+						   list.get(0).getField()  + ", " +
+						   list.get(0).getRecruitmentFields() + ", " +
+						   list.get(0).getTechstacks() + ", " +
+						   list.get(0).getMember_joined() + ", " +
 						   list.get(0).getMember_need()
 						  );
 		return list;
@@ -87,7 +87,7 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 	@Override
 	public void adminDeleteUser(String checkedUser) {
 		System.out.println("dao = " +checkedUser);
-		
+
 		ObjectMapper objectMapper = new ObjectMapper();
 		JsonNode jsonNode;
 		try {
@@ -95,31 +95,31 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 			String[] array = objectMapper.convertValue(jsonNode.get("checkedUser"), String[].class);
 			for(String ar : array) {
 				System.out.println(ar);
-				sqlSession.delete("projectSQL.adminDeleteUser", ar);	
+				sqlSession.delete("projectSQL.adminDeleteUser", ar);
 			}
 		} catch (JsonMappingException e) {
 			e.printStackTrace();
 		} catch (JsonProcessingException e) {
 			e.printStackTrace();
 		}
-				
+
 	}
 
 	//--------------------------------------------------
-	
-	
+
+
 	//---------- applicants 신청서 - 프로젝트 생성자 페이지 -----------------
 	@Override
 	public List<Integer> getProjectId(String team_leader) {
 		return sqlSession.selectList("projectSQL.getProjectId", team_leader);
 	}
-	
-		
+
+
 	@Override
 	public List<ApplicantsDTO> getApplicants(Integer ar) {
 		System.out.println(ar);
 		return sqlSession.selectList("projectSQL.getApplicants", ar);
-		
+
 		//나중에 status가 null인 사람만 불러오도록 sql 수정해야 함!!
 	}
 
@@ -127,7 +127,7 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 	@Override
 	public void acceptApplicants(List<String> checkedUser, String project_id) {
 		System.out.println("dao = " +checkedUser + project_id);
-	
+
 			for(String ar : checkedUser) {
 				System.out.println("ar =" + ar);
 				Map<String, Object> map = new HashMap<String, Object>();
@@ -138,7 +138,7 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 				sqlSession.update("projectSQL.team_member_table", map);
 
 			}
-		
+
 	}
 
 	@Override
@@ -152,19 +152,19 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 
 		}
 
-//		String array = checkedUser;	
+//		String array = checkedUser;
 //		System.out.println("dao = " +array);
 //		JSONArray jSONArray = new JSONArray();
-		
-		
 
-		
+
+
+
 //		for(int i=1; i<checkedUser.size(); i++) {
 //			Map<String, Object> map = new HashMap<String, Object>();
 //			map.put("checkedUser", checkedUser[i]);
 //		}
 //			System.out.println("map = " +map); */
-//		sqlSession.delete("projectSQL.adminDeleteUser", checkedUser);		
+//		sqlSession.delete("projectSQL.adminDeleteUser", checkedUser);
 
 	}
 	//--------------------------------------------------
@@ -228,15 +228,6 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 
         ProjectDTO projectDTO =  sqlSession.selectOne("projectSQL.getProject", project_id);
 
-
-//        Map<String, Object> result_map = new HashMap<String, Object>();
-//        result_map.put("isBookmark", isBookmark); //"project_id" OR null
-//        result_map.put("project_tech_arr", project_tech_arr);   //프로젝트 적용 기술들 ArrayList<String>
-//        result_map.put("heartCount", heartCount);   //몇명이 관심 목록에 담았는지, int형
-//        result_map.put("rec_field_map", rec_field_map);   //분야별 모집할 멤버 수, HashMap, 모집분야와 모집할 멤버수가 매핑되어 있다
-//        result_map.put("member_field", member_field);   //분야별 모집한 멤버 수, List<String>형, 0~9개의 지원분야 문자열이 있음.
-//        result_map.put("projectDTO", projectDTO);
-
         ProjCardDTO projCardDTO = new ProjCardDTO();
         projCardDTO.setIsBookmark(isBookmark);
         projCardDTO.setProject_tech_arr(project_tech_arr);
@@ -296,5 +287,28 @@ public class ProejctDAOMyBatis implements ProjectDAO {
         param_map.put("project_id", project_id);
         return sqlSession.delete("projectSQL.deleteApplication", param_map );
     }
+
+    @Override
+    public void writeApplication(String user_id, Map<String, Object> map) { //map에는 //project_id, app_field, reason이 있다.
+        List<String> user_techStack = new ArrayList<>();
+        Map<String, String> user_tech_map = sqlSession.selectOne("projectSQL.userTechStack", user_id );
+
+        user_tech_map.forEach((key, value) ->{
+            if(value.equals("Y")){
+                user_techStack.add(key);
+            }
+        });
+        String tech_stack = String.join(",", user_techStack);
+
+        map.put("user_id", user_id);
+        map.put("tech_stack", tech_stack);
+
+        //#{user_id}, #{project_id}, #{app_field}, #{reason}, #{tech_stack)
+        sqlSession.insert("projectSQL.writeApplication", map);
+
+
+    }
+
+
 }
 

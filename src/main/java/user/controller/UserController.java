@@ -1,10 +1,8 @@
 package user.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
@@ -12,11 +10,13 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import org.springframework.web.bind.annotation.SessionAttributes;
 import user.bean.IconDTO;
 import user.bean.UserDTO;
 import user.service.UserService;
 
 @Controller
+@SessionAttributes("user_id") //세션의 key
 @RequestMapping(value = "users")
 public class UserController {
 	@Autowired
@@ -92,13 +92,20 @@ public class UserController {
 	public String updateIcon(@ModelAttribute IconDTO iconDTO) {
 		return userService.updateIcon(iconDTO);
 	}
-
 	// 회원정보 수정 end
+
+
 	// 로그인 start
 	@PostMapping(value = "login")
 	@ResponseBody
-	public String login(@ModelAttribute UserDTO userDTO) {
-		return userService.login(userDTO);
+	public String login(Model model, @ModelAttribute UserDTO userDTO) {
+		String login_result = userService.login(userDTO);
+
+		if(login_result.equals("ok")){ //로그인 성공 시 user_id를 세션에 저장.
+			model.addAttribute("user_id", userDTO.getId());
+		}
+
+		return login_result;
 	}
 	// 로그인 end
 	

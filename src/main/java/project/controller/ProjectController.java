@@ -13,6 +13,8 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
 import project.bean.ProjCardDTO;
 import project.bean.ProjectDTO;
 import project.bean.ProjectMainpageDTO;
@@ -20,16 +22,18 @@ import project.service.ProjectService;
 
 
 @Controller
+@SessionAttributes("user_id")
 @RequestMapping(value="project")
 public class ProjectController {
 	@Autowired
 	private ProjectService projectService;
 
-	/*
-	 * @GetMapping(value="buildProject") public String buildProject() {
-	 * 
-	 * return "project/buildProject"; }
-	 */
+
+	 @GetMapping(value="buildProject")
+	 public String buildProject() {
+
+	 return "project/buildProject"; }
+
 	
 
 	@PostMapping(value="buildProject")
@@ -70,7 +74,8 @@ public class ProjectController {
 	
 	@PostMapping(value="acceptApplicants")
 	@ResponseBody
-	public void acceptApplicants(@RequestParam("checkedUser") List<String> checkedUser, @RequestParam(value = "project_id") String project_id) {
+	public void acceptApplicants(@RequestParam("checkedUser") List<String> checkedUser,
+		@RequestParam(value = "project_id") String project_id) {
 	    System.out.println(checkedUser);
 	    System.out.println(project_id);
 	    projectService.acceptApplicants(checkedUser, project_id);
@@ -133,8 +138,8 @@ public class ProjectController {
 	@PostMapping(value="addBookmark")
 	@ResponseBody
 	public void addBookmark(
-		//@SessionAttribute(name = "user_id", required = true) String user_id //로그인 안했을 때에는 user_id에 null이 할당됨.
-		@RequestParam(name = "user_id", required = false) String user_id,
+		@SessionAttribute("user_id") String user_id, //required=true, 세션에서 로그인한 User의 id 받아옴.
+//		@RequestParam(name = "user_id", required = false) String user_id,
 		@RequestParam String project_id) {
 
 		projectService.addBookmark(user_id, project_id);
@@ -144,8 +149,8 @@ public class ProjectController {
 	@PostMapping(value="deleteBookmark")
 	@ResponseBody
 	public void deleteBookmark(
-		//@SessionAttribute(name = "user_id", required = false) String user_id //로그인 안했을 때에는 user_id에 null이 할당됨.
-		@RequestParam(name = "user_id", required = false) String user_id,
+		@SessionAttribute("user_id") String user_id,
+//		@RequestParam(name = "user_id", required = false) String user_id,
 		@RequestParam String project_id) {
 
 		projectService.deleteBookmark(user_id, project_id);
@@ -155,8 +160,8 @@ public class ProjectController {
 	@GetMapping(value = "projectCard")
 	@ResponseBody
 	public ProjCardDTO getProjectCard(
-//		@SessionAttribute(name = "user_id", required = false) String user_id, //로그인 안했을 때에는 user_id에 null이 할당됨.
-		@RequestParam(name = "user_id", required = false, defaultValue = "0") String user_id,
+		@SessionAttribute("user_id") String user_id,
+//		@RequestParam(name = "user_id", required = false, defaultValue = "0") String user_id,
 		@RequestParam String project_id) {
 		return projectService.getProjectCard(user_id, project_id);
 	}
@@ -169,8 +174,9 @@ public class ProjectController {
 	@GetMapping(value="bookmark")
 	@ResponseBody
 	public List<String> getBookmark(
-		//@SessionAttribute(name = "user_id", required = false) String user_id,//로그인 안했을 때에는 user_id에 null이 할당됨.
-		@RequestParam(name = "user_id", required = false) String user_id){
+		@SessionAttribute("user_id") String user_id
+//		@RequestParam(name = "user_id", required = false) String user_id
+	){
 
 		return projectService.getBookmark(user_id);
 	}
@@ -188,8 +194,9 @@ public class ProjectController {
 	@GetMapping(value="supportedProjects")
 	@ResponseBody
 	public List<Map<String, Object>> getSupportedProjects(
-		//@SessionAttribute(name = "user_id", required = false) String user_id //로그인 안했을 때에는 user_id에 null이 할당됨.
-		@RequestParam(name = "user_id", required = false) String user_id){
+		@SessionAttribute("user_id") String user_id
+//		@RequestParam(name = "user_id", required = false) String user_id
+	){
 
 		return projectService.getSupportedProjects(user_id);
 	}
@@ -199,8 +206,9 @@ public class ProjectController {
 	@GetMapping(value="myTeams")
 	@ResponseBody
 	public Map<String, List<String>> getMyTeams(
-		//@SessionAttribute(name = "user_id", required = false) String user_id //로그인 안했을 때에는 user_id에 null이 할당됨.
-		@RequestParam(name = "user_id", required = false) String user_id){
+		@SessionAttribute("user_id") String user_id
+//		@RequestParam(name = "user_id", required = false) String user_id
+	){
 
 		return projectService.getMyTeams(user_id);
 	}
@@ -208,12 +216,24 @@ public class ProjectController {
 	@PostMapping(value="deleteApplication")
 	@ResponseBody
 	public int deleteApplication( //삭제된 행의 개수
-		//@SessionAttribute(name = "user_id", required = true) String user_id //로그인 안했을 때에는 user_id에 null이 할당됨.
-		@RequestParam(name = "user_id") String user_id,
+		@SessionAttribute("user_id") String user_id,
+//		@RequestParam(name = "user_id") String user_id,
 		@RequestParam(name = "project_id") String project_id
 	){
 		return projectService.deleteApplication(user_id, project_id);
 	}
+
+	@PostMapping(value="writeApplication")
+	@ResponseBody
+	public void writeApplication( //삭제된 행의 개수
+		@SessionAttribute("user_id") String user_id,
+		//user_id를 세션에서 꼭 받아와 줘야 함
+		@RequestParam Map<String,Object> map //project_id, app_field, reason
+	){
+		projectService.writeApplication(user_id, map);
+	}
+
+
 
 }
 

@@ -225,7 +225,12 @@ public class ProjectServiceImpl implements ProjectService {
     public int deleteApplication(String user_id, String project_id) {
         return projectDAO.deleteApplication(user_id, project_id);
     }
-//
 
-	
+	@Override
+	public void writeApplication(String user_id, Map<String, Object> map) {
+		projectDAO.writeApplication(user_id, map);
+	}
+
+
+
 }

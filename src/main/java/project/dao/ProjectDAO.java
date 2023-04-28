@@ -49,4 +49,6 @@ public interface ProjectDAO {
     ProjectDTO getProject(String project_id);
 
     int deleteApplication(String user_id, String project_id);
+
+    void writeApplication(String user_id, Map<String, Object> map);
 }

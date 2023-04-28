@@ -1,14 +1,14 @@
 
 //프로젝트 카드 갖고오는 함수 ->계속 쓰임.
 //list_name = fav OR apply OR myteam
-//status = '' or 'Y' or 'N' or 'leader'
+//status = 'WAITING' or 'P_ACCEPT' or 'P_DECLINE' or 'leader'
 function getProjCard(item, index, list_name, status){
 
   $.ajax({
     type: "GET",
     url: "/prome/project/projectCard",
     data: {
-      "user_id": "yhg",
+      // "user_id": "yhg",
       "project_id": item
     },
     dataType: 'json',
@@ -21,23 +21,24 @@ function getProjCard(item, index, list_name, status){
         let isBookmark = data.isBookmark != null ? "favorite-active" : "favorite"
         topRightHTML = '<div class = "' + isBookmark + '" > </div>';
 
-      //지원한 프로젝트 목록인 경우 -> 3가지 CASE로 나눠서 출력함
+        //지원한 프로젝트 목록인 경우 -> 3가지 CASE로 나눠서 출력함
       }else if(list_name === "apply"){
         //1)아직 팀장이 승인/거절 안 한 플젝
-        if(status == null){
-          topRightHTML = '<button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#modalApplyCancel" data-status="null" data-project-id="' +item+ '">'
+        if(status === "WAITING"){
+          topRightHTML = '<button type="button" class="btn-close" data-bs-toggle="modal" data-bs-target="#modalApplyCancel" data-status="WAITING" data-project-id="' +item+ '">'
         }
 
         //2)승인된 플젝
-        if(status === 'Y'){
-          topRightHTML = '<button type="button" class="btn btn-primary" data-status="Y" data-project-id="' +item+ '">합류 승인!</button>'
+        if(status === 'P_ACCEPT'){
+          topRightHTML = '<button type="button" class="btn btn-primary" data-status="P_ACCEPT" data-project-id="' +item+ '">합류 승인!</button>'
         }
 
         //3)거절된 플젝
-        if(status === 'N'){
-          topRightHTML = '<button type="button" class="btn btn-danger" data-status="N" data-project-id="' +item+ '">합류 거절</button>'
+        if(status === 'P_DECLINE'){
+          topRightHTML = '<button type="button" class="btn btn-danger" data-status="P_DECLINE" data-project-id="' +item+ '">합류 거절</button>'
         }
-      //My Team의 팀장인 경우
+
+        //My Team의 팀장인 경우
       }else if(list_name === "myteam"){
         if(status === 'leader') {
           topRightHTML =
@@ -142,7 +143,7 @@ function getProjCard(item, index, list_name, status){
 
 
       $('.slider-' +list_name+'' ).slick('slickAdd',
-          '<div id="card-'+list_name+'-' +index+ '" data-project-id="' + item +'">\n'
+          '<div class="card-'+list_name+'-' +index+ '" data-project-id="' + item +'">\n'
           + '            <div class="projectGridWrap" style="padding-left: 0; padding-right: 0">\n'
           + '              <div class="projectTopInfo">\n'
           + '                <div class="top" style="flex-direction: row-reverse">\n'
@@ -213,7 +214,7 @@ $(function () {
   $.ajax({
     type: "GET",
     url: "/prome/project/bookmark",
-    data:{"user_id": "yhg"},
+    // data:{"user_id": "yhg"},
     dataType: 'json',
     success: function (data) {
       // console.log(data) -> Array<2>, data[0], data.length, data = ["1", "35"]
@@ -227,7 +228,7 @@ $(function () {
     error: function (err) {
       console.log(err);
     }
-    }); //1. Ajax End
+  }); //1. Ajax End
 
 
 
@@ -235,10 +236,10 @@ $(function () {
   $.ajax({
     type: "GET",
     url: "/prome/project/supportedProjects",
-    data:{"user_id": "yhg"},
+    // data:{"user_id": "yhg"},
     dataType: 'json',
     success: function (data) {
-      // data -> [{"PROJECT_ID":35},{"STATUS":"Y","PROJECT_ID":37}]
+      // data -> [{"STATUS":"WAITING","PROJECT_ID":35},{"STATUS":"P_ACCEPT","PROJECT_ID":37},{"STATUS":"P_DECLINE","PROJECT_ID":42}]
 
       data.forEach((item, index)=>{
         //카드 출력
@@ -256,7 +257,7 @@ $(function () {
   $.ajax({
     type: "GET",
     url: "/prome/project/myTeams",
-    data:{"user_id": "yhg"},
+    // data:{"user_id": "yhg"},
     dataType: 'json',
     success: function (data) {
       // data -> {"leader":["2"],"member":["36","35","1"]}
@@ -373,10 +374,12 @@ $('.slider-myteam').slick({
 
 
 /**projectCard쪽 Click Listener
-동적으로 생기는 태그에는 .click() 대신 .on()으로 이벤트를 걸어줘야 한다. **/
+ 동적으로 생기는 태그에는 .click() 대신 .on()으로 이벤트를 걸어줘야 한다. **/
 
 //card 클릭했을 때 프로젝트 상세페이지로 이동함.
 $(document).on('click', '.slick-slide', function (){
+  console.log("카드 클릭됨");
+  console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
   let project_id = $(this).data("project-id")
   location.href = '/prome/project/project?id=' +project_id;
@@ -399,70 +402,110 @@ $(document).on('click', '.slick-slide', function (){
 
 
 //관심목록에 없는 프로젝트를 클릭한 경우 풀하트로 바꾸고 DB의 bookmark Table에 레코드를 추가함.
-  $(document).on('click', '.top .favorite', function (){
+$(document).on('click', '.top .favorite', function (event){
+  event.stopPropagation();
+  console.log("빈하트 클릭됨");
+  let project_id = $(this).closest('div[class^="card-"]').data("project-id")
 
-    let fav_id = $(this).closest('div[id^="card-"]').attr('id')
 
-    $.ajax({ //북마크 추가
-      type: "POST",
-      url: "/prome/project/addBookmark",
-      data:{"user_id": "yhg",
-        "project_id": $(this).closest('div[id^="card-"]').data("project-id") },
-      success: function ( ) {
-        console.log("북마크 추가했습니다.")
-        $('#'+fav_id+' .top .favorite').attr("class", "favorite-active");
-      },
-      error: function (err) {
-        console.log(err);
-      }
-    })
+  $.ajax({ //북마크 추가
+    type: "POST",
+    url: "/prome/project/addBookmark",
+    data:{
+      "project_id": project_id },
+    success: function ( ) {
+      alert("북마크 추가했습니다.")
+      $('div[class^="card-fav"][data-project-id="'+project_id+'"]').find('.top .favorite').attr("class", "favorite-active");
+    },
+    error: function (err) {
+      console.log(err);
+    }
+  })
 
-  });
+});
 
 //관심목록에 있는 프로젝트인 경우 빈 하트로 바꾸고 DB의 bookmark Table에서 레코드를 제거함.
-  $(document).on('click', '.top .favorite-active', function (){
+$(document).on('click', '.top .favorite-active', function (event){
+  event.stopPropagation();
+  console.log("풀하트 클릭됨");
+  let project_id = $(this).closest('div[class^="card-"]').data("project-id")
 
-    let fav_id = $(this).closest('div[id^="card-"]').attr('id')
+  $.ajax({ //북마크 삭제
+    type: "POST",
+    url: "/prome/project/deleteBookmark",
+    data:{
+      "project_id": project_id,
+    success: function ( ) {
+      alert("북마크 삭제했습니다.")
+      $('div[class^="card-fav"][data-project-id="'+project_id+'"]').find('.top .favorite-active').attr("class", "favorite");
+    },
+    error: function (err) {
+      console.log(err);
+    }
+  }})
 
-    $.ajax({ //북마크 삭제
-      type: "POST",
-      url: "/prome/project/deleteBookmark",
-      data:{"user_id": "yhg",
-        "project_id": $(this).closest('div[id^="card-"]').data("project-id")},
-      success: function ( ) {
-          alert("북마크 삭제했습니다.")
-        console.log($(this).attr('id'))
-        $('#'+fav_id+' .top .favorite-active').attr("class", "favorite");
-      },
-      error: function (err) {
-        console.log(err);
-      }
-    })
-
-  });
+});
 
 
 //지원목록 .top 의 버튼 눌렀을 때
-$(document).on('click', '.slider-apply .top button', function (){
+$(document).on('click', '.slider-apply .top button', function (event){
+  event.stopPropagation();
   let project_id = $(this).data("project-id")
+  let status = $(this).data("status")
   let project_title = $(this).closest('.projectGridWrap').find('h2.tit').text();
 
   //1)아직 팀장이 승인/거절 안 한 플젝
-  if($(this).data("status") === null){
+  if(status === "WAITING"){
     $('#modalApplyCancel .modal-title').text(project_title);
     $('#modalApplyCancel .btn-primary').attr("data-project-id", project_id);
 
-  //2)승인된 플젝
-  }else if($(this).data("status") === "Y"){
-    alert("해당 프로젝트에 대한 지원이 승인되었습니다!")
-    let slick_index = $(this).closest('.slick-slide').data('slick-index');
-    $('.slider-apply').slick('slickRemove', slick_index )
-    location.reload()
 
-  //3)거절된 플젝
-  }else if($(this).data("status") === "N"){
+    //2)승인된 플젝
+  }else if(status === "P_ACCEPT"){
+    alert("해당 프로젝트에 대한 지원이 승인되었습니다!")
+
+    $.ajax({ //지원서 STATUS 업데이트함     P_ACCEPT-> ACCEPT
+      type: "POST",
+      url: "/prome/project/updateApplicationStatus",
+      data: {
+        "project_id": project_id,
+        "status": status
+      },
+      success: function () {
+        let slick_index = $(this).closest('.slick-slide').data('slick-index');
+        $('.slider-apply').slick('slickRemove', slick_index )
+        location.reload()
+      },
+      error: function (err) {
+        console.log(err);
+      }
+
+    })
+
+
+    //3)거절된 플젝
+  }else if(status === "P_DECLINE"){
     alert("해당 프로젝트에 대한 지원이 거절되었습니다!")
-    location.reload()
+
+    $.ajax({ //지원서 STATUS 업데이트함   P_DECLINE-> DECLINE
+      type: "POST",
+      url: "/prome/project/updateApplicationStatus", //=> 컨트롤러에 아직 추가 안함
+      data: {
+        "project_id": project_id,
+        "status": status
+      },
+      success: function () {
+        let slick_index = $(this).closest('.slick-slide').data('slick-index');
+        $('.slider-apply').slick('slickRemove', slick_index )
+        location.reload()
+      },
+      error: function (err) {
+        console.log(err);
+      }
+
+    })
+
+
 
   }
 
@@ -478,7 +521,8 @@ $(document).on('click', '#modalApplyCancel .btn-primary', function (){
   $.ajax({ //지원서 삭제
     type: "POST",
     url: "/prome/project/deleteApplication",
-    data:{"user_id": "yhg",
+    data:{
+      // "user_id": "yhg",
       "project_id": project_id},
     success: function ( ) {
       alert("해당 프로젝트에 대한 지원을 취소했습니다.")
@@ -488,11 +532,43 @@ $(document).on('click', '#modalApplyCancel .btn-primary', function (){
       console.log(err);
     }
   })
-
-
-
 });
 
+
+//[합류 승인!] OR [합류 거절] 버튼 눌렀을 때
+// $(document).on('click', 'div[class^="card-apply"] .top .btn', function (){
+//   console.log("합류~~ 버튼 누름");
+//
+//   let project_id = $(this).data("project-id")
+//   let status = $(this).data("status")
+//
+//   if(status === "P_ACCEPT"){
+//   if(!confirm("해당 프로젝트에 합류가 승인되었습니다.")){
+//
+//   }}else if(status === "P_DECLINE"){
+//   confirm("해당 프로젝트에 합류가 거절되었습니다.")
+//
+//   }
+//
+//     $.ajax({ //지원서 STATUS 업데이트 -> ACCEPT/DECLINE
+//       type: "POST",
+//       url: "/prome/project/updateApplicationStatus",
+//       data: {
+//         // "user_id": "yhg",
+//         "project_id": project_id,
+//         "status": status
+//       },
+//       success: function () {
+//         alert("해당 프로젝트에 대한 지원을 취소했습니다.")
+//         location.reload()
+//       },
+//       error: function (err) {
+//         console.log(err);
+//       }
+//
+//     })
+//
+// });
 
 
 
@@ -518,29 +594,4 @@ $(".closeBtn").click(function () {
 });
 $('#cancel').click(function () {
   $(".loginModal").parent().attr("class", "modalWrapClose");
-});
-$('#deleteUser').click(function(){
-	if($('#prome_pwd').val() == ''){
-		alert('비밀번호를 입력해주세요.');
-		return;
-	}
-	$.ajax({
-    type: "post",
-    url: "/prome/users/deleteUser",
-    data: {
-      	id : $('#prome_id').val(),
-      	pwd: $('#prome_pwd').val()
-      },
-    success: function (data) {
-		if(data=='비밀번호가 틀렸습니다.'){
-			alert(data);
-		}else{
-			alert(data);
-			location.replace('/prome');
-		}
-    },
-    error: function (err) {
-      console.log(err);
-    }
-    });
 });
