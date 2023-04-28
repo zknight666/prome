@@ -404,7 +404,7 @@
 	<!-- jquery -->
 	<script type="text/javascript"
 		src="http://code.jquery.com/jquery-3.6.4.min.js"></script>
-	<script src="./js/login.js"></script>
+	<script src="../js/login.js"></script>
 	<script src="../js/join.js"></script>
 	<script type="text/javascript">
 		$('.writeForm').click(function() {
@@ -429,8 +429,7 @@
 			$(".loginModal").parent().attr("class", "modalWrapClose");
 		});
 	</script>
-	<script src="../js/scripts.js"></script>
-	
+
 	<script type="text/javascript"
 		src="//dapi.kakao.com/v2/maps/sdk.js?appKey=13e23dd91c08ebf7c2ee79eee67a16fd"></script>
 	<script type="text/javascript">

@@ -1330,7 +1330,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Core theme JS-->
   <script src="../js/letspl.js"></script>
-  <script src="../js/scripts.js"></script>
    <script src="../js/adminUserPage.js"></script>
   <script type="text/javascript">
   	function userPaging(userPg){ 
