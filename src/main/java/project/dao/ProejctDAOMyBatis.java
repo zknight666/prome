@@ -266,5 +266,16 @@ public class ProejctDAOMyBatis implements ProjectDAO {
         param_map.put("project_id", project_id);
         return sqlSession.delete("projectSQL.deleteApplication", param_map );
     }
+
+	@Override
+	public List<ProjectMainpageDTO> getMainProjects(Map<String, Integer> map5) {
+		List<ProjectMainpageDTO>  list = sqlSession.selectList("projectSQL.getMainProjects",map5);
+		return list;
+	}
+
+	@Override
+	public int getProjectTotalA() {
+		return sqlSession.selectOne("projectSQL.getProjectTotalA");
+	}
 }
 

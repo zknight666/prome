@@ -89,8 +89,16 @@ public class ProjectController {
 	
 	//-------------- adminpage 관리자 페이지 ---------------------
 	@GetMapping(value="adminpage")
-	public String adminpage() {
+	public String adminpage(@RequestParam(required = false, defaultValue = "1") String projectPg, Model model) {
+		model.addAttribute("projectPg",projectPg);
 		return "project/adminpage";
+	}
+	
+	@GetMapping(value="getAdminpage")
+	@ResponseBody
+	public Map<String, Object> getAdminpage(@RequestParam(required=false, defaultValue="1") String projectPg) {
+		System.out.println(projectPg);
+		return projectService.getMainProjects(projectPg);
 	}
 
 

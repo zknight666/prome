@@ -78,69 +78,67 @@
 
 
 	<!-- 메인 페이지 -->
-	<select id="getMainProjects"
-		resultType="project.bean.ProjectMainpageDTO">
-		SELECT p.title, p.field,p.member_joined,p.member_need,
-		JSON_OBJECT(
-		'UI_UX_PLAN' VALUE rf.UI_UX_PLAN,
-		'PLAN_ETC' VALUE
-		rf.PLAN_ETC,
-		'GRAPHIC_DESIGN' VALUE rf.GRAPHIC_DESIGN,
-		'UI_UX_DESIGN'
-		VALUE rf.UI_UX_DESIGN,
-		'DESIGN_ETC' VALUE rf.DESIGN_ETC,
-		'IOS' VALUE
-		rf.IOS,
-		'ANDROID' VALUE rf.ANDROID,
-		'WEB_FE' VALUE rf.WEB_FE,
-		'WEB_PUBLISHER' VALUE rf.WEB_PUBLISHER,
-		'CROSS_FLATFORM' VALUE
-		rf.CROSS_FLATFORM,
-		'WEB_SERVER' VALUE rf.WEB_SERVER,
-		'BLOCK_CHAIN' VALUE
-		rf.BLOCK_CHAIN,
-		'AI' VALUE rf.AI,
-		'BIG_DATA' VALUE rf.BIG_DATA,
-		'GAME_PLAN' VALUE rf.GAME_PLAN,
-		'PM' VALUE rf.PM
-		) AS recruitmentFields,
-		JSON_OBJECT(
-		'FIGMA' VALUE pts.FIGMA,
-		'PHOTOSHOP' VALUE pts.PHOTOSHOP,
-		'IOS' VALUE pts.IOS,
-		'ANDROID' VALUE pts.ANDROID,
-		'REACT' VALUE
-		pts.REACT,
-		'VUE' VALUE pts.VUE,
-		'FLUTTER' VALUE pts.FLUTTER,
-		'HTML_CSS'
-		VALUE pts.HTML_CSS,
-		'JAVASCRIPT' VALUE pts.JAVASCRIPT,
-		'SPRING' VALUE
-		pts.SPRING,
-		'JAVA' VALUE pts.JAVA,
-		'KOTLIN' VALUE pts.KOTLIN,
-		'NODE_JS'
-		VALUE pts.NODE_JS,
-		'MONGODB' VALUE pts.MONGODB,
-		'C_C#' VALUE pts.C_C#,
-		'GIT' VALUE pts.GIT,
-		'AWS' VALUE pts.AWS,
-		'DOCKER' VALUE pts.DOCKER,
-		'KUBERNETES' VALUE pts.KUBERNETES,
-		'TENSORFLOW' VALUE pts.TENSORFLOW,
-		'UNITY' VALUE pts.UNITY,
-		'PYTHON' VALUE pts.PYTHON,
-		'MYSQL' VALUE
-		pts.MYSQL,
-		'TYPESCRIPT' VALUE pts.TYPESCRIPT
-		) AS techstacks
-		FROM project
-		p
-		JOIN recruitment_field rf ON p.ID = rf.PROJECT_ID
-		JOIN
-		project_tech_stack pts ON p.ID = pts.PROJECT_ID
-		ORDER BY p.ID desc
+	<select id="getMainProjects" parameterType="java.util.Map" resultType="project.bean.ProjectMainpageDTO"> 
+		<![CDATA[	
+			select * from
+		        (select rownum rn, tt.*
+				from (SELECT p.title, p.field,p.member_joined,p.member_need,
+				JSON_OBJECT(
+					'UI_UX_PLAN' VALUE rf.UI_UX_PLAN,
+					'PLAN_ETC' VALUE rf.PLAN_ETC,
+					'GRAPHIC_DESIGN' VALUE rf.GRAPHIC_DESIGN,
+					'UI_UX_DESIGN' VALUE rf.UI_UX_DESIGN,
+					'DESIGN_ETC' VALUE rf.DESIGN_ETC,
+					'IOS' VALUE rf.IOS,
+					'ANDROID' VALUE rf.ANDROID,
+					'WEB_FE' VALUE rf.WEB_FE,
+					'WEB_PUBLISHER' VALUE rf.WEB_PUBLISHER,
+					'CROSS_FLATFORM' VALUE rf.CROSS_FLATFORM,
+					'WEB_SERVER' VALUE rf.WEB_SERVER,
+					'BLOCK_CHAIN' VALUE rf.BLOCK_CHAIN,
+					'AI' VALUE rf.AI,
+					'BIG_DATA' VALUE rf.BIG_DATA,
+					'GAME_PLAN' VALUE rf.GAME_PLAN,
+					'PM' VALUE rf.PM
+				) AS recruitmentFields,
+				JSON_OBJECT(
+					'FIGMA' VALUE pts.FIGMA,
+					'PHOTOSHOP' VALUE pts.PHOTOSHOP,
+					'IOS' VALUE pts.IOS,
+					'ANDROID' VALUE pts.ANDROID,
+					'REACT' VALUE pts.REACT,
+					'VUE' VALUE pts.VUE,
+					'FLUTTER' VALUE pts.FLUTTER,
+					'HTML_CSS' VALUE pts.HTML_CSS,
+					'JAVASCRIPT' VALUE pts.JAVASCRIPT,
+					'SPRING' VALUE pts.SPRING,
+					'JAVA' VALUE pts.JAVA,
+					'KOTLIN' VALUE pts.KOTLIN,
+					'NODE_JS' VALUE pts.NODE_JS,
+					'MONGODB' VALUE pts.MONGODB,
+					'C_C#' VALUE pts.C_C#,
+					'GIT' VALUE pts.GIT,
+					'AWS' VALUE pts.AWS,
+					'DOCKER' VALUE pts.DOCKER,
+					'KUBERNETES' VALUE pts.KUBERNETES,
+					'TENSORFLOW' VALUE pts.TENSORFLOW,
+					'UNITY' VALUE pts.UNITY,
+					'PYTHON' VALUE pts.PYTHON,
+					'MYSQL' VALUE pts.MYSQL,
+					'TYPESCRIPT' VALUE pts.TYPESCRIPT
+				) AS techstacks
+				FROM project p
+				JOIN recruitment_field rf ON p.ID = rf.PROJECT_ID
+				JOIN project_tech_stack pts ON p.ID = pts.PROJECT_ID
+		        ORDER BY p.ID desc)
+		        tt)
+		       where rn>= #{startNum} and rn<=#{endNum}
+		]]>
+	</select>
+
+	<!-- project 총 개수 -->
+	<select id="getProjectTotalA" resultType="int">
+		SELECT COUNT(*) FROM project
 	</select>
 
 	<insert id="project_tech_stack" parameterType="project">
@@ -200,8 +198,8 @@
 	<![CDATA[
 		select * from
 		(select rownum rn, tt.* from
-		(select * from user_table) tt
-		)where rn>=#{startNum} and rn<=#{endNum}
+		(select * from user_table order by id) tt
+		)where rn>=#{startNum} and rn<=#{endNum}		
 	]]>
 	</select>
 	
@@ -238,6 +236,7 @@
 		join project p on a.project_id = p.id
 		where
 		project_id=${project_id} and status='WAITING'
+		order by user_id
 	</select>
 
 
@@ -371,12 +370,6 @@
 			#{member_id}
 		</foreach>
 	</select>
-
-
-
-
-
-
 
 
 	<!-- 해당 User의 그 project에 대한 지원서 삭제 -->
