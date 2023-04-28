@@ -12,7 +12,6 @@ import user.bean.UserDTO;
 public interface ProjectService {
     void buildProject(ProjectDTO projectDTO);
 
-    Map<String, Object> getAdminpage(Map<String, Object> map);
 
     void adminDeleteProject(int projectId);
 

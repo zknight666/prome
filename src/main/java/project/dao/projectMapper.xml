@@ -6,43 +6,9 @@
  
  <mapper namespace="projectSQL">
 
- <insert id="writeProject" parameterType="project">
-   insert into project values(#{id}, #{team_Leader}, #{title},
-   #{field}, #{content}, #{start_Date}, #{due_Date}, #{member_Joined},
-   #{created_At}, #{member_Need}, #{recruit_State})
- </insert>
-
- <select id="getProject" parameterType="String" resultType="project">
-  select * project values(#{id}, #{team_Leader}, #{title},
-  #{field}, #{content}, #{start_Date}, #{due_Date}, #{member_Joined},
-  #{created_At}, #{member_Need}, #{recruit_State})
-  where id=#{project_id}
- </select>
-
- <select id="getAdminpage1" parameterType="java.util.Map" resultType="project">
-  <![CDATA[
-			select * from
-			(select rownum rn, tt.* from
-			(select * from project where field=#{field} and recruit_state='ing') tt
-			)where rn>=#{startNum} and rn<=#{endNum}
-		]]>
- </select>
-
- <select id="getAdminpage2" parameterType="java.util.Map" resultType="project">
-  <![CDATA[
-			select * from
-			(select rownum rn, tt.* from
-			(select * from project where field=#{field}) tt
-			)where rn>=#{startNum} and rn<=#{endNum}
-		]]>
- </select>
 
 
 
- <!-- 총글수 -->
- <select id="getTotalA" resultType="int">
-  select count(*) from project
- </select>
 
  <delete id="adminDeleteProject" parameterType="int">
   delete from project where id=#{projectId}

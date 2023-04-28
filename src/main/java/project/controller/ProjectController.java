@@ -91,8 +91,7 @@ public class ProjectController {
 	
 	//-------------- adminpage 관리자 페이지 ---------------------
 	@GetMapping(value="adminpage")
-	public String adminpage(@RequestParam(required = false, defaultValue = "1") String pg, Model model) {
-		model.addAttribute("pg", pg);
+	public String adminpage() {
 		return "project/adminpage";
 	}
 

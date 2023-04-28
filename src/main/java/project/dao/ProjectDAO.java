@@ -8,9 +8,6 @@ import project.bean.ProjectDTO;
 import user.bean.UserDTO;
 
 public interface ProjectDAO {
-    List<ProjectDTO> getAdminpage(Map<String, Object> map2);
-
-    public List<String> getChosenTech(int projectId);
 
 
     void adminDeleteProject(int projectId);

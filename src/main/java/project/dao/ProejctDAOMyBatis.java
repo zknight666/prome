@@ -26,17 +26,7 @@ public class ProejctDAOMyBatis implements ProjectDAO {
     private SqlSession sqlSession;
 
     //--------------- adminpage 관리자 페이지 ---------------------------
-    @Override
-    public List<ProjectDTO> getAdminpage(Map<String, Object> map2) {
-        if(map2.get("recruit_state")=="") {
-            return sqlSession.selectList("projectSQL.getAdminpage1", map2);
-        }else
-            return sqlSession.selectList("projectSQL.getAdminpage2", map2);
-    }
 
-    public List<String> getChosenTech(int projectId) {
-        return sqlSession.selectList("projectSQL.getChosenTech", projectId);
-    }
 
 
     @Override

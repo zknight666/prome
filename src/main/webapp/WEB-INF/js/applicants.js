@@ -44,7 +44,7 @@ $(function(){
 				    $.each(items, function(index, user) {
 				        html += '<tr align="center" height="80px">';
 				        html += '<td align="center" class="td_column_check">';
-				        html += '<input class="mx-4 check_checkbox" type="checkbox" value="' + user.user_id + '">';
+				        html += '<input class="mx-4 check_checkbox single_checkbox" type="checkbox" value="' + user.user_id + '">';
 				        html += '</td>';
 				        html += '<td class="td_column_id">' + user.user_id + '</td>';
 				        html += '<td class="td_column_field" width="10%">' + user.app_field + '</td>';	
@@ -77,22 +77,20 @@ $(function(){
 	}); //ajax
 	
 	
+	
+	
 	$(document).on('change', '.allcheck', function() {
 	  var is_check = $(this).is(":checked");
 	  console.log(is_check);
-	
-	  $(".check_checkbox").prop("checked", is_check);    
+	  
+	  $(this).parents('table').siblings('div').find('table .check_checkbox').prop('checked', is_check);
+	   
 	});
 	
 	
 	$(document).on('click', '#accept', function(){
 	    
-/*		if($('.allcheck').is(':checked')){
-		    $('.check_checkbox').prop('checked', $(this).is(":checked"));
-		    $('.allcheck').prop('checked', false);	        
-		}
-*/
-
+		$('.allcheck').prop('checked', false);  
 	    var checkedUser = $('input[type=checkbox]:checked').map(function () {
 	        return $(this).val();
 	    }).get();
@@ -130,14 +128,9 @@ $(function(){
 	
 
 		$(document).on('click', '#decline', function(){
-		
-/*		if($('.allcheck').change(':checked')){
-			var is_check = $(this).is(":checked");
-            console.log(is_check);
-
-            $(".check_checkbox").prop("checked", is_check);    
-	    }
-*/		
+				
+		$('.allcheck').prop('checked', false);  
+	    
 	    var checkedUser = $('input[type=checkbox]:checked').map(function () {
 	        return $(this).val();
 	    }).get();
