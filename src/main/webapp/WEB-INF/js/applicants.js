@@ -42,7 +42,7 @@ $(function(){
 			    html += '<table id="applicantsUserTable" width="100%" style="font-weight: 400; margin-top: 10px; margin-bottom: 10px;">';
 			
 				    $.each(items, function(index, user) {
-				        html += '<tr align="center" height="80px">';
+				        html += '<tr align="center" height="80px" class="hover_tr">';
 				        html += '<td align="center" class="td_column_check">';
 				        html += '<input class="mx-4 check_checkbox single_checkbox" type="checkbox" value="' + user.user_id + '">';
 				        html += '</td>';

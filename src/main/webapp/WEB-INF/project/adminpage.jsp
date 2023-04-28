@@ -19,9 +19,18 @@
   <link href="../css/custom.css" rel="stylesheet" />
   <link href="../css/modal.css" rel="stylesheet" />
   <!-- <link href="css/custom-styles.css" rel="stylesheet" /> -->
+  <style type="text/css">
+	.hover_tr:hover{
+	  background: #cacaca;
+	}
+	.check_checkbox:hover{
+	  cursor: pointer;	
+	}
+  </style>
 </head>
 
 <body>
+  <input type="text" id="memId" value="${sessionScope.memId}">
   <div class="container">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light" style="
@@ -38,7 +47,7 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarColor03">
-          <img src="../assets/logo.png" style="cursor: pointer" />
+          <img id="logo" src="../assets/logo.png" style="cursor: pointer" />
 
           <ul class="navbar-nav me-auto">
             <li class="nav-item dropdown">
@@ -58,24 +67,25 @@
             </li>
           </ul>
 
-          <form class="d-flex dropdown">
+         <form class="d-flex dropdown">
             <!-- <input class="form-control me-sm-2" type="search" placeholder="Search" /> -->
-            <button class="btn my-2 my-sm-0" type="button" style="padding-right: 0">
-              <img src="../assets\btn-logout.png" />
-            </button>
+            <button class="btn my-2 my-sm-0" id="logoutBtn" type="button"
+				style="padding-right: 0">
+				<img src="../assets\btn-logout.png" />
+			</button>
 
             <button class="btn my-2 my-sm-0 nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false"
               data-bs-toggle="dropdown" style="margin-right: 0.5rem">
-              <img src="../assets\account-circle.png" />
+              <img src="../assets/account-circle.png" />
             </button>
             <div class="dropdown-menu" style="right: 0">
-              <div class="dropdown-item">*******님</div>
+              <div class="dropdown-item">${sessionScope.memId}님</div>
               <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">마이페이지</a>
+              <a class="dropdown-item" href="/prome/users/mypage">마이페이지</a>
 
-              <a class="dropdown-item" href="#">내 모임 지원자 관리</a>
+              <a class="dropdown-item" href="/prome/project/applicants">내 모임 지원자 관리</a>
 
-              <a class="dropdown-item" href="#">회원 정보 수정</a>
+              <a class="dropdown-item" href="/prome/users/userinfo">회원 정보 수정</a>
               <div class="dropdown-divider"></div>
             </div>
           </form>
@@ -1332,6 +1342,15 @@
   <script src="../js/scripts.js"></script>
    <script src="../js/adminpage.js"></script>
   <script type="text/javascript">
+    $('#logo').click(function () {
+        location.href = '/prome?id=' + $('#memId').val();
+    });
+    
+    $('#logoutBtn').click(function () {
+        $('#memId').val('');
+        location.replace('/prome/');
+    });
+  
   	function projectPaging(projectPg){ 
 		location.href="/prome/project/adminpage?projectPg=" +projectPg;
 	}
