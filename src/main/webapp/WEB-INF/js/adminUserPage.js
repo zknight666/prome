@@ -24,7 +24,6 @@ $(function(){
 		
 			var html = '';
 				$.each(data.list, function(index, items) {
-				html += '<tr align="center" height="80px">';
 				html += '<tr align="center" height="80px" class="hover_tr">';
 				html += '<td align="center" class="td_column_check_manager">';
 				html += '<input class="mx-4 check_checkbox" type="checkbox" value="' + items.id + '">';
