@@ -23,7 +23,6 @@ public interface ProjectService {
 
 //    List<ProjectDTO> getBookmark();
 
-	public Map<String, Object> getMainProjects(String projectPg);
 
     List<Object> getApplicants(String team_leader);
 

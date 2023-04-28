@@ -24,7 +24,7 @@ function getProjects(projectPg) {
   $.ajax({
     type: "GET",
     url: "/prome/project/getMainProjects",
-    data: 'projectPg=' + projectPg,
+    data: 'projectPg=' + encodeURIComponent($('#projectPg').val()),
     dataType: "json",
     success: function (response) {
    		console.log(JSON.stringify(response));
@@ -52,45 +52,45 @@ function getProjects(projectPg) {
 
 
 const techStackIcons = {
-    'FIGMA': './assets/tech-icon/figma.svg',
-    'PHOTOSHOP': './assets/tech-icon/photoshop.svg',
-    'IOS': './assets/tech-icon/ios.svg',
-    'ANDROID': './assets/tech-icon/android.svg',
-    'REACT': './assets/tech-icon/react.svg',
-    'VUE': './assets/tech-icon/vue.svg',
-    'FLUTTER': './assets/tech-icon/flutter.svg',
-    'HTML_CSS': './assets/tech-icon/html_css.svg',
-    'JAVASCRIPT': './assets/tech-icon/javascript.svg',
-    'SPRING': './assets/tech-icon/spring.svg',
-    'JAVA': './assets/tech-icon/java.svg',
-    'KOTLIN': './assets/tech-icon/kotlin.svg',
-    'NODE_JS': './assets/tech-icon/node_js.svg',
-    'MONGODB': './assets/tech-icon/mongodb.svg',
-    'C_C#': './assets/tech-icon/c_c#.svg',
-    'GIT': './assets/tech-icon/git.svg',
-    'AWS': './assets/tech-icon/aws.svg',
-    'DOCKER': './assets/tech-icon/docker.svg',
-    'KUBERNETES': './assets/tech-icon/kubernetes.svg',
-    'TENSORFLOW': './assets/tech-icon/tensorflow.svg',
-    'UNITY': './assets/tech-icon/unity.svg',
-    'PYTHON': './assets/tech-icon/python.svg',
-    'MYSQL': './assets/tech-icon/mysql.svg',
-    'TYPESCRIPT': './assets/tech-icon/typescript.svg',
+    'FIGMA': '../assets/tech-icon/figma.svg',
+    'PHOTOSHOP': '../assets/tech-icon/photoshop.svg',
+    'IOS': '../assets/tech-icon/ios.svg',
+    'ANDROID': '../assets/tech-icon/android.svg',
+    'REACT': '../assets/tech-icon/react.svg',
+    'VUE': '../assets/tech-icon/vue.svg',
+    'FLUTTER': '../assets/tech-icon/flutter.svg',
+    'HTML_CSS': '../assets/tech-icon/html_css.svg',
+    'JAVASCRIPT': '../assets/tech-icon/javascript.svg',
+    'SPRING': '../assets/tech-icon/spring.svg',
+    'JAVA': '../assets/tech-icon/java.svg',
+    'KOTLIN': '../assets/tech-icon/kotlin.svg',
+    'NODE_JS': '../assets/tech-icon/node_js.svg',
+    'MONGODB': '../assets/tech-icon/mongodb.svg',
+    'C_C#': '../assets/tech-icon/c_c#.svg',
+    'GIT': '../assets/tech-icon/git.svg',
+    'AWS': '../assets/tech-icon/aws.svg',
+    'DOCKER': '../assets/tech-icon/docker.svg',
+    'KUBERNETES': '../assets/tech-icon/kubernetes.svg',
+    'TENSORFLOW': '../assets/tech-icon/tensorflow.svg',
+    'UNITY': '../assets/tech-icon/unity.svg',
+    'PYTHON': '../assets/tech-icon/python.svg',
+    'MYSQL': '../assets/tech-icon/mysql.svg',
+    'TYPESCRIPT': '../assets/tech-icon/typescript.svg',
 };
 
 
 const fieldsIcons = {
-    '이커머스': './assets/images/project-thumb-ecommerce.png',
-    '교육': './assets/images/project-thumb-edu.png',
-    '뷰티/패션': './assets/images/project-thumb-fashion.png',
-    '금융': './assets/images/project-thumb-finance.png',
-    '게임': './assets/images/project-thumb-game.png',
-    'FIGMA': './assets/images/project-thumb-medical.png',
-    '부동산': './assets/images/project-thumb-property.png',
-    '공유서비스': './assets/images/project-thumb-sharing.png',
-    '소셜 네트워크': './assets/images/project-thumb-sns.png',
-    '여행': './assets/images/project-thumb-travel.png',
-}; 
+    '이커머스': '../assets/images/project-thumb-ecommerce.png',
+    '교육': '../assets/images/project-thumb-edu.png',
+    '뷰티/패션': '../assets/images/project-thumb-fashion.png',
+    '금융': '../assets/images/project-thumb-finance.png',
+    '게임': '../assets/images/project-thumb-game.png',
+    '의료/병원': '../assets/images/project-thumb-medical.png',
+    '부동산': '../assets/images/project-thumb-property.png',
+    '공유서비스': '../assets/images/project-thumb-sharing.png',
+    '소셜 네트워크': '../assets/images/project-thumb-sns.png',
+    '여행': '../assets/images/project-thumb-travel.png',
+};  
 
 const recruitmentfieldsname = {
     'UI_UX_PLAN': 'UI/UX기획',
@@ -134,7 +134,7 @@ function displayProjects(projects) {
             })
             .join('');
             
-        const fieldIconPath = fieldsIcons[project.field] || './assets/images/cat-space.gif';  
+        const fieldIconPath = fieldsIcons[project.field] || '../assets/images/cat-space.gif';   
             
             
 
@@ -146,7 +146,7 @@ function displayProjects(projects) {
 			              <div class="projectTopInfo">
 			
 			                <div class="top" style="flex-direction: row-reverse">
-			                  <button type="button" id="deleteProjectBtn" class="btn btn-outline-danger">삭제
+			                  <button type="button" class="btn btn-outline-danger deleteBtn" value:${project.projectId}>삭제
 			                  </button>
 			                </div>
 								                
@@ -173,7 +173,7 @@ function displayProjects(projects) {
                              </div>
                              <div class="right">
                                <div class="heartCount">
-                                 <img loading="lazy" src="assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
+                                 <img loading="lazy" src="../assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
                                </div>
                              </div>
                            </div>
@@ -184,7 +184,7 @@ function displayProjects(projects) {
                                <div>
                                  <span>${project.member_joined === project.member_need ? '모집 완료' : '모집 중'}</span><span>${project.member_joined}/${project.member_need}</span>
                                  <div class="ic-arrow">
-                                   <img loading="lazy" src="assets/images/ic-arrow-up.svg" alt="프로젝트 모집현황" />
+                                   <img loading="lazy" src="../assets/images/ic-arrow-up.svg" alt="프로젝트 모집현황" />
                                  </div>
                                </div>
                                
@@ -212,23 +212,26 @@ function displayProjects(projects) {
 $(function(){
 
 
-	$('#deleteProjectBtn').click(function(){
-		if(confirm(projectId +'-'+ title + ' 삭제하시겠습니까?')){
-		$.ajax({
-			type: "post",
-			url: "/prome/project/adminDeleteProject",
-			data: 'projectId='+$('#projectId').val(),
-			success: function(result){
-				window.alert('프로젝트를 삭제하였습니다.');
-				location.reload();
-			},
-			error: function(request, status, error){
-		    	console.log("ajax error");
-		    }
-		});
-		}//if
-	
+	$('.deleteBtn').click(function(){
+	  var projectId = $(this).data('project-id');
+	  var title = $(this).data('title');
+	  
+	  if(confirm(projectId +'-'+ title + ' 삭제하시겠습니까?')){
+	    $.ajax({
+	      type: "post",
+	      url: "/prome/project/adminDeleteProject",
+	      data: 'projectId='+ $(this).val(),
+	      success: function(result){
+	        window.alert('프로젝트를 삭제하였습니다.');
+	        location.reload();
+	      },
+	      error: function(request, status, error){
+	          console.log("ajax error");
+	      }
+	    });
+	  }//if
 	});
+
 
 	//회원관리 페이지로 이동
 	$('#manageUser').click(function(){

@@ -49,7 +49,4 @@ public interface ProjectDAO {
 
     int deleteApplication(String user_id, String project_id);
     
-    List<ProjectMainpageDTO> getMainProjects(Map<String, Integer> map5);
-
-	int getProjectTotalA();
 }
