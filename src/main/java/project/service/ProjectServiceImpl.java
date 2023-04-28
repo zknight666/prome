@@ -106,9 +106,35 @@ public class ProjectServiceImpl implements ProjectService {
     	projectDAO.buildProject(projectDTO);
     }  
 
-	@Override
-	public List<ProjectMainpageDTO> getMainProjects() {
-		return projectDAO.getMainProjects();
+    @Override
+	public Map<String, Object> getMainProjects(String projectPg) {
+
+		
+		int endNum = Integer.parseInt(projectPg) * 12;
+		int startNum = endNum - 11;		
+		 
+		Map<String, Integer> map5 = new HashMap<String, Integer>();
+			map5.put("startNum", startNum);
+		    map5.put("endNum", endNum);
+		    
+	List<ProjectMainpageDTO> list = projectDAO.getMainProjects(map5);
+
+	
+	 //페이징 처리
+    int totalA = projectDAO.getProjectTotalA(); //총 프로젝트 수
+
+    projectPaging.setCurrentPage(Integer.parseInt(projectPg));
+    projectPaging.setPageBlock(3);
+    projectPaging.setPageSize(12);
+    projectPaging.setTotalA(totalA);
+
+    projectPaging.makePagingHTML();
+	
+    Map<String, Object> map6 = new HashMap<String, Object>();
+    map6.put("list", list);
+    map6.put("projectPaging", projectPaging);
+		
+		return map6;
 	}
 
 

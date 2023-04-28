@@ -485,7 +485,6 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Core theme JS-->
   <script src="../js/letspl.js"></script>
-  <script src="../js/scripts.js"></script>
   <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script type="text/javascript" src="../js/slick.min.js"></script>
   <script type="text/javascript" src="../js/mypage.js"></script>

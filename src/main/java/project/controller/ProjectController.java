@@ -25,11 +25,13 @@ public class ProjectController {
 	@Autowired
 	private ProjectService projectService;
 
-	/*
-	 * @GetMapping(value="buildProject") public String buildProject() {
-	 * 
-	 * return "project/buildProject"; }
-	 */
+	
+	@GetMapping(value="buildProject") 
+	public String buildProject() {
+	 
+		return "project/buildProject"; 
+	}
+	 
 	
 
 	@PostMapping(value="buildProject")
@@ -42,8 +44,8 @@ public class ProjectController {
 	
 	@GetMapping(value="getMainProjects")
 	@ResponseBody
-	public List<ProjectMainpageDTO> getMainProjects() {
-		return projectService.getMainProjects();
+	public Map<String, Object> getMainProjects(@RequestParam(required=false, defaultValue="1") String projectPg) {
+		return projectService.getMainProjects(projectPg);
 	}
 	
 	
