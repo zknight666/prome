@@ -9,13 +9,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // 모집분야 필터링
 $('select[name="recruitment_field"]').on('change', function() {
-    getProjects();
+    getProjects(projectPg);
 });
 
 
 // 모집중(checkbox)
 $('#flexCheckChecked').on('change', function() {
-  getProjects();
+  getProjects(projectPg);
 });
 
 
@@ -51,7 +51,7 @@ function getProjects(projectPg) {
   $.ajax({
     type: "GET",
     url: "/prome/project/getMainProjects",
-    data: 'projectPg=' + projectPg,
+    data: 'projectPg=' + encodeURIComponent($('#projectPg').val()),
     dataType: "json",
     success: function (response) {
    		console.log(JSON.stringify(response));
@@ -112,7 +112,7 @@ const fieldsIcons = {
     '뷰티/패션': './assets/images/project-thumb-fashion.png',
     '금융': './assets/images/project-thumb-finance.png',
     '게임': './assets/images/project-thumb-game.png',
-    'FIGMA': './assets/images/project-thumb-medical.png',
+    '의료/병원': './assets/images/project-thumb-medical.png',
     '부동산': './assets/images/project-thumb-property.png',
     '공유서비스': './assets/images/project-thumb-sharing.png',
     '소셜 네트워크': './assets/images/project-thumb-sns.png',
@@ -232,6 +232,11 @@ function displayProjects(projects) {
     });
 }   
     
-    
+$(document).on('click', 'col mb-4', function (){
+
+  let project_id = $(this).data("project-id")
+  location.href = '/prome/project/project?id=' +project_id;
+
+});    
     
     
