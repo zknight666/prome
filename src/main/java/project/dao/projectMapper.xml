@@ -2,88 +2,389 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
- 
- <mapper namespace="projectSQL">
+
+
+<mapper namespace="projectSQL">
+	<select id="getProject" parameterType="String"
+		resultType="project">
+		select * from project where id=#{project_id}
+	</select>
+
+	<!-- 모임 생성 페이지 -->
+	<insert id="buildProject" parameterType="project">
+
+
+		<selectKey resultType="int" keyProperty="projectId"
+			order="BEFORE">
+			SELECT PROJECT_SEQ.NEXTVAL as id FROM dual
+		</selectKey>
+
+		begin
+		insert into project
+		(ID,TEAM_LEADER,TITLE,FIELD,CONTENT,START_DATE,DUE_DATE,member_joined,CREATED_AT,member_need,recruit_state)
+		VALUES (#{projectId},'ddochi',#{title},
+		#{field},#{content},#{start_date},#{due_date},#{member_joined},
+		sysdate,#{member_need},#{recruit_state});
+
+
+
+		insert into
+		project_tech_stack (PROJECT_ID, FIGMA,
+		PHOTOSHOP,IOS,ANDROID,REACT,VUE,FLUTTER,HTML_CSS,JAVASCRIPT,SPRING,JAVA,KOTLIN,NODE_JS,MONGODB,C_C#,GIT,AWS,DOCKER,KUBERNETES,TENSORFLOW,UNITY,PYTHON,MYSQL,TYPESCRIPT)
+		VALUES (#{projectId},#{tech_stacks.figma},
+		#{tech_stacks.photoshop},
+		#{tech_stacks.ios},
+		#{tech_stacks.android},
+		#{tech_stacks.react},
+		#{tech_stacks.vue},
+		#{tech_stacks.flutter},
+		#{tech_stacks.html_css},
+		#{tech_stacks.javascript},
+		#{tech_stacks.spring},
+		#{tech_stacks.java},
+		#{tech_stacks.kotlin},
+		#{tech_stacks.node_js},
+		#{tech_stacks.mongodb},
+		#{tech_stacks.C_C#},
+		#{tech_stacks.git},
+		#{tech_stacks.aws},
+		#{tech_stacks.docker},
+		#{tech_stacks.kubernetes},
+		#{tech_stacks.tensorflow},
+		#{tech_stacks.unity},
+		#{tech_stacks.python},
+		#{tech_stacks.mysql},
+		#{tech_stacks.typescript});
+
+
+		INSERT INTO
+		recruitment_field (PROJECT_ID,
+		<foreach collection="recruitmentFields" item="field"
+			index="idx" separator=",">
+			${field}
+		</foreach>
+		)
+		VALUES (#{projectId},
+		<foreach collection="recruitCounts" item="count" index="idx"
+			separator=",">
+			#{count}
+		</foreach>
+		);
+
+		end;
+	</insert>
 
 
 
 
+	<!-- 메인 페이지 -->
+	<select id="getMainProjects"
+		resultType="project.bean.ProjectMainpageDTO">
+		SELECT p.title, p.field,p.member_joined,p.member_need,
+		JSON_OBJECT(
+		'UI_UX_PLAN' VALUE rf.UI_UX_PLAN,
+		'PLAN_ETC' VALUE
+		rf.PLAN_ETC,
+		'GRAPHIC_DESIGN' VALUE rf.GRAPHIC_DESIGN,
+		'UI_UX_DESIGN'
+		VALUE rf.UI_UX_DESIGN,
+		'DESIGN_ETC' VALUE rf.DESIGN_ETC,
+		'IOS' VALUE
+		rf.IOS,
+		'ANDROID' VALUE rf.ANDROID,
+		'WEB_FE' VALUE rf.WEB_FE,
+		'WEB_PUBLISHER' VALUE rf.WEB_PUBLISHER,
+		'CROSS_FLATFORM' VALUE
+		rf.CROSS_FLATFORM,
+		'WEB_SERVER' VALUE rf.WEB_SERVER,
+		'BLOCK_CHAIN' VALUE
+		rf.BLOCK_CHAIN,
+		'AI' VALUE rf.AI,
+		'BIG_DATA' VALUE rf.BIG_DATA,
+		'GAME_PLAN' VALUE rf.GAME_PLAN,
+		'PM' VALUE rf.PM
+		) AS recruitmentFields,
+		JSON_OBJECT(
+		'FIGMA' VALUE pts.FIGMA,
+		'PHOTOSHOP' VALUE pts.PHOTOSHOP,
+		'IOS' VALUE pts.IOS,
+		'ANDROID' VALUE pts.ANDROID,
+		'REACT' VALUE
+		pts.REACT,
+		'VUE' VALUE pts.VUE,
+		'FLUTTER' VALUE pts.FLUTTER,
+		'HTML_CSS'
+		VALUE pts.HTML_CSS,
+		'JAVASCRIPT' VALUE pts.JAVASCRIPT,
+		'SPRING' VALUE
+		pts.SPRING,
+		'JAVA' VALUE pts.JAVA,
+		'KOTLIN' VALUE pts.KOTLIN,
+		'NODE_JS'
+		VALUE pts.NODE_JS,
+		'MONGODB' VALUE pts.MONGODB,
+		'C_C#' VALUE pts.C_C#,
+		'GIT' VALUE pts.GIT,
+		'AWS' VALUE pts.AWS,
+		'DOCKER' VALUE pts.DOCKER,
+		'KUBERNETES' VALUE pts.KUBERNETES,
+		'TENSORFLOW' VALUE pts.TENSORFLOW,
+		'UNITY' VALUE pts.UNITY,
+		'PYTHON' VALUE pts.PYTHON,
+		'MYSQL' VALUE
+		pts.MYSQL,
+		'TYPESCRIPT' VALUE pts.TYPESCRIPT
+		) AS techstacks
+		FROM project
+		p
+		JOIN recruitment_field rf ON p.ID = rf.PROJECT_ID
+		JOIN
+		project_tech_stack pts ON p.ID = pts.PROJECT_ID
+		ORDER BY p.ID desc
+	</select>
 
- <delete id="adminDeleteProject" parameterType="int">
-  delete from project where id=#{projectId}
- </delete>
- 
- <select id="adminGetUserList" parameterType="java.util.Map" resultType="user">
+	<insert id="project_tech_stack" parameterType="project">
+
+		insert into
+		project_tech_stack (PROJECT_ID, FIGMA,
+		PHOTOSHOP,IOS,ANDROID,REACT,VUE,FLUTTER,HTML_CSS,JAVASCRIPT,SPRING,JAVA,KOTLIN,NODE_JS,MONGODB,C_C#,GIT,AWS,DOCKER,KUBERNETES,TENSORFLOW,UNITY,PYTHON,MYSQL,TYPESCRIPT)
+		VALUES (#{projectId},#{tech_stacks.figma},
+		#{tech_stacks.photoshop},
+		#{tech_stacks.ios},
+		#{tech_stacks.android},
+		#{tech_stacks.react},
+		#{tech_stacks.vue},
+		#{tech_stacks.flutter},
+		#{tech_stacks.html_css},
+		#{tech_stacks.javascript},
+		#{tech_stacks.spring},
+		#{tech_stacks.java},
+		#{tech_stacks.kotlin},
+		#{tech_stacks.node_js},
+		#{tech_stacks.mongodb},
+		#{tech_stacks.C_C#},
+		#{tech_stacks.git},
+		#{tech_stacks.aws},
+		#{tech_stacks.docker},
+		#{tech_stacks.kubernetes},
+		#{tech_stacks.tensorflow},
+		#{tech_stacks.unity},
+		#{tech_stacks.python},
+		#{tech_stacks.mysql},
+		#{tech_stacks.typescript})
+	</insert>
+
+
+	<insert id="recruitment_field" parameterType="project">
+		INSERT INTO recruitment_field (PROJECT_ID,
+		<foreach collection="recruitmentFields" item="field"
+			index="idx" separator=",">
+			${field}
+		</foreach>
+		)
+		VALUES (#{projectId},
+		<foreach collection="recruitCounts" item="count" index="idx"
+			separator=",">
+			#{count}
+		</foreach>
+		)
+	</insert>
+
+
+	<delete id="adminDeleteProject" parameterType="int">
+		delete from
+		project where id=#{projectId}
+	</delete>
+
+	<select id="adminGetUserList" parameterType="java.util.Map" resultType="user">
 	<![CDATA[
 		select * from
 		(select rownum rn, tt.* from
 		(select * from user_table) tt
 		)where rn>=#{startNum} and rn<=#{endNum}
 	]]>
+	</select>
+	
 
- </select>
- 
- <!-- user 총인원 수 -->
- <select id="getUserTotalA" resultType="int">
-	select count(*) from user_table
- </select>
- 
- <delete id="adminDeleteUser" parameterType="String">
- 	delete from user_table where id=#{id}
- </delete>
- 
- 
-  <!-- 해당 User의 북마크 목록 가져오기-->
- <!-- user_id 받아서 List<projectDTO> 반환함-->
- <select id="getBookmark" parameterType="String" resultType="project">
-  SELECT project_id from bookmark WHERE user_id=#{user_id} ORDER BY id desc
- </select>
+	<!-- user 총인원 수 -->
+	<select id="getUserTotalA" resultType="int">
+		select count(*) from
+		user_table
+	</select>
 
+	<delete id="adminDeleteUser" parameterType="String">
+		delete from
+		user_table where id=#{id}
+	</delete>
+
+
+	<!-- 해당 User의 북마크 목록 가져오기 -->
+	<!-- user_id 받아서 List<projectDTO> 반환함 -->
+<!-- 겹친부분@  	<select id="getBookmark" parameterType="String"
+		resultType="project">
+		SELECT project_id from bookmark WHERE user_id=#{user_id}
+		ORDER BY id desc
+	</select> -->
 
 	<!-- applicants 신청서 - 프로젝트 생성자 페이지 -->
 	<select id="getProjectId" parameterType="String" resultType="Integer">
 		select id from project where team_leader=#{team_leader}
 	</select>
-	
+
 	<select id="getApplicants" parameterType="Integer" resultType="applicants">
 		select project_id, title, user_id, app_field, tech_stack, email1, email2, reason
 		from application a
 		join user_table u on a.user_id = u.id
 		join project p on a.project_id = p.id
-		where project_id=${project_id} and status='WAITING'
+		where
+		project_id=${project_id} and status='WAITING'
 	</select>
-	
-	
+
+
 	<update id="application_table" parameterType="java.util.Map">
-		update application set status = 'P_ACCEPT' where project_id=#{project_id} and user_id=#{ar}
+		update application
+		set status = 'P_ACCEPT' where project_id=#{project_id} and
+		user_id=#{ar}
 	</update>
-	
+
 	<update id="project_table" parameterType="java.util.Map">
-		update project set member_joined = member_joined + 1 where id=#{project_id}
+		update project set
+		member_joined = member_joined + 1 where id=#{project_id}
 	</update>
-	
+
 	<update id="team_member_table" parameterType="java.util.Map">
 		update team_member
 		set
-		    member1 = coalesce(member1, #{ar}),
-		    member2 = coalesce(member2, #{ar}),
-		    member3 = coalesce(member3, #{ar}),
-		    member4 = coalesce(member4, #{ar}),
-		    member5 = coalesce(member5, #{ar}),
-		    member6 = coalesce(member6, #{ar}),
-		    member7 = coalesce(member7, #{ar}),
-		    member8 = coalesce(member8, #{ar}),
-		    member9 = coalesce(member9, #{ar})
-		where id=#{project_id}	
-	</update>
-	
-	
-	<update id="declineApplicants" parameterType="java.util.Map">
-		update application set status = 'P_DECLINE' where project_id=#{project_id} and user_id=#{ar}
+		member1 = coalesce(member1, #{ar}),
+		member2 = coalesce(member2, #{ar}),
+		member3 = coalesce(member3, #{ar}),
+		member4 = coalesce(member4, #{ar}),
+		member5 = coalesce(member5, #{ar}),
+		member6 = coalesce(member6, #{ar}),
+		member7 = coalesce(member7, #{ar}),
+		member8 = coalesce(member8, #{ar}),
+		member9 = coalesce(member9, #{ar})
+		where id=#{project_id}
 	</update>
 
-	
- </mapper>
+
+	<update id="declineApplicants" parameterType="java.util.Map">
+		update application
+		set status = 'P_DECLINE' 
+		where project_id=#{project_id} and user_id=#{ar}
+	</update>
+
+
+
+
+	<!-- 북마크 추가 -->
+	<insert id="addBookmark" parameterType="java.util.HashMap">
+		insert into BOOKMARK values(BOOKMARK_SEQ.NEXTVAL, #{user_id}, #{project_id}
+		)
+	</insert>
+
+	<!-- 북마크 삭제 -->
+	<delete id="deleteBookmark" parameterType="java.util.HashMap">
+		delete BOOKMARK where user_id=#{user_id} and project_id=#{project_id}
+	</delete>
+
+
+
+
+
+	<!-- 해당 User의 북마크 목록 가져오기 -->
+	<!-- user_id 받아서 List<String> 반환함 -->
+	<select id="getBookmark" parameterType="String"
+		resultType="String">
+		SELECT project_id from bookmark WHERE user_id=#{user_id} ORDER BY id desc
+	</select>
+
+	<!-- 해당 User가 지원한 프로젝트 목록 가져오기 -->
+	<!-- user_id 받아서 List<HashMap> project_id, status(지원상태) 반환함 -->
+	<select id="getSupportedProjects" parameterType="String"
+		resultType="java.util.HashMap">
+		SELECT project_id, status from application WHERE user_id=#{user_id} ORDER BY
+		id desc
+	</select>
+
+	<!-- 해당 User가 팀장으로 있는 프로젝트 목록 가져오기 -->
+	<!-- user_id 받아서 List<String>로 project_id반환함 -->
+	<select id="getMyTeams_leader" parameterType="String"
+		resultType="String">
+		SELECT id from project WHERE team_leader=#{user_id} ORDER BY id desc
+	</select>
+
+	<!-- 해당 User가 팀원으로 있는 프로젝트 목록 가져오기 -->
+	<!-- user_id 받아서 List<String>로 project_id반환함 -->
+	<select id="getMyTeams_member" parameterType="String"
+		resultType="String">
+		SELECT id from TEAM_MEMBER
+		WHERE member1=#{user_id} OR member2=#{user_id} OR member3=#{user_id}
+		OR member4=#{user_id} OR member5=#{user_id} OR member6=#{user_id} OR
+		member7=#{user_id} OR member8=#{user_id} OR member9=#{user_id}
+		ORDER BY id desc
+	</select>
+
+
+	<!-- 이 아래 다 getProjCard 위한 것 -->
+	<!-- 해당 유저의 관심목록에 들어있는 프로젝트인지 여부 확인용 -->
+	<select id="isBookmark" parameterType="java.util.Map"
+		resultType="String">
+		SELECT project_id from BOOKMARK where user_id=#{user_id} and
+		project_id=#{project_id}
+	</select>
+
+	<!-- 프로젝트 적용 기술 갖고 옴 -->
+	<select id="techStack" parameterType="String"
+		resultType="java.util.HashMap">
+		SELECT * from PROJECT_TECH_STACK where project_id=#{project_id}
+	</select>
+
+	<!-- 해당 프로젝트가 관심목록으로 담긴 수 -->
+	<select id="heartCount" parameterType="String" resultType="int">
+		SELECT count(*) from BOOKMARK where project_id=#{project_id}
+	</select>
+
+	<!-- 모집 분야별 모집할 멤버 수 -->
+	<select id="recField" parameterType="String"
+		resultType="java.util.HashMap">
+		SELECT UI_UX_PLAN, PLAN_ETC, GRAPHIC_DESIGN, UI_UX_DESIGN, DESIGN_ETC, IOS,
+		ANDROID, WEB_FE, WEB_PUBLISHER
+		CROSS_FLATFORM, WEB_SERVER, BLOCK_CHAIN, AI, BIG_DATA, GAME_PLAN, PM
+		from RECRUITMENT_FIELD where project_id=#{project_id}
+	</select>
+
+	<!-- 특정 프로젝트의 멤버(user_id) -->
+	<select id="projectMember" parameterType="String"
+		resultType="java.util.HashMap">
+		select member1, member2, member3, member4, member5, member6, member7,
+		member8, member9 from TEAM_MEMBER where id=#{project_id}
+	</select>
+
+
+	<!-- 분야별 모집한 멤버 수 이거 틀릴수도 있음! 확인해야 함 -->
+	<select id="memberField" parameterType="java.util.Map"
+		resultType="String">
+		SELECT app_field from APPLICATION where user_id in
+		<foreach collection="member_arr" item="member_id" open="("
+			close=")" separator=",">
+			#{member_id}
+		</foreach>
+	</select>
+
+
+
+
+
+
+
+
+	<!-- 해당 User의 그 project에 대한 지원서 삭제 -->
+	<delete id="deleteApplication" parameterType="java.util.HashMap">
+		delete APPLICATION where user_id=#{user_id} and project_id=#{project_id}
+	</delete>
+
+</mapper>
+
  
  

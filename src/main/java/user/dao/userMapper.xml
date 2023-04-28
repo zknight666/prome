@@ -2,61 +2,107 @@
 <!DOCTYPE mapper
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
- 
- 
- <mapper namespace="userSQL">
 
- <insert id="signup" parameterType="user">
-  insert into User_table
-  values(#{name}, #{id}, #{pwd},#{gender},#{email1},#{email2},#{phone1}
-  ,#{phone2},#{phone3},#{address1},#{address2},#{address3},sysdate,'user')
- </insert>
 
- <select id="getUser" parameterType="String" resultType="user">
-  select *
-  from user_table where id = #{id}
- </select>
+<mapper namespace="userSQL">
+	<!-- 로그인 start -->
+	<select id="getPwd" parameterType="String" resultType="String">
+		select pwd
+		from user_table where id = #{id}
+	</select>
+	<!-- 로그인 end -->
+	<!-- 회원탈퇴 start -->
+	<delete id="deleteUser" parameterType="String">
+		delete from
+		user_table where id=#{id}
+	</delete>
+	<!-- 회원탈퇴 end -->
+	<!-- 회원가입 start -->
+	<insert id="signup" parameterType="user">
+		insert into User_table
+		(id,name,pwd,gender,email1,email2,phone1,phone2,phone3,address1,address2,address3,role,signup_date)
+		values(
+		#{id},#{name}, #{pwd},#{gender},#{email1},#{email2},#{phone1}
+		,#{phone2},#{phone3},#{address1},#{address2},#{address3},'user',sysdate)
+	</insert>
+	<insert id="setIcon" parameterType="user.bean.IconDTO">
+		insert into User_Tech_Stack
+		values(#{id},#{figma},#{photoshop},#{ios},#{android},
+		#{react},#{vue},#{flutter},#{html},#{javascript},
+		#{spring},#{java},#{kotlin},#{nodejs},#{mongodb},#{c},
+		#{git},#{aws},#{docker},#{kubernetes},#{tensorflow},#{unity},
+		#{python},#{mysql},#{typescript})
+	</insert>
+	<!-- 회원가입 end -->
 
- <!--
-   페이징 처리 후 주석 처리 함
-    <select id="getUserList" resultType="user">
-     select * from usertable
-   </select>
- -->
+	<!-- 회원정보수정 start -->
+	<select id="getUser" parameterType="String" resultType="user">
+		select *
+		from user_table where id = #{id}
+	</select>
 
- <select id="search" parameterType="java.util.Map"
-   resultType="user">
-  select * from usertable where id like '%${id}%' and name
-  like '%${name}%'
- </select>
+	<select id="getIcon" parameterType="String"
+		resultType="user.bean.IconDTO">
+		select *
+		from user_tech_stack where user_id = #{id}
+	</select>
+	<update id="updateInfo" parameterType="user"> <!-- parameterType 잘 봐 -->
+		update user_table set name=#{name}, pwd=#{pwd},gender=#{gender},
+		email1=#{email1},email2=#{email2},
+		phone1=#{phone1},phone2=#{phone2},phone3=#{phone3},
+		address1=#{address1},address2=#{address2},address3=#{address3}
+		where
+		id=#{id}
+	</update>
+	<update id="updateIcon" parameterType="user.bean.IconDTO"> <!-- parameterType 잘 봐 -->
+		update user_tech_stack set
+		figma=#{figma},photoshop=#{photoshop},ios=#{ios},
+		android=#{android},react=#{react},vue=#{vue},flutter=#{flutter},
+		html_css=#{html},javascript=#{javascript},spring=#{spring},java=#{java},
+		kotlin=#{kotlin},node_js=#{nodejs},mongodb=#{mongodb},c_c#=#{c},
+		git=#{git},aws=#{aws},docker=#{docker},kubernetes=#{kubernetes},
+		tensorflow=#{tensorflow},unity=#{unity},python=#{python},
+		mysql=#{mysql},typescript=#{typescript} where user_id=#{id}
+	</update>
+	<!-- 회원정보수정 end -->
+	<!-- 페이징 처리 후 주석 처리 함 <select id="getUserList" resultType="user"> select 
+		* from usertable </select> -->
 
- <update id="update" parameterType="user"> <!-- parameterType 잘 봐 -->
-  update usertable set name=#{name}, pwd=#{pwd} where id=#{id}
- </update>
+	<select id="search" parameterType="java.util.Map"
+		resultType="user">
+		select * from usertable where id like '%${id}%' and name
+		like '%${name}%'
+	</select>
 
- <delete id="delete" parameterType="String">
-  delete from usertable where
-  id=#{id}
- </delete>
+	<update id="update" parameterType="user"> <!-- parameterType 잘 봐 -->
+		update usertable set name=#{name}, pwd=#{pwd} where id=#{id}
+	</update>
 
- <select id="getUserList" parameterType="java.util.Map" resultType="user">
-  <!-- SELECT * FROM (SELECT ROWNUM RN, TT.* FROM (SELECT * FROM BOARD ORDER
-    BY REF DESC, STEP ASC) TT )WHERE RN BETWEEN #{startNum} AND #{endNum} -->
+	<delete id="delete" parameterType="String">
+		delete from usertable where
+		id=#{id}
+	</delete>
+
+	<select id="getUserList" parameterType="java.util.Map"
+		resultType="user">
+		<!-- SELECT * FROM (SELECT ROWNUM RN, TT.* FROM (SELECT * FROM BOARD ORDER 
+			BY REF DESC, STEP ASC) TT )WHERE RN BETWEEN #{startNum} AND #{endNum} -->
   <![CDATA[
 		select * from (select rownum rn, tt.* from(select * from usertable) tt) where rn>=#{startNum} and rn<=#{endNum}
 		]]>
-  <!-- '<' 이거 태그로 인식해버림 => CDATA 구문 써야 됨-->
+		<!-- '<' 이거 태그로 인식해버림 => CDATA 구문 써야 됨 -->
 
- </select>
+	</select>
 
- <select id="getTotalA" resultType="int">
-  select count(*) from usertable
- </select>
+	<select id="getTotalA" resultType="int">
+		select count(*) from usertable
+	</select>
 
- <select id="getImageTotalA" resultType="int">
-  select count(*) from userimage
- </select>
-	
- </mapper>
+	<select id="getImageTotalA" resultType="int">
+		select count(*) from
+		userimage
+	</select>
+
+</mapper>
  
  
