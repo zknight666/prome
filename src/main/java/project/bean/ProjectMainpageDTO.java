@@ -10,7 +10,11 @@ import lombok.Setter;
 @NoArgsConstructor
 public class ProjectMainpageDTO {
 	
+<<<<<<< HEAD
 	private int id;
+=======
+	private String id;
+>>>>>>> origin/develop-hth3
 	private String title;
 	private String field;
 	private String recruitmentFields; // 모집 분야 별 인원 수 (JSON 객체)

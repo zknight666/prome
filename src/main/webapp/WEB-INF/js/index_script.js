@@ -1,6 +1,63 @@
 document.addEventListener("DOMContentLoaded", () => {
+	
 	var projectPg = $('#projectPg').val();
+           
+
     getProjects(projectPg);
+
+    
+	// 프로젝트 카드 클릭 시 페이지 이동
+	$(document).on('click', '.col.mb-4', function() {
+		location.href = '/prome/project/project?project_id=' + $(this).data('project-id');
+	});    
+    
+    
+	$(document).on('click', '.top .favorite', function(event) {
+		event.stopPropagation();
+		if (!$('#memId').val()) {
+	        alert('로그인이 필요한 기능입니다.');
+	        return;
+	    }
+		$.ajax({
+	    type: "POST",
+	    url: "/prome/project/addBookmark",
+	    data: { "user_id": $('#memId').val(), "project_id": $(this).closest('.col.mb-4').data('project-id') },
+	    success: function () {
+	        console.log("북마크 추가했습니다.");
+	    },
+	    error: function (err) {
+	        console.log(err);
+	    }
+	});
+		$(this).attr("class", "favorite-active");
+	});
+
+
+
+	// 관심목록에 있는 프로젝트인 경우 빈 하트로 바꾸고 DB의 bookmark Table에서 레코드를 제거함.
+	$(document).on('click', '.top .favorite-active', function(event) {
+		event.stopPropagation();
+		if (!$('#memId').val()) {
+	        alert('로그인이 필요한 기능입니다.');
+	        return;
+	    }
+		$.ajax({
+	    type: "POST",
+	    url: "/prome/project/deleteBookmark",
+	    data: { "user_id": $('#memId').val(), "project_id": $(this).closest('.col.mb-4').data('project-id') },
+	    success: function () {
+	        console.log("북마크 삭제했습니다.");
+	    },
+	    error: function (err) {
+	        console.log(err);
+	    }
+	});
+		$(this).attr("class", "favorite");
+		
+	}); 
+    
+    
+    
     
 });
 
@@ -70,6 +127,8 @@ function getProjects(projectPg) {
       console.log("Projects:", projects);
       displayProjects(projects);
       $('#projectPaging').html(response.projectPaging.pagingHTML);
+
+
     },
     error: function (error) {
       console.log(error);
@@ -93,7 +152,7 @@ const techStackIcons = {
     'KOTLIN': './assets/tech-icon/kotlin.svg',
     'NODE_JS': './assets/tech-icon/node_js.svg',
     'MONGODB': './assets/tech-icon/mongodb.svg',
-    'C_C#': './assets/tech-icon/c_c#.svg',
+    'C_C#': './assets/tech-icon/c_c.svg',
     'GIT': './assets/tech-icon/git.svg',
     'AWS': './assets/tech-icon/aws.svg',
     'DOCKER': './assets/tech-icon/docker.svg',
@@ -140,6 +199,41 @@ const recruitmentfieldsname = {
 
 
 function displayProjects(projects) {
+    
+	 function setBookmarks() {
+	        if ($('#memId').val()) {
+	            $.ajax({
+	                url: "/prome/project/bookmark",
+	                type: 'GET',
+	                data: { "user_id": $('#memId').val() },
+	                dataType: 'json',
+	                success: function (bookmark) {
+	                    console.log(bookmark);
+	                    console.log("Column value:", $('.col.mb-4').data('value'));
+	                    console.log("길이 :", $('.col.mb-4').length);
+	                    $('.col.mb-4').each(function () {
+	                        let colValue = $(this).data('value');
+							console.log("Checking colValue:", colValue);
+	                    	console.log("$(this).find('.top .favorite').length", $(this).find('.top .favorite').length)
+	                        for (let i = 0; i < bookmark.length; i++) {
+	                          	console.log("Comparing colValue:", colValue, "with bookmark:", bookmark[i]);
+	                        
+	                            if (parseInt(colValue) === parseInt(bookmark[i])) {
+	                            	console.log("Match found:", colValue);
+	                                $(this).find('.top .favorite').attr("class", "favorite-active");
+	                            }
+	                        }
+	                    });
+	
+	                },
+	                error: function (err) {
+	                    console.log(err);
+	                }
+	            });
+	        }
+	    }    
+    
+
     $('#card_section').html('');
 
 
@@ -163,16 +257,16 @@ function displayProjects(projects) {
             
         const fieldIconPath = fieldsIcons[project.field] || './assets/images/cat-space.gif';  
             
-            
+           
 
         const projectCard = `
 
                                           <!--카드-1-->
-                         <div class="col mb-4">
+                         <div class="col mb-4" data-project-id="${project.id}" data-value="${project.id}">
                            <div class="projectGridWrap" style="min-width: 260px; padding-left: 0; padding-right: 0">
                              <div class="projectTopInfo">
                                <div class="top" style="flex-direction: row-reverse">
-                                 <div class="favorite"></div>
+                                 <div class="favorite" ></div>
                                </div>
                                <div class="projectThumb">
                                  <img loading="lazy" src="${fieldIconPath}" alt="내 글이 상장되는 ‘비법거래소'입니다"
@@ -229,14 +323,12 @@ function displayProjects(projects) {
                            
                          `;
         $('#card_section').append(projectCard);
+        
+
     });
-}   
-    
-$(document).on('click', 'col mb-4', function (){
+ setBookmarks();
 
-  let project_id = $(this).data("project-id")
-  location.href = '/prome/project/project?id=' +project_id;
+}
 
-});    
-    
-    
+
+  
