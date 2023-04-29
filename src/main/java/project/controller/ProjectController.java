@@ -25,17 +25,6 @@ import project.service.ProjectService;
 public class ProjectController {
 	@Autowired
 	private ProjectService projectService;
-
-<<<<<<< HEAD
-=======
-	
-	@GetMapping(value="buildProject") 
-	public String buildProject() {
-	 
-		return "project/buildProject"; 
-	}
-	 
->>>>>>> origin/develop-mn
 	
 	@GetMapping(value="buildProject") 
 	public String buildProject() {

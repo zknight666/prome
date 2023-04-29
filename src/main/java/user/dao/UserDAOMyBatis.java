@@ -62,6 +62,11 @@ public class UserDAOMyBatis implements UserDAO {
 	@Override
 	public void snsSignup(String id) {
 		 sqlSession.insert("userSQL.snsSignup",id);
+	}
+
+	@Override
+	public void snsSignupIcon(String id) {
+		sqlSession.insert("userSQL.snsSignupIcon",id);
 		
 	}
 

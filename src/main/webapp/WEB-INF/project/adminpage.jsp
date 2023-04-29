@@ -33,11 +33,7 @@
 </head>
 
 <body>
-<<<<<<< HEAD
-	<input type="text" value="${user_id}">
-=======
-  <input type="hidden" id="memId" value="${param.id}">
->>>>>>> origin/develop-mn
+  <input type="hidden" id="memId" value="${user_id}">
   <div class="container">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light" style="
@@ -60,17 +56,6 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                 aria-expanded="false"></a>
-
-              <div class="dropdown-menu">
-                <div class="dropdown-item">*******님</div>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">마이페이지</a>
-
-                <a class="dropdown-item" href="#">내 모임 지원자 관리</a>
-
-                <a class="dropdown-item" href="#">회원 정보 수정</a>
-                <div class="dropdown-divider"></div>
-              </div>
             </li>
           </ul>
 
@@ -86,7 +71,7 @@
               <img src="../assets/account-circle.png" />
             </button>
             <div class="dropdown-menu" style="right: 0">
-				<div class="dropdown-item">${param.id}님</div>
+				<div class="dropdown-item">${user_id}님</div>
 				<div class="dropdown-divider"></div>				
 				<a class="dropdown-item" id="userinfoBtn">관리자 아이디 입니다.</a>
 				<div class="dropdown-divider"></div>
@@ -229,16 +214,17 @@
   <!-- Core theme JS-->
   <script type="text/javascript" src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="../js/letspl.js"></script>
+  <script src="../js/logout.js"></script>
   <script src="../js/adminpage.js"></script>
   <script type="text/javascript">
     $('#logo').click(function () {
-    	location.href = '/prome/project/adminpage?id=' + $('#memId').val();
+    	location.href = '/prome/project/adminpage';
     });
     
-    $('#logoutBtn').click(function () {
+/*     $('#logoutBtn').click(function () {
         $('#memId').val('');
         location.replace('/prome/');
-    });
+    }); */
   
   	function projectPaging(projectPg){ 
 		location.href="/prome/project/adminpage?projectPg=" +projectPg;

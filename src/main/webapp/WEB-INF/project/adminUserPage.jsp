@@ -56,17 +56,6 @@
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                 aria-expanded="false"></a>
-
-              <div class="dropdown-menu">
-                <div class="dropdown-item">*******님</div>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">마이페이지</a>
-
-                <a class="dropdown-item" href="#">내 모임 지원자 관리</a>
-
-                <a class="dropdown-item" href="#">회원 정보 수정</a>
-                <div class="dropdown-divider"></div>
-              </div>
             </li>
           </ul>
 
@@ -82,7 +71,7 @@
               <img src="../assets/account-circle.png" />
             </button>
             <div class="dropdown-menu" style="right: 0">
-				<div class="dropdown-item">${param.id}님</div>
+				<div class="dropdown-item">${user_id}님</div>
 				<div class="dropdown-divider"></div>
 				<a class="dropdown-item" id="userinfoBtn">관리자 아이디 입니다.</a>
 				<div class="dropdown-divider"></div>
@@ -1339,15 +1328,11 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Core theme JS-->
   <script src="../js/letspl.js"></script>
-   <script src="../js/adminUserPage.js"></script>
+  <script src="../js/logout.js"></script>
+  <script src="../js/adminUserPage.js"></script>
   <script type="text/javascript">
     $('#logo').click(function () {
-        location.href = '/prome/project/adminpage?id=' + $('#memId').val();
-    });
-    
-    $('#logoutBtn').click(function () {
-        $('#memId').val('');
-        location.replace('/prome/');
+        location.href = '/prome/project/adminpage';
     });
   
   	function userPaging(userPg){ 

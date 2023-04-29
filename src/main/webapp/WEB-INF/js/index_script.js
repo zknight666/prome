@@ -20,7 +20,7 @@ $('#flexCheckChecked').on('change', function() {
 
 
 // 모임생성 버튼 
-if($('#session_id').val()) {
+if($('#user_id').val()) {
 	$('button[name="buildProjectBtn"]').css("display","inline-block");
 } 
 else {

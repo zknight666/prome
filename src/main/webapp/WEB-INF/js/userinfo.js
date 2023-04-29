@@ -25,7 +25,7 @@ $(function () {
         type: "post",
         url: "/prome/users/getIcon",
         success: function (data) {
-          $("#android").val(data.android),
+          	$("#android").val(data.android),
             $("#aws").val(data.aws),
             $("#docker").val(data.docker),
             $("#c").val(data.c),
@@ -72,8 +72,10 @@ $(function () {
 $('input[name="tech"]').change(function (e) {
   if ($(this).val() == "N") {
     $(this).val("Y");
+    console.log($(this).val());
   } else if ($(this).val() == "Y") {
     $(this).val("N");
+  	console.log($(this).val());
   }
 });
 
@@ -200,7 +202,6 @@ $("#updateBtn").click(function () {
     }, //서버로 보내는 데이터
     dataType: "text", //서버로 받는 데이터형 ex) text,json,xml
     success: function (data) {
-      alert(data);
       $.ajax({
         type: "post",
         url: "/prome/users/updateIcon",
@@ -233,10 +234,11 @@ $("#updateBtn").click(function () {
         },
         dataType: "text",
         success: function (data1) {
-          alert(data1);
+          alert('회원정보 수정 완료');
+          location.replace('/prome');
         },
         error: function (err) {
-          alert("회원가입 실패했습니다.");
+          alert("회원정보 수정 실패.");
         },
       });
     },

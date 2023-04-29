@@ -92,6 +92,7 @@ public class UserController {
 	@PostMapping(value = "updateIcon")
 	@ResponseBody
 	public String updateIcon(@ModelAttribute IconDTO iconDTO) {
+		System.out.println(iconDTO.getId());
 		return userService.updateIcon(iconDTO);
 	}
 

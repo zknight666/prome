@@ -22,5 +22,7 @@ public interface UserDAO {
 	public void deleteUser(UserDTO userDTO);
 
 	public void snsSignup(String id);
+
+	public void snsSignupIcon(String id);
     
 }

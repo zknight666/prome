@@ -81,15 +81,9 @@
 							<div class="dropdown-menu" style="right: 0">
 								<div class="dropdown-item">${user_id}님</div>
 								<div class="dropdown-divider"></div>
-<<<<<<< HEAD
 								<a class="dropdown-item" id="mypageBtn" href="/prome/users/mypage">마이페이지</a> 
-								<a class="dropdown-item" href="/prome/users/applicants">내 모임 지원자 관리</a> 
+								<a class="dropdown-item" href="/prome/project/applicants">내 모임 지원자 관리</a> 
 								<a class="dropdown-item" id="userinfoBtn" href="/prome/users/userinfo">회원 정보 수정</a>
-=======
-								<a class="dropdown-item" id="mypageBtn" href="/prome/users/mypage?id=${param.id}">마이페이지</a> 
-								<a class="dropdown-item" href="/prome/project/applicants?id=${param.id}">내 모임 지원자 관리</a> 
-								<a class="dropdown-item" id="userinfoBtn" href="/prome/users/userinfo?id=${param.id}">회원 정보 수정</a>
->>>>>>> origin/develop-mn
 								<div class="dropdown-divider"></div>
 							</div>
 						</form>
@@ -251,6 +245,7 @@
 		location.href="/prome/?projectPg=" +projectPg;
 	}
 	</script>
+	<script src="./js/logout.js"></script>
 	<script src="./js/login.js"></script>
 	<script type="text/javascript">
         /* 세션에 따른 nav 변화 */
@@ -265,18 +260,6 @@
         });
 
         /* 버튼 관련 */
-        $('#logoutBtn').click(function () {
-        	$.ajax({
-        	      type: "post",
-        	      url: "/prome/users/logout",
-        	      success: function (data) {        	      
-        			location.replace('/prome');
-        	      },
-        	      error: function (err) {
-        	      	alert(err);
-        	      },
-        	});
-        });
         $('.signUp').click(function () {
             location.href = '/prome/users/join';
         });

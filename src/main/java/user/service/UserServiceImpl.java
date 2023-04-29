@@ -51,6 +51,10 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public void updateInfo(UserDTO userDTO) {
+		WebSecurityConfiguration webSecurityConfig = new WebSecurityConfiguration();
+		String rawPW = userDTO.getPwd();
+		String encodePW = webSecurityConfig.getPasswordEncoder().encode(rawPW);
+		userDTO.setPwd(encodePW);
 		userDAO.updateInfo(userDTO);
 		
 	}
@@ -97,5 +101,6 @@ public class UserServiceImpl implements UserService {
 	@Override
 	public void snsSignup(String id) {
 		userDAO.snsSignup(id);
+		userDAO.snsSignupIcon(id);
 	}
 }
