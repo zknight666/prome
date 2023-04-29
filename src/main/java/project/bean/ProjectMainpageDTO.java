@@ -19,6 +19,7 @@ public class ProjectMainpageDTO {
 	private String techstacks;
 	private String member_joined;
 	private String member_need;
+	private int heartCount;
 	
 
 }
