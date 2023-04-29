@@ -33,7 +33,7 @@
 </head>
 
 <body>
-  <input type="hidden" id="memId" value="${param.id}">
+  <input type="hidden" id="memId" value="${user_id}">
   <div class="container">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light" style="
