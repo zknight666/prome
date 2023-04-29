@@ -121,7 +121,6 @@
     <script src="../js/applicants.js"></script>
     <script src="./js/logout.js"></script>
     <script type="text/javascript">
-    
 	    $('#logo').click(function () {
 	        location.href = '/prome';
 	    }); 

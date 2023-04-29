@@ -306,7 +306,7 @@
                                 url: "/prome/users/snsLogin",
                                 data: "id=" + id,
                                 success: function (data) {
-                                    alert(data);
+                                    alert(id+"님 "+data);
                                     location.replace('/prome');
                                 },
                                 error: function (err) {

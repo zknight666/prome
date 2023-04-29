@@ -16,7 +16,7 @@ $('#login').click(function(){
       },
       success: function (data) {
         if (data == 'user') {
-          alert('로그인 성공');
+          alert($('#prome_id').val()+"님 로그인 되었습니다.");
           location.replace('/prome');
         } else if (data == 'fail'){
           alert('아이디 또는 비밀번호가 틀립니다.');
