@@ -27,6 +27,7 @@
 <body>
 	<!-- hidden -->
 	<input type="hidden" id="user_id" value="${user_id}">
+	<input type="hidden" id="memId" value="${user_id}">
 	<!-- hidden -->
 	<div class="container">
 		<!-- Navigation-->
