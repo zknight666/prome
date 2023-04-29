@@ -81,9 +81,15 @@
 							<div class="dropdown-menu" style="right: 0">
 								<div class="dropdown-item">${user_id}님</div>
 								<div class="dropdown-divider"></div>
+<<<<<<< HEAD
 								<a class="dropdown-item" id="mypageBtn" href="/prome/users/mypage">마이페이지</a> 
 								<a class="dropdown-item" href="/prome/users/applicants">내 모임 지원자 관리</a> 
 								<a class="dropdown-item" id="userinfoBtn" href="/prome/users/userinfo">회원 정보 수정</a>
+=======
+								<a class="dropdown-item" id="mypageBtn" href="/prome/users/mypage?id=${param.id}">마이페이지</a> 
+								<a class="dropdown-item" href="/prome/project/applicants?id=${param.id}">내 모임 지원자 관리</a> 
+								<a class="dropdown-item" id="userinfoBtn" href="/prome/users/userinfo?id=${param.id}">회원 정보 수정</a>
+>>>>>>> origin/develop-mn
 								<div class="dropdown-divider"></div>
 							</div>
 						</form>
@@ -162,6 +168,16 @@
 
 				</div>
 
+<!--페이징 섹션 시작-->
+                <input type="hidden" id="projectPg" value="${projectPg}">
+		        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+		          <div id="projectPaging" style="width: auto; margin-top: 40px;">
+		            ${pagingHTML}
+		          </div>
+		        </div>
+		        
+		        <!--페이징 섹션 끝-->
+		        
 			</div>
 		</section>
 		<!-- Footer-->
@@ -227,11 +243,14 @@
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Core theme JS-->
-	<script type="text/javascript"
-	src="http://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<script src="js/index_script.js"></script>
 	<script src="js/letspl.js"></script>
-
+	<script type="text/javascript">
+	function projectPaging(projectPg){ 
+		location.href="/prome/?projectPg=" +projectPg;
+	}
+	</script>
 	<script src="./js/login.js"></script>
 	<script type="text/javascript">
         /* 세션에 따른 nav 변화 */

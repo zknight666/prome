@@ -24,7 +24,7 @@ $(function(){
 		
 			var html = '';
 				$.each(data.list, function(index, items) {
-				html += '<tr align="center" height="80px">';
+				html += '<tr align="center" height="80px" class="hover_tr">';
 				html += '<td align="center" class="td_column_check_manager">';
 				html += '<input class="mx-4 check_checkbox" type="checkbox" value="' + items.id + '">';
 				html += '</td>';
@@ -48,7 +48,8 @@ $(function(){
 		}
 	}); //ajax
 	
-	 $(function () {
+	
+	$(function () {
         $("#allcheck").change(function () {
             var is_check = $(this).is(":checked");
             console.log(is_check);
@@ -56,8 +57,7 @@ $(function(){
             $(".check_checkbox").prop("checked", is_check);
         });
     });
-	
-	
+    	
 	$('.py-1').click(function(){
 	
 		$('#allcheck').prop('checked', false);
@@ -66,6 +66,7 @@ $(function(){
 	        return $(this).val();
 	    }).get();
 	    
+    
 		console.log(checkedUser);
 		
 		if(confirm('아이디 ' + checkedUser + ' 삭제하시겠습니까?')){

@@ -408,7 +408,7 @@
 	<!-- jquery -->
 	<script type="text/javascript"
 		src="http://code.jquery.com/jquery-3.6.4.min.js"></script>
-	<script src="./js/login.js"></script>
+	<script src="../js/login.js"></script>
 	<script src="../js/join.js"></script>
 	<script type="text/javascript">
 		$('.writeForm').click(function() {
@@ -433,9 +433,13 @@
 			$(".loginModal").parent().attr("class", "modalWrapClose");
 		});
 	</script>
+<<<<<<< HEAD
 	<script src="../js/scripts.js"></script>
 
 	<!-- sns 로그인 -->
+=======
+
+>>>>>>> origin/develop-mn
 	<script type="text/javascript"
 		src="https://developers.kakao.com/sdk/js/kakao.min.js" charset="utf-8"></script>
 	<script type="text/javascript">

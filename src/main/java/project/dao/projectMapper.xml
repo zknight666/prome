@@ -3,6 +3,7 @@
  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
+
 <mapper namespace="projectSQL">
 	<select id="getProject" parameterType="String"
 		resultType="project">
@@ -77,73 +78,72 @@
 
 
 	<!-- 메인 페이지 -->
-	<select id="getMainProjects"
-		resultType="project.bean.ProjectMainpageDTO">
-		SELECT p.title, p.field,p.member_joined,p.member_need,
-		JSON_OBJECT(
-		'UI_UX_PLAN' VALUE rf.UI_UX_PLAN,
-		'PLAN_ETC' VALUE
-		rf.PLAN_ETC,
-		'GRAPHIC_DESIGN' VALUE rf.GRAPHIC_DESIGN,
-		'UI_UX_DESIGN'
-		VALUE rf.UI_UX_DESIGN,
-		'DESIGN_ETC' VALUE rf.DESIGN_ETC,
-		'IOS' VALUE
-		rf.IOS,
-		'ANDROID' VALUE rf.ANDROID,
-		'WEB_FE' VALUE rf.WEB_FE,
-		'WEB_PUBLISHER' VALUE rf.WEB_PUBLISHER,
-		'CROSS_FLATFORM' VALUE
-		rf.CROSS_FLATFORM,
-		'WEB_SERVER' VALUE rf.WEB_SERVER,
-		'BLOCK_CHAIN' VALUE
-		rf.BLOCK_CHAIN,
-		'AI' VALUE rf.AI,
-		'BIG_DATA' VALUE rf.BIG_DATA,
-		'GAME_PLAN' VALUE rf.GAME_PLAN,
-		'PM' VALUE rf.PM
-		) AS recruitmentFields,
-		JSON_OBJECT(
-		'FIGMA' VALUE pts.FIGMA,
-		'PHOTOSHOP' VALUE pts.PHOTOSHOP,
-		'IOS' VALUE pts.IOS,
-		'ANDROID' VALUE pts.ANDROID,
-		'REACT' VALUE
-		pts.REACT,
-		'VUE' VALUE pts.VUE,
-		'FLUTTER' VALUE pts.FLUTTER,
-		'HTML_CSS'
-		VALUE pts.HTML_CSS,
-		'JAVASCRIPT' VALUE pts.JAVASCRIPT,
-		'SPRING' VALUE
-		pts.SPRING,
-		'JAVA' VALUE pts.JAVA,
-		'KOTLIN' VALUE pts.KOTLIN,
-		'NODE_JS'
-		VALUE pts.NODE_JS,
-		'MONGODB' VALUE pts.MONGODB,
-		'C_C#' VALUE pts.C_C#,
-		'GIT' VALUE pts.GIT,
-		'AWS' VALUE pts.AWS,
-		'DOCKER' VALUE pts.DOCKER,
-		'KUBERNETES' VALUE pts.KUBERNETES,
-		'TENSORFLOW' VALUE pts.TENSORFLOW,
-		'UNITY' VALUE pts.UNITY,
-		'PYTHON' VALUE pts.PYTHON,
-		'MYSQL' VALUE
-		pts.MYSQL,
-		'TYPESCRIPT' VALUE pts.TYPESCRIPT
-		) AS techstacks
-		FROM project
-		p
-		JOIN recruitment_field rf ON p.ID = rf.PROJECT_ID
-		JOIN
-		project_tech_stack pts ON p.ID = pts.PROJECT_ID
-		ORDER BY p.ID desc
+	<select id="getMainProjects" parameterType="java.util.Map" resultType="project.bean.ProjectMainpageDTO"> 
+
+	<![CDATA[	
+		select * from
+	        (select rownum rn, tt.*
+			from (SELECT p.id, p.title, p.field,p.member_joined,p.member_need,
+			JSON_OBJECT(
+				'UI_UX_PLAN' VALUE rf.UI_UX_PLAN,
+				'PLAN_ETC' VALUE rf.PLAN_ETC,
+				'GRAPHIC_DESIGN' VALUE rf.GRAPHIC_DESIGN,
+				'UI_UX_DESIGN' VALUE rf.UI_UX_DESIGN,
+				'DESIGN_ETC' VALUE rf.DESIGN_ETC,
+				'IOS' VALUE rf.IOS,
+				'ANDROID' VALUE rf.ANDROID,
+				'WEB_FE' VALUE rf.WEB_FE,
+				'WEB_PUBLISHER' VALUE rf.WEB_PUBLISHER,
+				'CROSS_FLATFORM' VALUE rf.CROSS_FLATFORM,
+				'WEB_SERVER' VALUE rf.WEB_SERVER,
+				'BLOCK_CHAIN' VALUE rf.BLOCK_CHAIN,
+				'AI' VALUE rf.AI,
+				'BIG_DATA' VALUE rf.BIG_DATA,
+				'GAME_PLAN' VALUE rf.GAME_PLAN,
+				'PM' VALUE rf.PM
+			) AS recruitmentFields,
+			JSON_OBJECT(
+				'FIGMA' VALUE pts.FIGMA,
+				'PHOTOSHOP' VALUE pts.PHOTOSHOP,
+				'IOS' VALUE pts.IOS,
+				'ANDROID' VALUE pts.ANDROID,
+				'REACT' VALUE pts.REACT,
+				'VUE' VALUE pts.VUE,
+				'FLUTTER' VALUE pts.FLUTTER,
+				'HTML_CSS' VALUE pts.HTML_CSS,
+				'JAVASCRIPT' VALUE pts.JAVASCRIPT,
+				'SPRING' VALUE pts.SPRING,
+				'JAVA' VALUE pts.JAVA,
+				'KOTLIN' VALUE pts.KOTLIN,
+				'NODE_JS' VALUE pts.NODE_JS,
+				'MONGODB' VALUE pts.MONGODB,
+				'C_C#' VALUE pts.C_C#,
+				'GIT' VALUE pts.GIT,
+				'AWS' VALUE pts.AWS,
+				'DOCKER' VALUE pts.DOCKER,
+				'KUBERNETES' VALUE pts.KUBERNETES,
+				'TENSORFLOW' VALUE pts.TENSORFLOW,
+				'UNITY' VALUE pts.UNITY,
+				'PYTHON' VALUE pts.PYTHON,
+				'MYSQL' VALUE pts.MYSQL,
+				'TYPESCRIPT' VALUE pts.TYPESCRIPT
+			) AS techstacks
+			FROM project p
+			JOIN recruitment_field rf ON p.ID = rf.PROJECT_ID
+			JOIN project_tech_stack pts ON p.ID = pts.PROJECT_ID
+	        ORDER BY p.ID desc)
+	        tt)
+	       where rn>= #{startNum} and rn<=#{endNum}
+	]]>
+
+	</select>
+
+	<!-- project 총 개수 -->
+	<select id="getProjectTotalA" resultType="int">
+		SELECT COUNT(*) FROM project
 	</select>
 
 	<insert id="project_tech_stack" parameterType="project">
-
 		insert into
 		project_tech_stack (PROJECT_ID, FIGMA,
 		PHOTOSHOP,IOS,ANDROID,REACT,VUE,FLUTTER,HTML_CSS,JAVASCRIPT,SPRING,JAVA,KOTLIN,NODE_JS,MONGODB,C_C#,GIT,AWS,DOCKER,KUBERNETES,TENSORFLOW,UNITY,PYTHON,MYSQL,TYPESCRIPT)
@@ -191,80 +191,20 @@
 
 
 
-
-
-
-
-
-<!-- 	<select id="getProject" parameterType="String"
-		resultType="project">
-		select * project values(#{id}, #{team_Leader}, #{title},
-		#{field}, #{content}, #{start_Date}, #{due_Date}, #{member_Joined},
-		#{created_At}, #{member_Need}, #{recruit_State})
-		where id=#{project_id}
-	</select> -->
-
-	<select id="getAdminpage1" parameterType="java.util.Map"
-		resultType="project">
-  <![CDATA[
-			select * from
-			(select rownum rn, tt.* from
-			(select * from project where field=#{field} and recruit_state='ing') tt
-			)where rn>=#{startNum} and rn<=#{endNum}
-		]]>
-	</select>
-
-	<select id="getAdminpage2" parameterType="java.util.Map"
-		resultType="project">
-  <![CDATA[
-			select * from
-			(select rownum rn, tt.* from
-			(select * from project where field=#{field}) tt
-			)where rn>=#{startNum} and rn<=#{endNum}
-		]]>
-	</select>
-
-
-	<select id="getChosenTech" resultType="String">
-		SELECT chosen_tech
-		FROM
-		Project_Tech_Stack
-		UNPIVOT INCLUDE NULLS (
-		chosen FOR chosen_tech IN (
-		figma, photoshop, ios, android, react, vue, flutter,
-		html_css,
-		javascript, spring, java, Kotlin, node_js,
-		MongoDB, C_C#, Git, AWS,
-		Docker, kubernetes, tensorflow,
-		unity, python, MySql, TypeScript
-		)
-		)WHERE chosen = 'y' and project_id=#{projectId};
-	</select>
-
-
-
-	<!-- 총글수 -->
-	<select id="getTotalA" resultType="int">
-		select count(*) from project
-	</select>
-
 	<delete id="adminDeleteProject" parameterType="int">
 		delete from
 		project where id=#{projectId}
 	</delete>
 
-	<select id="adminGetUserList" parameterType="java.util.Map"
-		resultType="user">
+	<select id="adminGetUserList" parameterType="java.util.Map" resultType="user">
 	<![CDATA[
 		select * from
 		(select rownum rn, tt.* from
-		(select * from user_table) tt
-		)where rn>=#{startNum} and rn<=#{endNum}
+		(select * from user_table order by id) tt
+		)where rn>=#{startNum} and rn<=#{endNum}		
 	]]>
 	</select>
-	<select id="getUserList" resultType="user.bean.UserDTO">
-		select * from user_table;
-	</select>
+	
 
 	<!-- user 총인원 수 -->
 	<select id="getUserTotalA" resultType="int">
@@ -287,21 +227,18 @@
 	</select> -->
 
 	<!-- applicants 신청서 - 프로젝트 생성자 페이지 -->
-	<select id="getProjectId" parameterType="String"
-		resultType="Integer">
+	<select id="getProjectId" parameterType="String" resultType="Integer">
 		select id from project where team_leader=#{team_leader}
 	</select>
 
-	<select id="getApplicants" parameterType="Integer"
-		resultType="applicants">
-		select project_id, title, user_id, app_field, tech_stack,
-		email1, email2, reason
+	<select id="getApplicants" parameterType="Integer" resultType="applicants">
+		select project_id, title, user_id, app_field, tech_stack, email1, email2, reason
 		from application a
-		join user_table u on a.user_id
-		= u.id
+		join user_table u on a.user_id = u.id
 		join project p on a.project_id = p.id
 		where
 		project_id=${project_id} and status='WAITING'
+		order by user_id
 	</select>
 
 
@@ -320,17 +257,13 @@
 		update team_member
 		set
 		member1 = coalesce(member1, #{ar}),
-		member2 = coalesce(member2,
-		#{ar}),
+		member2 = coalesce(member2, #{ar}),
 		member3 = coalesce(member3, #{ar}),
-		member4 = coalesce(member4,
-		#{ar}),
+		member4 = coalesce(member4, #{ar}),
 		member5 = coalesce(member5, #{ar}),
-		member6 = coalesce(member6,
-		#{ar}),
+		member6 = coalesce(member6, #{ar}),
 		member7 = coalesce(member7, #{ar}),
-		member8 = coalesce(member8,
-		#{ar}),
+		member8 = coalesce(member8, #{ar}),
 		member9 = coalesce(member9, #{ar})
 		where id=#{project_id}
 	</update>
@@ -338,8 +271,8 @@
 
 	<update id="declineApplicants" parameterType="java.util.Map">
 		update application
-		set status = 'P_DECLINE' where project_id=#{project_id} and
-		user_id=#{ar}
+		set status = 'P_DECLINE' 
+		where project_id=#{project_id} and user_id=#{ar}
 	</update>
 
 
@@ -439,12 +372,6 @@
 			#{member_id}
 		</foreach>
 	</select>
-
-
-
-
-
-
 
 
 	<!-- 해당 User의 그 project에 대한 지원서 삭제 -->

@@ -1,5 +1,7 @@
 document.addEventListener("DOMContentLoaded", () => {
-    getProjects();
+	var projectPg = $('#projectPg').val();
+    getProjects(projectPg);
+    
 });
 
 
@@ -7,13 +9,13 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // 모집분야 필터링
 $('select[name="recruitment_field"]').on('change', function() {
-    getProjects();
+    getProjects(projectPg);
 });
 
 
 // 모집중(checkbox)
 $('#flexCheckChecked').on('change', function() {
-  getProjects();
+  getProjects(projectPg);
 });
 
 
@@ -45,29 +47,35 @@ $(document).keydown(function(event) {
 
 
 // 프로젝트 db 가져오기
-function getProjects() {
-  fetch("/prome/project/getMainProjects")
-    .then(response => response.json())
-    .then(projects => {
-                   const selectedRecruitmentField = $('select[name="recruitment_field"]').val();
-                   const onlyRecruiting = $('#flexCheckChecked').is(':checked');
-                   
-                        projects = projects.filter(project => 
-                                       {
-                                          const recruitmentFields = JSON.parse(project.recruitmentFields);
-                                          if (onlyRecruiting && project.member_joined === project.member_need) {
-                                        return false;
-                                      }
-                                         return recruitmentFields[selectedRecruitmentField] !== null;
-                                       });
-                   console.log("Projects:", projects); 
-                   displayProjects(projects);
-                   })
-    .catch(error => console.error("Error fetching projects:", error));
+function getProjects(projectPg) {
+  $.ajax({
+    type: "GET",
+    url: "/prome/project/getMainProjects",
+    data: 'projectPg=' + encodeURIComponent($('#projectPg').val()),
+    dataType: "json",
+    success: function (response) {
+   		console.log(JSON.stringify(response));
+    
+      let projects = response.list;  
+      
+      projects = projects.filter(project => {
+        
+        if ($('#flexCheckChecked').is(':checked') && project.member_joined === project.member_need) {
+          return false;
+        }
+        const recruitmentFields = JSON.parse(project.recruitmentFields);
+        return recruitmentFields[$('select[name="recruitment_field"]').val()] !== null;
+        
+      });
+      console.log("Projects:", projects);
+      displayProjects(projects);
+      $('#projectPaging').html(response.projectPaging.pagingHTML);
+    },
+    error: function (error) {
+      console.log(error);
+    }
+  });
 }
-
-
-
 
 
 const techStackIcons = {
@@ -104,7 +112,7 @@ const fieldsIcons = {
     '뷰티/패션': './assets/images/project-thumb-fashion.png',
     '금융': './assets/images/project-thumb-finance.png',
     '게임': './assets/images/project-thumb-game.png',
-    'FIGMA': './assets/images/project-thumb-medical.png',
+    '의료/병원': './assets/images/project-thumb-medical.png',
     '부동산': './assets/images/project-thumb-property.png',
     '공유서비스': './assets/images/project-thumb-sharing.png',
     '소셜 네트워크': './assets/images/project-thumb-sns.png',
@@ -140,8 +148,8 @@ function displayProjects(projects) {
         const recruitmentFieldsList = Object.entries(JSON.parse(project.recruitmentFields))
             .filter(([, value]) => value !== null)
             .map(([key, value]) => {
-                              const recruitmentFieldsName = recruitmentfieldsname[key];
-                              return `<h3><li><span>${recruitmentFieldsName}</span><span>${value}</span></li></h3>`;
+                              const recruitmentFieldsname = recruitmentfieldsname[key];
+                              return `<h3><li><span>${recruitmentFieldsname}</span><span>${value}</span></li></h3>`;
                               })
             .join('');
 
@@ -224,6 +232,11 @@ function displayProjects(projects) {
     });
 }   
     
-    
+$(document).on('click', 'col mb-4', function (){
+
+  let project_id = $(this).data("project-id")
+  location.href = '/prome/project/project?id=' +project_id;
+
+});    
     
     
