@@ -67,6 +67,14 @@ $(function(){
 			});
 			
 			$('#eachProjectDiv').html(html);
+			
+			if(data == ''){
+			     $('#eachProjectDiv').html('* 프로젝트 지원자가 없습니다.').css({
+			        'font-size': '20px',
+			        'text-align': 'center'
+			    });
+			}
+
 
 
 		},	
@@ -74,6 +82,7 @@ $(function(){
 		error: function(err){
 			console.log(err);
 		}
+		
 	}); //ajax
 	
 	
@@ -99,7 +108,7 @@ $(function(){
 	    alert(project_id);
 	      
 		if (checkedUser.length === 0) {
-		    alert('선택된 사용자가 없습니다.');
+		    alert('선택된 지원자가 없습니다.');
 		} else {
 			alert(checkedUser)
 		    if (confirm('아이디 ' + checkedUser + ' 수락하시겠습니까?')) {
@@ -139,7 +148,7 @@ $(function(){
 	    alert(project_id);
 	      
 		if (checkedUser.length === 0) {
-		    alert('선택된 사용자가 없습니다.');
+		    alert('선택된 지원자가 없습니다.');
 		} else {
 			alert(checkedUser)
 		    if (confirm('아이디 ' + checkedUser + ' 거절하시겠습니까?')) {

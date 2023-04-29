@@ -116,6 +116,7 @@ public class ProjectServiceImpl implements ProjectService {
 	
 	@Override
 	public void adminDeleteProject(int projectId) {
+		System.out.println("service = " +projectId);
 		projectDAO.adminDeleteProject(projectId);
 	}
 

@@ -82,7 +82,7 @@
 								<div class="dropdown-item">${param.id}님</div>
 								<div class="dropdown-divider"></div>
 								<a class="dropdown-item" id="mypageBtn" href="/prome/users/mypage?id=${param.id}">마이페이지</a> 
-								<a class="dropdown-item" href="/prome/users/applicants?id=${param.id}">내 모임 지원자 관리</a> 
+								<a class="dropdown-item" href="/prome/project/applicants?id=${param.id}">내 모임 지원자 관리</a> 
 								<a class="dropdown-item" id="userinfoBtn" href="/prome/users/userinfo?id=${param.id}">회원 정보 수정</a>
 								<div class="dropdown-divider"></div>
 							</div>

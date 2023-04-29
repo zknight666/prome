@@ -83,7 +83,7 @@
 	<![CDATA[	
 		select * from
 	        (select rownum rn, tt.*
-			from (SELECT p.title, p.field,p.member_joined,p.member_need,
+			from (SELECT p.id, p.title, p.field,p.member_joined,p.member_need,
 			JSON_OBJECT(
 				'UI_UX_PLAN' VALUE rf.UI_UX_PLAN,
 				'PLAN_ETC' VALUE rf.PLAN_ETC,

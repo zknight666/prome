@@ -33,7 +33,7 @@
 </head>
 
 <body>
-  <input type="text" id="memId" value="${sessionScope.memId}">
+  <input type="hidden" id="memId" value="${param.id}">
   <div class="container">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light" style="
@@ -82,15 +82,11 @@
               <img src="../assets/account-circle.png" />
             </button>
             <div class="dropdown-menu" style="right: 0">
-              <div class="dropdown-item">${sessionScope.memId}님</div>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="/prome/users/mypage">마이페이지</a>
-
-              <a class="dropdown-item" href="/prome/project/applicants">내 모임 지원자 관리</a>
-
-              <a class="dropdown-item" href="/prome/users/userinfo">회원 정보 수정</a>
-              <div class="dropdown-divider"></div>
-            </div>
+				<div class="dropdown-item">${param.id}님</div>
+				<div class="dropdown-divider"></div>
+				<a class="dropdown-item" id="userinfoBtn">관리자 아이디 입니다.</a>
+				<div class="dropdown-divider"></div>
+			</div>
           </form>
         </div>
       </div>
@@ -1346,7 +1342,7 @@
    <script src="../js/adminUserPage.js"></script>
   <script type="text/javascript">
     $('#logo').click(function () {
-        location.href = '/prome?id=' + $('#memId').val();
+        location.href = '/prome/project/adminpage?id=' + $('#memId').val();
     });
     
     $('#logoutBtn').click(function () {

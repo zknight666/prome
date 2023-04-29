@@ -5,7 +5,11 @@ document.addEventListener("DOMContentLoaded", () => {
 });
 
 
-
+// 프로젝트 카드 클릭 시 페이지 이동
+	$(document).on('click', '.col.mb-4', function() {
+		location.href = '/prome/project/project?project_id=' + $(this).data('project-id');
+	});    
+	
 
 // 모집분야 필터링
 $('select[name="recruitment_field"]').on('change', function() {
@@ -114,6 +118,7 @@ const recruitmentfieldsname = {
 
 function displayProjects(projects) {
     $('#card_section').html('');
+    
 
 
     projects.forEach(project => {
@@ -146,8 +151,9 @@ function displayProjects(projects) {
 			              <div class="projectTopInfo">
 			
 			                <div class="top" style="flex-direction: row-reverse">
-			                  <button type="button" class="btn btn-outline-danger deleteBtn" value:${project.projectId}>삭제
-			                  </button>
+			                  
+			                  <button type="button" class="btn btn-outline-danger deleteBtn" data-project-id="${project.id}" data-title="${project.title}" value="${project.id}">삭제</button>
+
 			                </div>
 								                
 			                <div class="projectThumb">
@@ -205,34 +211,34 @@ function displayProjects(projects) {
                      `;
                                         
         $('#card_section').append(projectCard);
-    });
-}   
- 
+        
+    });    
+    
+    $(document).on('click', '.deleteBtn', function(event){
+    	event.stopPropagation();
+
+	    var projectId = $(this).data('project-id');
+	    var title = $(this).data('title');
+	    
+	    if(confirm('프로젝트 아이디: '+ projectId +' 프로젝트 제목: '+ title + ' 삭제하시겠습니까?')){
+	        $.ajax({
+	            type: "post",
+	            url: "/prome/project/adminDeleteProject",
+	            data: { projectId: projectId },
+	            success: function(result){
+	                window.alert('프로젝트를 삭제하였습니다.');
+	                location.reload();
+	            },
+	            error: function(request, status, error){
+	                console.log("ajax error");
+	            }
+	        });
+	    }//if
+	}); 
+
+}
 
 $(function(){
-
-
-	$('.deleteBtn').click(function(){
-	  var projectId = $(this).data('project-id');
-	  var title = $(this).data('title');
-	  
-	  if(confirm(projectId +'-'+ title + ' 삭제하시겠습니까?')){
-	    $.ajax({
-	      type: "post",
-	      url: "/prome/project/adminDeleteProject",
-	      data: 'projectId='+ $(this).val(),
-	      success: function(result){
-	        window.alert('프로젝트를 삭제하였습니다.');
-	        location.reload();
-	      },
-	      error: function(request, status, error){
-	          console.log("ajax error");
-	      }
-	    });
-	  }//if
-	});
-
-
 	//회원관리 페이지로 이동
 	$('#manageUser').click(function(){
 		location.href = "/prome/project/adminUserPage";
