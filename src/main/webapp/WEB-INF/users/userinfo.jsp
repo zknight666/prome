@@ -22,7 +22,7 @@
 </head>
 
 <body>
-	<input type="hidden" id="memId" value="${param.id}">
+	<input type="hidden" id="user_id" value="${param.id}">
 	<div class="container">
 		<!-- Navigation-->
 		<nav class="navbar navbar-expand-lg navbar-light bg-light"

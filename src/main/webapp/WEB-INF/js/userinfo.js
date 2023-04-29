@@ -3,10 +3,10 @@ $(function () {
   $.ajax({
     type: "post",
     url: "/prome/users/getUser",
-    data: "id=" + $("#id").val(),
     success: function (data) {
       $("#name").val(data.name);
       $("#pwd").val(data.pwd);
+      $("#id").val(data.id);
       $("#gender").val(data.gender);
       $("#email1").val(data.email1);
       $("#email2").val(data.email2);
@@ -24,7 +24,6 @@ $(function () {
       $.ajax({
         type: "post",
         url: "/prome/users/getIcon",
-        data: "id=" + $("#id").val(),
         success: function (data) {
           $("#android").val(data.android),
             $("#aws").val(data.aws),
@@ -290,9 +289,9 @@ $("#resetBtn").click(function () {
   $.ajax({
     type: "post",
     url: "/prome/users/getUser",
-    data: "id=" + $("#id").val(),
     success: function (data) {
       $("#name").val(data.name);
+      $("#id").val(data.id);
       $("#pwd").val(data.pwd);
       $("#gender").val(data.gender);
       $("#email1").val(data.email1);
@@ -311,7 +310,6 @@ $("#resetBtn").click(function () {
       $.ajax({
         type: "post",
         url: "/prome/users/getIcon",
-        data: "id=" + $("#id").val(),
         success: function (data) {
           $("#android").val(data.android),
             $("#aws").val(data.aws),

@@ -23,7 +23,7 @@
 		(id,name,pwd,gender,email1,email2,phone1,phone2,phone3,address1,address2,address3,role,signup_date)
 		values(
 		#{id},#{name}, #{pwd},#{gender},#{email1},#{email2},#{phone1}
-		,#{phone2},#{phone3},#{address1},#{address2},#{address3},'user',sysdate)
+		,#{phone2},#{phone3},#{address1},#{address2},#{address3},#{role},sysdate)
 	</insert>
 	<insert id="setIcon" parameterType="user.bean.IconDTO">
 		insert into User_Tech_Stack
@@ -32,6 +32,12 @@
 		#{spring},#{java},#{kotlin},#{nodejs},#{mongodb},#{c},
 		#{git},#{aws},#{docker},#{kubernetes},#{tensorflow},#{unity},
 		#{python},#{mysql},#{typescript})
+	</insert>
+	<insert id="snsSignup" parameterType="String">
+		insert into User_table
+		id,role,signup_date)
+		values(
+		#{id},'user',sysdate)
 	</insert>
 	<!-- 회원가입 end -->
 

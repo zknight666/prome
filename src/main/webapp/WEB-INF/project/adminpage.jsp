@@ -22,6 +22,7 @@
 </head>
 
 <body>
+	<input type="text" value="${user_id}">
   <div class="container">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light" style="

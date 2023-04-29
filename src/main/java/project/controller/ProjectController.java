@@ -25,12 +25,11 @@ public class ProjectController {
 	@Autowired
 	private ProjectService projectService;
 
-	/*
-	 * @GetMapping(value="buildProject") public String buildProject() {
-	 * 
-	 * return "project/buildProject"; }
-	 */
 	
+	@GetMapping(value="buildProject") 
+	public String buildProject() {
+		return "project/buildProject"; 
+	}
 
 	@PostMapping(value="buildProject")
 	@ResponseBody

@@ -63,12 +63,17 @@ public class UserServiceImpl implements UserService {
 
 	@Override
 	public String login(UserDTO userDTO) {
+		UserDTO userDTO1 = userDAO.getUser(userDTO.getId());
 		WebSecurityConfiguration webSecurityConfig = new WebSecurityConfiguration();
 		String rawPW = userDTO.getPwd();
 		String DBPwd = userDAO.getPwd(userDTO.getId());
 		Boolean check = webSecurityConfig.getPasswordEncoder().matches(rawPW, DBPwd);
 		if(check) {
-			return "ok";
+			if(userDTO1.getRole().equals("admin")) {
+				return "admin";
+			}else {
+				return "user";
+			}
 		}else {
 			return "fail";
 		}
@@ -79,10 +84,18 @@ public class UserServiceImpl implements UserService {
 		userDAO.deleteUser(userDTO);
 	}
 
+	@Override
+	public String snsLogin(String id) {
+		UserDTO userDTO = userDAO.getUser(id);
+		if(userDTO == null) {
+			return "non_exist";
+		}else {
+			return "exist";
+		}
+	}
 
-
-
-
-
-
+	@Override
+	public void snsSignup(String id) {
+		userDAO.snsSignup(id);
+	}
 }

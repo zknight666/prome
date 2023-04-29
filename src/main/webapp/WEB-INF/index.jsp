@@ -26,7 +26,7 @@
 
 <body>
 	<!-- hidden -->
-	<input type="hidden" id="memId" value="${param.id}">
+	<input type="hidden" id="user_id" value="${user_id}">
 	<!-- hidden -->
 	<div class="container">
 		<!-- Navigation-->
@@ -79,11 +79,11 @@
 								<img src="./assets\account-circle.png" />
 							</button>
 							<div class="dropdown-menu" style="right: 0">
-								<div class="dropdown-item">${param.id}님</div>
+								<div class="dropdown-item">${user_id}님</div>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" id="mypageBtn" href="/prome/users/mypage?id=${param.id}">마이페이지</a> 
-								<a class="dropdown-item" href="/prome/users/applicants?id=${param.id}">내 모임 지원자 관리</a> 
-								<a class="dropdown-item" id="userinfoBtn" href="/prome/users/userinfo?id=${param.id}">회원 정보 수정</a>
+								<a class="dropdown-item" id="mypageBtn" href="/prome/users/mypage">마이페이지</a> 
+								<a class="dropdown-item" href="/prome/users/applicants">내 모임 지원자 관리</a> 
+								<a class="dropdown-item" id="userinfoBtn" href="/prome/users/userinfo">회원 정보 수정</a>
 								<div class="dropdown-divider"></div>
 							</div>
 						</form>
@@ -109,7 +109,7 @@
 
 						<button type="button" class="btn btn-primary" name="buildProjectBtn"
 							style="background: rgb(28, 124, 224); display:none; border: none;"
-							onclick="location.href='/prome/project/buildProject?id=${param.id}'">
+							onclick="location.href='/prome/project/buildProject'">
 							모임 생성</button>
 					</div>
 				</div>
@@ -236,10 +236,10 @@
 	<script type="text/javascript">
         /* 세션에 따른 nav 변화 */
         $(function () {
-            if ($('#memId').val() == '') {
+            if ($('#user_id').val() == '') {
                 $('#session').attr("style", "display:none;");
                 $('#non_session').attr("style", "display:flex;");
-            } else if ($('#memId').val() != '') {
+            } else if ($('#user_id').val() != '') {
                 $('#session').attr("style", "display:flex;");
                 $('#non_session').attr("style", "display:none;");
             }
@@ -247,14 +247,22 @@
 
         /* 버튼 관련 */
         $('#logoutBtn').click(function () {
-            $('#memId').val('');
-            location.replace('/prome/');
+        	$.ajax({
+        	      type: "post",
+        	      url: "/prome/users/logout",
+        	      success: function (data) {        	      
+        			location.replace('/prome');
+        	      },
+        	      error: function (err) {
+        	      	alert(err);
+        	      },
+        	});
         });
         $('.signUp').click(function () {
             location.href = '/prome/users/join';
         });
         $('#logo').click(function () {
-            location.href = '/prome?id=' + $('#memId').val();
+            location.href = '/prome';
         });
 
         // modal
@@ -292,27 +300,11 @@
                             console.log(id);
                             $.ajax({
                                 type: "post",
-                                url: "/prome/users/getUser",
+                                url: "/prome/users/snsLogin",
                                 data: "id=" + id,
                                 success: function (data) {
-                                    console.log(id);
-                                    console.log(JSON.stringify(data));
-                                    if (data == '') {
-                                        $.ajax({
-                                            type: "post",
-                                            url: "/prome/users/signup",
-                                            data: "id=" + id,
-                                            success: function (data) {
-                                                alert("회원가입되셨습니다.");
-                                                location.replace('/prome?id='+id);
-                                            },
-                                            error: function (err) {
-                                                alert("회원가입 실패했습니다.");
-                                            }
-                                        });
-                                    } else if (data != '') {
-                                        location.replace('/prome?id='+id);	
-                                    }
+                                    alert(data);
+                                    location.replace('/prome');
                                 },
                                 error: function (err) {
 

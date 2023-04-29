@@ -36,8 +36,9 @@
 					aria-label="Toggle navigation">
 					<span class="navbar-toggler-icon"></span>
 				</button>
-                <div class="collapse navbar-collapse" id="navbarColor03">
-                    <img src="../assets/logo.png" style="cursor: pointer" onclick="location.href='/prome/'" />
+				<div class="collapse navbar-collapse" id="navbarColor03">
+					<img src="../assets/logo.png" style="cursor: pointer"
+						onclick="location.href='/prome/'" />
 					<ul class="navbar-nav me-auto">
 						<li class="nav-item dropdown"><a
 							class="nav-link dropdown-toggle" data-bs-toggle="dropdown"
@@ -112,8 +113,8 @@
 									<fieldset class="form-group flex">
 										<div>
 											<span class="h5 mt-4"
-												style="margin-right: 3em; font-weight: 800;">* 성별 </span> 
-												<input type="hidden" id="gender" value="">
+												style="margin-right: 3em; font-weight: 800;">* 성별 </span> <input
+												type="hidden" id="gender" value="">
 										</div>
 										<div>
 											<input type="radio" name="gender" id="optionsRadios1"
@@ -159,8 +160,9 @@
 									<div id="email_checkDiv" class="email_off">
 										<span class="px-2">인증 번호 입력:</span>
 										<div class="px-2">
-											<input class="box" id="certi" style="width: 11rem; text-align: center;"
-												type=" text" minLength="6" maxLength="6">
+											<input class="box" id="certi"
+												style="width: 11rem; text-align: center;" type=" text"
+												minLength="6" maxLength="6">
 										</div>
 
 										<div class="content_center px-2">
@@ -348,7 +350,9 @@
 					<img loading="lazy" src="../assets/icon/ic-close.svg" alt="close">
 				</button>
 				<button class="loginBtn_1 naver">네이버 아이디로 가입</button>
-				<button class="loginBtn_1 kakao">카카오 계정으로 가입</button>
+				<button class="loginBtn_1 kakao"
+					onclick="location.href='javascript:KakaoLogin()'">
+					카카오 계정으로 가입</button>
 				<button class="loginBtn_1 facebook">페이스북 계정으로 가입</button>
 				<button class="loginBtn_1 google">구글 계정으로 가입</button>
 				<p class="loginNoticeTxt">
@@ -367,7 +371,7 @@
 				<button class="closeBtn">
 					<img loading="lazy" src="../assets/icon/ic-close.svg" alt="close">
 				</button>
-				<div style="text-align: center; width:220px; height:60px;">
+				<div style="text-align: center; width: 220px; height: 60px;">
 					<img class="pwmlogo" src="../assets/images/pwmlogo.png">
 				</div>
 				*ID
@@ -430,16 +434,43 @@
 		});
 	</script>
 	<script src="../js/scripts.js"></script>
-	
+
+	<!-- sns 로그인 -->
 	<script type="text/javascript"
-		src="//dapi.kakao.com/v2/maps/sdk.js?appKey=13e23dd91c08ebf7c2ee79eee67a16fd"></script>
+		src="https://developers.kakao.com/sdk/js/kakao.min.js" charset="utf-8"></script>
 	<script type="text/javascript">
-		$('.kakao').click(function(){
-			location.href='/prome/users/snsLogin?sns=kakao';	
-		});
-	</script>
-	
-	
+        window.Kakao.init("13e23dd91c08ebf7c2ee79eee67a16fd");
+        function KakaoLogin() {
+            window.Kakao.Auth.login({
+                scope: 'profile_nickname',
+                success: function (authObj) {
+                    console.log(authObj);
+                    window.Kakao.API.request({
+                        url: '/v2/user/me',
+                        success: res => {
+                            const kakao_account = res.kakao_account;
+                            console.log(kakao_account);
+                            var id = kakao_account.profile.nickname;
+                            console.log(id);
+                            $.ajax({
+                                type: "post",
+                                url: "/prome/users/snsLogin",
+                                data: "id=" + id,
+                                success: function (data) {
+                                    alert(data);
+                                    location.replace('/prome');
+                                },
+                                error: function (err) {
+
+                                },
+                            });
+
+                        }
+                    })
+                }
+            });
+        }
+    </script>
 </body>
 
 </html>
