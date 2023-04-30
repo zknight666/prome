@@ -275,18 +275,19 @@
 	</update>
 
 	<update id="team_member_table" parameterType="java.util.Map">
-		update team_member
-		set
-		member1 = coalesce(member1, #{ar}),
-		member2 = coalesce(member2, #{ar}),
-		member3 = coalesce(member3, #{ar}),
-		member4 = coalesce(member4, #{ar}),
-		member5 = coalesce(member5, #{ar}),
-		member6 = coalesce(member6, #{ar}),
-		member7 = coalesce(member7, #{ar}),
-		member8 = coalesce(member8, #{ar}),
-		member9 = coalesce(member9, #{ar})
-		where id=#{project_id}
+		UPDATE team_member
+		SET
+		  member1 = COALESCE(member1, CASE WHEN member1 IS NULL AND member2 IS NULL THEN #{ar} ELSE NULL END),
+		  member2 = COALESCE(member2, CASE WHEN member1 IS NOT NULL AND member2 IS NULL THEN #{ar} ELSE NULL END),
+		  member3 = COALESCE(member3, CASE WHEN member2 IS NOT NULL AND member3 IS NULL THEN #{ar} ELSE NULL END),
+		  member4 = COALESCE(member4, CASE WHEN member3 IS NOT NULL AND member4 IS NULL THEN #{ar} ELSE NULL END),
+		  member5 = COALESCE(member5, CASE WHEN member4 IS NOT NULL AND member5 IS NULL THEN #{ar} ELSE NULL END),
+		  member6 = COALESCE(member6, CASE WHEN member5 IS NOT NULL AND member6 IS NULL THEN #{ar} ELSE NULL END),
+		  member7 = COALESCE(member7, CASE WHEN member6 IS NOT NULL AND member7 IS NULL THEN #{ar} ELSE NULL END),
+		  member8 = COALESCE(member8, CASE WHEN member7 IS NOT NULL AND member8 IS NULL THEN #{ar} ELSE NULL END),
+		  member9 = COALESCE(member9, CASE WHEN member8 IS NOT NULL AND member9 IS NULL THEN #{ar} ELSE NULL END)
+		WHERE id = #{project_id}
+
 	</update>
 
 
