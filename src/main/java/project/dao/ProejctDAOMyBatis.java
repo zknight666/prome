@@ -351,7 +351,7 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 
         return projDetailDTO;
 
-    };
+    }
 
 
 	@Override
@@ -364,5 +364,20 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 	public int getProjectTotalA() {
 		return sqlSession.selectOne("projectSQL.getProjectTotalA");
 	}
+
+
+    @Override
+    public void updateApplicationStatus(Map<String, Object> param_map) {
+        if(param_map.get("status").equals("P_ACCEPT")){
+            param_map.put("status", "ACCEPT");
+        }else if(param_map.get("status").equals("P_DECLINE")){
+            param_map.put("status", "DECLINE");
+        }
+        sqlSession.update("projectSQL.updateApplicationStatus", param_map);
+    }
+
+
+
+
 }
 

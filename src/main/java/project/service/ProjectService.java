@@ -57,6 +57,7 @@ public interface ProjectService {
 
 	Map<String, Object> getMainProjects(String projectPg);
 
+    void updateApplicationStatus(Map<String,Object> param_map);
 
 	
 

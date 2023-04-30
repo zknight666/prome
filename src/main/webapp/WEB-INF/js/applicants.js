@@ -1,15 +1,15 @@
 $(function(){
 	$.ajax({
-		type: 'post',
+		type: 'GET',
 		url: '/prome/project/getApplicants',
-		data: 'team_leader=' +$('#memId').val(),
+		// data: 'team_leader=' +$('#memId').val(), -> 세션으로 대체
 		success: function(data) {
 			console.log(JSON.stringify(data));
 			$('#eachProjectDiv').empty();
 			
 			function changeToIcon(item) {
 			    let tech_icons = "";
-			    let items = item.split(", ");
+			    let items = item.split(",");
 			    items.forEach(function(perItem) {				
 			        let tech_icon = "../assets/tech-icon/" + perItem.toLowerCase() + ".svg";
 			        tech_icons += 

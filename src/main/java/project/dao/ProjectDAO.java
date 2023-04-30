@@ -56,5 +56,7 @@ public interface ProjectDAO {
 
     ProjDetailDTO getProjectDetail(String project_id);
 
+    void updateApplicationStatus(Map<String, Object> param_map);
+
 
 }

@@ -325,8 +325,7 @@
 	<!-- user_id 받아서 List<HashMap> project_id, status(지원상태) 반환함 -->
 	<select id="getSupportedProjects" parameterType="String"
 		resultType="java.util.HashMap">
-		SELECT project_id, status from application WHERE user_id=#{user_id} ORDER BY
-		id desc
+		SELECT project_id, status from application WHERE user_id=#{user_id} and status in ('WAITING', 'P_ACCEPT', 'P_DECLINE') ORDER BY id desc
 	</select>
 
 	<!-- 해당 User가 팀장으로 있는 프로젝트 목록 가져오기 -->
@@ -420,6 +419,13 @@
 	<select id="memberApplication" parameterType="java.util.HashMap" resultType="java.util.HashMap">
 		select * from application where project_id=#{project_id} and user_id=#{user_id} and (status='P_ACCEPT' or status='ACCEPT')
 	</select>
+
+	<update id="updateApplicationStatus" parameterType="java.util.Map">
+		update application
+		set status = #{status}
+		where project_id=#{project_id} and user_id=#{user_id}
+	</update>
+
 
 </mapper>
 

@@ -58,11 +58,10 @@ public class ProjectController {
 	}
 	
 	
-	@PostMapping(value="getApplicants")
+	@GetMapping(value="getApplicants")
 	@ResponseBody
-	public List<Object> getApplicants(@RequestParam String team_leader) {
-		System.out.println(team_leader);
-		return projectService.getApplicants(team_leader);
+	public List<Object> getApplicants(@SessionAttribute("user_id") String user_id) {
+		return projectService.getApplicants(user_id);
 	}
 	
 	
@@ -264,6 +263,17 @@ public class ProjectController {
 	@ResponseBody
 	public ProjDetailDTO getProjectDetail(@RequestParam String project_id) {
 		return projectService.getProjectDetail(project_id);
+	}
+
+
+	@PostMapping(value="updateApplicationStatus")
+	@ResponseBody
+	public void updateApplicationStatus(
+		@SessionAttribute("user_id") String user_id, //user_id를 세션에서 꼭 받아와 줘야 함
+		@RequestParam Map<String,Object> param_map //project_id, status
+	){
+		param_map.put("user_id", user_id);
+		projectService.updateApplicationStatus(param_map); //project_id, status, user_id
 	}
 
 

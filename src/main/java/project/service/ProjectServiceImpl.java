@@ -66,7 +66,8 @@ public class ProjectServiceImpl implements ProjectService {
     }
 
 
-    @Override
+
+	@Override
     public List<String> getBookmark(String user_id) {
         return projectDAO.getBookmark(user_id);
     }
@@ -245,6 +246,11 @@ public class ProjectServiceImpl implements ProjectService {
 	public ProjDetailDTO getProjectDetail(String project_id){
 		return projectDAO.getProjectDetail(project_id);
 	};
+
+	@Override
+	public void updateApplicationStatus(Map<String, Object> param_map) {
+		projectDAO.updateApplicationStatus(param_map);
+	}
 
 
 }
