@@ -38,8 +38,8 @@ public class ProjectController {
 
 	@PostMapping(value="buildProject")
 	@ResponseBody
-	public void buildProject(@RequestBody ProjectDTO projectDTO) {
-		
+	public void buildProject(@SessionAttribute("user_id") String user_id, @RequestBody ProjectDTO projectDTO) {
+		projectDTO.setTeam_leader(user_id);
 		projectService.buildProject(projectDTO);
 	}
 
