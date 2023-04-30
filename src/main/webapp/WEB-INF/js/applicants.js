@@ -105,12 +105,12 @@ $(function(){
 	    }).get();
 	    	    
 	    var project_id =  $('input[type=checkbox]:checked').parent().parent().parent().parent().parent().prev().prev().prev().val();
-	    alert(project_id);
+//	    alert(project_id);
 	      
 		if (checkedUser.length === 0) {
 		    alert('선택된 지원자가 없습니다.');
 		} else {
-			alert(checkedUser)
+//			alert(checkedUser)
 		    if (confirm('아이디 ' + checkedUser + ' 수락하시겠습니까?')) {
 		    
 		    	$.ajax({
@@ -145,12 +145,12 @@ $(function(){
 	    }).get();
 	    	    
 	    var project_id =  $('input[type=checkbox]:checked').parent().parent().parent().parent().parent().prev().prev().prev().val();
-	    alert(project_id);
+//	    alert(project_id);
 	      
 		if (checkedUser.length === 0) {
 		    alert('선택된 지원자가 없습니다.');
 		} else {
-			alert(checkedUser)
+//			alert(checkedUser)
 		    if (confirm('아이디 ' + checkedUser + ' 거절하시겠습니까?')) {
 		    
 		    	$.ajax({
