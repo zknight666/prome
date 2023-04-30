@@ -61,47 +61,37 @@ function getProjCard(item, index, list_name, status){
       });
 
       let src = '';
-      let field_text = '';
+      console.log(data.projectDTO.field)
       switch (data.projectDTO.field) {
-        case 'ecommerce':
+        case '이커머스':
           src = '../assets/images/project-thumb-ecommerce.png';
-          field_text = '이커머스';
           break;
-        case 'edu':
+        case '교육':
           src = '../assets/images/project-thumb-edu.png'
-          field_text = '교육';
           break;
-        case 'fashion':
+        case '뷰티/패션':
           src = '../assets/images/project-thumb-fashion.png'
-          field_text = '뷰티/패션';
           break;
-        case 'finance':
+        case '금융':
           src = '../assets/images/project-thumb-finance.png'
-          field_text = '금융';
           break;
-        case 'game':
+        case '게임':
           src = '../assets/images/project-thumb-game.png'
-          field_text = '게임';
           break;
-        case 'medical':
+        case '의료/병원':
           src = '../assets/images/project-thumb-medical.png'
-          field_text = '의료/병원';
           break;
-        case 'property':
+        case '부동산':
           src = '../assets/images/project-thumb-property.png'
-          field_text = '부동산';
           break;
-        case 'sharing':
-          src = '../assets/images/project-thumb-sharing.png'
-          field_text = '공유서비스';
+        case '공유서비스':
+          src = '../assets/images/project-thumb-sharing.png';
           break;
-        case 'sns':
+        case '소셜 네트워크':
           src = '../assets/images/project-thumb-sns.png'
-          field_text = '소셜네트워크';
           break;
-        case 'travel':
+        case '여행':
           src = '../assets/images/project-thumb-travel.png'
-          field_text = '여행';
           break;
         default:
           src = '../assets/images/project-thumb-default.png'
@@ -158,7 +148,7 @@ function getProjCard(item, index, list_name, status){
           + '              </div>\n'
           + '              <div class="projectBottomInfo">\n'
           + '                <div class="txtWrap projectWrap">\n'
-          + '                  <h3 class="category">' + field_text+ '</h3>\n'
+          + '                  <h3 class="category">' + data.projectDTO.field + '</h3>\n'
           + '                  <h2 class="tit">' +data.projectDTO.title+'</h2>\n'
           + '                  <div class="iconWrap2">\n'    + proj_tech_arr.join('') + '</div>\n'
           + '                </div>\n'

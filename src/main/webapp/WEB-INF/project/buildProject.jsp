@@ -303,7 +303,7 @@
                       <label for="aws"><em></em><br><span>aws</span></label>
                     </div>
                     <div class="icon">
-                      <input type="checkbox" id="c" name="c" value="N" class="icon">
+                      <input type="checkbox" id="c" name="C" value="N" class="icon">
                       <label for="c"><em></em><br><span>C_C#</span></label>
                     </div>
                     <div class="icon">
