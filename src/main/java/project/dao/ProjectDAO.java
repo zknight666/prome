@@ -10,9 +10,6 @@ import project.bean.ProjectMainpageDTO;
 import user.bean.UserDTO;
 
 public interface ProjectDAO {
-    List<ProjectDTO> getAdminpage(Map<String, Object> map2);
-
-    public List<String> getChosenTech(int projectId);
 
     void adminDeleteProject(int projectId);
 
@@ -23,10 +20,12 @@ public interface ProjectDAO {
 	List<UserDTO> adminGetUserList(Map<String, Integer> map);
 
 	int getUserTotalA();
+	
+	int getProjectTotalA();
 
 	void adminDeleteUser(String checkedUser);
 
-	List<ProjectMainpageDTO> getMainProjects();
+	List<ProjectMainpageDTO> getMainProjects(Map<String, Integer> map5);
 
 	List<Integer> getProjectId(String team_leader);
 
@@ -49,4 +48,5 @@ public interface ProjectDAO {
     ProjectDTO getProject(String project_id);
 
     int deleteApplication(String user_id, String project_id);
+    
 }

@@ -4,7 +4,7 @@ import lombok.Data;
 
 @Data
 public class IconDTO {
-	private String id="fd";
+	private String id;
 	private String android="N";
 	private String aws="N";
 	private String c="N";

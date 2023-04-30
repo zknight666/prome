@@ -58,7 +58,18 @@ public class UserDAOMyBatis implements UserDAO {
 		sqlSession.delete("userSQL.deleteUser",userDTO.getId());
 		
 	}
-	
+
+	@Override
+	public void snsSignup(String id) {
+		 sqlSession.insert("userSQL.snsSignup",id);
+	}
+
+	@Override
+	public void snsSignupIcon(String id) {
+		sqlSession.insert("userSQL.snsSignupIcon",id);
+		
+	}
+
 	
 }
 

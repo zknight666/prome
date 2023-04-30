@@ -31,42 +31,40 @@ public class ProjectServiceImpl implements ProjectService {
 	private UserPaging userPaging;
     
 
-  //--------------- adminpage 관리자 페이지 --------------------------
+
+
     @Override
-    public Map<String, Object> getAdminpage(Map<String, Object> map) {
-        int endNum = Integer.parseInt((String)map.get("pg")) * 12;
-        int startNum = endNum - 11;
-
-        Map<String, Object> map2 = new HashMap<String, Object>();
-        map2.put("startNum", startNum);
-        map2.put("endNum", endNum);
-        map2.put("field", map.get("field"));
-        map2.put("recruit_state", map.get("recruit_state"));
-
-        List<ProjectDTO> list = projectDAO.getAdminpage(map2);
-
-        // 특정 프로젝트의 선택된 기술 가져오기
-        int projectId = Integer.parseInt((String)map.get("projectId"));
-        List<String> chosenTech = projectDAO.getChosenTech(projectId);
-
-        //페이징 처리
-//        int totalA = projectDAO.getTotalA(); //총글수
-
-        projectPaging.setCurrentPage(Integer.parseInt((String)map.get("pg")));
-        projectPaging.setPageBlock(3);
-        projectPaging.setPageSize(3);
-//        projectPaging.setTotalA(totalA);
-
-        projectPaging.makePagingHTML();
-
-        Map<String, Object> map3 = new HashMap<String, Object>();
-        map3.put("list", list);
-        map3.put("chosenTech", chosenTech);
-        map3.put("projectPaging", projectPaging);
-
-        return map3;
+    public Map<String, Object> getMainProjects(String projectPg) {
+    	
+    	
+    	int endNum = Integer.parseInt(projectPg) * 12;
+    	int startNum = endNum - 11;		
+    	
+    	Map<String, Integer> map5 = new HashMap<String, Integer>();
+    	map5.put("startNum", startNum);
+    	map5.put("endNum", endNum);
+    	
+    	List<ProjectMainpageDTO> list = projectDAO.getMainProjects(map5);
+    	
+    	
+    	//페이징 처리
+    	int totalA = projectDAO.getProjectTotalA(); //총 프로젝트 수
+    	
+    	projectPaging.setCurrentPage(Integer.parseInt(projectPg));
+    	projectPaging.setPageBlock(3);
+    	projectPaging.setPageSize(12);
+    	projectPaging.setTotalA(totalA);
+    	
+    	projectPaging.makePagingHTML();
+    	
+    	Map<String, Object> map6 = new HashMap<String, Object>();
+    	map6.put("list", list);
+    	map6.put("projectPaging", projectPaging);
+    	
+    	return map6;
     }
-  
+
+
     @Override
     public List<String> getBookmark(String user_id) {
         return projectDAO.getBookmark(user_id);
@@ -109,15 +107,16 @@ public class ProjectServiceImpl implements ProjectService {
     	projectDAO.buildProject(projectDTO);
     }  
 
-	@Override
-	public List<ProjectMainpageDTO> getMainProjects() {
-		return projectDAO.getMainProjects();
-	}
 
 
+	//--------------- adminpage 관리자 페이지 --------------------------
+	
 
+	
+	
 	@Override
 	public void adminDeleteProject(int projectId) {
+		System.out.println("service = " +projectId);
 		projectDAO.adminDeleteProject(projectId);
 	}
 
@@ -155,6 +154,10 @@ public class ProjectServiceImpl implements ProjectService {
 	public void adminDeleteUser(String checkedUser) {
 		projectDAO.adminDeleteUser(checkedUser);
 	}
+	
+	//--------------------------------------------------------------
+	
+	
 	
 	//-----------applicants 신청서 - 프로젝트 생성자 페이지------------------
 	@Override

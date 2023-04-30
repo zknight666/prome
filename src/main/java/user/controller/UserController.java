@@ -1,22 +1,24 @@
 package user.controller;
 
-import java.util.HashMap;
-import java.util.Map;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.SessionAttribute;
+import org.springframework.web.bind.annotation.SessionAttributes;
+import org.springframework.web.bind.support.SessionStatus;
 
 import user.bean.IconDTO;
 import user.bean.UserDTO;
 import user.service.UserService;
 
 @Controller
+@SessionAttributes("user_id")
 @RequestMapping(value = "users")
 public class UserController {
 	@Autowired
@@ -70,13 +72,13 @@ public class UserController {
 	// 회원정보수정 start
 	@PostMapping(value = "getUser")
 	@ResponseBody
-	public UserDTO getUser(@RequestParam String id) {
+	public UserDTO getUser(@SessionAttribute("user_id") String id) {
 		return userService.getUser(id);
 	}
-
+	
 	@PostMapping(value = "getIcon")
 	@ResponseBody
-	public IconDTO getIcon(@RequestParam String id) {
+	public IconDTO getIcon(@SessionAttribute("user_id") String id) {
 		return userService.getIcon(id);
 	}
 
@@ -90,6 +92,7 @@ public class UserController {
 	@PostMapping(value = "updateIcon")
 	@ResponseBody
 	public String updateIcon(@ModelAttribute IconDTO iconDTO) {
+		System.out.println(iconDTO.getId());
 		return userService.updateIcon(iconDTO);
 	}
 
@@ -97,8 +100,36 @@ public class UserController {
 	// 로그인 start
 	@PostMapping(value = "login")
 	@ResponseBody
-	public String login(@ModelAttribute UserDTO userDTO) {
-		return userService.login(userDTO);
+	public String login(@ModelAttribute UserDTO userDTO, Model model) {
+		if(userService.login(userDTO).equals("user")) {			
+			model.addAttribute("user_id",userDTO.getId());
+			return userService.login(userDTO);
+		}else if(userService.login(userDTO).equals("admin")) {
+			model.addAttribute("user_id",userDTO.getId());
+			return userService.login(userDTO);
+		}else {
+			return userService.login(userDTO);
+		}
+	}
+	@PostMapping(value = "snsLogin", produces="text/html; charset=UTF-8")
+	@ResponseBody
+	public String snsLogin(@RequestParam String id, Model model) {
+		String snsLogin = userService.snsLogin(id);
+		if(snsLogin.equals("non_exist")) {
+			userService.snsSignup(id);
+			model.addAttribute("user_id",id);
+			return "회원 가입되었습니다.";
+		}else if(snsLogin.equals("exist")) {
+			model.addAttribute("user_id",id);
+			return "로그인 되었습니다.";
+		}else {
+			return "잘못된 경로입니다.";
+		}
+	}
+	@PostMapping(value = "logout")
+	@ResponseBody
+	public void logout(SessionStatus session) {
+		session.setComplete();
 	}
 	// 로그인 end
 	

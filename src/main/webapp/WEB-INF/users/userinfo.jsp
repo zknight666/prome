@@ -22,7 +22,6 @@
 </head>
 
 <body>
-	<input type="hidden" id="memId" value="${param.id}">
 	<div class="container">
 		<!-- Navigation-->
 		<nav class="navbar navbar-expand-lg navbar-light bg-light"
@@ -59,11 +58,11 @@
 							<img src="../assets\account-circle.png" />
 						</button>
 						<div class="dropdown-menu" style="right: 0">
-							<div class="dropdown-item">${param.id}님</div>
+							<div class="dropdown-item">${user_id}님</div>
 							<div class="dropdown-divider"></div>
-							<a class="dropdown-item" id="mypageBtn" href="/prome/users/mypage?id=${param.id}">마이페이지</a> 
-							<a class="dropdown-item" href="/prome/users/applicants?id=${param.id}">내 모임 지원자 관리</a> 
-							<a class="dropdown-item" id="userinfoBtn" href="/prome/users/userinfo?id=${param.id}">회원 정보 수정</a>
+							<a class="dropdown-item" id="mypageBtn" href="/prome/users/mypage">마이페이지</a> 
+							<a class="dropdown-item" href="/prome/project/applicants">내 모임 지원자 관리</a> 
+							<a class="dropdown-item" id="userinfoBtn" href="/prome/users/userinfo">회원 정보 수정</a>
 							<div class="dropdown-divider"></div>
 						</div>
 					</form>
@@ -95,7 +94,7 @@
 									<span class="h5" style="font-weight: 800;">* 아이디</span>
 								</div>
 								<div>
-									<input class="box" type="text" id="id" value="${param.id}" readonly>
+									<input class="box" type="text" id="id" value="${user_id}" readonly>
 								</div>
 							</div>
 							<div class="p-4">
@@ -339,7 +338,7 @@
             location.replace('/prome/');
         });
         $('#logo').click(function () {
-            location.href = '/prome?id=' + $('#memId').val();
+            location.href = '/prome';
         });
 	</script>
 </body>

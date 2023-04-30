@@ -15,11 +15,14 @@ $('#login').click(function(){
       	pwd: $('#prome_pwd').val()
       },
       success: function (data) {
-        if (data == 'ok') {
-          alert('로그인 성공');
-          location.replace('/prome?id='+$('#prome_id').val());
+        if (data == 'user') {
+          alert($('#prome_id').val()+"님 로그인 되었습니다.");
+          location.replace('/prome');
         } else if (data == 'fail'){
           alert('아이디 또는 비밀번호가 틀립니다.');
+        } else if (data == 'admin'){
+          location.replace('/prome/project/adminpage');
+       	  alert('관리자 페이지로 이동합니다');
         }
       },
       error: function (err) {

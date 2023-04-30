@@ -23,4 +23,8 @@ public interface UserService {
 	public String login(UserDTO userDTO);
 
 	public void deleteUser(UserDTO userDTO);
+
+	public String snsLogin(String id);
+
+	public void snsSignup(String id);
 }

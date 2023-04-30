@@ -26,7 +26,8 @@
 
 <body>
 	<!-- hidden -->
-	<input type="hidden" id="memId" value="${param.id}">
+	<input type="hidden" id="user_id" value="${user_id}">
+	<input type="hidden" id="memId" value="${user_id}">
 	<!-- hidden -->
 	<div class="container">
 		<!-- Navigation-->
@@ -79,11 +80,11 @@
 								<img src="./assets\account-circle.png" />
 							</button>
 							<div class="dropdown-menu" style="right: 0">
-								<div class="dropdown-item">${param.id}님</div>
+								<div class="dropdown-item">${user_id}님</div>
 								<div class="dropdown-divider"></div>
-								<a class="dropdown-item" id="mypageBtn" href="/prome/users/mypage?id=${param.id}">마이페이지</a> 
-								<a class="dropdown-item" href="/prome/users/applicants?id=${param.id}">내 모임 지원자 관리</a> 
-								<a class="dropdown-item" id="userinfoBtn" href="/prome/users/userinfo?id=${param.id}">회원 정보 수정</a>
+								<a class="dropdown-item" id="mypageBtn" href="/prome/users/mypage">마이페이지</a> 
+								<a class="dropdown-item" href="/prome/project/applicants">내 모임 지원자 관리</a> 
+								<a class="dropdown-item" id="userinfoBtn" href="/prome/users/userinfo">회원 정보 수정</a>
 								<div class="dropdown-divider"></div>
 							</div>
 						</form>
@@ -109,7 +110,7 @@
 
 						<button type="button" class="btn btn-primary" name="buildProjectBtn"
 							style="background: rgb(28, 124, 224); display:none; border: none;"
-							onclick="location.href='/prome/project/buildProject?id=${param.id}'">
+							onclick="location.href='/prome/project/buildProject'">
 							모임 생성</button>
 					</div>
 				</div>
@@ -162,6 +163,16 @@
 
 				</div>
 
+<!--페이징 섹션 시작-->
+                <input type="hidden" id="projectPg" value="${projectPg}">
+		        <div class="row gx-4 gx-lg-5 row-cols-2 row-cols-md-3 row-cols-xl-4 justify-content-center">
+		          <div id="projectPaging" style="width: auto; margin-top: 40px;">
+		            ${pagingHTML}
+		          </div>
+		        </div>
+		        
+		        <!--페이징 섹션 끝-->
+		        
 			</div>
 		</section>
 		<!-- Footer-->
@@ -227,34 +238,34 @@
 	<script
 		src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
 	<!-- Core theme JS-->
-	<script type="text/javascript"
-	src="http://code.jquery.com/jquery-3.6.4.min.js"></script>
+	<script type="text/javascript" src="http://code.jquery.com/jquery-3.6.4.min.js"></script>
 	<script src="js/index_script.js"></script>
 	<script src="js/letspl.js"></script>
-
+	<script type="text/javascript">
+	function projectPaging(projectPg){ 
+		location.href="/prome/?projectPg=" +projectPg;
+	}
+	</script>
+	<script src="./js/logout.js"></script>
 	<script src="./js/login.js"></script>
 	<script type="text/javascript">
         /* 세션에 따른 nav 변화 */
         $(function () {
-            if ($('#memId').val() == '') {
+            if ($('#user_id').val() == '') {
                 $('#session').attr("style", "display:none;");
                 $('#non_session').attr("style", "display:flex;");
-            } else if ($('#memId').val() != '') {
+            } else if ($('#user_id').val() != '') {
                 $('#session').attr("style", "display:flex;");
                 $('#non_session').attr("style", "display:none;");
             }
         });
 
         /* 버튼 관련 */
-        $('#logoutBtn').click(function () {
-            $('#memId').val('');
-            location.replace('/prome/');
-        });
         $('.signUp').click(function () {
             location.href = '/prome/users/join';
         });
         $('#logo').click(function () {
-            location.href = '/prome?id=' + $('#memId').val();
+            location.href = '/prome';
         });
 
         // modal
@@ -292,27 +303,11 @@
                             console.log(id);
                             $.ajax({
                                 type: "post",
-                                url: "/prome/users/getUser",
+                                url: "/prome/users/snsLogin",
                                 data: "id=" + id,
                                 success: function (data) {
-                                    console.log(id);
-                                    console.log(JSON.stringify(data));
-                                    if (data == '') {
-                                        $.ajax({
-                                            type: "post",
-                                            url: "/prome/users/signup",
-                                            data: "id=" + id,
-                                            success: function (data) {
-                                                alert("회원가입되셨습니다.");
-                                                location.replace('/prome?id='+id);
-                                            },
-                                            error: function (err) {
-                                                alert("회원가입 실패했습니다.");
-                                            }
-                                        });
-                                    } else if (data != '') {
-                                        location.replace('/prome?id='+id);	
-                                    }
+                                    alert(id+"님 "+data);
+                                    location.replace('/prome');
                                 },
                                 error: function (err) {
 

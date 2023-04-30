@@ -10,6 +10,7 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RequestParam;
 import org.springframework.web.bind.annotation.ResponseBody;
 
@@ -24,13 +25,11 @@ import project.service.ProjectService;
 public class ProjectController {
 	@Autowired
 	private ProjectService projectService;
-
-	/*
-	 * @GetMapping(value="buildProject") public String buildProject() {
-	 * 
-	 * return "project/buildProject"; }
-	 */
 	
+	@GetMapping(value="buildProject") 
+	public String buildProject() {
+		return "project/buildProject"; 
+	}
 
 	@PostMapping(value="buildProject")
 	@ResponseBody
@@ -42,8 +41,8 @@ public class ProjectController {
 	
 	@GetMapping(value="getMainProjects")
 	@ResponseBody
-	public List<ProjectMainpageDTO> getMainProjects() {
-		return projectService.getMainProjects();
+	public Map<String, Object> getMainProjects(@RequestParam(required=false, defaultValue="1") String projectPg) {
+		return projectService.getMainProjects(projectPg);
 	}
 	
 	
@@ -88,12 +87,18 @@ public class ProjectController {
 
 	
 	//-------------- adminpage 관리자 페이지 ---------------------
-	@GetMapping(value="adminpage")
-	public String adminpage(@RequestParam(required = false, defaultValue = "1") String pg, Model model) {
-		model.addAttribute("pg", pg);
-		return "project/adminpage";
+	@RequestMapping(value="adminpage", method = RequestMethod.GET)
+	public String adminpage(@RequestParam(required = false, defaultValue = "1") String projectPg, Model model) {
+		model.addAttribute("projectPg",projectPg);
+		return "project/adminpage";	
 	}
-
+	
+	@GetMapping(value="getAdminpage")
+	@ResponseBody
+	public Map<String, Object> getAdminpage(@RequestParam(required=false, defaultValue="1") String projectPg) {
+		return projectService.getMainProjects(projectPg);
+	}
+	
 
 	@PostMapping(value = "adminDeleteProject")
 	@ResponseBody

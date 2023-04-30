@@ -13,8 +13,7 @@ import project.bean.ProjectMainpageDTO;
 @Service
 public interface ProjectService {
     public void buildProject(ProjectDTO projectDTO);
-
-    Map<String, Object> getAdminpage(Map<String, Object> map);
+    
 
     void adminDeleteProject(int projectId);
 
@@ -24,7 +23,6 @@ public interface ProjectService {
 
 //    List<ProjectDTO> getBookmark();
 
-	public List<ProjectMainpageDTO> getMainProjects();
 
     List<Object> getApplicants(String team_leader);
 
@@ -45,5 +43,10 @@ public interface ProjectService {
     Map<String, List<String>> getMyTeams(String user_id);
 
     int deleteApplication(String user_id, String project_id);
+
+	Map<String, Object> getMainProjects(String projectPg);
+
+
+	
 
 }

@@ -19,9 +19,21 @@
   <link href="../css/custom.css" rel="stylesheet" />
   <link href="../css/modal.css" rel="stylesheet" />
   <!-- <link href="css/custom-styles.css" rel="stylesheet" /> -->
+  <style type="text/css">
+	.hover_tr:hover{
+	  background: #cacaca;
+	}
+	.check_checkbox:hover{
+	  cursor: pointer;	
+	}
+	#userPaging li:hover{
+	  cursor: pointer;
+	}
+  </style>
 </head>
 
 <body>
+  <input type="hidden" id="memId" value="${user_id}">
   <div class="container">
     <!-- Navigation-->
     <nav class="navbar navbar-expand-lg navbar-light bg-light" style="
@@ -38,46 +50,32 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarColor03">
-          <img src="../assets/logo.png" style="cursor: pointer" />
+          <img id="logo" src="../assets/logo.png" style="cursor: pointer" />
 
           <ul class="navbar-nav me-auto">
             <li class="nav-item dropdown">
               <a class="nav-link dropdown-toggle" data-bs-toggle="dropdown" href="#" role="button" aria-haspopup="true"
                 aria-expanded="false"></a>
-
-              <div class="dropdown-menu">
-                <div class="dropdown-item">*******님</div>
-                <div class="dropdown-divider"></div>
-                <a class="dropdown-item" href="#">마이페이지</a>
-
-                <a class="dropdown-item" href="#">내 모임 지원자 관리</a>
-
-                <a class="dropdown-item" href="#">회원 정보 수정</a>
-                <div class="dropdown-divider"></div>
-              </div>
             </li>
           </ul>
 
-          <form class="d-flex dropdown">
+         <form class="d-flex dropdown">
             <!-- <input class="form-control me-sm-2" type="search" placeholder="Search" /> -->
-            <button class="btn my-2 my-sm-0" type="button" style="padding-right: 0">
-              <img src="../assets\btn-logout.png" />
-            </button>
+            <button class="btn my-2 my-sm-0" id="logoutBtn" type="button"
+				style="padding-right: 0">
+				<img src="../assets\btn-logout.png" />
+			</button>
 
             <button class="btn my-2 my-sm-0 nav-link dropdown-toggle" aria-haspopup="true" aria-expanded="false"
               data-bs-toggle="dropdown" style="margin-right: 0.5rem">
-              <img src="../assets\account-circle.png" />
+              <img src="../assets/account-circle.png" />
             </button>
             <div class="dropdown-menu" style="right: 0">
-              <div class="dropdown-item">*******님</div>
-              <div class="dropdown-divider"></div>
-              <a class="dropdown-item" href="#">마이페이지</a>
-
-              <a class="dropdown-item" href="#">내 모임 지원자 관리</a>
-
-              <a class="dropdown-item" href="#">회원 정보 수정</a>
-              <div class="dropdown-divider"></div>
-            </div>
+				<div class="dropdown-item">${user_id}님</div>
+				<div class="dropdown-divider"></div>
+				<a class="dropdown-item" id="userinfoBtn">관리자 아이디 입니다.</a>
+				<div class="dropdown-divider"></div>
+			</div>
           </form>
         </div>
       </div>
@@ -1174,7 +1172,7 @@
                         <tbody>
                           <tr style="text-align: center;" height="80px">
                             <td align="center" class="td_column_check_manager">
-                              <input class="mx-4" type="checkbox" id="allcheck">
+                              <input class="mx-4 check_checkbox" type="checkbox" id="allcheck">
                             </td>
                             <th class="td_column_name_manager">이름</th>
                             <th class="td_column_id_manager">아이디</th>
@@ -1330,8 +1328,13 @@
   <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.3/dist/js/bootstrap.bundle.min.js"></script>
   <!-- Core theme JS-->
   <script src="../js/letspl.js"></script>
-   <script src="../js/adminUserPage.js"></script>
+  <script src="../js/logout.js"></script>
+  <script src="../js/adminUserPage.js"></script>
   <script type="text/javascript">
+    $('#logo').click(function () {
+        location.href = '/prome/project/adminpage';
+    });
+  
   	function userPaging(userPg){ 
 		location.href="/prome/project/adminUserPage?userPg=" +userPg;
 	}

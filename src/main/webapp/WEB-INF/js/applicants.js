@@ -42,9 +42,9 @@ $(function(){
 			    html += '<table id="applicantsUserTable" width="100%" style="font-weight: 400; margin-top: 10px; margin-bottom: 10px;">';
 			
 				    $.each(items, function(index, user) {
-				        html += '<tr align="center" height="80px">';
+				        html += '<tr align="center" height="80px" class="hover_tr">';
 				        html += '<td align="center" class="td_column_check">';
-				        html += '<input class="mx-4 check_checkbox" type="checkbox" value="' + user.user_id + '">';
+				        html += '<input class="mx-4 check_checkbox single_checkbox" type="checkbox" value="' + user.user_id + '">';
 				        html += '</td>';
 				        html += '<td class="td_column_id">' + user.user_id + '</td>';
 				        html += '<td class="td_column_field" width="10%">' + user.app_field + '</td>';	
@@ -67,6 +67,14 @@ $(function(){
 			});
 			
 			$('#eachProjectDiv').html(html);
+			
+			if(data == ''){
+			     $('#eachProjectDiv').html('* 프로젝트 지원자가 없습니다.').css({
+			        'font-size': '20px',
+			        'text-align': 'center'
+			    });
+			}
+
 
 
 		},	
@@ -74,25 +82,24 @@ $(function(){
 		error: function(err){
 			console.log(err);
 		}
+		
 	}); //ajax
+	
+	
 	
 	
 	$(document).on('change', '.allcheck', function() {
 	  var is_check = $(this).is(":checked");
 	  console.log(is_check);
-	
-	  $(".check_checkbox").prop("checked", is_check);    
+	  
+	  $(this).parents('table').siblings('div').find('table .check_checkbox').prop('checked', is_check);
+	   
 	});
 	
 	
 	$(document).on('click', '#accept', function(){
 	    
-/*		if($('.allcheck').is(':checked')){
-		    $('.check_checkbox').prop('checked', $(this).is(":checked"));
-		    $('.allcheck').prop('checked', false);	        
-		}
-*/
-
+		$('.allcheck').prop('checked', false);  
 	    var checkedUser = $('input[type=checkbox]:checked').map(function () {
 	        return $(this).val();
 	    }).get();
@@ -101,7 +108,7 @@ $(function(){
 	    alert(project_id);
 	      
 		if (checkedUser.length === 0) {
-		    alert('선택된 사용자가 없습니다.');
+		    alert('선택된 지원자가 없습니다.');
 		} else {
 			alert(checkedUser)
 		    if (confirm('아이디 ' + checkedUser + ' 수락하시겠습니까?')) {
@@ -130,14 +137,9 @@ $(function(){
 	
 
 		$(document).on('click', '#decline', function(){
-		
-/*		if($('.allcheck').change(':checked')){
-			var is_check = $(this).is(":checked");
-            console.log(is_check);
-
-            $(".check_checkbox").prop("checked", is_check);    
-	    }
-*/		
+				
+		$('.allcheck').prop('checked', false);  
+	    
 	    var checkedUser = $('input[type=checkbox]:checked').map(function () {
 	        return $(this).val();
 	    }).get();
@@ -146,7 +148,7 @@ $(function(){
 	    alert(project_id);
 	      
 		if (checkedUser.length === 0) {
-		    alert('선택된 사용자가 없습니다.');
+		    alert('선택된 지원자가 없습니다.');
 		} else {
 			alert(checkedUser)
 		    if (confirm('아이디 ' + checkedUser + ' 거절하시겠습니까?')) {
