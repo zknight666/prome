@@ -1,6 +1,7 @@
 package user.service;
 
 
+import java.util.HashMap;
 import user.bean.IconDTO;
 import user.bean.UserDTO;
 
@@ -27,4 +28,6 @@ public interface UserService {
 	public String snsLogin(String id);
 
 	public void snsSignup(String id);
+
+	void writeApplication(HashMap<String, String> param_map);
 }

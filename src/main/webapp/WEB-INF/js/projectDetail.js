@@ -63,8 +63,10 @@ $(function () {
       let member_field_arr = data.member_field;
 
       Object.keys(data.rec_field_map).forEach((key) => {
-
-        let member_count = member_field_arr.filter(element => key === element).length; //key(모집분야 이름) 과 멤버의 지원분야가 같은 수.
+        let member_count = 0;
+        if(member_field_arr != null){//해당 프로젝트에 들어간 멤버가 한 명 이상 있는 경우
+          member_count = member_field_arr.filter(element => key === element).length; //key(모집분야 이름)과 멤버의 지원분야가 같은 수.
+        }
 
         let button_html = '';
         if (member_count === data.rec_field_map[key]){
@@ -157,14 +159,38 @@ $(document).on("click", ".apply", function(){
   let projectName = $("#projectName").text();
   let field = $(this).prev().prev().text();
 
-    let text = '[' + '<span style="color: #2f80ed">' +projectName +'</span>] \n'+'<span style="color: #2f80ed">' + field +'</span>'+ " 분야에 지원하시겠습니까?";
+    let text = '[' + '<span style="color: #2f80ed">' +projectName +'</span>]<br><span style="color: #2f80ed">' + field +'</span>'+ " 분야에 지원하시겠습니까?";
     $(".loginModal").parent().attr("class", "modalWrapOpen");
     $(".div_center_tit").html(text);
 
+  $('.loginModal .applyBtn').data('rec-field', $(this).data('rec-field'));
+
 });
+
+
+
 
 //[지원완료]버튼 누른 경우
 $(".applyBtn").click(function () {
+  let app_field = $(this).data('rec-field');
+
+  $.ajax({ // 지원서 저장
+    type: "POST",
+    url: "/prome/users/application",
+    data: {
+      "project_id": new URLSearchParams(location.search).get("project_id"),
+      "app_field": app_field,
+      "reason": $(this).prev().val(),
+    },
+      success: function ( ) {
+        alert("지원이 완료되었습니다.")
+        $(".loginModal").parent().attr("class", "modalWrapClose"); //모달창 닫음.
+
+      },
+      error: function (err) {
+        console.log(err);
+      }
+    })
 
 
 
@@ -173,9 +199,11 @@ $(".applyBtn").click(function () {
 
 
 
-  $(".loginModal").parent().attr("class", "modalWrapClose");
-  alert("지원 완료");
 });
+
+
+
+
 
 //[취소]버튼 누른 경우
 $(".applyCancelBtn, .closeBtn").click(function () {

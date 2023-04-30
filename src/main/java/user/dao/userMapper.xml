@@ -120,6 +120,10 @@
 		SELECT * from USER_TECH_STACK where user_id=#{user_id}
 	</select>
 
+	<insert id="writeApplication" parameterType="java.util.HashMap">
+		insert into APPLICATION (id, user_id, project_id, app_field, reason, status, app_date, tech_stack)
+		values(APPLICATION_SEQ.NEXTVAL, #{user_id}, #{project_id}, #{app_field}, #{reason}, 'WAITING', sysdate, #{tech_stack})
+	</insert>
 
 
 </mapper>

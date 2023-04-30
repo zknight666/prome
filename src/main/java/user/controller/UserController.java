@@ -1,5 +1,6 @@
 package user.controller;
 
+import java.util.HashMap;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -161,6 +162,18 @@ public class UserController {
 
 	//명연 End
 	//---------------------------------------------------------------------------------------------------
+
+
+	// 지원서 저장
+	@PostMapping(value = "application")
+	@ResponseBody
+	public void writeApplication(@SessionAttribute("user_id") String user_id,
+		@RequestParam HashMap<String, String> param_map) { //project_id, app_field, reason
+
+		param_map.put("user_id", user_id);
+		userService.writeApplication(param_map);//user_id, project_id, app_field, reason 넘김
+
+	}
 
 
 }

@@ -1,6 +1,7 @@
 package user.dao;
 
 
+import java.util.HashMap;
 import user.bean.IconDTO;
 import user.bean.UserDTO;
 
@@ -24,5 +25,7 @@ public interface UserDAO {
 	public void snsSignup(String id);
 
 	public void snsSignupIcon(String id);
+
+	void writeApplication(HashMap<String, String> param_map);
     
 }

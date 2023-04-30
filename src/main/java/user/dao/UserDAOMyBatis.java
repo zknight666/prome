@@ -1,6 +1,8 @@
 	package user.dao;
 
 
+import java.util.ArrayList;
+import java.util.HashMap;
 import org.apache.ibatis.session.SqlSession;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
@@ -70,7 +72,25 @@ public class UserDAOMyBatis implements UserDAO {
 		
 	}
 
-	
+	@Override
+	public void writeApplication(HashMap<String, String> param_map) { //user_id, project_id, app_field, reason
+
+		HashMap<String, Object> user_tech_map = sqlSession.selectOne("userSQL.userTechStack", param_map.get("user_id"));
+		//hashmap에 저장된 key 중에 value가 "y"인 것들만 고르기.
+		ArrayList<String> user_tech_stack = new ArrayList<String>();
+		user_tech_map.forEach((key, value)->{
+			if(value.equals("y") || value.equals("Y")){
+				user_tech_stack.add(key);
+			}
+		});
+
+		String tech_stack  = String.join(",",  user_tech_stack);
+		param_map.put("tech_stack", tech_stack);
+
+		sqlSession.insert("userSQL.writeApplication", param_map);//user_id, project_id, app_field, reason, tech_stack
+	}
+
+
 }
 
 

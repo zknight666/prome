@@ -434,7 +434,7 @@ $(document).on('click', '.top .favorite-active', function (event){
     type: "POST",
     url: "/prome/project/deleteBookmark",
     data:{
-      "project_id": project_id,
+      "project_id": project_id},
     success: function ( ) {
       alert("북마크 삭제했습니다.")
       $('div[class^="card-fav"][data-project-id="'+project_id+'"]').find('.top .favorite-active').attr("class", "favorite");
@@ -442,7 +442,7 @@ $(document).on('click', '.top .favorite-active', function (event){
     error: function (err) {
       console.log(err);
     }
-  }})
+  })
 
 });
 

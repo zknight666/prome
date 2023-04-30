@@ -72,7 +72,8 @@
         </button>
 
         <div class="collapse navbar-collapse" id="navbarColor03">
-          <img src="../assets/logo.png" style="cursor: pointer" />
+          <a  href="/prome">
+          <img src="../assets/logo.png" style="cursor: pointer" /></a>
 
           <ul class="navbar-nav me-auto">
             <li class="nav-item dropdown">
@@ -103,7 +104,7 @@
               <img src="../assets/account-circle.png" />
             </button>
             <div class="dropdown-menu" style="right: 0">
-              <div class="dropdown-item">*******님</div>
+              <div class="dropdown-item">${user_id}님</div>
               <div class="dropdown-divider"></div>
               <a class="dropdown-item" href="/prome/users/mypage">마이페이지</a>
 
