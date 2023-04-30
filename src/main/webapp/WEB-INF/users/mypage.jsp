@@ -95,7 +95,7 @@
 
           <form class="d-flex dropdown">
             <!-- <input class="form-control me-sm-2" type="search" placeholder="Search" /> -->
-            <button class="btn my-2 my-sm-0" type="button" style="padding-right: 0">
+            <button id="logoutBtn" class="btn my-2 my-sm-0" type="button" style="padding-right: 0">
               <img src="../assets/btn-logout.png" />
             </button>
 
@@ -481,6 +481,7 @@
   <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script type="text/javascript" src="../js/slick.min.js"></script>
   <script type="text/javascript" src="../js/mypage.js"></script>
+  <script src="../js/logout.js"></script>
 
 
 </body>

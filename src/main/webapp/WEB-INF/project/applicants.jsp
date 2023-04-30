@@ -77,13 +77,7 @@
         <!-- Header-->
         <header class="bg-dark" style="
                   background-image: url('../assets/main-banner.png');
-                  background-size: auto;
-                  background-repeat: no-repeat;
-                  background-position: center;
-                  height: auto;
-                  min-height: 400px;
-                  background-color: #ffffff !important;
-                "></header>
+                 background-size: contain; background-repeat: no-repeat; background-position: top; height: auto; min-height: 400px; background-color: #ffffff !important;"></header>
 
         <section class="container">
         <input type="hidden" id="memId" value="${param.id}">

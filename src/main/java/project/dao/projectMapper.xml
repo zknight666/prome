@@ -417,7 +417,7 @@
 	<!--	명연 End -->
 
 	<select id="memberApplication" parameterType="java.util.HashMap" resultType="java.util.HashMap">
-		select * from application where project_id=#{project_id} and user_id=#{user_id} and (status='P_ACCEPT' or status='ACCEPT')
+		select * from application where project_id=#{project_id} and user_id=#{user_id} and status in ('P_ACCEPT', 'ACCEPT')
 	</select>
 
 	<update id="updateApplicationStatus" parameterType="java.util.Map">

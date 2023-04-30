@@ -463,7 +463,7 @@ $(document).on('click', '.slider-apply .top button', function (event){
       },
       success: function () {
         let slick_index = $(this).closest('.slick-slide').data('slick-index');
-        $('.slider-apply').slick('slickRemove', slick_index )
+        $('.slider-apply').slick('slickRemove', slick_index);
         location.reload()
       },
       error: function (err) {

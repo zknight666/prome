@@ -71,7 +71,7 @@
 		</nav>
 		<!-- Header-->
 		<header class="bg-dark"
-			style="background-image: url('../assets/main-banner.png'); background-size: auto; background-repeat: no-repeat; background-position: center; height: auto; min-height: 400px; background-color: #ffffff !important;"></header>
+			style="background-image: url('../assets/main-banner.png'); background-size: contain; background-repeat: no-repeat; background-position: top; height: auto; min-height: 400px; background-color: #ffffff !important;"></header>
 
 		<section class="container">
 			<div class="container px-4 px-lg-5 mt-5">

@@ -158,13 +158,7 @@
     <!-- Header-->
     <header class="bg-dark" style="
                   background-image: url('../assets/main-banner.png');
-                  background-size: auto;
-                  background-repeat: no-repeat;
-                  background-position: center;
-                  height: auto;
-                  min-height: 400px;
-                  background-color: #ffffff !important;
-                "></header>
+                  background-size: contain; background-repeat: no-repeat; background-position: top; height: auto; min-height: 400px; background-color: #ffffff !important;"></header>
 
     <!-- Main content-->
     <section class="container" style="margin-bottom: 5rem;">
@@ -352,6 +346,7 @@
 <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.4.min.js"></script>
 <script src="../js/letspl.js"></script>
 <script src="../js/projectDetail.js"></script> <!--projectMember, recruitment 합침 -->
+<script src="../js/logout.js"></script>
 
 </body>
 
