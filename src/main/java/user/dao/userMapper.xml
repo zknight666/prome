@@ -70,7 +70,7 @@
 		figma=#{figma},photoshop=#{photoshop},ios=#{ios},
 		android=#{android},react=#{react},vue=#{vue},flutter=#{flutter},
 		html_css=#{html},javascript=#{javascript},spring=#{spring},java=#{java},
-		kotlin=#{kotlin},node_js=#{nodejs},mongodb=#{mongodb},c_c#=#{c},
+		kotlin=#{kotlin},node_js=#{nodejs},mongodb=#{mongodb},c=#{c},
 		git=#{git},aws=#{aws},docker=#{docker},kubernetes=#{kubernetes},
 		tensorflow=#{tensorflow},unity=#{unity},python=#{python},
 		mysql=#{mysql},typescript=#{typescript} where user_id=#{id}

@@ -152,7 +152,7 @@ const techStackIcons = {
     'KOTLIN': './assets/tech-icon/kotlin.svg',
     'NODE_JS': './assets/tech-icon/node_js.svg',
     'MONGODB': './assets/tech-icon/mongodb.svg',
-    'C_C#': './assets/tech-icon/c_c.svg',
+    'C': './assets/tech-icon/c.svg',
     'GIT': './assets/tech-icon/git.svg',
     'AWS': './assets/tech-icon/aws.svg',
     'DOCKER': './assets/tech-icon/docker.svg',

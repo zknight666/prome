@@ -90,7 +90,7 @@ $(function () {
               techLan_icon =
                 techLan_icon +
                 '<div id="techLan" class="techLan_icon"><img src="../assets/icon/mongodb.png" ><br><span>mongodb</span></div>';
-            } else if (data[i] == "C_C#") {
+            } else if (data[i] == "C") {
               techLan_icon =
                 techLan_icon +
                 '<div id="techLan" class="techLan_icon"><img src="../assets/icon/cc.png" ><br><span>cc</span></div>';
@@ -192,7 +192,7 @@ $(function () {
                 } else if (data[i] == "MONGODB") {
                   leaderTech_icon =
                     leaderTech_icon + '<img src="../assets/icon/mongodb.png" >';
-                } else if (data[i] == "C_C#") {
+                } else if (data[i] == "C") {
                   leaderTech_icon =
                     leaderTech_icon + '<img src="../assets/icon/cc.png" >';
                 } else if (data[i] == "GIT") {

@@ -30,7 +30,7 @@
 
 		insert into
 		project_tech_stack (PROJECT_ID, FIGMA,
-		PHOTOSHOP,IOS,ANDROID,REACT,VUE,FLUTTER,HTML_CSS,JAVASCRIPT,SPRING,JAVA,KOTLIN,NODE_JS,MONGODB,C_C#,GIT,AWS,DOCKER,KUBERNETES,TENSORFLOW,UNITY,PYTHON,MYSQL,TYPESCRIPT)
+		PHOTOSHOP,IOS,ANDROID,REACT,VUE,FLUTTER,HTML_CSS,JAVASCRIPT,SPRING,JAVA,KOTLIN,NODE_JS,MONGODB,C,GIT,AWS,DOCKER,KUBERNETES,TENSORFLOW,UNITY,PYTHON,MYSQL,TYPESCRIPT)
 		VALUES (#{projectId},#{tech_stacks.figma},
 		#{tech_stacks.photoshop},
 		#{tech_stacks.ios},
@@ -45,7 +45,7 @@
 		#{tech_stacks.kotlin},
 		#{tech_stacks.node_js},
 		#{tech_stacks.mongodb},
-		#{tech_stacks.C_C#},
+		#{tech_stacks.C},
 		#{tech_stacks.git},
 		#{tech_stacks.aws},
 		#{tech_stacks.docker},
@@ -118,7 +118,7 @@
 				'KOTLIN' VALUE pts.KOTLIN,
 				'NODE_JS' VALUE pts.NODE_JS,
 				'MONGODB' VALUE pts.MONGODB,
-				'C_C#' VALUE pts.C_C#,
+				'C' VALUE pts.C,
 				'GIT' VALUE pts.GIT,
 				'AWS' VALUE pts.AWS,
 				'DOCKER' VALUE pts.DOCKER,
@@ -147,7 +147,7 @@
 	<insert id="project_tech_stack" parameterType="project">
 		insert into
 		project_tech_stack (PROJECT_ID, FIGMA,
-		PHOTOSHOP,IOS,ANDROID,REACT,VUE,FLUTTER,HTML_CSS,JAVASCRIPT,SPRING,JAVA,KOTLIN,NODE_JS,MONGODB,C_C#,GIT,AWS,DOCKER,KUBERNETES,TENSORFLOW,UNITY,PYTHON,MYSQL,TYPESCRIPT)
+		PHOTOSHOP,IOS,ANDROID,REACT,VUE,FLUTTER,HTML_CSS,JAVASCRIPT,SPRING,JAVA,KOTLIN,NODE_JS,MONGODB,C,GIT,AWS,DOCKER,KUBERNETES,TENSORFLOW,UNITY,PYTHON,MYSQL,TYPESCRIPT)
 		VALUES (#{projectId},#{tech_stacks.figma},
 		#{tech_stacks.photoshop},
 		#{tech_stacks.ios},
@@ -162,7 +162,7 @@
 		#{tech_stacks.kotlin},
 		#{tech_stacks.node_js},
 		#{tech_stacks.mongodb},
-		#{tech_stacks.C_C#},
+		#{tech_stacks.C},
 		#{tech_stacks.git},
 		#{tech_stacks.aws},
 		#{tech_stacks.docker},
