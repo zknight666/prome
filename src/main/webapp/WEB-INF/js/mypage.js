@@ -382,7 +382,7 @@ $(document).on('click', '.slick-slide', function (){
   console.log("!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!");
 
   let project_id = $(this).data("project-id")
-  location.href = '/prome/project/project?id=' +project_id;
+  location.href = '/prome/project/project?project_id=' +project_id;
 
 });
 

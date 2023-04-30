@@ -11,13 +11,8 @@ import project.bean.ProjectMainpageDTO;
 import user.bean.UserDTO;
 
 public interface ProjectDAO {
-    List<ProjectDTO> getAdminpage(Map<String, Object> map2);
-
-    List<String> getChosenTech(int projectId);
 
     void adminDeleteProject(int projectId);
-
-//    List<ProjectDTO> getBookmark();
 
 	void buildProject(ProjectDTO projectDTO);
 

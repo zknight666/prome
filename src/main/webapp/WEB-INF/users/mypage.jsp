@@ -117,15 +117,7 @@
       </div>
     </nav>
     <!-- Header-->
-    <header class="bg-dark" style="
-          background-image: url('../assets/main-banner.png');
-          background-size: auto;
-          background-repeat: no-repeat;
-          background-position: center;
-          height: auto;
-          min-height: 400px;
-          background-color: #ffffff !important;
-        "></header>
+    <header class="bg-dark" style="background-image: url('../assets/main-banner.png'); background-size: contain; background-repeat: no-repeat; background-position: top; height: auto; min-height: 400px; background-color: #ffffff !important;"></header>
 
     <!-- Section-->
     <section class="container">

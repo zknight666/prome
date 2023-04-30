@@ -52,13 +52,13 @@
             margin: 0px 10px 0px 10px;
             justify-content: flex-end;
             text-align: center;
-            font-size: 1rem;
+            font-size: 12px;
             font-weight: 500;
 
         }
 
         .techLan_icon span{
-            margin-top: 3px;
+            margin-top: 5px;
         }
 
         #recruitment{
@@ -132,8 +132,7 @@
                 </ul>
 
                 <form class="d-flex dropdown">
-                    <!-- <input class="form-control me-sm-2" type="search" placeholder="Search" /> -->
-                    <button class="btn my-2 my-sm-0" type="button" style="padding-right: 0">
+                    <button id="logoutBtn" class="btn my-2 my-sm-0" type="button" style="padding-right: 0">
                         <img src="../assets\btn-logout.png" />
                     </button>
 
@@ -142,13 +141,13 @@
                         <img src="../assets\account-circle.png" />
                     </button>
                     <div class="dropdown-menu" style="right: 0">
-                        <div class="dropdown-item">*******님</div>
+                        <div class="dropdown-item">${user_id}님</div>
                         <div class="dropdown-divider"></div>
-                        <a class="dropdown-item" href="#">마이페이지</a>
+                        <a class="dropdown-item" href="/prome/users/mypage">마이페이지</a>
 
-                        <a class="dropdown-item" href="#">내 모임 지원자 관리</a>
+                        <a class="dropdown-item" href="/prome/project/applicants">내 모임 지원자 관리</a>
 
-                        <a class="dropdown-item" href="#">회원 정보 수정</a>
+                        <a class="dropdown-item" href="/prome/users/userinfo">회원 정보 수정</a>
                         <div class="dropdown-divider"></div>
                     </div>
                 </form>
@@ -276,31 +275,31 @@
 
 
                             <!-- 동적으로 멤버카드 더해짐 -->
-                            <div class="board_member">
-                                <div class="board_member1">
-                                    <div class="board_member1_img">
-                                        <img class="img" src="../assets/account-circle.png">
-                                    </div>
-                                    <div>
-                                        <span class="board_member1_id">Baek</span>
-                                    </div>
-                                </div>
-                                <div class="board_member2">
-                                    <span class="board_member2_field">UI/UX 디자인</span>
-                                </div>
-                                <div class="board_member3">
-                                    <div>
-                                        <span class="board_member3_techLan">기술/언어</span>
-                                    </div>
-                                    <div class="board_member3_icon">
-                                        <img class="image" src=" ../assets/icon/cc.png">
-                                        <img class="image" src=" ../assets/icon/docker.png">
-                                        <img class="image" src=" ../assets/icon/android.png">
-                                        <img class="image" src=" ../assets/icon/docker.png">
-                                        <img class="image" src=" ../assets/icon/aws.png">
-                                    </div>
-                                </div>
-                            </div>
+<%--                            <div class="board_member">--%>
+<%--                                <div class="board_member1">--%>
+<%--                                    <div class="board_member1_img">--%>
+<%--                                        <img class="img" src="../assets/account-circle.png">--%>
+<%--                                    </div>--%>
+<%--                                    <div>--%>
+<%--                                        <span class="board_member1_id">Baek</span>--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                                <div class="board_member2">--%>
+<%--                                    <span class="board_member2_field">UI/UX 디자인</span>--%>
+<%--                                </div>--%>
+<%--                                <div class="board_member3">--%>
+<%--                                    <div>--%>
+<%--                                        <span class="board_member3_techLan">기술/언어</span>--%>
+<%--                                    </div>--%>
+<%--                                    <div class="board_member3_icon">--%>
+<%--                                        <img class="image" src=" ../assets/icon/cc.png">--%>
+<%--                                        <img class="image" src=" ../assets/icon/docker.png">--%>
+<%--                                        <img class="image" src=" ../assets/icon/android.png">--%>
+<%--                                        <img class="image" src=" ../assets/icon/docker.png">--%>
+<%--                                        <img class="image" src=" ../assets/icon/aws.png">--%>
+<%--                                    </div>--%>
+<%--                                </div>--%>
+<%--                            </div>--%>
 
                             <!--멤버 카드 End-->
 
@@ -327,7 +326,7 @@
             <img loading="lazy" src="../assets/icon/ic-close.svg" alt="close">
         </button>
         <div><img class="pmelogo" src="../assets/icon/pmelogo.png"></div>
-        <div class="div_center_tit" style="text-align: center; font-size: 1.2rem;">
+        <div class="div_center_tit" style="padding: 0; text-align: center; font-size: 1.2rem;">
 
         </div>
         <div class="div_center">

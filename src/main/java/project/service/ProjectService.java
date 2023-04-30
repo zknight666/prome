@@ -15,16 +15,12 @@ import user.bean.UserDTO;
 @Service
 public interface ProjectService {
     public void buildProject(ProjectDTO projectDTO);
-    
 
     void adminDeleteProject(int projectId);
 
     Map<String, Object> adminGetUserList(String userPg);
     
     void adminDeleteUser(String checkedUser);
-
-//    List<ProjectDTO> getBookmark();
-
 
     List<Object> getApplicants(String team_leader);
 
@@ -54,12 +50,11 @@ public interface ProjectService {
 
     ProjectDTO getProject(String project_id);
 
-    List<String> getChosenTech(int projectId);
-
     //명연님 End
     //-------------------------------------------------------------------------------------------------------
 
     ProjDetailDTO getProjectDetail(String project_id);
+
 	Map<String, Object> getMainProjects(String projectPg);
 
 

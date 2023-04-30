@@ -70,11 +70,6 @@ public class ProjectServiceImpl implements ProjectService {
     public List<String> getBookmark(String user_id) {
         return projectDAO.getBookmark(user_id);
     }
-//    @Override
-//	public List<ProjectDTO> getBookmark() {
-//		// TODO Auto-generated method stub
-//		return null;
-//	}
 
 	
     @Override
@@ -194,11 +189,6 @@ public class ProjectServiceImpl implements ProjectService {
 	}
 	//---------------------------------------------------
 
-//    @Override
-//    public List<ProjectDTO> getBookmark() {
-//        return projectDAO.getBookmark();
-//    }
-
     @Override
     public void addBookmark(String user_id, String project_id) {
         projectDAO.addBookmark(user_id, project_id);
@@ -247,10 +237,6 @@ public class ProjectServiceImpl implements ProjectService {
 		return projectDAO.getProject(project_id);
 	}
 
-	@Override
-	public List<String> getChosenTech(int projectId) {
-		return projectDAO.getChosenTech(projectId);
-	}
 
 	//명연님 End
 	//-------------------------------------------------------------------------

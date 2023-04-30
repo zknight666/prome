@@ -243,12 +243,6 @@ public class ProjectController {
 		return projectService.getProject(project_id);
 	}
 
-	@GetMapping(value="getChosenTech")
-	@ResponseBody
-	public List<String> getChosenTech(@RequestParam int projectId) {
-		return projectService.getChosenTech(projectId);
-	}
-
 	@GetMapping(value="project")
 	public String project(@RequestParam String project_id, Model model) {
 		model.addAttribute("project_id", project_id);

@@ -1354,3 +1354,7 @@ input[id="vue"]:hover + label em {
 	outline: none;
 	
 }
+
+.page-item, .page-link{
+  cursor: pointer;
+}
