@@ -9,6 +9,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import project.bean.ApplicantsDTO;
 import project.bean.ProjCardDTO;
+import project.bean.ProjDetailDTO;
 import project.bean.ProjectDTO;
 import project.bean.ProjectMainpageDTO;
 import project.bean.ProjectPaging;
@@ -231,6 +232,30 @@ public class ProjectServiceImpl implements ProjectService {
 		projectDAO.writeApplication(user_id, map);
 	}
 
+	//-------------------------------------------------------------------------------------------------------
+	//명연님 Start
+	@Override
+	public List<UserDTO> getUserList() {
+		return projectDAO.getUserList();
+	}
+
+	@Override
+	public ProjectDTO getProject(String project_id) {
+		return projectDAO.getProject(project_id);
+	}
+
+	@Override
+	public List<String> getChosenTech(int projectId) {
+		return projectDAO.getChosenTech(projectId);
+	}
+
+	//명연님 End
+	//-------------------------------------------------------------------------
+
+	@Override
+	public ProjDetailDTO getProjectDetail(String project_id){
+		return projectDAO.getProjectDetail(project_id);
+	};
 
 
 }

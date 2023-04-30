@@ -7,8 +7,10 @@ import java.util.Map;
 import org.springframework.stereotype.Service;
 
 import project.bean.ProjCardDTO;
+import project.bean.ProjDetailDTO;
 import project.bean.ProjectDTO;
 import project.bean.ProjectMainpageDTO;
+import user.bean.UserDTO;
 
 @Service
 public interface ProjectService {
@@ -48,4 +50,16 @@ public interface ProjectService {
 
     void writeApplication(String user_id, Map<String, Object> map);
 
+    //-------------------------------------------------------------------------------------------------------
+    //명연님 Start
+    List<UserDTO> getUserList();
+
+    ProjectDTO getProject(String project_id);
+
+    List<String> getChosenTech(int projectId);
+
+    //명연님 End
+    //-------------------------------------------------------------------------------------------------------
+
+    ProjDetailDTO getProjectDetail(String project_id);
 }

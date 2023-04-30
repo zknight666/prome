@@ -4,8 +4,8 @@
  "https://mybatis.org/dtd/mybatis-3-mapper.dtd">
 
 <mapper namespace="projectSQL">
-	<select id="getProject" parameterType="String"
-		resultType="project">
+
+	<select id="getProject" parameterType="String" resultType="project">
 		select * from project where id=#{project_id}
 	</select>
 
@@ -29,7 +29,7 @@
 
 		insert into
 		project_tech_stack (PROJECT_ID, FIGMA,
-		PHOTOSHOP,IOS,ANDROID,REACT,VUE,FLUTTER,HTML_CSS,JAVASCRIPT,SPRING,JAVA,KOTLIN,NODE_JS,MONGODB,C_C#,GIT,AWS,DOCKER,KUBERNETES,TENSORFLOW,UNITY,PYTHON,MYSQL,TYPESCRIPT)
+		PHOTOSHOP,IOS,ANDROID,REACT,VUE,FLUTTER,HTML_CSS,JAVASCRIPT,SPRING,JAVA,KOTLIN,NODE_JS,MONGODB,c,GIT,AWS,DOCKER,KUBERNETES,TENSORFLOW,UNITY,PYTHON,MYSQL,TYPESCRIPT)
 		VALUES (#{projectId},#{tech_stacks.figma},
 		#{tech_stacks.photoshop},
 		#{tech_stacks.ios},
@@ -44,7 +44,7 @@
 		#{tech_stacks.kotlin},
 		#{tech_stacks.node_js},
 		#{tech_stacks.mongodb},
-		#{tech_stacks.C_C#},
+		#{tech_stacks.c},
 		#{tech_stacks.git},
 		#{tech_stacks.aws},
 		#{tech_stacks.docker},
@@ -122,7 +122,7 @@
 		'NODE_JS'
 		VALUE pts.NODE_JS,
 		'MONGODB' VALUE pts.MONGODB,
-		'C_C#' VALUE pts.C_C#,
+		'c' VALUE pts.c,
 		'GIT' VALUE pts.GIT,
 		'AWS' VALUE pts.AWS,
 		'DOCKER' VALUE pts.DOCKER,
@@ -146,7 +146,7 @@
 
 		insert into
 		project_tech_stack (PROJECT_ID, FIGMA,
-		PHOTOSHOP,IOS,ANDROID,REACT,VUE,FLUTTER,HTML_CSS,JAVASCRIPT,SPRING,JAVA,KOTLIN,NODE_JS,MONGODB,C_C#,GIT,AWS,DOCKER,KUBERNETES,TENSORFLOW,UNITY,PYTHON,MYSQL,TYPESCRIPT)
+		PHOTOSHOP,IOS,ANDROID,REACT,VUE,FLUTTER,HTML_CSS,JAVASCRIPT,SPRING,JAVA,KOTLIN,NODE_JS,MONGODB,c,GIT,AWS,DOCKER,KUBERNETES,TENSORFLOW,UNITY,PYTHON,MYSQL,TYPESCRIPT)
 		VALUES (#{projectId},#{tech_stacks.figma},
 		#{tech_stacks.photoshop},
 		#{tech_stacks.ios},
@@ -161,7 +161,7 @@
 		#{tech_stacks.kotlin},
 		#{tech_stacks.node_js},
 		#{tech_stacks.mongodb},
-		#{tech_stacks.C_C#},
+		#{tech_stacks.c},
 		#{tech_stacks.git},
 		#{tech_stacks.aws},
 		#{tech_stacks.docker},
@@ -225,7 +225,7 @@
 	</select>
 
 
-	<select id="getChosenTech" resultType="String">
+	<select id="getChosenTech" parameterType="int" resultType="String">
 		SELECT chosen_tech
 		FROM
 		Project_Tech_Stack
@@ -234,11 +234,11 @@
 		figma, photoshop, ios, android, react, vue, flutter,
 		html_css,
 		javascript, spring, java, Kotlin, node_js,
-		MongoDB, C_C#, Git, AWS,
+		MongoDB, c, Git, AWS,
 		Docker, kubernetes, tensorflow,
 		unity, python, MySql, TypeScript
 		)
-		)WHERE chosen = 'y' and project_id=#{projectId};
+		)WHERE chosen = 'Y' and project_id=#{projectId};
 	</select>
 
 
@@ -423,8 +423,7 @@
 	</select>
 
 	<!-- 특정 프로젝트의 멤버(user_id) -->
-	<select id="projectMember" parameterType="String"
-		resultType="java.util.HashMap">
+	<select id="projectMember" parameterType="String" resultType="java.util.HashMap">
 		select member1, member2, member3, member4, member5, member6, member7,
 		member8, member9 from TEAM_MEMBER where id=#{project_id}
 	</select>
@@ -451,6 +450,28 @@
 	<delete id="deleteApplication" parameterType="java.util.HashMap">
 		delete APPLICATION where user_id=#{user_id} and project_id=#{project_id}
 	</delete>
+
+
+
+	<!-- 명연 Start -->
+	<!-- 모집 분야별 모집할 멤버 수 -->
+	<select id="recruitment" parameterType="String" resultType="java.util.HashMap">
+		select field_name, member_num
+		FROM RECRUITMENT_FIELD
+		UNPIVOT (
+		member_num FOR field_name IN (
+		UI_UX_PLAN, PLAN_ETC, GRAPHIC_DESIGN, UI_UX_DESIGN,
+		DESIGN_ETC, IOS, ANDROID, WEB_FE, WEB_PUBLISHER, CROSS_FLATFORM,
+		WEB_SERVER, BLOCK_CHAIN, AI, BIG_DATA, GAME_PLAN, PM
+		)
+		) WHERE member_num IS NOT NULL and project_id=#{project_id}
+	</select>
+
+	<!--	명연 End -->
+
+	<select id="memberApplication" parameterType="java.util.HashMap" resultType="java.util.HashMap">
+		select * from application where project_id=#{project_id} and user_id=#{user_id} and (status='P_ACCEPT' or status='ACCEPT')
+	</select>
 
 </mapper>
 

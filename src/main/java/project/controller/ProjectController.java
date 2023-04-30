@@ -16,9 +16,11 @@ import org.springframework.web.bind.annotation.ResponseBody;
 import org.springframework.web.bind.annotation.SessionAttribute;
 import org.springframework.web.bind.annotation.SessionAttributes;
 import project.bean.ProjCardDTO;
+import project.bean.ProjDetailDTO;
 import project.bean.ProjectDTO;
 import project.bean.ProjectMainpageDTO;
 import project.service.ProjectService;
+import user.bean.UserDTO;
 
 
 @Controller
@@ -49,13 +51,7 @@ public class ProjectController {
 	public List<ProjectMainpageDTO> getMainProjects() {
 		return projectService.getMainProjects();
 	}
-	
-	
-	@GetMapping(value="project")
-	public String project() {
-		
-		return "project/project";
-	}
+
 	
 	//---------- applicants 신청서 - 프로젝트 생성자 페이지 ---------------
 	@GetMapping(value="applicants")
@@ -231,6 +227,45 @@ public class ProjectController {
 		@RequestParam Map<String,Object> map //project_id, app_field, reason
 	){
 		projectService.writeApplication(user_id, map);
+	}
+
+
+	//-------------------------------------------------------------------------------------------------------
+	//명연님 Start
+
+	@GetMapping(value="getProject")
+	@ResponseBody
+	public ProjectDTO project(@RequestParam String project_id) {
+		return projectService.getProject(project_id);
+	}
+
+	@GetMapping(value="getChosenTech")
+	@ResponseBody
+	public List<String> getChosenTech(@RequestParam int projectId) {
+		return projectService.getChosenTech(projectId);
+	}
+
+	@GetMapping(value="project")
+	public String project(@RequestParam String project_id, Model model) {
+		model.addAttribute("project_id", project_id);
+		return "project/projectDetail";
+	}
+
+
+	@GetMapping(value = "userList")
+	@ResponseBody
+	public List<UserDTO> getUserList() {
+		return projectService.getUserList();
+	}
+
+	//명연님 End
+	//-------------------------------------------------------------------------------------------------------
+
+	//Project 상세페이지 정보 가져오기
+	@GetMapping(value = "projectDetail")
+	@ResponseBody
+	public ProjDetailDTO getProjectDetail(@RequestParam String project_id) {
+		return projectService.getProjectDetail(project_id);
 	}
 
 

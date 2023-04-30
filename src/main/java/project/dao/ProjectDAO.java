@@ -5,6 +5,7 @@ import java.util.Map;
 
 import project.bean.ApplicantsDTO;
 import project.bean.ProjCardDTO;
+import project.bean.ProjDetailDTO;
 import project.bean.ProjectDTO;
 import project.bean.ProjectMainpageDTO;
 import user.bean.UserDTO;
@@ -12,13 +13,13 @@ import user.bean.UserDTO;
 public interface ProjectDAO {
     List<ProjectDTO> getAdminpage(Map<String, Object> map2);
 
-    public List<String> getChosenTech(int projectId);
+    List<String> getChosenTech(int projectId);
 
     void adminDeleteProject(int projectId);
 
 //    List<ProjectDTO> getBookmark();
 
-	public void buildProject(ProjectDTO projectDTO);
+	void buildProject(ProjectDTO projectDTO);
 
 	List<UserDTO> adminGetUserList(Map<String, Integer> map);
 
@@ -51,4 +52,12 @@ public interface ProjectDAO {
     int deleteApplication(String user_id, String project_id);
 
     void writeApplication(String user_id, Map<String, Object> map);
+
+    //명연 Start
+    List<UserDTO> getUserList();
+    //명연 End
+
+    ProjDetailDTO getProjectDetail(String project_id);
+
+
 }

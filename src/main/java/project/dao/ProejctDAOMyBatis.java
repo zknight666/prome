@@ -17,8 +17,10 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 
 import project.bean.ApplicantsDTO;
 import project.bean.ProjCardDTO;
+import project.bean.ProjDetailDTO;
 import project.bean.ProjectDTO;
 import project.bean.ProjectMainpageDTO;
+import project.bean.MemberCardDTO;
 import user.bean.UserDTO;
 
 @Repository
@@ -169,10 +171,11 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 	}
 	//--------------------------------------------------
 
-
+    @Override
     public List<UserDTO> getUserList() {
         return sqlSession.selectList("userSQL.getUserList");
     }
+
 
 
     //1개의 프로젝트 카드를 표시하기 위해 필요한 모든 정보를 갖고 온다
@@ -305,9 +308,91 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 
         //#{user_id}, #{project_id}, #{app_field}, #{reason}, #{tech_stack)
         sqlSession.insert("projectSQL.writeApplication", map);
-
-
     }
+
+
+    @Override
+    public ProjDetailDTO getProjectDetail(String project_id){
+        List<MemberCardDTO> memberCardList = new ArrayList<MemberCardDTO>();
+
+        ProjectDTO projectDTO =  sqlSession.selectOne("projectSQL.getProject", project_id);
+
+        //1)분야별 모집한 멤버 수
+        //해당 프로젝트의 멤버들 user_id, ex)member6 이후의 값이 null일 때 hashmap에 매핑되지 않는다.
+        HashMap<String, Object> proj_member_map = sqlSession.selectOne("projectSQL.projectMember", project_id); //특정 프로젝트의 멤버의 user_id를 반환함.
+        ArrayList<String> member_arr = new ArrayList<String>();
+        List<String> member_field = null;
+
+        if (proj_member_map != null && proj_member_map.size() != 0){ //해당 프로젝트에 가입승인된 멤버가 한명이라도 있는 경우
+            proj_member_map.forEach((key, value)->{
+                //value가 아이디임.
+                member_arr.add((String)value);
+
+                Map<String, String> param_map = new HashMap<String, String>();
+                param_map.put("user_id", (String)value);
+                param_map.put("project_id", project_id);
+
+
+                HashMap<String, String> member_app_map = sqlSession.selectOne("projectSQL.memberApplication", param_map);
+
+                    MemberCardDTO memberCardDTO = new MemberCardDTO();
+                    memberCardDTO.setUserId((String)value);
+                    memberCardDTO.setApp_field(member_app_map.get("APP_FIELD"));
+                    memberCardDTO.setUser_tech_stack(member_app_map.get("TECH_STACK"));
+
+                    //List<MemberCardDTO> 에 추가함.
+                    memberCardList.add(memberCardDTO);
+
+
+            });
+
+            Map<String, Object> param2_map = new HashMap<String, Object>();
+            param2_map.put("project_id", project_id);
+            param2_map.put("member_arr", member_arr);
+            //member_field은 지원분야 이름이 0~9개 있음.
+            member_field = sqlSession.selectList("projectSQL.memberField", param2_map);
+
+
+        }
+        //분야별 모집할 멤버 수
+        HashMap<String, Object> rec_field_map = sqlSession.selectOne("projectSQL.recField", project_id);
+
+
+
+        //2) 해당 프로젝트 적용 기술 가져와서 Icon 표시함 -> project_tech_stack
+        HashMap<String, Object> proj_tech_map = sqlSession.selectOne("projectSQL.techStack", project_id);
+        //hashmap에 저장된 key 중에 value가 "y"인 것들만 고르기.
+        ArrayList<String> project_tech_stack = new ArrayList<String>();
+        proj_tech_map.forEach((key, value)->{
+            if(value.equals("y") || value.equals("Y")){
+                project_tech_stack.add(key);
+            }
+        });
+
+
+        //3) 리더의 tech_stack
+        String leader_id = projectDTO.getTeam_leader();
+        HashMap<String, Object> leader_tech_map = sqlSession.selectOne("userSQL.userTechStack", leader_id);
+        //hashmap에 저장된 key 중에 value가 "y"인 것들만 고르기.
+        ArrayList<String> leader_tech_stack = new ArrayList<String>();
+        leader_tech_map.forEach((key, value)->{
+            if(value.equals("y") || value.equals("Y")){
+                leader_tech_stack.add(key);
+            }
+        });
+
+
+        ProjDetailDTO projDetailDTO = new ProjDetailDTO();
+        projDetailDTO.setProjectDTO(projectDTO);
+        projDetailDTO.setMember_field(member_field);
+        projDetailDTO.setRec_field_map(rec_field_map);
+        projDetailDTO.setProject_tech_stack(project_tech_stack);
+        projDetailDTO.setLeader_tech_stack(leader_tech_stack);
+        projDetailDTO.setMemberCardList(memberCardList);
+
+        return projDetailDTO;
+
+    };
 
 
 }

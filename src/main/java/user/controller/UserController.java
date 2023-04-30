@@ -125,4 +125,16 @@ public class UserController {
 	}
 	// 회원 탈퇴 end
 
+	//---------------------------------------------------------------------------------------------------
+	//명연 Start
+	@GetMapping(value="getUser")
+	@ResponseBody
+	public UserDTO project(@RequestParam String id) {
+		return userService.getUser(id);
+	}
+
+	//명연 End
+	//---------------------------------------------------------------------------------------------------
+
+
 }
