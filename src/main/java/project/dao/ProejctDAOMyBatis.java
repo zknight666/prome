@@ -29,25 +29,7 @@ public class ProejctDAOMyBatis implements ProjectDAO {
     @Autowired
     private SqlSession sqlSession;
 
-    //--------------- adminpage 관리자 페이지 ---------------------------
-    @Override
-    public List<ProjectDTO> getAdminpage(Map<String, Object> map2) {
-        if(map2.get("recruit_state")=="") {
-            return sqlSession.selectList("projectSQL.getAdminpage1", map2);
-        }else
-            return sqlSession.selectList("projectSQL.getAdminpage2", map2);
-    }
-
-    public List<String> getChosenTech(int projectId) {
-        return sqlSession.selectList("projectSQL.getChosenTech", projectId);
-    }
-
-
-    @Override
-    public void adminDeleteProject(int projectId) {
-        sqlSession.delete("userSQL.adminDeleteProject", projectId);
-
-    }
+ 
 
 //    @Override
 //    public List<ProjectDTO> getBookmark() {
@@ -55,26 +37,21 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 //    }
 	@Override
 	public void buildProject(ProjectDTO projectDTO) {
-//		sqlSession.insert("projectSQL.writeProject",projectDTO);
-//		sqlSession.insert("projectSQL.project_tech_stack",projectDTO);
-//		sqlSession.insert("projectSQL.recruitment_field",projectDTO);
 		sqlSession.insert("projectSQL.buildProject",projectDTO);
 	}
 
-	@Override
-	public List<ProjectMainpageDTO> getMainProjects() {
 
-		List<ProjectMainpageDTO>  list = sqlSession.selectList("projectSQL.getMainProjects");
+	
+    //--------------- adminpage 관리자 페이지 ---------------------------
 
-		System.out.println(list.get(0).getTitle()  + ", " +
-						   list.get(0).getField()  + ", " +
-						   list.get(0).getRecruitmentFields() + ", " +
-						   list.get(0).getTechstacks() + ", " +
-						   list.get(0).getMember_joined() + ", " +
-						   list.get(0).getMember_need()
-						  );
-		return list;
-	}
+    @Override
+    public void adminDeleteProject(int projectId) {
+        sqlSession.delete("projectSQL.adminDeleteProject", projectId);
+
+    }
+	
+
+	
 	@Override
 	public List<UserDTO> adminGetUserList(Map<String, Integer> map) {
 		return sqlSession.selectList("projectSQL.adminGetUserList",map);
@@ -121,26 +98,22 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 	public List<ApplicantsDTO> getApplicants(Integer ar) {
 		System.out.println(ar);
 		return sqlSession.selectList("projectSQL.getApplicants", ar);
-
-		//나중에 status가 null인 사람만 불러오도록 sql 수정해야 함!!
 	}
 
 
 	@Override
 	public void acceptApplicants(List<String> checkedUser, String project_id) {
 		System.out.println("dao = " +checkedUser + project_id);
-
-			for(String ar : checkedUser) {
-				System.out.println("ar =" + ar);
-				Map<String, Object> map = new HashMap<String, Object>();
-				map.put("project_id", Integer.parseInt(project_id));
-				map.put("ar", ar);
-				sqlSession.update("projectSQL.application_table", map);
-				sqlSession.update("projectSQL.project_table", map);
-				sqlSession.update("projectSQL.team_member_table", map);
-
-			}
-
+	
+		for(String ar : checkedUser) {
+			System.out.println("ar =" + ar);
+			Map<String, Object> map = new HashMap<String, Object>();
+			map.put("project_id", Integer.parseInt(project_id));
+			map.put("ar", ar);
+			sqlSession.update("projectSQL.application_table", map);
+			sqlSession.update("projectSQL.project_table", map);
+			sqlSession.update("projectSQL.team_member_table", map);
+		}
 	}
 
 	@Override
@@ -153,22 +126,8 @@ public class ProejctDAOMyBatis implements ProjectDAO {
 			sqlSession.update("projectSQL.declineApplicants", map);
 
 		}
-
-//		String array = checkedUser;
-//		System.out.println("dao = " +array);
-//		JSONArray jSONArray = new JSONArray();
-
-
-
-
-//		for(int i=1; i<checkedUser.size(); i++) {
-//			Map<String, Object> map = new HashMap<String, Object>();
-//			map.put("checkedUser", checkedUser[i]);
-//		}
-//			System.out.println("map = " +map); */
-//		sqlSession.delete("projectSQL.adminDeleteUser", checkedUser);
-
 	}
+	
 	//--------------------------------------------------
 
     @Override
@@ -395,5 +354,15 @@ public class ProejctDAOMyBatis implements ProjectDAO {
     };
 
 
+	@Override
+	public List<ProjectMainpageDTO> getMainProjects(Map<String, Integer> map5) {
+		List<ProjectMainpageDTO>  list = sqlSession.selectList("projectSQL.getMainProjects",map5);
+		return list;
+	}
+
+	@Override
+	public int getProjectTotalA() {
+		return sqlSession.selectOne("projectSQL.getProjectTotalA");
+	}
 }
 

@@ -216,8 +216,4 @@ $(document).ready(function () {
 
   /*************** 임시저장 불러오기 ***************/
 
-// 로그아웃
-  $('button[name="logoutbtn"]').click(function () {
-  	location.href = "/prome/"
-  });
 });

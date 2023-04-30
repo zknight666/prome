@@ -1,5 +1,64 @@
 document.addEventListener("DOMContentLoaded", () => {
-    getProjects();
+	
+	var projectPg = $('#projectPg').val();
+           
+
+    getProjects(projectPg);
+
+    
+	// 프로젝트 카드 클릭 시 페이지 이동
+	$(document).on('click', '.col.mb-4', function() {
+		location.href = '/prome/project/project?project_id=' + $(this).data('project-id');
+	});    
+    
+    
+	$(document).on('click', '.top .favorite', function(event) {
+		event.stopPropagation();
+		if (!$('#memId').val()) {
+	        alert('로그인이 필요한 기능입니다.');
+	        return;
+	    }
+		$.ajax({
+	    type: "POST",
+	    url: "/prome/project/addBookmark",
+	    data: { "user_id": $('#memId').val(), "project_id": $(this).closest('.col.mb-4').data('project-id') },
+	    success: function () {
+	        console.log("북마크 추가했습니다.");
+	    },
+	    error: function (err) {
+	        console.log(err);
+	    }
+	});
+		$(this).attr("class", "favorite-active");
+	});
+
+
+
+	// 관심목록에 있는 프로젝트인 경우 빈 하트로 바꾸고 DB의 bookmark Table에서 레코드를 제거함.
+	$(document).on('click', '.top .favorite-active', function(event) {
+		event.stopPropagation();
+		if (!$('#memId').val()) {
+	        alert('로그인이 필요한 기능입니다.');
+	        return;
+	    }
+		$.ajax({
+	    type: "POST",
+	    url: "/prome/project/deleteBookmark",
+	    data: { "user_id": $('#memId').val(), "project_id": $(this).closest('.col.mb-4').data('project-id') },
+	    success: function () {
+	        console.log("북마크 삭제했습니다.");
+	    },
+	    error: function (err) {
+	        console.log(err);
+	    }
+	});
+		$(this).attr("class", "favorite");
+		
+	}); 
+    
+    
+    
+    
 });
 
 
@@ -7,18 +66,18 @@ document.addEventListener("DOMContentLoaded", () => {
 
 // 모집분야 필터링
 $('select[name="recruitment_field"]').on('change', function() {
-    getProjects();
+    getProjects(projectPg);
 });
 
 
 // 모집중(checkbox)
 $('#flexCheckChecked').on('change', function() {
-  getProjects();
+  getProjects(projectPg);
 });
 
 
 // 모임생성 버튼 
-if($('#memId').val()) {
+if($('#user_id').val()) {
 	$('button[name="buildProjectBtn"]').css("display","inline-block");
 } 
 else {
@@ -45,29 +104,37 @@ $(document).keydown(function(event) {
 
 
 // 프로젝트 db 가져오기
-function getProjects() {
-  fetch("/prome/project/getMainProjects")
-    .then(response => response.json())
-    .then(projects => {
-                   const selectedRecruitmentField = $('select[name="recruitment_field"]').val();
-                   const onlyRecruiting = $('#flexCheckChecked').is(':checked');
-                   
-                        projects = projects.filter(project => 
-                                       {
-                                          const recruitmentFields = JSON.parse(project.recruitmentFields);
-                                          if (onlyRecruiting && project.member_joined === project.member_need) {
-                                        return false;
-                                      }
-                                         return recruitmentFields[selectedRecruitmentField] !== null;
-                                       });
-                   console.log("Projects:", projects); 
-                   displayProjects(projects);
-                   })
-    .catch(error => console.error("Error fetching projects:", error));
+function getProjects(projectPg) {
+  $.ajax({
+    type: "GET",
+    url: "/prome/project/getMainProjects",
+    data: 'projectPg=' + encodeURIComponent($('#projectPg').val()),
+    dataType: "json",
+    success: function (response) {
+   		console.log(JSON.stringify(response));
+    
+      let projects = response.list;  
+      
+      projects = projects.filter(project => {
+        
+        if ($('#flexCheckChecked').is(':checked') && project.member_joined === project.member_need) {
+          return false;
+        }
+        const recruitmentFields = JSON.parse(project.recruitmentFields);
+        return recruitmentFields[$('select[name="recruitment_field"]').val()] !== null;
+        
+      });
+      console.log("Projects:", projects);
+      displayProjects(projects);
+      $('#projectPaging').html(response.projectPaging.pagingHTML);
+
+
+    },
+    error: function (error) {
+      console.log(error);
+    }
+  });
 }
-
-
-
 
 
 const techStackIcons = {
@@ -104,7 +171,7 @@ const fieldsIcons = {
     '뷰티/패션': './assets/images/project-thumb-fashion.png',
     '금융': './assets/images/project-thumb-finance.png',
     '게임': './assets/images/project-thumb-game.png',
-    'FIGMA': './assets/images/project-thumb-medical.png',
+    '의료/병원': './assets/images/project-thumb-medical.png',
     '부동산': './assets/images/project-thumb-property.png',
     '공유서비스': './assets/images/project-thumb-sharing.png',
     '소셜 네트워크': './assets/images/project-thumb-sns.png',
@@ -132,6 +199,41 @@ const recruitmentfieldsname = {
 
 
 function displayProjects(projects) {
+    
+	 function setBookmarks() {
+	        if ($('#memId').val()) {
+	            $.ajax({
+	                url: "/prome/project/bookmark",
+	                type: 'GET',
+	                data: { "user_id": $('#memId').val() },
+	                dataType: 'json',
+	                success: function (bookmark) {
+	                    console.log(bookmark);
+	                    console.log("Column value:", $('.col.mb-4').data('value'));
+	                    console.log("길이 :", $('.col.mb-4').length);
+	                    $('.col.mb-4').each(function () {
+	                        let colValue = $(this).data('value');
+							console.log("Checking colValue:", colValue);
+	                    	console.log("$(this).find('.top .favorite').length", $(this).find('.top .favorite').length)
+	                        for (let i = 0; i < bookmark.length; i++) {
+	                          	console.log("Comparing colValue:", colValue, "with bookmark:", bookmark[i]);
+	                        
+	                            if (parseInt(colValue) === parseInt(bookmark[i])) {
+	                            	console.log("Match found:", colValue);
+	                                $(this).find('.top .favorite').attr("class", "favorite-active");
+	                            }
+	                        }
+	                    });
+	
+	                },
+	                error: function (err) {
+	                    console.log(err);
+	                }
+	            });
+	        }
+	    }    
+    
+
     $('#card_section').html('');
 
 
@@ -140,8 +242,8 @@ function displayProjects(projects) {
         const recruitmentFieldsList = Object.entries(JSON.parse(project.recruitmentFields))
             .filter(([, value]) => value !== null)
             .map(([key, value]) => {
-                              const recruitmentFieldsName = recruitmentfieldsname[key];
-                              return `<h3><li><span>${recruitmentFieldsName}</span><span>${value}</span></li></h3>`;
+                              const recruitmentFieldsname = recruitmentfieldsname[key];
+                              return `<h3><li><span>${recruitmentFieldsname}</span><span>${value}</span></li></h3>`;
                               })
             .join('');
 
@@ -155,16 +257,16 @@ function displayProjects(projects) {
             
         const fieldIconPath = fieldsIcons[project.field] || './assets/images/cat-space.gif';  
             
-            
+           
 
         const projectCard = `
 
                                           <!--카드-1-->
-                         <div class="col mb-4">
+                         <div class="col mb-4" data-project-id="${project.id}" data-value="${project.id}">
                            <div class="projectGridWrap" style="min-width: 260px; padding-left: 0; padding-right: 0">
                              <div class="projectTopInfo">
                                <div class="top" style="flex-direction: row-reverse">
-                                 <div class="favorite"></div>
+                                 <div class="favorite" ></div>
                                </div>
                                <div class="projectThumb">
                                  <img loading="lazy" src="${fieldIconPath}" alt="내 글이 상장되는 ‘비법거래소'입니다"
@@ -189,7 +291,7 @@ function displayProjects(projects) {
                                  </div>
                                  <div class="right">
                                    <div class="heartCount">
-                                     <img loading="lazy" src="assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
+                                     <img loading="lazy" src="assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>${project.heartCount}</span>
                                    </div>
                                  </div>
                                </div>
@@ -221,9 +323,12 @@ function displayProjects(projects) {
                            
                          `;
         $('#card_section').append(projectCard);
+        
+
     });
-}   
-    
-    
-    
-    
+ setBookmarks();
+
+}
+
+
+  

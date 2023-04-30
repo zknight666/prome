@@ -26,7 +26,7 @@ public class ProjectPaging {
 		pagingHTML.append("<ul class='pagination pagination-lg'>");
 		if(startPage != 1)
 			pagingHTML			
-			.append("<li class='page-item disabled'>")
+			.append("<li class='page-item'>")
 			.append("<a class='page-link' id='paging' onclick='projectPaging(" + (startPage-1) + ")'>&laquo;</a>")
 			.append("</li>");
 		

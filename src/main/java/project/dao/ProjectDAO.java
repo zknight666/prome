@@ -24,10 +24,12 @@ public interface ProjectDAO {
 	List<UserDTO> adminGetUserList(Map<String, Integer> map);
 
 	int getUserTotalA();
+	
+	int getProjectTotalA();
 
 	void adminDeleteUser(String checkedUser);
 
-	List<ProjectMainpageDTO> getMainProjects();
+	List<ProjectMainpageDTO> getMainProjects(Map<String, Integer> map5);
 
 	List<Integer> getProjectId(String team_leader);
 
