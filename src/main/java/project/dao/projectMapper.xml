@@ -71,6 +71,8 @@
 		</foreach>
 		);
 
+		INSERT INTO team_member (id) values (#{projectId});
+
 		end;
 	</insert>
 
