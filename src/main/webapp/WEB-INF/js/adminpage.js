@@ -179,7 +179,7 @@ function displayProjects(projects) {
                              </div>
                              <div class="right">
                                <div class="heartCount">
-                                 <img loading="lazy" src="../assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>29</span>
+                                 <img loading="lazy" src="../assets/images/ic-favorite-empty-white.svg" alt="구독자 수" /><span>${project.heartCount}</span>
                                </div>
                              </div>
                            </div>

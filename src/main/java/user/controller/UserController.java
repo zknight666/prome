@@ -141,7 +141,7 @@ public class UserController {
 	@ResponseBody
 	public String deleteUser(@ModelAttribute UserDTO userDTO) {
 		String login= userService.login(userDTO);
-		if(login.equals("ok")) {
+		if(login.equals("user")) {
 			userService.deleteUser(userDTO);
 			return "그동안 prome를 사랑해주셔서 감사합니다.";
 		}else if(login.equals("fail")) {

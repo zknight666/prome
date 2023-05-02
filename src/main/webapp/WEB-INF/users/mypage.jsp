@@ -445,18 +445,6 @@
 
 
 
-
-
-
-
-
-
-
-
-
-
-
-
   <!-- 회원탈퇴 modal  -->
   <div class="modalWrapClose">
         <div class="loginModal" style="padding-bottom: 30px;">
@@ -470,7 +458,7 @@
 
             <button type="button" class="btn btn-outline-secondary radious" id="deleteUser">회원 탈퇴</button>
             <button type="button" class="btn btn-outline-secondary radious" id="cancel">취소</button>
-			<input type="hidden" id="prome_id" value="${param.id}">
+			<input type="hidden" id="prome_id" value="${user_id}">
         </div>
   </div>
 
@@ -480,7 +468,7 @@
   <script src="../js/letspl.js"></script>
   <script type="text/javascript" src="http://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script type="text/javascript" src="../js/slick.min.js"></script>
-  <script type="text/javascript" src="../js/mypage.js"></script>
+  <script type="text/javascript" src="../js/mypage.js" charset="utf-8"></script>
   <script src="../js/logout.js"></script>
 
 
